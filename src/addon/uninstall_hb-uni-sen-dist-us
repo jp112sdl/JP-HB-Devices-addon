@@ -1,0 +1,42 @@
+#!/bin/sh
+
+DEVICE="HB-UNI-Sen-DIST-US"
+DEVICE_IMG=hb-uni-sen-dist-us.png
+DEVICE_THUMB=hb-uni-sen-dist-us_thumb.png
+FIRMWARE_FILE=hb-uni-sen-dist-us.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+
+if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
+        sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+fi
+
+webuiFile="/www/webui/webui.js"
+if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
+        sed -i "/\($DEVICE\)/d" $webuiFile
+fi
+
+stringtable_deFile="/www/config/stringtable_de.txt"
+stringtable_deSearch="HB_GENERIC_DIST|DISTANCE"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+stringtable_deSearch="HB_GENERIC_DIST|BATTERY_VOLTAGE"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="stringTableHbGenericDistDistance"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
+translate_deSearch="stringTableHbGenericDistBatteryVoltage"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
+
+rm -f $FIRMWARE_FILE
+rm -f /www/config/img/devices/250/$DEVICE_IMG
+rm -f /www/config/img/devices/50/$DEVICE_THUMB

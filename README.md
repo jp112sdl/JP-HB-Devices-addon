@@ -1,5 +1,7 @@
 # JP-HB-Devices-addon
 
+Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
+
 Dieses Addon wird benötigt, um folgende die Kompatibilität der HomeMatic Selbstbaugeräte
 - [HB-UNI-Sen-CAP-MOIST](https://github.com/jp112sdl/HB-UNI-Sen-CAP-MOIST) (kapazitiver Bodenfeuchtesensor)
 - [HB-UNI-Sen-DIST-US](https://github.com/jp112sdl/HB-UNI-Sen-DIST-US) (Ultraschall Füllstandsensor) _(coming soon)_ 
@@ -11,7 +13,5 @@ Dieses Addon wird benötigt, um folgende die Kompatibilität der HomeMatic Selbs
 
 herzustellen.
 
-Die neueste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
-
-Zu diesem Zweck ist die aktuellste Version des Addons herunterzuladen und wie gewohnt über "Einstellungen"->"Systemsteuerung"->"Zusatzsoftware" zu installieren.
+Zu diesem Zweck ist die aktuellste Version des Addons herunterzuladen und wie gewohnt in der WebUI über "Einstellungen"->"Systemsteuerung"->"Zusatzsoftware" zu installieren.
 <br>_Wie immer bei Addons der Hinweis:<br>Die heruntergeladene Datei mit der Endung `.tgz` darf nicht entpackt werden!_

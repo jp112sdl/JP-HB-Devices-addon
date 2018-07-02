@@ -62,7 +62,7 @@ case "$1" in
 		    sync
 		    mount -o remount,ro /
 		    touch ${ADDON_DIR}/installed
-		    # /etc/init.d/S61rfd restart
+		    /etc/init.d/S61rfd restart
 		else
 		   echo "Addon already installed - nothing to do"
 		fi

@@ -32,6 +32,10 @@
           <logical type="boolean" />
           <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
         </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="LOWBAT"/>
+        </parameter>
         <parameter id="RSSI_DEVICE" operations="read,event">
           <logical type="integer" />
           <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />
@@ -71,9 +75,9 @@
     </channel>
   </channels>
   <frames>
-      <frame id="MEASURE_EVENT" direction="from_device" event="true" channel_field="10" type="0x53">
-         <parameter type="integer" index="11.0" size="2.0" param="DISTANCE" />
-         <parameter type="integer" index="13.0" size="1.0" param="BATTERY_VOLTAGE"/>
+      <frame id="MEASURE_EVENT" direction="from_device" event="true" channel_field="9" type="0x53">
+         <parameter type="integer" index="10.0" size="2.0" param="DISTANCE" />
+         <parameter type="integer" index="12.0" size="1.0" param="BATTERY_VOLTAGE"/>
     </frame>
   </frames>
   <paramset_defs></paramset_defs>

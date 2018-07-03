@@ -27,12 +27,14 @@ mkdir -p ${ADDON_DIR}
 cp -af addon/* ${ADDON_DIR}
 chmod 755 ${ADDON_DIR}
 
+# Symbolic Links
+rm -rf ${WWW_DIR}
+ln -sf ${ADDON_DIR} ${WWW_DIR}
+
 rm -f ${ADDON_DIR}/installed
 
 # Startskript ausführen
 # ${RC_DIR}/$ADDON_NAME start
-# Startskript nach Reboot nochmals ausführen
-# rm -f ${ADDON_DIR}/installed
 
 # sync filesystem to make sure all changes are written to disk
 sync

@@ -54,7 +54,7 @@
      <paramset type="MASTER" id="HB-UNI-Sen-DIST-US_master" />      
       <paramset type="VALUES" id="HB-UNI-Sen-DIST-US_values">
         <parameter id="DISTANCE" operations="read,event">
-          <logical type="integer" min="0" max="1000" unit="m"/>
+          <logical type="integer" min="0" max="1000" unit="cm"/>
           <physical type="integer" interface="command" value_id="DISTANCE" no_init="true">
             <event frame="MEASURE_EVENT"/>
           </physical>

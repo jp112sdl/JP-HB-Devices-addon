@@ -13,5 +13,9 @@ Dieses Addon wird benötigt, um folgende die Kompatibilität der HomeMatic Selbs
 
 herzustellen.
 
-Zu diesem Zweck ist die aktuellste Version des Addons herunterzuladen und wie gewohnt in der WebUI über "Einstellungen"->"Systemsteuerung"->"Zusatzsoftware" zu installieren.
+Zu diesem Zweck ist die [aktuellste Version](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) des Addons herunterzuladen und wie gewohnt in der WebUI über "Einstellungen"->"Systemsteuerung"->"Zusatzsoftware" zu installieren.
 <br>_Wie immer bei Addons der Hinweis:<br>Die heruntergeladene Datei mit der Endung `.tgz` darf nicht entpackt werden!_
+
+**Hinweis:**
+Wer bereits die Einzel-Addons aus den jeweiligen Projekten nutzt, kann diese Deinstallieren und anschließend das JP-HB-Devices-addon installieren. Zwischenzeitlich darf **kein Reboot** erfolgen! _(Es erfolgt nach der Installation automatisch ein Neustart.)_<br>
+Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Posteingang wiederzufinden!

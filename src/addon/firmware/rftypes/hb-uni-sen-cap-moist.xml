@@ -83,9 +83,9 @@
                   <field id="AutoconfRoles" value="WEATHER" />
                </description>
             </parameter>
-            <parameter id="VOLTAGE" operations="read,event" control="BATTERIE">
-             <logical type="float" min="0.0" max="25.5" unit="V"/>
-             <physical type="integer" interface="command" value_id="VOLTAGE">
+            <parameter id="OPERATING_VOLTAGE" operations="read,event" control="NONE">
+             <logical type="float" min="0.0" max="25.5" unit=" V"/>
+             <physical type="integer" interface="command" value_id="OPERATING_VOLTAGE">
               <event frame="WEATHER_EVENT"/>
              </physical>
              <conversion type="float_integer_scale" factor="10"/>
@@ -98,7 +98,7 @@
    <frames>
       <frame id="WEATHER_EVENT" direction="from_device" event="true" channel_field="12" type="0x70">
          <parameter type="integer" index="11.0" size="1.0" param="HUMIDITY" />
-         <parameter type="integer" index="13.0" size="1.0" param="VOLTAGE"/>
+         <parameter type="integer" index="13.0" size="1.0" param="OPERATING_VOLTAGE"/>
       </frame>  
    </frames>
   <paramset_defs />

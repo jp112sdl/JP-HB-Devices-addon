@@ -38,8 +38,8 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|DISTANCE"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
-stringtable_deInsert="HB_GENERIC_DIST|OFFSET	\${stringTableHbGenericDistOffset} \n"
-if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|OFFSET"`" ]; then
+stringtable_deInsert="HB_GENERIC_DIST|DISTANCE_OFFSET	\${stringTableHbGenericDistDistanceOffset} \n"
+if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|DISTANCE_OFFSET"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
@@ -57,8 +57,8 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHbGenericDistDistance\"`" ];
 fi
 
 translate_deSearch="\"dummy\" : \"\","
-translate_deInsert="\n    \"stringTableHbGenericDistOffset\" : \"Offset\","
-if [ -z "`cat $translate_deFile | grep \"stringTableHbGenericDistOffset\"`" ]; then
+translate_deInsert="\n    \"stringTableHbGenericDistDistanceOffset\" : \"Sensor Offset\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbGenericDistDistanceOffset\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

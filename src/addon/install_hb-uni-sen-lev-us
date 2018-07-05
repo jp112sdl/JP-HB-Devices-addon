@@ -39,11 +39,21 @@ if [ -z "`cat $stringtable_deFile | grep \"CAPACITIVE_FILLING_LEVEL_SENSOR|BATTE
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
+stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|DISTANCE_OFFSET	\${stringTableCapacitiveFillingSensorDistanceOffset} \n"
+if [ -z "`cat $stringtable_deFile | grep \"CAPACITIVE_FILLING_LEVEL_SENSOR|DISTANCE_OFFSET"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
 ### Edit translate.lang.stringtable.js ###
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 
 translate_deSearch="\"dummy\" : \"\","
 translate_deInsert="\n    \"stringTableCapacitiveFillingSensorBatteryVoltage\" : \"Batteriespannung\","
 if [ -z "`cat $translate_deFile | grep \"stringTableCapacitiveFillingSensorBatteryVoltage\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deSearch="\"dummy\" : \"\","
+translate_deInsert="\n    \"stringTableCapacitiveFillingSensorDistanceOffset\" : \"Sensor Offset\","
+if [ -z "`cat $translate_deFile | grep \"stringTableCapacitiveFillingSensorDistanceOffset\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

@@ -38,6 +38,11 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|DISTANCE"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
+stringtable_deInsert="HB_GENERIC_DIST|OFFSET	\${stringTableHbGenericDistOffset} \n"
+if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|OFFSET"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
 stringtable_deInsert="HB_GENERIC_DIST|BATTERY_VOLTAGE	\${stringTableHbGenericDistBatteryVoltage} \n"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|BATTERY_VOLTAGE"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
@@ -48,6 +53,12 @@ translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 translate_deInsert="\n    \"stringTableHbGenericDistDistance\" : \"Abstand\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbGenericDistDistance\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deSearch="\"dummy\" : \"\","
+translate_deInsert="\n    \"stringTableHbGenericDistOffset\" : \"Offset\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbGenericDistOffset\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

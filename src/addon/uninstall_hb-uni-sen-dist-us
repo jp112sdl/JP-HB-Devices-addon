@@ -22,6 +22,12 @@ stringtable_deSearch="HB_GENERIC_DIST|DISTANCE"
 if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 fi
+
+stringtable_deSearch="HB_GENERIC_DIST|OFFSET"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+
 stringtable_deSearch="HB_GENERIC_DIST|BATTERY_VOLTAGE"
 if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
@@ -32,6 +38,12 @@ translate_deSearch="stringTableHbGenericDistDistance"
 if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 fi
+
+translate_deSearch="stringTableHbGenericDistOffset"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
+
 translate_deSearch="stringTableHbGenericDistBatteryVoltage"
 if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile

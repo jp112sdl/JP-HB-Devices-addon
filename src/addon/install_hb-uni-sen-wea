@@ -17,7 +17,7 @@ fi
 
 ### Edit webui.js ###
 webuiFile="/www/webui/webui.js"
-webuiSearch="DEV_HIGHLIGHT[[:space:]]*=[[:space:]]*new Array();"
+webuiSearchBegin="DEV_HIGHLIGHT[[:space:]]*=[[:space:]]*new Array();"
 
 webuiInsert="\n"
 webuiInsert="${webuiInsert}DEV_HIGHLIGHT['$DEVICE'] = new Object();\n"
@@ -28,53 +28,164 @@ webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['50'] = '\/config\/img\/devices\
 webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['250'] = '\/config\/img\/devices\/250\/$DEVICE_IMG';"
 
 if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($webuiSearch\)/\1$webuiInsert/g" $webuiFile
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
+
+webuiInsertParam="HBWEA_ALTITUDE"
+webuiInsertValue="stringTableHbWeaAltitude"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|ANEMOMETER_RADIUS"
+webuiInsertValue="stringTableWeatherAnemometerRadius"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|ANEMOMETER_CALIBRATION_FACTOR"
+webuiInsertValue="stringTableWeatherAnemometerCalibrationFactor"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|LD_CAPACITOR"
+webuiInsertValue="stringTableWeatherLightningDetectorCapacitor"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|LD_DISTURBER_DETECTION"
+webuiInsertValue="stringTableWeatherLightningDetectorDisturberDetection"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|GUST_THRESHOLD_EXTRA_MESSAGE"
+webuiInsertValue="stringTableWeatherGustThresholdExtraMessage"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
-stringtable_deInsert="GUST_SPEED	\${stringTableWeatherGustSpeed} \n"
+
+stringtable_deInsert="HBWEA_ALTITUDE	\${stringTableHbWeaAltitude} \n"
+if [ -z "`cat $stringtable_deFile | grep \"HBWEA_ALTITUDE"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|GUST_SPEED	\${stringTableWeatherGustSpeed} \n"
 if [ -z "`cat $stringtable_deFile | grep \"GUST_SPEED"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
-stringtable_deInsert="UVINDEX	\${stringTableWeatherUvIndex} \n"
+stringtable_deInsert="WEATHER|UVINDEX	\${stringTableWeatherUvIndex} \n"
 if [ -z "`cat $stringtable_deFile | grep \"UVINDEX"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
-stringtable_deInsert="LIGHTNING_COUNTER	\${stringTableWeatherLightningCounter} \n"
+stringtable_deInsert="WEATHER|LIGHTNING_COUNTER	\${stringTableWeatherLightningCounter} \n"
 if [ -z "`cat $stringtable_deFile | grep \"LIGHTNING_COUNTER"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
-stringtable_deInsert="LIGHTNING_DISTANCE	\${stringTableWeatherLightningDistance} \n"
+stringtable_deInsert="WEATHER|LIGHTNING_DISTANCE	\${stringTableWeatherLightningDistance} \n"
 if [ -z "`cat $stringtable_deFile | grep \"LIGHTNING_DISTANCE"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
+stringtable_deInsert="WEATHER|ANEMOMETER_RADIUS	\${stringTableWeatherAnemometerRadius} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|ANEMOMETER_RADIUS"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|ANEMOMETER_CALIBRATION_FACTOR	\${stringTableWeatherAnemometerRadius} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|ANEMOMETER_CALIBRATION_FACTOR"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|LD_CAPACITOR	\${stringTableWeatherAnemometerRadius} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_CAPACITOR"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|LD_DISTURBER_DETECTION	\${stringTableWeatherAnemometerRadius} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_DISTURBER_DETECTION "`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|GUST_THRESHOLD_EXTRA_MESSAGE	\${stringTableWeatherAnemometerRadius} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|GUST_THRESHOLD_EXTRA_MESSAGE"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+
 ### Edit translate.lang.stringtable.js ###
+
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
+
+translate_deInsert="\n    \"stringTableHbWeaAltitude\" : \"H%F6he über NN\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbWeaAltitude\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
 translate_deInsert="\n    \"stringTableWeatherGustSpeed\" : \"Boe-Geschwindigkeit\","
 if [ -z "`cat $translate_deFile | grep \"stringTableWeatherGustSpeed\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deSearch="\"dummy\" : \"\","
 translate_deInsert="\n    \"stringTableWeatherUvIndex\" : \"UV-Index\","
 if [ -z "`cat $translate_deFile | grep \"stringTableWeatherUvIndex\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deSearch="\"dummy\" : \"\","
 translate_deInsert="\n    \"stringTableWeatherLightningCounter\" : \"Blitz-Z%E4hler\","
 if [ -z "`cat $translate_deFile | grep \"stringTableWeatherLightningCounter\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deSearch="\"dummy\" : \"\","
 translate_deInsert="\n    \"stringTableWeatherLightningDistance\" : \"Blitz-Entfernung\","
 if [ -z "`cat $translate_deFile | grep \"stringTableWeatherLightningDistance\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherAnemometerRadius\" : \"Anemometer Radius\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherAnemometerRadius\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherAnemometerCalibrationFactor\" : \"Anemometer Kalibrierungsfaktor\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherAnemometerCalibrationFactor\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherLightningDetectorCapacitor\" : \"Blitzdetektor Kapazit%E4t\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherLightningDetectorCapacitor\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherLightningDetectorDisturberDetection\" : \"Blitzdetektor St%F6rererkennung\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherLightningDetectorDisturberDetection\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherGustThresholdExtraMessage\" : \"zus%E4tzliche Benachrichtigung bei B%F6en %FCber\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherGustThresholdExtraMessage\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

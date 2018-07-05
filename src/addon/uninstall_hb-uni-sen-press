@@ -17,6 +17,10 @@ webuiFile="/www/webui/webui.js"
 if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
         sed -i "/\($DEVICE\)/d" $webuiFile
 fi
+webuiSearch="GENERIC|Sensortyp"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
@@ -37,6 +41,14 @@ fi
 webuiFile="/www/webui/webui.js"
 if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
         sed -i "/\($DEVICE\)/d" $webuiFile
+fi
+webuiSearch="GENERIC|Schaltschwelle"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
+webuiSearch="GENERIC|Hysterese"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
 fi
 
 stringtable_deFile="/www/config/stringtable_de.txt"

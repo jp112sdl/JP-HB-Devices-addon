@@ -10,7 +10,7 @@
       <logical type="integer" min="10" max="3600" default="60" unit="s" />
       <physical type="integer" interface="config" list="0" index="32" size="2" />
     </parameter>
-    <parameter id="Altitude">
+    <parameter id="HBWEA_ALTITUDE">
       <logical type="integer" min="0" max="10000" default="0" unit="m" />
       <physical type="integer" interface="config" list="0" index="34" size="2" />
     </parameter>
@@ -54,25 +54,25 @@
         <source name="WEATHER_TH" />
       </link_roles>
      <paramset type="MASTER" id="HB-UNI-Sen-WEA_master">
-       <parameter id="Anemometer Radius (cm)">
-         <logical type="float" min="0" max="25.5" unit="" default="6.5" />              
+       <parameter id="ANEMOMETER_RADIUS">
+         <logical type="float" min="0" max="25.5" unit="cm" default="6.5" />              
            <physical type="integer" interface="config" list="1" index="1.0" size="1" />
            <conversion type="float_integer_scale" factor="10.0" />
           </parameter>                                                            
-          <parameter id="Anemometer Calibration Factor">
+          <parameter id="ANEMOMETER_CALIBRATION_FACTOR">
            <logical type="float" min="0" max="1000.0" unit="" default="1.0" /> 
            <physical type="integer" interface="config" list="1" index="2.0" size="2" />
            <conversion type="float_integer_scale" factor="10.0" />
          </parameter>        
-         <parameter id="Lightning Detector Capacitor">
+         <parameter id="LD_CAPACITOR">
            <logical type="integer" min="0" max="120" default="80" unit="pF" />
          <physical type="integer" interface="config" list="1" index="4.0" size="1" />
          </parameter> 
-         <parameter id="Lightning Detector Disturber Detection">
+         <parameter id="LD_DISTURBER_DETECTION">
           <logical type="boolean" default="false"/>
           <physical type="integer" interface="config" list="1" index="5.0" size="1"/>
          </parameter>
-         <parameter id="Send Extra Message On Gust Threshold">
+         <parameter id="GUST_THRESHOLD_EXTRA_MESSAGE">
            <logical type="integer" min="0" max="255" unit="km/h" default="0" /> 
            <physical type="integer" interface="config" list="1" index="6.0" size="1" />
          </parameter>   

@@ -7,14 +7,17 @@ FIRMWARE_FILE=hb-uni-sen-dist-us.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
-
 if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-        sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+    sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 fi
 
 webuiFile="/www/webui/webui.js"
 if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
-        sed -i "/\($DEVICE\)/d" $webuiFile
+    sed -i "/\($DEVICE\)/d" $webuiFile
+fi
+webuiSearch="HB_GENERIC_DIST|DISTANCE_OFFSET"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
 fi
 
 stringtable_deFile="/www/config/stringtable_de.txt"

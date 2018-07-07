@@ -40,6 +40,13 @@ webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
+webuiInsertParam="HB_GENERIC_DIST|SENSOR_TYPE"
+webuiInsertValue="stringTableHbGenericDistSensorType"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
 
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
@@ -56,6 +63,11 @@ fi
 
 stringtable_deInsert="HB_GENERIC_DIST|BATTERY_VOLTAGE	\${stringTableHbGenericDistBatteryVoltage} \n"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|BATTERY_VOLTAGE"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_GENERIC_DIST|SENSOR_TYPE	\${stringTableHbGenericDistSensorType} \n"
+if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|SENSOR_TYPE"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
@@ -76,4 +88,9 @@ fi
 translate_deInsert="\n    \"stringTableHbGenericDistBatteryVoltage\" : \"Batteriespannung\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbGenericDistBatteryVoltage\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbGenericDistSensorType\" : \"Sensortyp\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbGenericDistSensorType\"`" ]; then
+        sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

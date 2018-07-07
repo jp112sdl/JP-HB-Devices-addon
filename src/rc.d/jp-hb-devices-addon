@@ -24,39 +24,30 @@ case "$1" in
 		    chmod 755 /www/config/img/devices/50/hb-*
 	    	    
 		    DEVICE=hb-uni-senact-4-4
-		    FIRMWARE_FILE_1=${FIRMWARE_DIR}/${DEVICE}-rc.xml
-		    FIRMWARE_FILE_1=${FIRMWARE_DIR}/${DEVICE}-sc.xml
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
 
 		    DEVICE=hb-uni-sen-press
-		    FIRMWARE_FILE_1=${FIRMWARE_DIR}/${DEVICE}.xml
-		    FIRMWARE_FILE_1=${FIRMWARE_DIR}/${DEVICE}-sc.xml
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
 
 		    DEVICE=hb-uni-sen-cap-moist
-		    FIRMWARE_FILE=${FIRMWARE_DIR}/${DEVICE}.xml
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
 
 		    DEVICE=hb-uni-sen-dist-us
-		    FIRMWARE_FILE=${FIRMWARE_DIR}/${DEVICE}.xml
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
 
 		    DEVICE=hb-uni-sen-lev-us
-		    FIRMWARE_FILE=${FIRMWARE_DIR}/${DEVICE}.xml
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
 
 		    DEVICE=hb-uni-sen-temp
-		    FIRMWARE_FILE=${FIRMWARE_DIR}/${DEVICE}.xml
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
 
 		    DEVICE=hb-uni-sen-wea
-		    FIRMWARE_FILE=${FIRMWARE_DIR}/${DEVICE}.xml
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
 		    sync

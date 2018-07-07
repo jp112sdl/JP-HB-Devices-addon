@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<device version="2" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" cyclic_timeout="14800">
+<device version="1" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" cyclic_timeout="14800">
   <supported_types>
     <type name="HB-UNI-Sen-WEA" id="HB-UNI-Sen-WEA">
-      <parameter index="9.0"  size="1.0" cond_op="GE" const_value="0x11"/>
+      <parameter index="9.0"  size="1.0" cond_op="LE" const_value="0x10"/>
       <parameter index="10.0" size="2.0" const_value="0xF1D0" />
     </type>
   </supported_types>
@@ -109,11 +109,11 @@
           </description>
         </parameter>
         <parameter id="LUX" operations="read,event">
-          <logical type="float" min="0.00" max="200000.00" unit="Lux" />
+          <logical type="float" min="0.00" max="65535.0" unit="Lux" />
           <physical type="integer" interface="command" value_id="LUX" no_init="true">
             <event frame="WEATHER_EVENT" />
           </physical>
-          <conversion type="float_integer_scale" factor="10" />
+          <conversion type="float_integer_scale" factor="1.0" />
         </parameter>
         <parameter id="RAIN_COUNTER" operations="read,event" control="NONE">
           <logical type="float" min="0.0" max="9666.265" unit="mm"/>
@@ -179,15 +179,15 @@
       <parameter type="integer" signed="true"  index="9"  size="1.7" param="TEMPERATURE" />
       <parameter type="integer" index="11.0" size="2.0" param="AIR_PRESSURE" />
       <parameter type="integer" index="13.0" size="1.0" param="HUMIDITY" />
-      <parameter type="integer" index="14.0" size="3.0" param="LUX" />
-      <parameter type="integer" index="17.0" size="1.7" param="RAIN_COUNTER"/>
-      <parameter type="integer" index="19.0" size="1.6" param="WIND_SPEED"/>
-      <parameter type="integer" index="19.6" size="0.2" param="WIND_DIRECTION_RANGE"/>
-      <parameter type="integer" index="21.0" size="1.0" param="WIND_DIRECTION"/>
-      <parameter type="integer" index="22.0" size="2.0" param="GUST_SPEED"/>
-      <parameter type="integer" index="24.0" size="0.4" param="UVINDEX"/>      
-      <parameter type="integer" index="24.4" size="0.4" param="LIGHTNING_DISTANCE"/>      
-      <parameter type="integer" index="25.0" size="1.0" param="LIGHTNING_COUNTER"/>      
+      <parameter type="integer" index="14.0" size="2.0" param="LUX" />
+      <parameter type="integer" index="16.0" size="1.7" param="RAIN_COUNTER"/>
+      <parameter type="integer" index="18.0" size="1.6" param="WIND_SPEED"/>
+      <parameter type="integer" index="18.6" size="0.2" param="WIND_DIRECTION_RANGE"/>
+      <parameter type="integer" index="20.0" size="1.0" param="WIND_DIRECTION"/>
+      <parameter type="integer" index="21.0" size="2.0" param="GUST_SPEED"/>
+      <parameter type="integer" index="23.0" size="0.4" param="UVINDEX"/>      
+      <parameter type="integer" index="23.4" size="0.4" param="LIGHTNING_DISTANCE"/>      
+      <parameter type="integer" index="24.0" size="2.0" param="LIGHTNING_COUNTER"/>      
     </frame>
   </frames>
   <paramset_defs></paramset_defs>

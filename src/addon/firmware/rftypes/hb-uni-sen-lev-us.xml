@@ -60,26 +60,32 @@
         <logical type="integer" min="0" max="600" unit="cm" default="0"/>
         <physical type="integer" interface="config" list="1" index="1" size="2.0"/>
       </parameter>
-       <parameter id="CASE_DESIGN">
-          <logical type="option">
-            <option id="VERTICAL_BARREL" default="true"/>
-            <option id="HORIZONTAL_BARREL"/>
-            <option id="RECTANGLE"/>
-          </logical>
-          <physical type="integer" interface="config" list="1" index="90" size="1"/>
-          <conversion type="option_integer">
-            <value_map device_value="1" parameter_value="0"/>
-            <value_map device_value="2" parameter_value="1"/>
-            <value_map device_value="3" parameter_value="2"/>
-          </conversion>
-        </parameter>
+      <parameter id="SENSOR_TYPE">
+        <logical type="option">
+         <option id="JSN-SR04T" default="true""/>
+         <option id="MaxSonar EZ0..4"/>
+        </logical>
+        <physical type="integer" interface="config" list="1" index="3" size="1"/>
+      </parameter> 
+      <parameter id="CASE_DESIGN">
+       <logical type="option">
+         <option id="VERTICAL_BARREL" default="true"/>
+         <option id="HORIZONTAL_BARREL"/>
+         <option id="RECTANGLE"/>
+       </logical>
+       <physical type="integer" interface="config" list="1" index="90" size="1"/>
+      </parameter>
       <parameter id="CASE_HIGH">
-        <logical type="integer" min="100" max="10000" unit="cm" default="1000"/>
+        <logical type="integer" min="30" max="10000" unit="cm" default="1000"/>
         <physical type="integer" interface="config" list="1" index="94" size="2.0"/>
       </parameter>
       <parameter id="CASE_WIDTH">
-        <logical type="integer" min="100" max="10000" unit="cm" default="1000"/>
+        <logical type="integer" min="30" max="10000" unit="cm" default="1000"/>
         <physical type="integer" interface="config" list="1" index="102" size="2.0"/>
+      </parameter>
+      <parameter id="CASE_LENGTH">
+        <logical type="integer" min="30" max="10000" unit="cm" default="1000"/>
+        <physical type="integer" interface="config" list="1" index="106" size="2.0"/>
       </parameter>
      </paramset>      
       <paramset type="VALUES" id="HB-UNI-Sen-LEV-US_values">
@@ -89,7 +95,14 @@
             <event frame="MEASURE_EVENT"/>
           </physical>
         </parameter>
-        <parameter id="BATTERY_VOLTAGE" operations="read,event" control="BATTERIE">
+        <parameter id="FILLING_LITER" operations="read,event">
+          <logical type="float" min="0" max="100000000" unit="L"/>
+          <physical type="integer" interface="command" value_id="FILLING_LITER" no_init="true">
+            <event frame="MEASURE_EVENT"/>
+          </physical>
+          <conversion type="float_integer_scale" factor="1.0"/>
+        </parameter>
+        <parameter id="BATTERY_VOLTAGE" operations="read,event" control="NONE">
           <logical type="float" min="0.0" max="25.5" unit="V"/>
            <physical type="integer" interface="command" value_id="BATTERY_VOLTAGE">
              <event frame="MEASURE_EVENT"/>
@@ -104,6 +117,7 @@
       <frame id="MEASURE_EVENT" direction="from_device" event="true" fixed_channel="1" type="0x53">
          <parameter type="integer" index="9.0" size="1.0" param="FILLING_LEVEL" />
          <parameter type="integer" index="10.0" size="1.0" param="BATTERY_VOLTAGE"/>
+         <parameter type="integer" index="11.0" size="4.0" param="FILLING_LITER"/>
     </frame>
   </frames>
   <paramset_defs></paramset_defs>

@@ -17,7 +17,7 @@ case "$1" in
 	    	    mount -o remount,rw /
 		    cd ${ADDON_DIR}
 		    cp -a firmware/rftypes/* /firmware/rftypes/
-		    cp -ar www/config/img/devices /www/config/img/
+		    cp -ar www/* /www/
 		    chown root:root /www/config/img/devices/250/hb-*
 		    chmod 755 /www/config/img/devices/250/hb-*
 		    chown root:root /www/config/img/devices/50/hb-*

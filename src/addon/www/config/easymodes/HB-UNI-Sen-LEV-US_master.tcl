@@ -225,7 +225,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     append HTML_PARAMS(separate_1) "<tr id=\"caseHelp\" style=\"display:none\" >"
       append HTML_PARAMS(separate_1) "<td colspan=\"3\">"
         append HTML_PARAMS(separate_1) "<div id=\"param_1\" style=\"padding-bottom:10px\"><textarea id=\"profile_1\" style=\"display:none\">\${hintCaseForm}</textarea></div>"
-        append HTML_PARAMS(separate_1) "<img id=\"waHelpImage\" src=\"/ise/img/hm-sen-wa-od.png\">"
+        append HTML_PARAMS(separate_1) "<img id=\"waHelpImage\" src=\"/ise/img/hb-uni-sen-lev-us.png\">"
       append HTML_PARAMS(separate_1) "</td>"
     append HTML_PARAMS(separate_1) "</tr>"
   
@@ -240,7 +240,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   }
   
   append HTML_PARAMS(separate_1) "<script type=\"text/javascript\">"
-    append HTML_PARAMS(separate_1) "translateAndSetImage(\"#waHelpImage\", \"hm-sen-wa-od.png\");"
+    append HTML_PARAMS(separate_1) "translateAndSetImage(\"#waHelpImage\", \"hb-uni-sen-lev-us.png\");"
     append HTML_PARAMS(separate_1) "st_setStringTableValues();translate('1', '$special_input_id');"
   append HTML_PARAMS(separate_1) "</script>"
 }

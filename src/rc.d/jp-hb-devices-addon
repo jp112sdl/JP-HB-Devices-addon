@@ -10,11 +10,12 @@ LOGFILE=/var/log/$ADDON_NAME.log
 ERRFILE=/var/log/$ADDON_NAME.err
 FIRMWARE_DIR=/firmware/rftypes
 RC_DIR=/usr/local/etc/config/rc.d
+CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 
 case "$1" in
 	""|start)
-	        if [ ! -f ${ADDON_DIR}/installed ]; then
-	    	    mount -o remount,rw /
+	        if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then
+	    	mount -o remount,rw /
 		    cd ${ADDON_DIR}
 		    cp -a firmware/rftypes/* /firmware/rftypes/
 		    cp -ar www/* /www/

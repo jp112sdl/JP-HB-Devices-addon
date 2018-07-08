@@ -191,12 +191,12 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     incr paramNr
     set param "CASE_HIGH"
     set min [getMinValue ps_descr $param]
-    set max 600
+    set max [getMaxValue ps_descr $param]
     append HTML_PARAMS(separate_1) "<tr class=\"j_custom j_caseHeight\">"
       append HTML_PARAMS(separate_1) "<td class=\"stringtable_value\" id=\"caseHeight\">$devType|$param</td>"
       append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_1_$paramNr\" name=\"$param\" value=\"$ps($param)\" onblur=\"ProofValue('separate_CHANNEL_1_$paramNr',parseInt($min), $caseSelectorID, [getMaxValue ps_descr $param]);\"> </td>"
       append HTML_PARAMS(separate_1) "<td>"
-        append HTML_PARAMS(separate_1) "<span id=\"caseHeightMinMaxA\" style=\"display:inline;\">[getUnit ps_descr $param] [getMinMaxValueDescr ps_descr $param]</span>"
+        append HTML_PARAMS(separate_1) "<span id=\"caseHeightMinMaxA\" style=\"display:none;\">[getUnit ps_descr $param] [getMinMaxValueDescr ps_descr $param]</span>"
         append HTML_PARAMS(separate_1) "<span id=\"caseHeightMinMaxB\" style=\"display:none;\">[getUnit ps_descr $param] (30 - $max)</span>"
       append HTML_PARAMS(separate_1) "</td>"
     append HTML_PARAMS(separate_1) "</tr>"

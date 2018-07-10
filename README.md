@@ -7,7 +7,7 @@ Dieses Addon wird benötigt, um folgende die Kompatibilität der HomeMatic Selbs
 - [HB-UNI-Sen-DIST-US](https://github.com/jp112sdl/HB-UNI-Sen-DIST-US) (Ultraschall Abstandsensor)
 - [HB-UNI-Sen-LEV-US](https://github.com/jp112sdl/HB-UNI-Sen-LEV-US) (Ultraschall Füllstandsensor) _(coming soon)_ 
 - [HB-UNI-Sen-PRESS](https://github.com/jp112sdl/HB-UNI-Sen-PRESS) (Drucksensor)
-- [HB-UNI-Sen-TEMP](https://github.com/jp112sdl/HB-UNI-Sen-TEMP) (1..8fach DS18B20 Temperatursensor)
+- [HB-UNI-Sen-TEMP-DS18B20](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-DS18B20) (1..8fach DS18B20 Temperatursensor)
 - [HB-UNI-Sen-WEA](https://github.com/jp112sdl/HB-UNI-Sen-WEA) (Wetterstation)
 - [HB-UNI-SenAct-4-4](https://github.com/jp112sdl/HB-UNI-SenAct-4-4) (4fach - Sender & - Aktor)
 

@@ -4,7 +4,7 @@ DEVICE="HB-UNI-Sen-WEA"
 DEVICE_IMG=hb-uni-sen-wea.png
 DEVICE_THUMB=hb-uni-sen-wea_thumb.png
 FIRMWARE_FILE_1=hb-uni-sen-wea_le_v10.xml
-FIRMWARE_FILE_2=hb-uni-sen-wea_eq_v11.xml
+FIRMWARE_FILE_2=hb-uni-sen-wea.xml
 FIRMWARE_FILE_3=hb-uni-sen-wea_ge_v12.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"

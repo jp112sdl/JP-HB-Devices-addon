@@ -52,7 +52,7 @@
     </channel>
     <channel index="1" type="WEATHER" autoregister="true">
       <link_roles>
-        <source name="WEATHER_TH" />
+        <source name="WEATHER_CS" />
       </link_roles>
      <paramset type="MASTER" id="HB-UNI-Sen-WEA_master">
        <parameter id="ANEMOMETER_RADIUS">

@@ -168,7 +168,7 @@
           </physical>
         </parameter>
         <parameter id="LIGHTNING_COUNTER" operations="read,event">
-          <logical type="integer" min="0" max="65535" unit=""/>
+          <logical type="integer" min="0" max="255" unit=""/>
           <physical type="integer" interface="command" value_id="LIGHTNING_COUNTER" no_init="true">
             <event frame="WEATHER_EVENT"/>
           </physical>

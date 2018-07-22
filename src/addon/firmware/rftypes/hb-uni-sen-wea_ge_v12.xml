@@ -181,7 +181,62 @@
           <conversion type="integer_integer_scale" div="3"/>
         </parameter>
       </paramset>  
-      <paramset type="LINK" id="HB-UNI-Sen-WEA_link"></paramset>
+      <paramset type="LINK" id="wds100_ch_link">
+        <parameter id="PEER_NEEDS_BURST">
+          <logical type="boolean" default="false"/>
+          <physical type="integer" interface="config" list="4" index="1.0" size="0.1"/>
+        </parameter>
+        <parameter id="STORM_UPPER_THRESHOLD">
+          <logical type="integer" min="0" max="0xc8"/>
+          <physical type="integer" interface="config" list="1" index="7.0" size="1.0"/>
+        </parameter>
+        <parameter id="STORM_LOWER_THRESHOLD">
+          <logical type="integer" min="0" max="0xc8"/>
+          <physical type="integer" interface="config" list="1" index="8.0" size="1.0"/>
+        </parameter>
+        <parameter id="EXPECT_AES">
+          <logical type="boolean" default="false"/>
+          <physical type="integer" interface="config" list="4" index="1.7" size="0.1"/>
+        </parameter>
+        <enforce id="EXPECT_AES" value="$PEER.AES"/>
+      </paramset>
+      <enforce_link>
+        <value id="SHORT_CT_RAMPOFF" value="0"/>
+        <value id="SHORT_CT_RAMPON" value="0"/>
+        <value id="SHORT_CT_OFFDELAY" value="1"/>
+        <value id="SHORT_CT_ONDELAY" value="1"/>
+        <value id="SHORT_CT_OFF" value="1"/>
+        <value id="SHORT_CT_ON" value="1"/>
+        <value id="SHORT_COND_VALUE_LO" value="0x05"/>
+        <value id="SHORT_COND_VALUE_HI" value="0x19"/>
+        <value id="SHORT_ONDELAY_TIME" value="0x00"/>
+        <value id="SHORT_ON_TIME" value="0xff"/>
+        <value id="SHORT_OFFDELAY_TIME" value="0x00"/>
+        <value id="SHORT_OFF_TIME" value="0xff"/>
+        <value id="SHORT_ON_TIME_MODE" value="0x00"/>
+        <value id="SHORT_OFF_TIME_MODE" value="0x00"/>
+        <value id="SHORT_ACTION_TYPE" value="0x01"/>
+        <value id="SHORT_JT_OFF" value="0x01"/>
+        <value id="SHORT_JT_ON" value="0x02"/>
+        <value id="SHORT_JT_OFFDELAY" value="0x02"/>
+        <value id="SHORT_JT_ONDELAY" value="0x02"/>
+        <value id="LONG_ACTION_TYPE" value="0"/>
+        <value id="LONG_CT_RAMPOFF" value="0"/>
+        <value id="LONG_CT_RAMPON" value="2"/>
+        <value id="LONG_CT_OFFDELAY" value="0"/>
+        <value id="LONG_CT_ONDELAY" value="2"/>
+        <value id="LONG_CT_OFF" value="0"/>
+        <value id="LONG_CT_ON" value="2"/>
+        <value id="LONG_COND_VALUE_LO" value="50"/>
+        <value id="LONG_COND_VALUE_HI" value="180"/>
+        <value id="LONG_ACTION_TYPE" value="1"/>
+        <value id="LONG_JT_OFF" value="1"/>
+        <value id="LONG_JT_ON" value="3"/>
+        <value id="LONG_JT_OFFDELAY" value="3"/>
+        <value id="LONG_JT_ONDELAY" value="1"/>
+        <value id="LONG_JT_RAMPOFF" value="3"/>
+        <value id="LONG_JT_RAMPON" value="3"/>
+      </enforce_link>
     </channel>
   </channels>
   <frames>

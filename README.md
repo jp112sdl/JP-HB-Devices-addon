@@ -21,3 +21,17 @@ Die Addons **müssen zuerst deinstalliert** werden.<br>
 Anschließend muss das JP-HB-Devices-addon installiert werden.<br>
 Zwischenzeitlich darf **kein Reboot** erfolgen! _(Es erfolgt nach der Installation automatisch ein Neustart.)_<br>
 Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Posteingang wiederzufinden!
+
+**Info:** Bisher verwendete Device-IDs meiner HB-Geräte
+
+| DeviceID | Gerät |
+|--------|--------|
+|F3 11 | HB-UNI-Sen-CAP-MOIST |
+|F9 D6 | HB-UNI-Sen-DIST-US |
+|F9 D2 | HB-UNI-Sen-LEV-US |
+|E9 01 | HB-UNI-Sen-PRESS |
+|E9 02 | HB-UNI-Sen-PRESS-SC |
+|F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
+|F1 D0 | HB-UNI-Sen-WEA |
+|F3 31 | HB-UNI-SenAct-4-4-SC|
+|F3 32 | HB-UNI-SenAct-4-4-RC|

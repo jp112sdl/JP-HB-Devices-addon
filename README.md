@@ -22,9 +22,9 @@ Anschließend muss das JP-HB-Devices-addon installiert werden.<br>
 Zwischenzeitlich darf **kein Reboot** erfolgen! _(Es erfolgt nach der Installation automatisch ein Neustart.)_<br>
 Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Posteingang wiederzufinden!
 
-**Info:** Bisher verwendete Device-IDs meiner HB-Geräte
+**Info:** Bisher verwendete IDs der Device Model meiner HB-Geräte
 
-| DeviceID | Gerät |
+| Device Model | Gerät |
 |--------|--------|
 |F3 11 | HB-UNI-Sen-CAP-MOIST |
 |F9 D6 | HB-UNI-Sen-DIST-US |

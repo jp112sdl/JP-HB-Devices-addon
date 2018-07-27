@@ -3,7 +3,7 @@
 DEVICE="HB-UNI-Sen-LEV-US"
 DEVICE_IMG=hb-uni-sen-lev-us.png
 DEVICE_THUMB=hb-uni-sen-lev-us_thumb.png
-FIRMWARE_FILE=hb-uni-sen-lev-us.xml
+FIRMWARE_FILE=/firmware/rftypes/hb-uni-sen-lev-us.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "

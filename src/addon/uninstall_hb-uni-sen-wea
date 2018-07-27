@@ -3,9 +3,7 @@
 DEVICE="HB-UNI-Sen-WEA"
 DEVICE_IMG=hb-uni-sen-wea.png
 DEVICE_THUMB=hb-uni-sen-wea_thumb.png
-FIRMWARE_FILE_1=hb-uni-sen-wea_le_v10.xml
-FIRMWARE_FILE_2=hb-uni-sen-wea.xml
-FIRMWARE_FILE_3=hb-uni-sen-wea_ge_v12.xml
+FIRMWARE_FILES=/firmware/rftypes/hb-uni-sen-wea*
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
@@ -19,6 +17,10 @@ if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
     sed -i "/\($DEVICE\)/d" $webuiFile
 fi
 webuiSearch="HBWEA_ALTITUDE"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
+webuiSearch="WEATHER|RD_HEATING"
 if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
     sed -i "/\($webuiSearch\)/d" $webuiFile
 fi
@@ -45,6 +47,10 @@ fi
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="HBWEA_ALTITUDE"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+stringtable_deSearch="RD_HEATING"
 if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 fi
@@ -107,8 +113,6 @@ if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 fi
 
-rm -f $FIRMWARE_FILE_1
-rm -f $FIRMWARE_FILE_2
-rm -f $FIRMWARE_FILE_3
+rm -f $FIRMWARE_FILES
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB

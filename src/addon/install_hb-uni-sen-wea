@@ -4,6 +4,10 @@ DEVICE="HB-UNI-Sen-WEA"
 DEVICE_DESC="universeller Wetterdatensensor"
 DEVICE_IMG=hb-uni-sen-wea.png
 DEVICE_THUMB=hb-uni-sen-wea_thumb.png
+FIRMWARE_FILES=/firmware/rftypes/hb-uni-sen-wea*
+
+### remove old Firmware Files, will be newly copied by rc-script
+rm -f $FIRMWARE_FILES
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
@@ -35,6 +39,30 @@ webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 
 webuiInsertParam="HBWEA_ALTITUDE"
 webuiInsertValue="stringTableHbWeaAltitude"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|RD_HEATING"
+webuiInsertValue="stringTableWeatherRdHeating"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|RD_HEATING=TRUE"
+webuiInsertValue="stringTableWeatherRdHeatingTrue"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|RD_HEATING=FALSE"
+webuiInsertValue="stringTableWeatherRdHeatingFalse"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
@@ -86,6 +114,21 @@ stringtable_deFile="/www/config/stringtable_de.txt"
 
 stringtable_deInsert="HBWEA_ALTITUDE	\${stringTableHbWeaAltitude} \n"
 if [ -z "`cat $stringtable_deFile | grep \"HBWEA_ALTITUDE"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|RD_HEATING	\${stringTableWeatherRdHeating} \n"
+if [ -z "`cat $stringtable_deFile | grep \"RD_HEATING"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|RD_HEATING=TRUE	\${stringTableWeatherRdHeatingTrue} \n"
+if [ -z "`cat $stringtable_deFile | grep \"RD_HEATING=TRUE"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|RD_HEATING=FALSE	\${stringTableWeatherRdHeatingFalse} \n"
+if [ -z "`cat $stringtable_deFile | grep \"RD_HEATING=FALSE"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
@@ -187,5 +230,20 @@ fi
 
 translate_deInsert="\n    \"stringTableWeatherGustThresholdExtraMessage\" : \"zus%E4tzliche Benachrichtigung bei B%F6en %FCber\","
 if [ -z "`cat $translate_deFile | grep \"stringTableWeatherGustThresholdExtraMessage\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdHeating\" : \"Regendetektor Heizung\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdHeating\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdHeatingTrue\" : \"Regendetektor Heizung EIN\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdHeatingTrue\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdHeatingFalse\" : \"Regendetektor Heizung AUS\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdHeatingFalse\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

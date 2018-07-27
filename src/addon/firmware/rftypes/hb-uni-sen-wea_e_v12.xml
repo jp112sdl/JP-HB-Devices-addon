@@ -2,7 +2,7 @@
 <device version="2" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" cyclic_timeout="14800">
   <supported_types>
     <type name="HB-UNI-Sen-WEA" id="HB-UNI-Sen-WEA">
-      <parameter index="9.0"  size="1.0" cond_op="GE" const_value="0x12"/>
+      <parameter index="9.0"  size="1.0" cond_op="E" const_value="0x12"/>
       <parameter index="10.0" size="2.0" const_value="0xF1D0" />
     </type>
   </supported_types>
@@ -125,8 +125,14 @@
             <event frame="WEATHER_EVENT"/>
           </physical>
         </parameter>
+        <parameter id="RD_HEATING" operations="read,event">
+          <logical type="boolean"/>
+          <physical type="integer" interface="command" value_id="RD_HEATING" no_init="true">
+            <event frame="WEATHER_EVENT"/>
+          </physical>
+        </parameter>        
         <parameter id="RAIN_COUNTER" operations="read,event" control="NONE">
-          <logical type="float" min="0.0" max="9666.265" unit="mm"/>
+          <logical type="float" min="0.0" max="32767.0" unit="mm"/>
           <physical type="integer" interface="command" value_id="RAIN_COUNTER" no_init="true">
             <event frame="WEATHER_EVENT"/>
           </physical>
@@ -154,7 +160,7 @@
           <conversion type="integer_integer_scale" div="45" mul="2"/>
         </parameter>  
         <parameter id="GUST_SPEED" operations="read,event">
-          <logical type="float" min="0.0" max="1638.3" unit="km/h"/>
+          <logical type="float" min="0.0" max="3276.7" unit="km/h"/>
           <physical type="integer" interface="command" value_id="GUST_SPEED" no_init="true">
             <event frame="WEATHER_EVENT"/>
           </physical>
@@ -250,7 +256,8 @@
       <parameter type="integer" index="19.0" size="1.6" param="WIND_SPEED"/>
       <parameter type="integer" index="19.6" size="0.2" param="WIND_DIRECTION_RANGE"/>
       <parameter type="integer" index="21.0" size="1.0" param="WIND_DIRECTION"/>
-      <parameter type="integer" index="22.0" size="2.0" param="GUST_SPEED"/>
+      <parameter type="integer" index="22.0" size="1.7" param="GUST_SPEED"/>
+      <parameter type="integer" index="22.7" size="0.1" param="RD_HEATING"/>
       <parameter type="integer" index="24.0" size="0.4" param="UVINDEX"/>      
       <parameter type="integer" index="24.4" size="0.4" param="LIGHTNING_DISTANCE"/>      
       <parameter type="integer" index="25.0" size="1.0" param="LIGHTNING_COUNTER"/>      

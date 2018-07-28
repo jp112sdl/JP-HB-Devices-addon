@@ -18,6 +18,9 @@ elif [ "$1" = "HM-RASPBERRYMATIC" ]; then
   mount /usr/local
 fi
 
+# Alte Firmware Files löschen
+rm -f ${ADDON_DIR}/firmware/rftypes/*
+
 # Startscript anlegen
 cp -af rc.d/$ADDON_NAME ${RC_DIR}/
 chmod +x ${RC_DIR}/$ADDON_NAME

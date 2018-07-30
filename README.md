@@ -1,4 +1,4 @@
-# JP-HB-Devices-addon [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/jp-hb-devices-addon/total.svg?style=for-the-badge)](https://github.com/jp112sdl/jp-hb-devices-addon)
+# JP-HB-Devices-addon
 
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
@@ -35,3 +35,5 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F1 D0 | HB-UNI-Sen-WEA |
 |F3 31 | HB-UNI-SenAct-4-4-SC|
 |F3 32 | HB-UNI-SenAct-4-4-RC|
+
+[![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/jp-hb-devices-addon/total.svg?style=for-the-badge)](https://github.com/jp112sdl/jp-hb-devices-addon)

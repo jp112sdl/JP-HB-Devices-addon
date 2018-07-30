@@ -1,4 +1,4 @@
-# JP-HB-Devices-addon
+# JP-HB-Devices-addon [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/jp-hb-devices-addon/total.svg?style=for-the-badge)](https://github.com/jp112sdl/jp-hb-devices-addon)
 
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 

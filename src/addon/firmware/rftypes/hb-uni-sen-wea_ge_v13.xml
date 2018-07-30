@@ -123,12 +123,14 @@
           <logical type="boolean"/>
           <physical type="integer" interface="command" value_id="RAINING" no_init="true">
             <event frame="WEATHER_EVENT"/>
+            <event frame="EXTRA_EVENT" auth_violate_policy="reject"/>
           </physical>
         </parameter>
         <parameter id="RD_HEATING" operations="read,event">
           <logical type="boolean"/>
           <physical type="integer" interface="command" value_id="RD_HEATING" no_init="true">
             <event frame="WEATHER_EVENT"/>
+            <event frame="EXTRA_EVENT" auth_violate_policy="reject"/>
           </physical>
         </parameter>        
         <parameter id="RAIN_COUNTER" operations="read,event" control="NONE">
@@ -163,6 +165,7 @@
           <logical type="float" min="0.0" max="3276.7" unit="km/h"/>
           <physical type="integer" interface="command" value_id="GUST_SPEED" no_init="true">
             <event frame="WEATHER_EVENT"/>
+            <event frame="EXTRA_EVENT" auth_violate_policy="reject"/>
           </physical>
           <conversion type="float_integer_scale" factor="10.0"/>
         </parameter> 
@@ -262,6 +265,11 @@
       <parameter type="integer" index="24.4" size="0.4" param="LIGHTNING_DISTANCE"/>      
       <parameter type="integer" index="25.0" size="1.0" param="LIGHTNING_COUNTER"/>      
     </frame>
+    <frame id="EXTRA_EVENT" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x53" channel_field="9:0.6">  
+      <parameter type="integer" index="10.0" size="0.1" param="RAINING"/>                                                                        
+      <parameter type="integer" index="10.1" size="0.1" param="RD_HEATING"/>                                                                     
+      <parameter type="integer" index="11.0" size="1.7" param="GUST_SPEED"/>                                                                     
+    </frame> 
   </frames>
   <paramset_defs></paramset_defs>
 </device>

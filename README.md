@@ -10,6 +10,7 @@ Dieses Addon wird benötigt, um folgende die Kompatibilität der HomeMatic Selbs
 - [HB-UNI-Sen-TEMP-DS18B20](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-DS18B20) (1..8fach DS18B20 Temperatursensor)
 - [HB-UNI-Sen-WEA](https://github.com/jp112sdl/HB-UNI-Sen-WEA) (Wetterstation)
 - [HB-UNI-SenAct-4-4](https://github.com/jp112sdl/HB-UNI-SenAct-4-4) (4fach - Sender & - Aktor)
+- [HB-UNI-RGB-LED-CTRL](https://github.com/jp112sdl/HB-UNI-RGB-LED-CTRL) (RGB Controller für WS28xx / Neopixel / etc.)
 
 herzustellen.
 
@@ -35,6 +36,7 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F1 D0 | HB-UNI-Sen-WEA |
 |F3 31 | HB-UNI-SenAct-4-4-SC|
 |F3 32 | HB-UNI-SenAct-4-4-RC|
+|F3 41 | HB-UNI-RGB-LED-CTRL |
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>.

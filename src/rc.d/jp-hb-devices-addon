@@ -23,6 +23,8 @@ case "$1" in
 		    chown root:root /www/config/img/devices/50/hb-*
 		    chmod 755 /www/config/img/devices/50/hb-*
 	    	    
+		    cp -a firmware/rftypes/* /firmware/rftypes/
+
 		    DEVICE=hb-uni-senact-4-4
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
@@ -50,8 +52,10 @@ case "$1" in
 		    DEVICE=hb-uni-sen-wea
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
-
-		    cp -a firmware/rftypes/* /firmware/rftypes/
+		    
+            DEVICE=hb-uni-rgb-led-ctrl
+		    echo "Installing ${DEVICE}"
+		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
 
 		    sync
 		    mount -o remount,ro /
@@ -69,6 +73,7 @@ case "$1" in
 	uninstall)
 		mount -o remount,rw /
     	cd ${ADDON_DIR}
+    	
 		DEVICE=hb-uni-senact-4-4
 		echo "Uninstalling... ${DEVICE}"
     		echo $!> $PIDFILE & ./uninstall_${DEVICE} > $LOGFILE 2>$ERRFILE
@@ -97,9 +102,14 @@ case "$1" in
 		echo "Uninstalling... ${DEVICE}"
     		echo $!> $PIDFILE & ./uninstall_${DEVICE} > $LOGFILE 2>$ERRFILE
     		echo "Done."
-    		cd /
-    		rm -rf $ADDON_DIR
-    		rm -rf $WWW_DIR
+		DEVICE=hb-uni-rgb-led-ctrl
+		echo "Uninstalling... ${DEVICE}"
+    		echo $!> $PIDFILE & ./uninstall_${DEVICE} > $LOGFILE 2>$ERRFILE
+    		echo "Done."
+    		    		
+    	cd /
+    	rm -rf $ADDON_DIR
+    	rm -rf $WWW_DIR
 		rm -f ${RC_DIR}/${ADDON_NAME}
     		sync
     		mount -o remount,ro /

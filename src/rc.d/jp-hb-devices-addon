@@ -23,8 +23,6 @@ case "$1" in
 		    chown root:root /www/config/img/devices/50/hb-*
 		    chmod 755 /www/config/img/devices/50/hb-*
 	    	    
-		    cp -a firmware/rftypes/* /firmware/rftypes/
-
 		    DEVICE=hb-uni-senact-4-4
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
@@ -56,6 +54,8 @@ case "$1" in
             DEVICE=hb-uni-rgb-led-ctrl
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
+
+		    cp -a firmware/rftypes/* /firmware/rftypes/
 
 		    sync
 		    mount -o remount,ro /

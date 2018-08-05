@@ -372,3 +372,107 @@ translate_deInsert="\n    \"stringTableWeatherRdSensorTypeStallBiz\" : \"Stall.B
 if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdSensorTypeStallBiz\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
+
+### Edit english translate.lang.stringtable.js ###
+
+translate_enFile="/www/webui/js/lang/en/translate.lang.stringtable.js"
+translate_enSearch="\"dummy\" : \"\","
+
+translate_enInsert="\n    \"stringTableHbWeaAltitude\" : \"Height Above Sea Level\","
+if [ -z "`cat $translate_enFile | grep \"stringTableHbWeaAltitude\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherGustSpeed\" : \"Gust-Speed\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherGustSpeed\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherUvIndex\" : \"UV-Index\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherUvIndex\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherLightningCounter\" : \"Lightning-Counter\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherLightningCounter\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherLightningDistance\" : \"Lightning-Distance\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherLightningDistance\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherAnemometerRadius\" : \"Anemometer Radius\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherAnemometerRadius\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherAnemometerCalibrationFactor\" : \"Anemometer Calibration Factor\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherAnemometerCalibrationFactor\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherLightningDetectorCapacitor\" : \"Lightning Detector Capacitor\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherLightningDetectorCapacitor\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherLightningDetectorDisturberDetection\" : \"Lightning Detector Disturber Detection\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherLightningDetectorDisturberDetection\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherGustThresholdExtraMessage\" : \"Gust Threshold Extra Message\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherGustThresholdExtraMessage\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdHeating\" : \"Rain Detector Heating\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdHeating\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdHeatingTrue\" : \"Rain Detector Heating ON\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdHeatingTrue\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdHeatingFalse\" : \"Rain Detector Heating OFF\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdHeatingFalse\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdStallBizHiThresholdRain\" : \"Stall.Biz Rain Detector Detection High Threshold\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdStallBizHiThresholdRain\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdStallBizLoThresholdRain\" : \"Stall.Biz Regendetektor Detection Low Threshold\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdStallBizLoThresholdRain\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdStallBizHiThresholdHeater\" : \"Stall.Biz Rain Detector Heating ON Threshold\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdStallBizHiThresholdHeater\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdStallBizLoThresholdHeater\" : \"Stall.Biz Rain Detector Heating OFF Threshold\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdStallBizLoThresholdHeater\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdSensorType\" : \"Rain Detector Type\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdSensorType\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdSensorTypeGeneric\" : \"none or generic\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdSensorTypeGeneric\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdSensorTypeStallBiz\" : \"Stall.Biz\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdSensorTypeStallBiz\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile

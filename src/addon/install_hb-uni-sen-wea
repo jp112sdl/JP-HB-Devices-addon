@@ -45,6 +45,14 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="HBWEA_TRANSMIT_INTERVAL"
+webuiInsertValue="stringTableHbWeaTransmitInterval"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 webuiInsertParam="WEATHER|RD_HEATING"
 webuiInsertValue="stringTableWeatherRdHeating"
 webuiInsert="\n"
@@ -173,6 +181,11 @@ if [ -z "`cat $stringtable_deFile | grep \"HBWEA_ALTITUDE"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
+stringtable_deInsert="HBWEA_TRANSMIT_INTERVAL	\${stringTableHbWeaTransmitInterval} \n"
+if [ -z "`cat $stringtable_deFile | grep \"HBWEA_TRANSMIT_INTERVAL"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
 stringtable_deInsert="WEATHER|RD_HEATING	\${stringTableWeatherRdHeating} \n"
 if [ -z "`cat $stringtable_deFile | grep \"RD_HEATING"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
@@ -275,6 +288,11 @@ translate_deSearch="\"dummy\" : \"\","
 
 translate_deInsert="\n    \"stringTableHbWeaAltitude\" : \"H%F6he über NN\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbWeaAltitude\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbWeaTransmitInterval\" : \"Sendeintervall\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbWeaTransmitInterval\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
@@ -381,6 +399,11 @@ translate_enSearch="\"dummy\" : \"\","
 translate_enInsert="\n    \"stringTableHbWeaAltitude\" : \"Height Above Sea Level\","
 if [ -z "`cat $translate_enFile | grep \"stringTableHbWeaAltitude\"`" ]; then
 	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_deInsert="\n    \"stringTableHbWeaTransmitInterval\" : \"Transmit Interval\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbWeaTransmitInterval\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
 translate_enInsert="\n    \"stringTableWeatherGustSpeed\" : \"Gust-Speed\","

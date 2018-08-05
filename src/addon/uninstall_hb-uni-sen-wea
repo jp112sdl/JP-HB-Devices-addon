@@ -20,6 +20,10 @@ webuiSearch="HBWEA_ALTITUDE"
 if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
     sed -i "/\($webuiSearch\)/d" $webuiFile
 fi
+webuiSearch="HBWEA_TRANSMIT_INTERVAL"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
 webuiSearch="WEATHER|RD_HEATING"
 if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
     sed -i "/\($webuiSearch\)/d" $webuiFile
@@ -78,6 +82,10 @@ stringtable_deSearch="HBWEA_ALTITUDE"
 if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 fi
+stringtable_deSearch="HBWEA_TRANSMIT_INTERVAL"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
 stringtable_deSearch="RD_HEATING"
 if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
@@ -129,6 +137,10 @@ fi
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbWeaAltitude"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
+translate_deSearch="stringTableHbWeaTransmitInterval"
 if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 fi
@@ -199,6 +211,10 @@ fi
 
 translate_enFile="/www/webui/js/lang/en/translate.lang.stringtable.js"
 translate_enSearch="stringTableHbWeaAltitude"
+if [ "`cat $translate_enFile | grep \"$translate_enSearch\"`" ]; then
+	sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
+fi
+translate_enSearch="stringTableHbWeaTransmitInterval"
 if [ "`cat $translate_enFile | grep \"$translate_enSearch\"`" ]; then
 	sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
 fi

@@ -401,9 +401,9 @@ if [ -z "`cat $translate_enFile | grep \"stringTableHbWeaAltitude\"`" ]; then
 	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
 fi
 
-translate_deInsert="\n    \"stringTableHbWeaTransmitInterval\" : \"Transmit Interval\","
-if [ -z "`cat $translate_deFile | grep \"stringTableHbWeaTransmitInterval\"`" ]; then
-	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+translate_enInsert="\n    \"stringTableHbWeaTransmitInterval\" : \"Transmit Interval\","
+if [ -z "`cat $translate_enFile | grep \"stringTableHbWeaTransmitInterval\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
 fi
 
 translate_enInsert="\n    \"stringTableWeatherGustSpeed\" : \"Gust-Speed\","

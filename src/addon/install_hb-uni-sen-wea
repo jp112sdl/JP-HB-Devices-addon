@@ -448,7 +448,7 @@ if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdStallBizHiThreshold
 	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
 fi
 
-translate_enInsert="\n    \"stringTableWeatherRdStallBizLoThresholdRain\" : \"Stall.Biz Regendetektor Detection Low Threshold\","
+translate_enInsert="\n    \"stringTableWeatherRdStallBizLoThresholdRain\" : \"Stall.Biz Rain Detector Detection Low Threshold\","
 if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdStallBizLoThresholdRain\"`" ]; then
 	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
 fi

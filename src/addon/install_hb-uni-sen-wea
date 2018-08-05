@@ -109,6 +109,62 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="WEATHER|RD_STALLBIZ_HI_THRESHOLD_RAIN"
+webuiInsertValue="stringTableWeatherRdStallBizHiThresholdRain"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|RD_STALLBIZ_LO_THRESHOLD_RAIN"
+webuiInsertValue="stringTableWeatherRdStallBizLoThresholdRain"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|RD_STALLBIZ_HI_THRESHOLD_HEATER"
+webuiInsertValue="stringTableWeatherRdStallBizHiThresholdHeater"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|RD_STALLBIZ_LO_THRESHOLD_HEATER"
+webuiInsertValue="stringTableWeatherRdStallBizLoThresholdHeater"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|RD_SENSOR_TYPE"
+webuiInsertValue="stringTableWeatherRdSensorType"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|RD_SENSOR_TYPE=GENERIC"
+webuiInsertValue="stringTableWeatherRdSensorTypeGeneric"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|RD_SENSOR_TYPE=STALLBIZ"
+webuiInsertValue="stringTableWeatherRdSensorTypeStallBiz"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
@@ -177,6 +233,40 @@ if [ -z "`cat $stringtable_deFile | grep \"WEATHER|GUST_THRESHOLD_EXTRA_MESSAGE"
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
+stringtable_deInsert="WEATHER|RD_STALLBIZ_HI_THRESHOLD_RAIN	\${stringTableWeatherRdStallBizHiThresholdRain} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_HI_THRESHOLD_RAIN"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|RD_STALLBIZ_LO_THRESHOLD_RAIN	\${stringTableWeatherRdStallBizLoThresholdRain} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_LO_THRESHOLD_RAIN"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|RD_STALLBIZ_HI_THRESHOLD_HEATER	\${stringTableWeatherRdStallBizHiThresholdHeater} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_HI_THRESHOLD_HEATER"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|RD_STALLBIZ_LO_THRESHOLD_HEATER	\${stringTableWeatherRdStallBizLoThresholdHeater} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_LO_THRESHOLD_HEATER"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|RD_SENSOR_TYPE	\${stringTableWeatherRdSensorType} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_SENSOR_TYPE"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|RD_SENSOR_TYPE=GENERIC	\${stringTableWeatherRdSensorTypeGeneric} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_SENSOR_TYPE=GENERIC"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
+stringtable_deInsert="WEATHER|RD_SENSOR_TYPE=STALLBIZ	\${stringTableWeatherRdSensorTypeStallBiz} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_SENSOR_TYPE=STALLBIZ"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
 
 ### Edit translate.lang.stringtable.js ###
 
@@ -245,5 +335,40 @@ fi
 
 translate_deInsert="\n    \"stringTableWeatherRdHeatingFalse\" : \"Regendetektor Heizung AUS\","
 if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdHeatingFalse\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdStallBizHiThresholdRain\" : \"Stall.Biz Regendetektor Regenerkennung Einschaltschwelle\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdStallBizHiThresholdRain\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdStallBizLoThresholdRain\" : \"Stall.Biz Regendetektor Regenerkennung Ausschaltschwelle\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdStallBizLoThresholdRain\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdStallBizHiThresholdHeater\" : \"Stall.Biz Regendetektor Heizung Einschaltschwelle\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdStallBizHiThresholdHeater\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdStallBizLoThresholdHeater\" : \"Stall.Biz Regendetektor Heizung Ausschaltschwelle\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdStallBizLoThresholdHeater\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdSensorType\" : \"Regendetektor Typ\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdSensorType\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdSensorTypeGeneric\" : \"keiner oder generisch\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdSensorTypeGeneric\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherRdSensorTypeStallBiz\" : \"Stall.Biz\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdSensorTypeStallBiz\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

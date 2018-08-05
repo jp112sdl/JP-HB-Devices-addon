@@ -2,7 +2,7 @@
 <device version="2" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" cyclic_timeout="14800">
   <supported_types>
     <type name="HB-UNI-Sen-WEA" id="HB-UNI-Sen-WEA">
-      <parameter index="9.0"  size="1.0" cond_op="GE" const_value="0x13"/>
+      <parameter index="9.0"  size="1.0" cond_op="E" const_value="0x13"/>
       <parameter index="10.0" size="2.0" const_value="0xF1D0" />
     </type>
   </supported_types>

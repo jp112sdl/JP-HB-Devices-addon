@@ -17,10 +17,10 @@ herzustellen.
 Zu diesem Zweck ist die [aktuellste Version](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) des Addons herunterzuladen und wie gewohnt in der WebUI über "Einstellungen"->"Systemsteuerung"->"Zusatzsoftware" zu installieren.
 <br>_Wie immer bei Addons der Hinweis:<br>Die heruntergeladene Datei mit der Endung `.tgz` darf nicht entpackt werden!_
 
-**Hinweis, falls bereits die Einzel-Addons aus den jeweiligen Projekten genutzt werden:**
+**Hinweis, falls bereits die früheren einzelnen Addons aus den jeweiligen Projekten genutzt werden:**<br>
 Die Addons **müssen zuerst deinstalliert** werden.<br>
 Anschließend muss das JP-HB-Devices-addon installiert werden.<br>
-Zwischenzeitlich darf **kein Reboot** erfolgen! _(Es erfolgt nach der Installation automatisch ein Neustart.)_<br>
+Zwischenzeitlich darf **kein Reboot** erfolgen! _(Es erfolgt nach der Installation ohnehin automatisch ein Neustart.)_<br>
 Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Posteingang wiederzufinden!
 
 **Info:** Bisher verwendete IDs der Device Model meiner HB-Geräte

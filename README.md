@@ -36,6 +36,8 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F1 D0 | HB-UNI-Sen-WEA |
 |F3 31 | HB-UNI-SenAct-4-4-SC|
 |F3 32 | HB-UNI-SenAct-4-4-RC|
+|F3 33 | HB-UNI-SenAct-4-4-SC-BAT|
+|F3 34 | HB-UNI-SenAct-4-4-RC-BAT|
 |F3 41 | HB-UNI-RGB-LED-CTRL |
 
 

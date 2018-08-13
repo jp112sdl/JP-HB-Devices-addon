@@ -9,7 +9,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der HomeMatic Selbstbaugerä
 - [HB-UNI-Sen-PRESS](https://github.com/jp112sdl/HB-UNI-Sen-PRESS) (Drucksensor)
 - [HB-UNI-Sen-TEMP-DS18B20](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-DS18B20) (1..8fach DS18B20 Temperatursensor)
 - [HB-UNI-Sen-WEA](https://github.com/jp112sdl/HB-UNI-Sen-WEA) (Wetterstation)
-- [HB-UNI-SenAct-4-4](https://github.com/jp112sdl/HB-UNI-SenAct-4-4) (4fach - Sender & - Aktor)
+- [HB-UNI-SenAct-4-4](https://github.com/jp112sdl/HB-UNI-SenAct-4-4) (4fach - Sender & - Aktor, Netzteil-/Batteriebetrieb))
 - [HB-UNI-RGB-LED-CTRL](https://github.com/jp112sdl/HB-UNI-RGB-LED-CTRL) (RGB Controller für WS28xx / Neopixel / etc.)
 
 herzustellen.

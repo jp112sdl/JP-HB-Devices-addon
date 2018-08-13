@@ -2,7 +2,7 @@
 
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
-Dieses Addon wird benötigt, um folgende die Kompatibilität der HomeMatic Selbstbaugeräte
+Dieses Addon wird benötigt, um die Kompatibilität der HomeMatic Selbstbaugeräte
 - [HB-UNI-Sen-CAP-MOIST](https://github.com/jp112sdl/HB-UNI-Sen-CAP-MOIST) (kapazitiver Bodenfeuchtesensor)
 - [HB-UNI-Sen-DIST-US](https://github.com/jp112sdl/HB-UNI-Sen-DIST-US) (Ultraschall Abstandsensor)
 - [HB-UNI-Sen-LEV-US](https://github.com/jp112sdl/HB-UNI-Sen-LEV-US) (Ultraschall Füllstandsensor) _(coming soon)_ 

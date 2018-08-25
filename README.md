@@ -11,6 +11,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der HomeMatic Selbstbaugerä
 - [HB-UNI-Sen-WEA](https://github.com/jp112sdl/HB-UNI-Sen-WEA) (Wetterstation)
 - [HB-UNI-SenAct-4-4](https://github.com/jp112sdl/HB-UNI-SenAct-4-4) (4fach - Sender & - Aktor, Netzteil-/Batteriebetrieb))
 - [HB-UNI-RGB-LED-CTRL](https://github.com/jp112sdl/HB-UNI-RGB-LED-CTRL) (RGB Controller für WS28xx / Neopixel / etc.)
+- [HB-UNI-Sen-TEMP-IR](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-IR) (MLX90614 Infrarot Temperatursensor)
 
 herzustellen.
 
@@ -33,6 +34,7 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |E9 01 | HB-UNI-Sen-PRESS |
 |E9 02 | HB-UNI-Sen-PRESS-SC |
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
+|F3 08 | HB-UNI-Sen-TEMP-IR |
 |F1 D0 | HB-UNI-Sen-WEA |
 |F3 31 | HB-UNI-SenAct-4-4-SC|
 |F3 32 | HB-UNI-SenAct-4-4-RC|

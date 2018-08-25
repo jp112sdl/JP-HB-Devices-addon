@@ -54,6 +54,10 @@ case "$1" in
             DEVICE=hb-uni-rgb-led-ctrl
 		    echo "Installing ${DEVICE}"
 		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
+		    		    
+            DEVICE=hb-uni-sen-temp-ir
+		    echo "Installing ${DEVICE}"
+		    echo $!> $PIDFILE & ./install_${DEVICE} > $LOGFILE 2>$ERRFILE
 
 		    cp -a firmware/rftypes/* /firmware/rftypes/
 
@@ -106,13 +110,17 @@ case "$1" in
 		echo "Uninstalling... ${DEVICE}"
     		echo $!> $PIDFILE & ./uninstall_${DEVICE} > $LOGFILE 2>$ERRFILE
     		echo "Done."
-    		    		
+		DEVICE=hb-uni-sen-temp-ir
+		echo "Uninstalling... ${DEVICE}"
+    		echo $!> $PIDFILE & ./uninstall_${DEVICE} > $LOGFILE 2>$ERRFILE
+    		echo "Done."
+    		    		    		
     	cd /
     	rm -rf $ADDON_DIR
     	rm -rf $WWW_DIR
 		rm -f ${RC_DIR}/${ADDON_NAME}
-    		sync
-    		mount -o remount,ro /
+    	sync
+    	mount -o remount,ro /
     	;;
   
 	restart|reload)

@@ -118,7 +118,7 @@ case "$1" in
     	cd /
     	rm -rf $ADDON_DIR
     	rm -rf $WWW_DIR
-		rm -f ${RC_DIR}/${ADDON_NAME}
+	rm -f ${RC_DIR}/${ADDON_NAME}
     	sync
     	mount -o remount,ro /
     	;;

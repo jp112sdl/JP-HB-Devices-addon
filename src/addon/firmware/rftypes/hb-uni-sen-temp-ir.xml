@@ -71,7 +71,7 @@
       <paramset type="MASTER" id="wds30ot2_ch_master"/>
       <paramset type="VALUES" id="wds30ot2_ch_values">
         <parameter id="TEMPERATURE" operations="read,event">
-          <logical type="float" min="-40.0" max="400.0" unit="°C"/>
+          <logical type="float" min="-450.0" max="450.0" unit="°C"/>
           <physical type="integer" interface="command" value_id="TEMPERATURE" no_init="true">
             <event frame="MEASURE_EVENT"/>
           </physical>
@@ -97,7 +97,7 @@
       <paramset type="MASTER" id="wds30ot2_ch_master"/>
       <paramset type="VALUES" id="wds30ot2_ch_values">
         <parameter id="TEMPERATURE" operations="read,event">
-          <logical type="float" min="-40.0" max="400.0" unit="°C"/>
+          <logical type="float" min="-450.0" max="450.0" unit="°C"/>
           <physical type="integer" interface="command" value_id="TEMPERATURE" no_init="true">
             <event frame="WEATHER_EVENT"/>
           </physical>

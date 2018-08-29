@@ -13,66 +13,65 @@ RC_DIR=/usr/local/etc/config/rc.d
 CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 
 case "$1" in
-	""|start)
-	        if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then
+    ""|start)
+      if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then    
+        /etc/init.d/S61rfd stop
+        /etc/init.d/S70ReGaHss stop
 		    
-		    /etc/init.d/S61rfd stop
-		    /etc/init.d/S70ReGaHss stop
-		    
-            mount -o remount,rw /
+        mount -o remount,rw /
 	    	
-		    cd ${ADDON_DIR}
-		    cp -ar www/* /www/
-		    chown root:root /www/config/img/devices/250/hb-*
-		    chmod 755 /www/config/img/devices/250/hb-*
-		    chown root:root /www/config/img/devices/50/hb-*
-		    chmod 755 /www/config/img/devices/50/hb-*
+        cd ${ADDON_DIR}
+        cp -ar www/* /www/
+        chown root:root /www/config/img/devices/250/hb-*
+        chmod 755 /www/config/img/devices/250/hb-*
+        chown root:root /www/config/img/devices/50/hb-*
+        chmod 755 /www/config/img/devices/50/hb-*
 	    	    
-	        echo "Running scripts..."    
-	    	for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
+        echo "Running scripts..."    
+        for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
 
-            echo "Creating symlinks for firmware files..."
-            for f in ${ADDON_DIR}${FIRMWARE_DIR}/* ; do rm -f ${FIRMWARE_DIR}/$(basename $f); ln -s $f ${FIRMWARE_DIR}/$(basename $f); echo "  - $(basename $f)"; done
-		    #cp -a firmware/rftypes/* /firmware/rftypes/
+        echo "Creating symlinks for firmware files..."
+        for f in ${ADDON_DIR}${FIRMWARE_DIR}/* ; do rm -f ${FIRMWARE_DIR}/$(basename $f); ln -s $f ${FIRMWARE_DIR}/$(basename $f); echo "  - $(basename $f)"; done
+        #cp -a firmware/rftypes/* /firmware/rftypes/
 
-		    sync
-		    mount -o remount,ro /
-		    touch ${ADDON_DIR}/installed
+        sync
+        mount -o remount,ro /
+        touch ${ADDON_DIR}/installed
 		    
-		    /etc/init.d/S61rfd start
-		    /etc/init.d/S70ReGaHss start
+        /etc/init.d/S61rfd start
+        /etc/init.d/S70ReGaHss start
 		    
-		else
-		   echo "Addon already installed - nothing to do"
-		fi
-	;;
+      else
+        echo "Addon already installed - nothing to do"
+      fi
+    ;;
 
-	stop)
-		echo "Nothing to stop..."
-	;;
+    stop)
+      echo "Nothing to stop..."
+    ;;
 
-	uninstall)
-		mount -o remount,rw /
+    uninstall)
+      mount -o remount,rw /
 		
-    	cd ${ADDON_DIR}
-	   	echo "Running scripts..."    
-	   	for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
+      cd ${ADDON_DIR}
+      echo "Running scripts..."    
+      for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
     		    		    		
-    	cd /
-    	rm -rf $ADDON_DIR
-    	rm -rf $WWW_DIR
-		rm -f ${RC_DIR}/${ADDON_NAME}
-    	sync
-    	mount -o remount,ro /
-    	;;
+      cd /
+      rm -rf $ADDON_DIR
+      rm -rf $WWW_DIR
+      rm -f ${RC_DIR}/${ADDON_NAME}
+      sync
+      mount -o remount,ro /
+    ;;
   
-	restart|reload)
+    restart|reload)
   	  # Operations to stop and start (restart) the addon
   	  stop
   	  start
-   	;;
+    ;;
 
-	info)
+    info)
 	  echo "Info: <center><b>JP HB Devices Support Addon</b></center><br />" 
 	  echo "Info: <center><img src='../addons/${ADDON_NAME}/${ADDON_NAME}.png'></img></center><br/><a href='https://github.com/jp112sdl/${ADDON_NAME}'>https://github.com/jp112sdl/${ADDON_NAME}</a>" 
 	  echo "Version: $(cat ${ADDON_DIR}/VERSION)"                                                                                                                                                                                       
@@ -80,12 +79,12 @@ case "$1" in
 	  echo "Operations: uninstall"                                                                                                                                                                                                      
 	  #echo "Config-Url: ${CONFIG_URL}"                                                                                                                                                                                                 
 	  echo "Update: /addons/${ADDON_NAME}/update-check.cgi"
-	;;
+    ;;
 	
-	*)
-		echo "Usage: $ADDON_NAME {start|stop|restart|info|uninstall}" >&2
-		exit 1
-    	;;
+    *)
+      echo "Usage: $ADDON_NAME {start|stop|restart|info|uninstall}" >&2
+      exit 1
+    ;;
 
 esac
 

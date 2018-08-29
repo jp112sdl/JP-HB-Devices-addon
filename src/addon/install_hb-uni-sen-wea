@@ -181,6 +181,14 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="WEATHER|RD_STALLBIZ_HEAT_ON_DEWFALL"
+webuiInsertValue="stringTableWeatherRdStallBizHeatOnDewfall"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 webuiInsertParam="WEATHER|RD_SENSOR_TYPE"
 webuiInsertValue="stringTableWeatherRdSensorType"
 webuiInsert="\n"
@@ -318,6 +326,11 @@ if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_LO_THRESHOLD_HEAT
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
+stringtable_deInsert="WEATHER|RD_STALLBIZ_HEAT_ON_DEWFALL	\${stringTableWeatherRdStallBizHeatOnDewfall} \n"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_HEAT_ON_DEWFALL"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+
 stringtable_deInsert="WEATHER|RD_SENSOR_TYPE	\${stringTableWeatherRdSensorType} \n"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_SENSOR_TYPE"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
@@ -448,6 +461,11 @@ if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdStallBizLoThreshold
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
+translate_deInsert="\n    \"stringTableWeatherRdStallBizHeatOnDewfall\" : \"Stall.Biz Regendetektor autom. heizen bei Taubildungsgefahr\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdStallBizHeatOnDewfall\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
 translate_deInsert="\n    \"stringTableWeatherRdSensorType\" : \"Regendetektor Typ\","
 if [ -z "`cat $translate_deFile | grep \"stringTableWeatherRdSensorType\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
@@ -575,6 +593,11 @@ fi
 
 translate_enInsert="\n    \"stringTableWeatherRdStallBizLoThresholdHeater\" : \"Stall.Biz Rain Detector Heating OFF Threshold\","
 if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdStallBizLoThresholdHeater\"`" ]; then
+	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi
+
+translate_enInsert="\n    \"stringTableWeatherRdStallBizHeatOnDewfall\" : \"Stall.Biz Rain Detector Heat On Dewfall\","
+if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdStallBizHeatOnDewfall\"`" ]; then
 	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
 fi
 

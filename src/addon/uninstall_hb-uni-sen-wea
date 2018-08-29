@@ -80,6 +80,10 @@ webuiSearch="WEATHER|RD_STALLBIZ_LO_THRESHOLD_HEATER"
 if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
     sed -i "/\($webuiSearch\)/d" $webuiFile
 fi
+webuiSearch="WEATHER|RD_STALLBIZ_HEAT_ON_DEWFALL"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
 webuiSearch="WEATHER|RD_SENSOR_TYPE"
 if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
     sed -i "/\($webuiSearch\)/d" $webuiFile
@@ -159,6 +163,10 @@ if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 fi
 stringtable_deSearch="WEATHER|RD_STALLBIZ_LO_THRESHOLD_HEATER"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+stringtable_deSearch="WEATHER|RD_STALLBIZ_HEAT_ON_DEWFALL"
 if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 fi
@@ -252,6 +260,10 @@ translate_deSearch="stringTableWeatherRdStallBizLoThresholdHeater"
 if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 fi
+translate_deSearch="stringTableWeatherRdStallBizHeatOnDewfall"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
 translate_deSearch="stringTableWeatherRdSensorType"
 if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
@@ -339,6 +351,10 @@ if [ "`cat $translate_enFile | grep \"$translate_enSearch\"`" ]; then
 	sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
 fi
 translate_enSearch="stringTableWeatherRdStallBizLoThresholdHeater"
+if [ "`cat $translate_enFile | grep \"$translate_enSearch\"`" ]; then
+	sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
+fi
+translate_enSearch="stringTableWeatherRdStallBizHeatOnDewfall"
 if [ "`cat $translate_enFile | grep \"$translate_enSearch\"`" ]; then
 	sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
 fi

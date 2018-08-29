@@ -120,6 +120,10 @@
            <logical type="integer" min="0" max="1023" unit="" default="400" /> 
            <physical type="integer" interface="config" list="1" index="15.0" size="2" />
          </parameter> 
+         <parameter id="RD_STALLBIZ_HEAT_ON_DEWFALL">
+          <logical type="boolean" default="false"/>
+          <physical type="integer" interface="config" list="1" index="22.0" size="1"/>
+         </parameter>
       </paramset>
       <paramset type="VALUES" id="HB-UNI-Sen-WEA_values">
         <parameter id="TEMPERATURE" operations="read,event">

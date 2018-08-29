@@ -66,19 +66,19 @@ case "$1" in
     ;;
   
     restart|reload)
-  	  # Operations to stop and start (restart) the addon
-  	  stop
-  	  start
+      # Operations to stop and start (restart) the addon
+      stop
+      start
     ;;
 
     info)
-	  echo "Info: <center><b>JP HB Devices Support Addon</b></center><br />" 
-	  echo "Info: <center><img src='../addons/${ADDON_NAME}/${ADDON_NAME}.png'></img></center><br/><a href='https://github.com/jp112sdl/${ADDON_NAME}'>https://github.com/jp112sdl/${ADDON_NAME}</a>" 
-	  echo "Version: $(cat ${ADDON_DIR}/VERSION)"                                                                                                                                                                                       
-	  echo "Name: JP HB Devices"                                                                                                                                                                                                        
-	  echo "Operations: uninstall"                                                                                                                                                                                                      
-	  #echo "Config-Url: ${CONFIG_URL}"                                                                                                                                                                                                 
-	  echo "Update: /addons/${ADDON_NAME}/update-check.cgi"
+      echo "Info: <center><b>JP HB Devices Support Addon</b></center><br />" 
+      echo "Info: <center><img src='../addons/${ADDON_NAME}/${ADDON_NAME}.png'></img></center><br/><a href='https://github.com/jp112sdl/${ADDON_NAME}'>https://github.com/jp112sdl/${ADDON_NAME}</a>" 
+      echo "Version: $(cat ${ADDON_DIR}/VERSION)"                                                                                                                                                                                       
+      echo "Name: JP HB Devices"                                                                                                                                                                                                        
+      echo "Operations: uninstall"                                                                                                                                                                                                      
+      #echo "Config-Url: ${CONFIG_URL}"                                                                                                                                                                                                 
+      echo "Update: /addons/${ADDON_NAME}/update-check.cgi"
     ;;
 	
     *)

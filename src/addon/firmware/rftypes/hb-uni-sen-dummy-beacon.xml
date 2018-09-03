@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<device version="2" rx_modes="CONFIG" supports_aes="false">
+  <supported_types>
+    <type name="HB-UNI-Sen-DUMMY-BEACON" id="HB-UNI-Sen-DUMMY-BEACON" updatable="false">
+      <parameter index="10.0" size="2.0" const_value="0xF3FF" />
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="hm_uni_sen_dev_master">
+    <parameter id="TRANSMIT_DEV_TRY_MAX">
+      <logical type="integer" min="1.0" max="10.0" default="2.0"/>
+      <physical type="integer" interface="config" list="0" index="20" size="1"/>
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master" />
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UNREACH" />
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH" />
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="LOWBAT" />
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_PEER" />
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
+        </parameter>                                           
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="1" type="GENERIC" count_from_sysinfo="23.0">
+        <paramset type="MASTER" id="hb_dummydev_master">
+         <parameter id="FD_DEVICE_ID">
+           <logical type="integer" min="0" max="16777216" default="0" unit="" />
+           <physical type="integer" interface="config" list="1" index="1.0" size="3" />
+         </parameter> 
+         <parameter id="FD_CYCLIC_TIMEOUT">
+           <logical type="integer" min="0" max="1209600" default="0" unit="" />
+           <physical type="integer" interface="config" list="1" index="4.0" size="3" />
+         </parameter> 
+         <parameter id="FD_ENABLED">
+          <logical type="boolean" default="false"/>
+          <physical type="integer" interface="config" list="1" index="7.0" size="1"/>
+         </parameter>
+        </paramset> 
+        <paramset type="VALUES" id="hb_dummydev_values">       
+         <parameter id="FD_ENABLED" operations="read,event" control="NONE">
+          <logical type="boolean"/>
+          <physical type="integer" interface="command" value_id="FD_ENABLED" no_init="true">
+            <event frame="INFO_LEVEL"/>
+          </physical>
+         </parameter>      
+        </paramset>
+        <paramset type="LINK" id="hb_dummydev_link" />
+    </channel>
+   </channels>
+   <frames>
+    <frame id="INFO_LEVEL" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x53" channel_field="9">
+      <parameter type="integer" index="10.0" size="0.1" param="FD_ENABLED"/>
+    </frame>
+   </frames>
+  <paramset_defs />
+</device>

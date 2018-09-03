@@ -5,7 +5,7 @@
 DEVICE="HB-UNI-Sen-DUMMY-BEACON"
 DEVICE_IMG=hb-uni-sen-dummy-beacon.png
 DEVICE_THUMB=hb-uni-sen-dummy-beacon_thumb.png
-DEVICE_DESC="Universelles Dummy Device"
+DEVICE_DESC="Dummy Beacon Device"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"

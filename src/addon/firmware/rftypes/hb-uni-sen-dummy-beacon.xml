@@ -72,7 +72,6 @@
           </physical>
          </parameter>      
         </paramset>
-        <paramset type="LINK" id="hb_dummydev_link" />
     </channel>
    </channels>
    <frames>

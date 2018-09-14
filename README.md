@@ -43,6 +43,7 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F3 33 | HB-UNI-SenAct-4-4-SC-BAT|
 |F3 34 | HB-UNI-SenAct-4-4-RC-BAT|
 |F3 41 | HB-UNI-RGB-LED-CTRL |
+|F3 4A | HB-UNI-Sen-VOLT |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 
 

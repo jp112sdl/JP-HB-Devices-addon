@@ -65,13 +65,6 @@
          </physical>
          <conversion type="float_integer_scale" factor="10"/>
        </parameter>
-       <parameter id="BATTERY_VOLTAGE" operations="read,event" control="NONE">
-         <logical type="float" min="0.0" max="25.5" unit="V"/>
-          <physical type="integer" interface="command" value_id="BATTERY_VOLTAGE">
-            <event frame="MEASURE_EVENT"/>
-          </physical>
-          <conversion type="float_integer_scale" factor="10"/>
-       </parameter>
      </paramset>  
      <paramset type="LINK" id="HB-UNI-Sen-VOLT_link" />
     </channel>
@@ -79,7 +72,6 @@
   <frames>
       <frame id="MEASURE_EVENT" direction="from_device" event="true" channel_field="9" type="0x53">
          <parameter type="integer" index="10.0" size="2.0" param="HB_VOLTAGE" />
-         <parameter type="integer" index="12.0" size="1.0" param="BATTERY_VOLTAGE"/>
     </frame>
   </frames>
   <paramset_defs></paramset_defs>

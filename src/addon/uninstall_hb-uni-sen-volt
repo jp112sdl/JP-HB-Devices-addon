@@ -22,11 +22,6 @@ if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 fi
 
-stringtable_deSearch="HB_GENERIC_VOLT|BATTERY_VOLTAGE"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
-
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB

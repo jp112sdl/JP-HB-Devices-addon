@@ -40,8 +40,3 @@ stringtable_deInsert="HB_GENERIC_VOLT|HB_VOLTAGE	\${stringTablePowerMeterVoltage
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_VOLT|HB_VOLTAGE"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
-
-stringtable_deInsert="HB_GENERIC_VOLT|BATTERY_VOLTAGE	\${stringTableHbGenericDistBatteryVoltage} \n"
-if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_VOLT|BATTERY_VOLTAGE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
-fi

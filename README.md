@@ -16,6 +16,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |<img src="src/addon/www/config/img/devices/50/hb-uni-rgb-led-ctrl_thumb.png" width=25/> | [HB-UNI-RGB-LED-CTRL](https://github.com/jp112sdl/HB-UNI-RGB-LED-CTRL) | RGB Controller für WS28xx / Neopixel / etc. | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-ir_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-IR](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-IR) | MLX90614 Infrarot Temperatursensor | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-dummy-beacon_thumb.png" width=25/> | [HB-UNI-Sen-DUMMY-BEACON](https://github.com/jp112sdl/HB-UNI-Sen-DUMMY-BEACON) | Dummy-Device zum Simulieren<br>zyklischer Statusmeldungen sowie Ack-Nachrichten | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-volt_thumb.png" width=25/> | [HB-UNI-Sen-VOLT](https://github.com/jp112sdl/HB-UNI-Sen-VOLT) | universeller Spannungssensor (Template) | 
 
 Zu diesem Zweck ist die [aktuellste Version](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) des Addons herunterzuladen und wie gewohnt in der WebUI über "Einstellungen"->"Systemsteuerung"->"Zusatzsoftware" zu installieren.
 <br>_Wie immer bei Addons der Hinweis:<br>Die heruntergeladene Datei mit der Endung `.tgz` darf nicht entpackt werden!_

@@ -74,6 +74,14 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="FD_STATUS"
+webuiInsertValue="stringTableFdStatus"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
@@ -95,6 +103,10 @@ if [ -z "`cat $stringtable_deFile | grep \"FD_DEVICE_ID"`" ]; then
 fi
 stringtable_deInsert="FD_CYCLIC_TIMEOUT	\${stringTableFdCyclicTimeout} \n"
 if [ -z "`cat $stringtable_deFile | grep \"FD_CYCLIC_TIMEOUT"`" ]; then
+    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+fi
+stringtable_deInsert="FD_STATUS	\${stringTableFdStatus} \n"
+if [ -z "`cat $stringtable_deFile | grep \"FD_STATUS"`" ]; then
     sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
 fi
 
@@ -121,5 +133,9 @@ if [ -z "`cat $translate_deFile | grep \"stringTableFdDeviceId\"`" ]; then
 fi
 translate_deInsert="\n    \"stringTableFdCyclicTimeout\" : \"%dcbertragungsintervall\","
 if [ -z "`cat $translate_deFile | grep \"stringTableFdCyclicTimeout\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"stringTableFdStatus\" : \"Status-Wert\","
+if [ -z "`cat $translate_deFile | grep \"stringTableFdStatus\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

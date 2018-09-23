@@ -53,5 +53,6 @@ elif [ "$1" = "CCU2" ]; then
   echo "CCU2"
 elif [ "$1" = "HM-RASPBERRYMATIC" ]; then
   echo "HM-RASPBERRYMATIC"
+  exit 10
 fi
 

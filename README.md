@@ -2,6 +2,10 @@
 
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
+Nach der Installation wird ein Neustart der Zentrale durchgeführt.<br/>
+Die eigentliche Installation des Addons erfolgt nach diesem Neustart.<br/>
+Währenddessen werden ReGa und der RFD gestoppt, so dass es im Browser zu der Meldung `Eine Komponente der Homematic Zentrale reagiert nicht mehr.` kommen kann.<br/><br/>
+
 Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selbstbaugeräte herzustellen:
 
 |  | Name | Beschreibung |

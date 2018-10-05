@@ -89,8 +89,6 @@ case "$1" in
   
     restart|reload)
       # Operations to stop and start (restart) the addon
-      stop
-      start
     ;;
 
     info)

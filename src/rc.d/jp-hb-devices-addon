@@ -9,6 +9,7 @@ PIDFILE=/var/run/$ADDON_NAME.pid
 LOGFILE=/var/log/$ADDON_NAME.log
 ERRFILE=/var/log/$ADDON_NAME.err
 FIRMWARE_DIR=/firmware/rftypes
+CUSTOMIZED_FIRMWARE_DIR=${ADDON_DIR}/customized_firmware
 RC_DIR=/usr/local/etc/config/rc.d
 CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 
@@ -30,9 +31,11 @@ case "$1" in
         echo "Running scripts..."    
         for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
 
+	    echo "Copying customized firmware files..."
+        cp ${CUSTOMIZED_FIRMWARE_DIR}/* ${ADDON_DIR}${FIRMWARE_DIR}/
+
         echo "Creating symlinks for firmware files..."
         for f in ${ADDON_DIR}${FIRMWARE_DIR}/* ; do rm -f ${FIRMWARE_DIR}/$(basename $f); ln -s $f ${FIRMWARE_DIR}/$(basename $f); echo "  - $(basename $f)"; done
-        #cp -a firmware/rftypes/* /firmware/rftypes/
 
         sync
         mount -o remount,ro /
@@ -42,7 +45,26 @@ case "$1" in
         /etc/init.d/S70ReGaHss start
 		    
       else
-        echo "Addon already installed - nothing to do"
+        echo "Checking for subsequent customized firmware files..."
+        changed=0
+	
+        for f in ${ADDON_DIR}${FIRMWARE_DIR}/* ; do
+	      $(cmp -s ${CUSTOMIZED_FIRMWARE_DIR}/$(basename $f) $f)
+          rc=$?
+          if [ $rc -eq 1 ]; then
+            echo "Difference detected for $(basename $f). Copying..."
+            cp ${CUSTOMIZED_FIRMWARE_DIR}/$(basename $f) $f
+            let changed++
+          fi
+        done
+
+        if [ $changed -gt 0 ]; then
+          echo "$changed Firmware file(s) changed - restarting RFD"
+          /etc/init.d/S61rfd restart
+        else
+          echo "Nothing changed - nothing to do"
+        fi
+
       fi
     ;;
 

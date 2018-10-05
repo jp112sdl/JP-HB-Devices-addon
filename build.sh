@@ -9,5 +9,6 @@ chmod +x addon/update-check.cgi
 chmod +x rc.d/*
 find . -name ".DS_Store" -exec rm -rf {} \;
 find . -name "._*" -exec rm -rf {} \;
+dot_clean .
 tar -zcvf ../${ADDON_NAME}-addon.tgz *
 cd ..

@@ -55,6 +55,8 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F3 35 | HB-LC-Sw1PBU-FM|
 |F3 36 | HB-LC-Sw2PBU-FM|
 |F3 37 | HB-LC-Bl1PBU-FM|
+|F3 38 | HB-UNI-SenAct-8-8-RC|
+|F3 39 | HB-UNI-SenAct-8-8-RC-BAT|
 |F3 41 | HB-UNI-RGB-LED-CTRL |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |

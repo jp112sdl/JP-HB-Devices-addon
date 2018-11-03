@@ -1,0 +1,22 @@
+#!/bin/sh
+
+DEVICE="HB-UNI-DMX-Master"
+DEVICE_IMG=hb-uni-dmx-master.png
+DEVICE_THUMB=hb-uni-dmx-master_thumb.png
+FIRMWARE_FILE_1=/firmware/rftypes/hb-uni-dmx-master_le_v10.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+
+if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
+        sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+fi
+
+webuiFile="/www/webui/webui.js"
+if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
+        sed -i "/\($DEVICE\)/d" $webuiFile
+fi
+
+rm -f $FIRMWARE_FILE_1
+rm -f /www/config/img/devices/250/$DEVICE_IMG
+rm -f /www/config/img/devices/50/$DEVICE_THUMB

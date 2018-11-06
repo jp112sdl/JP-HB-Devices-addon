@@ -195,29 +195,6 @@
         <logical type="boolean" default="false"/>
         <physical type="boolean" interface="internal" value_id="AES"/>
       </parameter>
-      <parameter id="TRANSMIT_TRY_MAX" operations="read,write">
-        <logical type="integer" min="0" max="10" default="6"/>
-        <physical type="integer" interface="config" list="1" index="48" size="1"/>
-      </parameter>
-      <parameter id="POWERUP_ACTION" operations="read,write">
-        <logical type="option">
-          <option id="POWERUP_OFF" default="true"/>
-          <option id="POWERUP_ON"/>
-        </logical>
-        <physical type="integer" interface="config" list="1" index="86" size="0.1"/>
-      </parameter>
-      <parameter id="STATUSINFO_MINDELAY" operations="read,write">
-        <logical type="float" min="0.5" max="15.5" default="2.0" unit="s">
-          <special_value id="NOT_USED" value="0.0"/>
-        </logical>
-        <physical type="integer" interface="config" list="1" index="87.0" size="0.5"/>
-        <conversion type="float_integer_scale" factor="2"/>
-      </parameter>
-      <parameter id="STATUSINFO_RANDOM" operations="read,write">
-        <logical type="float" min="0.0" max="7.0" default="1.0" unit="s"/>
-        <physical type="integer" interface="config" list="1" index="87.5" size="0.3"/>
-        <conversion type="float_integer_scale" factor="1"/>
-      </parameter>
     </paramset>
     <paramset id="switch_linkset">
       <parameter id="UI_HINT">

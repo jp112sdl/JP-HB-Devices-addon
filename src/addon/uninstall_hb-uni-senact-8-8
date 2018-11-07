@@ -22,6 +22,28 @@ rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB
 
+##########################################################################################################################
+
+DEVICE="HB-UNI-SenAct-8-8-SC"
+DEVICE_IMG=hb-uni-senact-8-8.png
+DEVICE_THUMB=hb-uni-senact-8-8_thumb.png
+FIRMWARE_FILE=/firmware/rftypes/hb-uni-senact-8-8-sc.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+
+if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
+        sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+fi
+
+webuiFile="/www/webui/webui.js"
+if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
+        sed -i "/\($DEVICE\)/d" $webuiFile
+fi
+
+rm -f $FIRMWARE_FILE
+rm -f /www/config/img/devices/250/$DEVICE_IMG
+rm -f /www/config/img/devices/50/$DEVICE_THUMB
 
 ##########################################################################################################################
 
@@ -45,3 +67,28 @@ fi
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB
+
+##########################################################################################################################
+
+DEVICE="HB-UNI-SenAct-8-8-SC-BAT"
+DEVICE_IMG=hb-uni-senact-8-8-bat.png
+DEVICE_THUMB=hb-uni-senact-8-8-bat_thumb.png
+FIRMWARE_FILE=/firmware/rftypes/hb-uni-senact-8-8-sc-bat.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+
+if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
+        sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+fi
+
+webuiFile="/www/webui/webui.js"
+if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
+        sed -i "/\($DEVICE\)/d" $webuiFile
+fi
+
+rm -f $FIRMWARE_FILE
+rm -f /www/config/img/devices/250/$DEVICE_IMG
+rm -f /www/config/img/devices/50/$DEVICE_THUMB
+
+##########################################################################################################################

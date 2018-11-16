@@ -43,7 +43,9 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |--------|--------|
 |F3 11 | HB-UNI-Sen-CAP-MOIST |
 |F9 D6 | HB-UNI-Sen-DIST-US |
+|F9 D7 | HB-UNI-Sen-DIST-TOF |
 |F9 D2 | HB-UNI-Sen-LEV-US |
+|F9 D3 | HB-UNI-Sen-LEV-TOF |
 |E9 01 | HB-UNI-Sen-PRESS |
 |E9 02 | HB-UNI-Sen-PRESS-SC |
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |

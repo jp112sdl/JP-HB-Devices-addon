@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<device version="2" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" cyclic_timeout="88700">
+  <supported_types>
+    <type name="HB-UNI-Sen-LEV-TOF" id="HB-UNI-Sen-LEV-TOF">
+      <parameter index="10.0" size="2.0" const_value="0xF9D3" />
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="hm_uni_sen_dev_master">
+    <parameter id="Sendeintervall">
+      <logical type="integer" min="10" max="3600" default="60" unit="s" />
+      <physical type="integer" interface="config" list="0" index="32" size="2" />
+    </parameter>
+    <parameter id="LOW_BAT_LIMIT">
+      <logical type="float" min="1.9" max="6" default="2.2" unit="V" />
+      <physical type="integer" interface="config" list="0" index="18" size="1" />
+      <conversion type="float_integer_scale" factor="10" />
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master" />
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UNREACH" />
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH" />
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="LOWBAT"/>
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_PEER" />
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
+        </parameter>
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="1" type="CAPACITIVE_FILLING_LEVEL_SENSOR" count_from_sysinfo="23.0:0.3">
+     <paramset type="MASTER" id="HB-UNI-Sen-LEV-TOF_master">
+      <parameter id="TOF_DISTANCE_OFFSET">
+        <logical type="integer" min="0" max="400" unit="cm" default="0"/>
+        <physical type="integer" interface="config" list="1" index="1" size="2.0"/>
+      </parameter>
+      <parameter id="SENSOR_TYPE">
+        <logical type="option">
+         <option id="VL53LxX" default="true" />
+         <option id="Other" />
+        </logical>
+        <physical type="integer" interface="config" list="1" index="3" size="1"/>
+      </parameter> 
+      <parameter id="CASE_DESIGN">
+       <logical type="option">
+         <option id="VERTICAL_BARREL" default="true"/>
+         <option id="HORIZONTAL_BARREL"/>
+         <option id="RECTANGLE"/>
+       </logical>
+       <physical type="integer" interface="config" list="1" index="90" size="1"/>
+      </parameter>
+      <parameter id="CASE_HIGH">
+        <logical type="integer" min="30" max="10000" unit="cm" default="1000"/>
+        <physical type="integer" interface="config" list="1" index="94" size="2.0"/>
+      </parameter>
+      <parameter id="CASE_WIDTH">
+        <logical type="integer" min="30" max="10000" unit="cm" default="1000"/>
+        <physical type="integer" interface="config" list="1" index="102" size="2.0"/>
+      </parameter>
+      <parameter id="CASE_LENGTH">
+        <logical type="integer" min="30" max="10000" unit="cm" default="1000"/>
+        <physical type="integer" interface="config" list="1" index="106" size="2.0"/>
+      </parameter>
+     </paramset>      
+      <paramset type="VALUES" id="HB-UNI-Sen-LEV-TOF_values">
+        <parameter id="FILLING_LEVEL" operations="read,event">
+          <logical type="integer" min="0" max="100" unit="%"/>
+          <physical type="integer" interface="command" value_id="FILLING_LEVEL" no_init="true">
+            <event frame="MEASURE_EVENT"/>
+          </physical>
+        </parameter>
+        <parameter id="FILLING_LITER" operations="read,event">
+          <logical type="float" min="0" max="100000000" unit="L"/>
+          <physical type="integer" interface="command" value_id="FILLING_LITER" no_init="true">
+            <event frame="MEASURE_EVENT"/>
+          </physical>
+          <conversion type="float_integer_scale" factor="1.0"/>
+        </parameter>
+        <parameter id="BATTERY_VOLTAGE" operations="read,event" control="NONE">
+          <logical type="float" min="0.0" max="25.5" unit="V"/>
+           <physical type="integer" interface="command" value_id="BATTERY_VOLTAGE">
+             <event frame="MEASURE_EVENT"/>
+           </physical>
+           <conversion type="float_integer_scale" factor="10"/>
+        </parameter>
+      </paramset>  
+      <paramset type="LINK" id="HB-UNI-Sen-LEV-TOF_link" />
+    </channel>
+  </channels>
+  <frames>
+      <frame id="MEASURE_EVENT" direction="from_device" event="true" fixed_channel="1" type="0x53">
+         <parameter type="integer" index="9.0" size="1.0" param="FILLING_LEVEL" />
+         <parameter type="integer" index="10.0" size="1.0" param="BATTERY_VOLTAGE"/>
+         <parameter type="integer" index="11.0" size="4.0" param="FILLING_LITER"/>
+    </frame>
+  </frames>
+  <paramset_defs></paramset_defs>
+</device>

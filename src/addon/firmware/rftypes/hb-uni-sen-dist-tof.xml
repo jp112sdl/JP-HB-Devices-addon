@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<device version="2" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" cyclic_timeout="88700">
+  <supported_types>
+    <type name="HB-UNI-Sen-DIST-TOF" id="HB-UNI-Sen-DIST-TOF">
+      <parameter index="10.0" size="2.0" const_value="0xF9D7" />
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="hm_uni_sen_dev_master">
+    <parameter id="Sendeintervall">
+      <logical type="integer" min="10" max="3600" default="60" unit="s" />
+      <physical type="integer" interface="config" list="0" index="32" size="2" />
+    </parameter>
+    <parameter id="LOW_BAT_LIMIT">
+      <logical type="float" min="1.9" max="6" default="2.2" unit="V" />
+      <physical type="integer" interface="config" list="0" index="18" size="1" />
+      <conversion type="float_integer_scale" factor="10" />
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master" />
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UNREACH" />
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH" />
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="LOWBAT"/>
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_PEER" />
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
+        </parameter>
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="1" type="HB_GENERIC_DIST" count_from_sysinfo="23.0:0.3">
+     <paramset type="MASTER" id="HB-UNI-Sen-DIST-TOF_master">
+      <parameter id="TOF_DISTANCE_OFFSET">
+        <logical type="integer" min="0" max="600" unit="cm" default="0"/>
+        <physical type="integer" interface="config" list="1" index="1" size="2.0"/>
+      </parameter>
+      <parameter id="SENSOR_TYPE">
+        <logical type="option">
+         <option id="VL53LxX" default="true" />
+         <option id="Other" />
+        </logical>
+        <physical type="integer" interface="config" list="1" index="3" size="1"/>
+      </parameter> 
+     </paramset>
+     <paramset type="VALUES" id="HB-UNI-Sen-DIST-TOF_values">
+       <parameter id="DISTANCE" operations="read,event" control="NONE">
+         <logical type="float" min="0.0" max="1000.0" unit="cm"/>
+         <physical type="integer" interface="command" value_id="DISTANCE" no_init="true">
+           <event frame="MEASURE_EVENT"/>
+         </physical>
+         <conversion type="float_integer_scale" factor="10.0"/>
+       </parameter>
+       <parameter id="BATTERY_VOLTAGE" operations="read,event" control="NONE">
+         <logical type="float" min="0.0" max="25.5" unit="V"/>
+          <physical type="integer" interface="command" value_id="BATTERY_VOLTAGE">
+            <event frame="MEASURE_EVENT"/>
+          </physical>
+          <conversion type="float_integer_scale" factor="10"/>
+       </parameter>
+     </paramset>  
+     <paramset type="LINK" id="HB-UNI-Sen-DIST-TOF_link" />
+    </channel>
+  </channels>
+  <frames>
+      <frame id="MEASURE_EVENT" direction="from_device" event="true" channel_field="9" type="0x53">
+         <parameter type="integer" index="10.0" size="2.0" param="DISTANCE" />
+         <parameter type="integer" index="12.0" size="1.0" param="BATTERY_VOLTAGE"/>
+    </frame>
+  </frames>
+  <paramset_defs></paramset_defs>
+</device>

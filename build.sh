@@ -1,4 +1,5 @@
 #!/bin/sh
+COPYFILE_DISABLE=1; export COPYFILE_DISABLE
 ADDON_NAME=jp-hb-devices
 rm ${ADDON_NAME}-addon.tgz
 cd src

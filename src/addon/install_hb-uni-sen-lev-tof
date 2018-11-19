@@ -51,24 +51,24 @@ fi
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
-stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|BATTERY_VOLTAGE	\${stringTableCapacitiveFillingSensorBatteryVoltage} \n"
+stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|BATTERY_VOLTAGE\t\${stringTableCapacitiveFillingSensorBatteryVoltage}"
 if [ -z "`cat $stringtable_deFile | grep \"CAPACITIVE_FILLING_LEVEL_SENSOR|BATTERY_VOLTAGE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LITER	\${stringTableCapacitiveFillingSensorFillingLiter} \n"
+stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LITER\t\${stringTableCapacitiveFillingSensorFillingLiter}"
 if [ -z "`cat $stringtable_deFile | grep \"CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LITER"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|SENSOR_TYPE	\${stringTableCapacitiveFillingSensorSensorType} \n"
+stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|SENSOR_TYPE\t\${stringTableCapacitiveFillingSensorSensorType}"
 if [ -z "`cat $stringtable_deFile | grep \"CAPACITIVE_FILLING_LEVEL_SENSOR|SENSOR_TYPE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|TOF_DISTANCE_OFFSET	\${stringTableCapacitiveFillingSensorTofDistanceOffset} \n"
+stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|TOF_DISTANCE_OFFSET\t\${stringTableCapacitiveFillingSensorTofDistanceOffset}"
 if [ -z "`cat $stringtable_deFile | grep \"CAPACITIVE_FILLING_LEVEL_SENSOR|TOF_DISTANCE_OFFSET"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 ### Edit translate.lang.stringtable.js ###
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"

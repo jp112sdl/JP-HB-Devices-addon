@@ -216,134 +216,134 @@ fi
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
-stringtable_deInsert="HBWEA_ALTITUDE	\${stringTableHbWeaAltitude} \n"
+stringtable_deInsert="HBWEA_ALTITUDE\t\${stringTableHbWeaAltitude}"
 if [ -z "`cat $stringtable_deFile | grep \"HBWEA_ALTITUDE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="HBWEA_TRANSMIT_INTERVAL	\${stringTableHbWeaTransmitInterval} \n"
+stringtable_deInsert="HBWEA_TRANSMIT_INTERVAL\t\${stringTableHbWeaTransmitInterval}"
 if [ -z "`cat $stringtable_deFile | grep \"HBWEA_TRANSMIT_INTERVAL"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_HEATING	\${stringTableWeatherRdHeating} \n"
+stringtable_deInsert="WEATHER|RD_HEATING\t\${stringTableWeatherRdHeating}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_HEATING"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_HEATING=TRUE	\${stringTableWeatherRdHeatingTrue} \n"
+stringtable_deInsert="WEATHER|RD_HEATING=TRUE	\${stringTableWeatherRdHeatingTrue}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_HEATING=TRUE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_HEATING=FALSE	\${stringTableWeatherRdHeatingFalse} \n"
+stringtable_deInsert="WEATHER|RD_HEATING=FALSE\t\${stringTableWeatherRdHeatingFalse}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_HEATING=FALSE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|GUST_SPEED	\${stringTableWeatherGustSpeed} \n"
+stringtable_deInsert="WEATHER|GUST_SPEED\t\${stringTableWeatherGustSpeed}"
 if [ -z "`cat $stringtable_deFile | grep \"GUST_SPEED"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|UVINDEX	\${stringTableWeatherUvIndex} \n"
+stringtable_deInsert="WEATHER|UVINDEX\t\${stringTableWeatherUvIndex}"
 if [ -z "`cat $stringtable_deFile | grep \"UVINDEX"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|LIGHTNING_COUNTER	\${stringTableWeatherLightningCounter} \n"
+stringtable_deInsert="WEATHER|LIGHTNING_COUNTER\t\${stringTableWeatherLightningCounter}"
 if [ -z "`cat $stringtable_deFile | grep \"LIGHTNING_COUNTER"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|LIGHTNING_DISTANCE	\${stringTableWeatherLightningDistance} \n"
+stringtable_deInsert="WEATHER|LIGHTNING_DISTANCE\t\${stringTableWeatherLightningDistance}"
 if [ -z "`cat $stringtable_deFile | grep \"LIGHTNING_DISTANCE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|ANEMOMETER_RADIUS	\${stringTableWeatherAnemometerRadius} \n"
+stringtable_deInsert="WEATHER|ANEMOMETER_RADIUS\t\${stringTableWeatherAnemometerRadius}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|ANEMOMETER_RADIUS"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|ANEMOMETER_CALIBRATION_FACTOR	\${stringTableWeatherAnemometerCalibrationFactor} \n"
+stringtable_deInsert="WEATHER|ANEMOMETER_CALIBRATION_FACTOR\t\${stringTableWeatherAnemometerCalibrationFactor}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|ANEMOMETER_CALIBRATION_FACTOR"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|LD_CAPACITOR	\${stringTableWeatherLightningDetectorCapacitor} \n"
+stringtable_deInsert="WEATHER|LD_CAPACITOR\t\${stringTableWeatherLightningDetectorCapacitor}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_CAPACITOR"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|LD_MINSTRIKES	\${stringTableWeatherLightningDetectorMinStrikes} \n"
+stringtable_deInsert="WEATHER|LD_MINSTRIKES\t\${stringTableWeatherLightningDetectorMinStrikes}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_MINSTRIKES"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|LD_WDTHRESHOLD	\${stringTableWeatherLightningDetectorWatchdogThreshold} \n"
+stringtable_deInsert="WEATHER|LD_WDTHRESHOLD\t\${stringTableWeatherLightningDetectorWatchdogThreshold}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_WDTHRESHOLD"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|LD_NOISEFLOORLEVEL	\${stringTableWeatherLightningDetectorNoiseFloorLevel} \n"
+stringtable_deInsert="WEATHER|LD_NOISEFLOORLEVEL\t\${stringTableWeatherLightningDetectorNoiseFloorLevel}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_NOISEFLOORLEVEL"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|LD_SPIKEREJECTION	\${stringTableWeatherLightningDetectorSpikeRejection} \n"
+stringtable_deInsert="WEATHER|LD_SPIKEREJECTION\t\${stringTableWeatherLightningDetectorSpikeRejection}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_SPIKEREJECTION"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|LD_DISTURBER_DETECTION	\${stringTableWeatherLightningDetectorDisturberDetection} \n"
+stringtable_deInsert="WEATHER|LD_DISTURBER_DETECTION\t\${stringTableWeatherLightningDetectorDisturberDetection}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_DISTURBER_DETECTION "`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|GUST_THRESHOLD_EXTRA_MESSAGE	\${stringTableWeatherGustThresholdExtraMessage} \n"
+stringtable_deInsert="WEATHER|GUST_THRESHOLD_EXTRA_MESSAGE\t\${stringTableWeatherGustThresholdExtraMessage}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|GUST_THRESHOLD_EXTRA_MESSAGE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_STALLBIZ_HI_THRESHOLD_RAIN	\${stringTableWeatherRdStallBizHiThresholdRain} \n"
+stringtable_deInsert="WEATHER|RD_STALLBIZ_HI_THRESHOLD_RAIN\t\${stringTableWeatherRdStallBizHiThresholdRain}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_HI_THRESHOLD_RAIN"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_STALLBIZ_LO_THRESHOLD_RAIN	\${stringTableWeatherRdStallBizLoThresholdRain} \n"
+stringtable_deInsert="WEATHER|RD_STALLBIZ_LO_THRESHOLD_RAIN\t\${stringTableWeatherRdStallBizLoThresholdRain}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_LO_THRESHOLD_RAIN"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_STALLBIZ_HI_THRESHOLD_HEATER	\${stringTableWeatherRdStallBizHiThresholdHeater} \n"
+stringtable_deInsert="WEATHER|RD_STALLBIZ_HI_THRESHOLD_HEATER\t\${stringTableWeatherRdStallBizHiThresholdHeater}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_HI_THRESHOLD_HEATER"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_STALLBIZ_LO_THRESHOLD_HEATER	\${stringTableWeatherRdStallBizLoThresholdHeater} \n"
+stringtable_deInsert="WEATHER|RD_STALLBIZ_LO_THRESHOLD_HEATER\t\${stringTableWeatherRdStallBizLoThresholdHeater}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_LO_THRESHOLD_HEATER"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_STALLBIZ_HEAT_ON_DEWFALL	\${stringTableWeatherRdStallBizHeatOnDewfall} \n"
+stringtable_deInsert="WEATHER|RD_STALLBIZ_HEAT_ON_DEWFALL\t\${stringTableWeatherRdStallBizHeatOnDewfall}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_STALLBIZ_HEAT_ON_DEWFALL"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_SENSOR_TYPE	\${stringTableWeatherRdSensorType} \n"
+stringtable_deInsert="WEATHER|RD_SENSOR_TYPE\t\${stringTableWeatherRdSensorType}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_SENSOR_TYPE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_SENSOR_TYPE=GENERIC	\${stringTableWeatherRdSensorTypeGeneric} \n"
+stringtable_deInsert="WEATHER|RD_SENSOR_TYPE=GENERIC\t\${stringTableWeatherRdSensorTypeGeneric}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_SENSOR_TYPE=GENERIC"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_SENSOR_TYPE=STALLBIZ	\${stringTableWeatherRdSensorTypeStallBiz} \n"
+stringtable_deInsert="WEATHER|RD_SENSOR_TYPE=STALLBIZ\t\${stringTableWeatherRdSensorTypeStallBiz}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_SENSOR_TYPE=STALLBIZ"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
 ### Edit translate.lang.stringtable.js ###

@@ -85,29 +85,29 @@ fi
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
-stringtable_deInsert="FD_ENABLED	\${stringTableFdEnabled} \n"
+stringtable_deInsert="FD_ENABLED\t\${stringTableFdEnabled}"
 if [ -z "`cat $stringtable_deFile | grep \"FD_ENABLED"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
-stringtable_deInsert="FD_ENABLED=TRUE	\${stringTableFdEnabledTrue} \n"
+stringtable_deInsert="FD_ENABLED=TRUE\t\${stringTableFdEnabledTrue}"
 if [ -z "`cat $stringtable_deFile | grep \"FD_ENABLED=TRUE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
-stringtable_deInsert="FD_ENABLED=FALSE	\${stringTableFdEnabledFalse} \n"
+stringtable_deInsert="FD_ENABLED=FALSE\t\${stringTableFdEnabledFalse}"
 if [ -z "`cat $stringtable_deFile | grep \"FD_ENABLED=FALSE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
-stringtable_deInsert="FD_DEVICE_ID	\${stringTableFdDeviceId} \n"
+stringtable_deInsert="FD_DEVICE_ID\t\${stringTableFdDeviceId}"
 if [ -z "`cat $stringtable_deFile | grep \"FD_DEVICE_ID"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
-stringtable_deInsert="FD_CYCLIC_TIMEOUT	\${stringTableFdCyclicTimeout} \n"
+stringtable_deInsert="FD_CYCLIC_TIMEOUT\t\${stringTableFdCyclicTimeout}"
 if [ -z "`cat $stringtable_deFile | grep \"FD_CYCLIC_TIMEOUT"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
-stringtable_deInsert="FD_STATUS	\${stringTableFdStatus} \n"
+stringtable_deInsert="FD_STATUS\t\${stringTableFdStatus}"
 if [ -z "`cat $stringtable_deFile | grep \"FD_STATUS"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
 ### Edit translate.lang.stringtable.js ###

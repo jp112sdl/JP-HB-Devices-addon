@@ -93,9 +93,9 @@ fi
 
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
-stringtable_deInsert="UNI_PRESSURE	\${stringTableUniPressure} \n"
+stringtable_deInsert="UNI_PRESSURE\t\${stringTableUniPressure}"
 if [ -z "`cat $stringtable_deFile | grep \"UNI_PRESSURE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
 ### Edit translate.lang.stringtable.js ###

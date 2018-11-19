@@ -51,24 +51,24 @@ fi
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
-stringtable_deInsert="HB_GENERIC_DIST|DISTANCE	\${stringTableHbGenericDistDistance} \n"
+stringtable_deInsert="HB_GENERIC_DIST|DISTANCE\t\${stringTableHbGenericDistDistance}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|DISTANCE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="HB_GENERIC_DIST|TOF_DISTANCE_OFFSET	\${stringTableHbGenericDistTofDistanceOffset} \n"
+stringtable_deInsert="HB_GENERIC_DIST|TOF_DISTANCE_OFFSET\t\${stringTableHbGenericDistTofDistanceOffset}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|TOF_DISTANCE_OFFSET"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="HB_GENERIC_DIST|BATTERY_VOLTAGE	\${stringTableHbGenericDistBatteryVoltage} \n"
+stringtable_deInsert="HB_GENERIC_DIST|BATTERY_VOLTAGE\t\${stringTableHbGenericDistBatteryVoltage}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|BATTERY_VOLTAGE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="HB_GENERIC_DIST|SENSOR_TYPE	\${stringTableHbGenericDistSensorType} \n"
+stringtable_deInsert="HB_GENERIC_DIST|SENSOR_TYPE\t\${stringTableHbGenericDistSensorType}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_DIST|SENSOR_TYPE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
 ### Edit translate.lang.stringtable.js ###

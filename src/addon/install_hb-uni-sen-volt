@@ -36,7 +36,7 @@ webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
-stringtable_deInsert="HB_GENERIC_VOLT|HB_VOLTAGE	\${stringTablePowerMeterVoltage} \n"
+stringtable_deInsert="HB_GENERIC_VOLT|HB_VOLTAGE\t\${stringTablePowerMeterVoltage}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_VOLT|HB_VOLTAGE"`" ]; then
-    sed -i "1s/^/\1$stringtable_deInsert/" $stringtable_deFile
+    echo -e $stringtable_deInsert >> $stringtable_deFile
 fi

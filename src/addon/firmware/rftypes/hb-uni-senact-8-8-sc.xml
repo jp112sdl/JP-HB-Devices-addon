@@ -2,7 +2,7 @@
 <device version="1" rx_modes="CONFIG" supports_aes="true" cyclic_timeout="600">
   <supported_types>
     <type name="HB-UNI-SenAct-8-8-SC" id="HB-UNI-SenAct-8-8-SC" priority="2">
-      <parameter index="10.0" size="2.0" const_value="0xf33b"/>
+      <parameter index="10.0" size="2.0" const_value="0xf33a"/>
     </type>
   </supported_types>
   <paramset type="MASTER" id="switch_dev_master">

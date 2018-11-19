@@ -40,6 +40,11 @@ if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 fi
 
+stringtable_deSearch="CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LITER"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableCapacitiveFillingSensorBatteryVoltage"
 if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then

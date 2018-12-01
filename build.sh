@@ -1,6 +1,16 @@
 #!/bin/sh
 COPYFILE_DISABLE=1; export COPYFILE_DISABLE
 ADDON_NAME=jp-hb-devices
+wget -q -O ./patchsource/www/webui/webui.js.orig https://github.com/eq-3/occu/raw/master/WebUI/www/webui/webui.js
+wget -q -O ./patchsource/www/rega/esp/functions.fn.orig https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/rega/esp/functions.fn
+wget -q -O ./patchsource/www/rega/esp/side.inc.orig https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/rega/esp/side.inc
+wget -q -O ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/rega/pages/tabs/admin/views/programs.htm
+
+diff -Naur ./patchsource/www/rega/esp/side.inc.orig ./patchsource/www/rega/esp/side.inc > ./src/addon/patch/hb-dis-ep-42bw.patch 
+diff -Naur ./patchsource/www/rega/esp/functions.fn.orig ./patchsource/www/rega/esp/functions.fn >> ./src/addon/patch/hb-dis-ep-42bw.patch 
+diff -Naur ./patchsource/www/webui/webui.js.orig ./patchsource/www/webui/webui.js >> ./src/addon/patch/hb-dis-ep-42bw.patch 
+diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig ./patchsource/www/rega/pages/tabs/admin/views/programs.htm >> ./src/addon/patch/hb-dis-ep-42bw.patch 
+
 rm ${ADDON_NAME}-addon.tgz
 cd src
 chmod +x update_script

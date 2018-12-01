@@ -15,11 +15,11 @@ webuiFile="/www/webui/webui.js"
 if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
     sed -i "/\($DEVICE\)/d" $webuiFile
 fi
-webuiSearch="CAPACITIVE_FILLING_LEVEL_SENSOR|TOF_DISTANCE_OFFSET"
+webuiSearch="HB_GENERIC_DIST|TOF_DISTANCE_OFFSET"
 if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
     sed -i "/\($webuiSearch\)/d" $webuiFile
 fi
-webuiSearch="CAPACITIVE_FILLING_LEVEL_SENSOR|SENSOR_TYPE"
+webuiSearch="HB_GENERIC_DIST|SENSOR_TYPE"
 if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
     sed -i "/\($webuiSearch\)/d" $webuiFile
 fi

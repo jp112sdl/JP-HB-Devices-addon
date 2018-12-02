@@ -162,7 +162,7 @@
       <parameter id="SUBMIT" operations="write" control="NONE">
         <logical type="string"/>
         <physical type="string" interface="multiframe_command" value_id="SUBMIT_VALUE">
-          <multiframe_command_frame max_frames="8" direction="to_device" type="0x11" subtype="0x80" subtype_index="9" channel_field="10.0" payload_index="11" send_immidiately="true" wakeup_on_immidiate_send_failure="false"/>
+          <multiframe_command_frame max_frames="12" direction="to_device" type="0x11" subtype="0x80" subtype_index="9" channel_field="10.0" payload_index="11" send_immidiately="true" wakeup_on_immidiate_send_failure="false"/>
         </physical>
         <conversion type="hexstring_bytearray"/>
       </parameter>

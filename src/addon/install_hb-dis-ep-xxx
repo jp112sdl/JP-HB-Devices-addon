@@ -18,16 +18,13 @@ fi
 ### Patch some files ###
 cd /www
 
-#cp ./webui/webui.js ./webui/webui.js.orig
-#cp ./rega/esp/side.inc ./rega/esp/side.inc.orig
-#cp ./rega/pages/tabs/admin/views/programs.htm ./rega/pages/tabs/admin/views/programs.htm.orig
+patch -N -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch 
 
-patch -Np3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch 
-
-rm ./webui/webui.js.orig
-rm ./rega/esp/side.inc.orig
-rm ./rega/pages/tabs/admin/views/programs.htm.orig
-
+[[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
+[[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
+[[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
+[[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
+[[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
 
 ### Edit webui.js ###
 webuiFile="/www/webui/webui.js"

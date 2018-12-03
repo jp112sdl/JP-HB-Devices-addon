@@ -13911,7 +13911,7 @@ HbStatusDisplayDialogEPaper = Class.create(StatusDisplayDialog, {
   _getTextOptions: function() {
     var options = "";
     options += "<option value='-1'>"+translateKey("stringTableNotUsed")+"</option>";
-    for (var loop = 0; loop <= 9; loop++) {
+    for (var loop = 0; loop <= 19; loop++) {
       options += "<option value='"+loop+"'>"+ translateKey("statusDisplayOptionText")+ " " +(loop + 1)+"</option>";
     }
     options += "<option value='99'>"+translateKey("statusDisplayOptionFreeText")+"</option>";

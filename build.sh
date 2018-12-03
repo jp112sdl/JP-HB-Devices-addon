@@ -2,7 +2,8 @@
 COPYFILE_DISABLE=1; export COPYFILE_DISABLE
 ADDON_NAME=jp-hb-devices
 
-wget -q -O ./patchsource/www/webui/webui.js.orig https://github.com/eq-3/occu/raw/master/WebUI/www/webui/webui.js
+#wget -q -O ./patchsource/www/webui/webui.js.orig https://github.com/eq-3/occu/raw/master/WebUI/www/webui/webui.js
+wget -q -O ./patchsource/www/webui/webui.js.orig https://github.com/eq-3/occu/raw/b_3_41/WebUI/www/webui/webui.js
 echo "wget webui.js      exited with $?"
 wget -q -O ./patchsource/www/rega/esp/functions.fn.orig https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/rega/esp/functions.fn
 echo "wget functions.fn  exited with $?"

@@ -231,7 +231,7 @@ if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_HEATING"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="WEATHER|RD_HEATING=TRUE	\${stringTableWeatherRdHeatingTrue}"
+stringtable_deInsert="WEATHER|RD_HEATING=TRUE\t\${stringTableWeatherRdHeatingTrue}"
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|RD_HEATING=TRUE"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi

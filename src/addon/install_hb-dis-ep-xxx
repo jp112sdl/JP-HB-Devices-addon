@@ -44,8 +44,8 @@ fi
 
 webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 
-webuiInsertParam="SHOW_LINES_BETWEEN_ROWS"
-webuiInsertValue="stringTableHbShowLinesBetweenRows"
+webuiInsertParam="HB_EP_SHOW_LINE"
+webuiInsertValue="stringTableHbEpShowLine"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
@@ -55,8 +55,8 @@ fi
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
-stringtable_deInsert="SHOW_LINES_BETWEEN_ROWS\t\${stringTableHbShowLinesBetweenRows}"
-if [ -z "`cat $stringtable_deFile | grep \"SHOW_LINES_BETWEEN_ROWS"`" ]; then
+stringtable_deInsert="HB_EP_SHOW_LINE\t\${stringTableHbEpShowLine}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_EP_SHOW_LINE"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
@@ -64,7 +64,7 @@ fi
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 
-translate_deInsert="\n    \"stringTableHbShowLinesBetweenRows\" : \"Linien zwischen den Zeilen\","
-if [ -z "`cat $translate_deFile | grep \"stringTableHbShowLinesBetweenRows\"`" ]; then
+translate_deInsert="\n    \"stringTableHbEpShowLine\" : \"Linie nach Zeile\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpShowLine\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

@@ -15,19 +15,19 @@ webuiFile="/www/webui/webui.js"
 if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
     sed -i "/\($DEVICE\)/d" $webuiFile
 fi
-webuiSearch="SHOW_LINES_BETWEEN_ROWS"
+webuiSearch="HB_EP_SHOW_LINE"
 if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
     sed -i "/\($webuiSearch\)/d" $webuiFile
 fi
 
 stringtable_deFile="/www/config/stringtable_de.txt"
-stringtable_deSearch="SHOW_LINES_BETWEEN_ROWS"
+stringtable_deSearch="HB_EP_SHOW_LINE"
 if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 fi
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
-translate_deSearch="stringTableHbShowLinesBetweenRows"
+translate_deSearch="stringTableHbEpShowLine"
 if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 fi

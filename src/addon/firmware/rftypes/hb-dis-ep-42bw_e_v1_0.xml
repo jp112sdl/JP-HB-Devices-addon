@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<device version="1" rx_modes="BURST" peering_sysinfo_expect_channel="false" supports_aes="true">
+<device version="1" rx_modes="BURST" supports_aes="true">
   <supported_types>
     <type name="HB Wireless 4.2 inch bw e-Paper Status Display with push button" id="HB-DIS-EP-42BW" updatable="false" priority="2">
       <parameter index="9.0" size="1.0" cond_op="E" const_value="0x10"/>
@@ -14,10 +14,6 @@
     <parameter id="DISPLAY_INVERTING">
       <logical type="boolean" default="false"/>
       <physical type="integer" interface="config" list="0" index="5.6" size="0.1"/>
-    </parameter>
-    <parameter id="SHOW_LINES_BETWEEN_ROWS">
-      <logical type="boolean" default="false"/>
-      <physical type="integer" interface="config" list="0" index="144.0" size="0.1"/>
     </parameter>
     <parameter id="STATUS_MESSAGE_TEXT_ALIGNMENT_LEFT_ALIGNED">
       <logical type="boolean" default="true"/>
@@ -158,30 +154,15 @@
         </physical>
       </parameter>
     </paramset>
-    <paramset id="key_valueset_2">
-      <parameter id="SUBMIT" operations="write" control="NONE">
-        <logical type="string"/>
-        <physical type="string" interface="multiframe_command" value_id="SUBMIT_VALUE">
-          <multiframe_command_frame max_frames="12" direction="to_device" type="0x11" subtype="0x80" subtype_index="9" channel_field="10.0" payload_index="11" send_immidiately="true" wakeup_on_immidiate_send_failure="false"/>
-        </physical>
-        <conversion type="hexstring_bytearray"/>
-      </parameter>
-    </paramset>
     <paramset id="key_paramset">
       <parameter id="AES_ACTIVE" ui_flags="internal">
         <logical type="boolean" default="false"/>
         <physical type="boolean" interface="internal" value_id="AES"/>
       </parameter>
-      <parameter id="TEXTLINE_1">
-        <logical type="string"/>
-        <physical type="string" interface="config_string" list="1" index="54" size="16"/>
+      <parameter id="HB_EP_SHOW_LINE">
+        <logical type="boolean" default="false"/>
+        <physical type="integer" interface="config" list="1" index="144.0" size="0.1"/>
       </parameter>
-      <parameter id="TEXTLINE_2">
-        <logical type="string"/>
-        <physical type="string" interface="config_string" list="1" index="70" size="16"/>
-      </parameter>
-    </paramset>
-    <paramset id="key_paramset_2">
       <parameter id="TEXTLINE_1">
         <logical type="string"/>
         <physical type="string" interface="config_string" list="1" index="54" size="16"/>
@@ -201,6 +182,15 @@
         <physical type="integer" interface="config" list="4" index="1.7" size="0.1"/>
       </parameter>
       <enforce id="EXPECT_AES" value="$PEER.AES"/>
+    </paramset>
+    <paramset id="key_valueset_2">
+      <parameter id="SUBMIT" operations="write" control="NONE">
+        <logical type="string"/>
+        <physical type="string" interface="multiframe_command" value_id="SUBMIT_VALUE">
+          <multiframe_command_frame max_frames="12" direction="to_device" type="0x11" subtype="0x80" subtype_index="9" channel_field="10.0" payload_index="11" send_immidiately="true" wakeup_on_immidiate_send_failure="false"/>
+        </physical>
+        <conversion type="hexstring_bytearray"/>
+      </parameter>
     </paramset>
   </paramset_defs>
 </device>

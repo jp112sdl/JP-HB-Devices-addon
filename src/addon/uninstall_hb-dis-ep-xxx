@@ -19,15 +19,63 @@ webuiSearch="HB_EP_SHOW_LINE"
 if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
     sed -i "/\($webuiSearch\)/d" $webuiFile
 fi
+webuiSearch="HB_EP_ALIGNMENT"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
+webuiSearch="HB_EP_ALIGN_RIGHT"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
+webuiSearch="HB_EP_ALIGN_CENTER"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
+webuiSearch="HB_EP_ALIGN_LEFT"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="HB_EP_SHOW_LINE"
 if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 fi
+stringtable_deSearch="HB_EP_ALIGNMENT"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+stringtable_deSearch="HB_EP_ALIGN_RIGHT"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+stringtable_deSearch="HB_EP_ALIGN_CENTER"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+stringtable_deSearch="HB_EP_ALIGN_LEFT"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbEpShowLine"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
+translate_deSearch="stringTableHbEpAlignment"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
+translate_deSearch="stringTableHbEpAlignRight"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
+translate_deSearch="stringTableHbEpAlignCenter"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
+translate_deSearch="stringTableHbEpAlignLeft"
 if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 fi

@@ -52,11 +52,64 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="HB_EP_ALIGNMENT"
+webuiInsertValue="stringTableHbEpAlignment"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_EP_ALIGN_RIGHT"
+webuiInsertValue="stringTableHbEpAlignRight"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_EP_ALIGN_CENTER"
+webuiInsertValue="stringTableHbEpAlignCenter"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_EP_ALIGN_LEFT"
+webuiInsertValue="stringTableHbEpAlignLeft"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
 stringtable_deInsert="HB_EP_SHOW_LINE\t\${stringTableHbEpShowLine}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_EP_SHOW_LINE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_EP_ALIGNMENT\t\${stringTableHbEpAlignment}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGNMENT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_EP_ALIGN_RIGHT\t\${stringTableHbEpAlignRight}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGN_RIGHT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_EP_ALIGN_CENTER\t\${stringTableHbEpAlignCenter}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGN_CENTER"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_EP_ALIGN_LEFT\t\${stringTableHbEpAlignLeft}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGN_LEFT"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
@@ -66,5 +119,25 @@ translate_deSearch="\"dummy\" : \"\","
 
 translate_deInsert="\n    \"stringTableHbEpShowLine\" : \"Linie nach Zeile\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpShowLine\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbEpAlignment\" : \"Textausrichtung\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignment\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbEpAlignRight\" : \"rechtsb%FCndig\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignRight\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbEpAlignCenter\" : \"zentriert\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignCenter\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbEpAlignLeft\" : \"linksb%FCndig\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignLeft\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

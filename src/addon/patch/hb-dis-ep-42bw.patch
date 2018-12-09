@@ -1,4 +1,4 @@
---- ./patchsource/www/rega/esp/side.inc.orig	2018-12-03 21:48:35.000000000 +0100
+--- ./patchsource/www/rega/esp/side.inc.orig	2018-12-09 19:01:18.000000000 +0100
 +++ ./patchsource/www/rega/esp/side.inc	2018-11-30 18:59:29.000000000 +0100
 @@ -15,6 +15,7 @@
    string hm_partyDialog = "HM-CC-RT-DN HM-TC-IT-WM-W-EU HM-CC-VG-1";
@@ -56,7 +56,7 @@
                if (rgbw_controller != -1) {
                  Write( '<span id="setRGBWController'#oSD.ID()#'" class="CLASS02401" onclick="SetRGBWController('#oSD.ID()#',\''#oDP.HSSID()#'\');"><img src="/ise/img/notepad.png" /></span>' );
                }
---- ./patchsource/www/rega/esp/functions.fn.orig	2018-12-03 21:48:35.000000000 +0100
+--- ./patchsource/www/rega/esp/functions.fn.orig	2018-12-09 19:00:10.000000000 +0100
 +++ ./patchsource/www/rega/esp/functions.fn	2018-12-01 10:11:26.000000000 +0100
 @@ -331,6 +331,13 @@
      ! Hide channel 3 of this device
@@ -72,7 +72,7 @@
  }
  
  function ::showHideHmIPChannel() {
---- ./patchsource/www/webui/webui.js.orig	2018-12-03 21:48:35.000000000 +0100
+--- ./patchsource/www/webui/webui.js.orig	2018-12-09 19:01:22.000000000 +0100
 +++ ./patchsource/www/webui/webui.js	2018-12-03 21:48:31.000000000 +0100
 @@ -13146,7 +13146,7 @@
    // Check each line if the free text mode is active.
@@ -319,7 +319,7 @@
  /**
   * rgbwcontrollerdialog.js
   **/
---- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig	2018-12-03 21:48:35.000000000 +0100
+--- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig	2018-12-09 19:00:10.000000000 +0100
 +++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2018-11-29 22:54:25.000000000 +0100
 @@ -141,7 +141,10 @@
    };
@@ -353,7 +353,7 @@
        }
  
  
---- ./patchsource/www/config/ic_common.tcl.orig	2018-12-03 21:48:36.000000000 +0100
+--- ./patchsource/www/config/ic_common.tcl.orig	2018-12-09 19:00:11.000000000 +0100
 +++ ./patchsource/www/config/ic_common.tcl	2018-12-02 10:57:56.000000000 +0100
 @@ -1074,6 +1074,7 @@
  

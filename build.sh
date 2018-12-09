@@ -14,12 +14,12 @@ ADDON_NAME=jp-hb-devices
 #wget -q -O ./patchsource/www/config/ic_common.tcl.orig https://raw.githubusercontent.com/jens-maus/RaspberryMatic/master/buildroot-external/patches/occu/0000-CCU-Firmware-Diff/occu/WebUI/www/config/ic_common.tcl
 #echo "wget ic_common.tcl exited with $?"
 
-diff -Naur ./patchsource/www/rega/esp/side.inc.orig ./patchsource/www/rega/esp/side.inc > ./src/addon/patch/hb-dis-ep-42bw.patch 
-diff -Naur ./patchsource/www/rega/esp/functions.fn.orig ./patchsource/www/rega/esp/functions.fn >> ./src/addon/patch/hb-dis-ep-42bw.patch 
-diff -Naur ./patchsource/www/webui/webui.js.orig ./patchsource/www/webui/webui.js >> ./src/addon/patch/hb-dis-ep-42bw.patch 
-diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig ./patchsource/www/rega/pages/tabs/admin/views/programs.htm >> ./src/addon/patch/hb-dis-ep-42bw.patch 
-diff -Naur ./patchsource/www/config/ic_common.tcl.orig ./patchsource/www/config/ic_common.tcl >> ./src/addon/patch/hb-dis-ep-42bw.patch 
-echo "Patch created."
+#diff -Naur ./patchsource/www/rega/esp/side.inc.orig ./patchsource/www/rega/esp/side.inc > ./src/addon/patch/hb-dis-ep-42bw.patch 
+#diff -Naur ./patchsource/www/rega/esp/functions.fn.orig ./patchsource/www/rega/esp/functions.fn >> ./src/addon/patch/hb-dis-ep-42bw.patch 
+#diff -Naur ./patchsource/www/webui/webui.js.orig ./patchsource/www/webui/webui.js >> ./src/addon/patch/hb-dis-ep-42bw.patch 
+#diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig ./patchsource/www/rega/pages/tabs/admin/views/programs.htm >> ./src/addon/patch/hb-dis-ep-42bw.patch 
+#diff -Naur ./patchsource/www/config/ic_common.tcl.orig ./patchsource/www/config/ic_common.tcl >> ./src/addon/patch/hb-dis-ep-42bw.patch 
+#echo "Patch created."
 
 rm ${ADDON_NAME}-addon.tgz
 cd src

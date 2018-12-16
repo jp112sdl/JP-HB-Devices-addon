@@ -13867,7 +13867,6 @@ StatusDisplayDialogEPaper = Class.create(StatusDisplayDialog, {
 
 YesNoDialog.RESULT_NO = 0;
 YesNoDialog.RESULT_YES = 1;
-
 /**
  * rgbwcontrollerdialog.js
  **/

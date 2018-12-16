@@ -201,6 +201,7 @@ HbStatusDisplayDialogEPaper = Class.create(StatusDisplayDialog, {
     }
     return arLines;
   }
-
 });
 
+YesNoDialog.RESULT_NO = 0;
+YesNoDialog.RESULT_YES = 1;

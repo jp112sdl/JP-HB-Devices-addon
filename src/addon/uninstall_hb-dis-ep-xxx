@@ -5,6 +5,12 @@ DEVICE_IMG=hb-dis-ep-42bw.png
 DEVICE_THUMB=hb-dis-ep-42bw_thumb.png
 FIRMWARE_FILE=/firmware/rftypes/hb-dis-ep-42bw_e_v1_0.xml
 
+indexFile="/www/rega/pages/index.htm"
+indexFileSearch="jp_webui_inc.js"
+if [ "`cat $indexFile | grep \"$indexFileSearch\"`" ]; then
+    sed -i "/${indexFileSearch}/d" $indexFile
+fi
+
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
@@ -88,6 +94,8 @@ patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch
 [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
 [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
 [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
+
+[[ -f ./webui/js/extern/jp_webui_inc.js ]] && rm ./webui/js/extern/jp_webui_inc.js
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

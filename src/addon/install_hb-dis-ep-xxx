@@ -27,7 +27,7 @@ patch -N -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch
 [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
 
 ### Create Symlink to include own js file
-ln -s /usr/local/addons/jp-hb-devices-addon/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
+ln -s /usr/local/addons/jp-hb-devices-addon/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 
 indexFile="/www/rega/pages/index.htm"
 indexFileSearch="<script type=\"text/javascript\" src=\"/webui/webui.js"

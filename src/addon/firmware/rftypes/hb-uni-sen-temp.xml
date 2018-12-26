@@ -61,7 +61,7 @@
         </parameter>                                           
       </paramset>
     </channel>
-    <channel index="1" type="WEATHER" autoregister="true" count="8">
+    <channel index="1" type="WEATHER" autoregister="true" count_from_sysinfo="23.0">
       <link_roles>
         <source name="WEATHER_TH" />
       </link_roles>

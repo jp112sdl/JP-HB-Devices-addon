@@ -6,18 +6,6 @@ RC_DIR=/usr/local/etc/config/rc.d
 WWW_DIR=/usr/local/etc/config/addons/www/$ADDON_NAME
 ADDON_DIR=/usr/local/addons/$ADDON_NAME
 
-if [ "$1" = "" ]; then
-  echo "CCU1"
-  lcdtool "installing $ADDON_NAME "
-  mount -t yaffs /dev/mtdblock3 /usr/local
-elif [ "$1" = "CCU2" ]; then
-  echo "CCU2"
-  mount -t ubifs ubi1:user /usr/local
-elif [ "$1" = "HM-RASPBERRYMATIC" ]; then
-  echo "HM-RASPBERRYMATIC"
-  mount /usr/local
-fi
-
 # Alte Firmware Files löschen
 rm -f ${ADDON_DIR}/firmware/rftypes/*
 
@@ -42,17 +30,5 @@ rm -f ${ADDON_DIR}/installed
 # sync filesystem to make sure all changes are written to disk
 sync
 
-if [ "$1" = "" ]; then
-  echo "CCU1"
-  lcdtool "Reboot...             "
-  lcdtool -a 0x40 -t bin 00
-  echo "x" > /dev/watchdog
-  reboot
-  while true ; do true ;  done
-elif [ "$1" = "CCU2" ]; then
-  echo "CCU2"
-elif [ "$1" = "HM-RASPBERRYMATIC" ]; then
-  echo "HM-RASPBERRYMATIC"
-  exit 10
-fi
+exit 10
 

@@ -5,10 +5,6 @@ DEVICE_IMG=hb-dis-ep-42bw.png
 DEVICE_THUMB=hb-dis-ep-42bw_thumb.png
 DEVICE_DESC="ePaper Display 4.2 b\/w"
 
-### Copy Images from HM-Dis-EP-WM55
-cp /www/ise/img/icons_hm_dis_ep_wm55/24/* /www/ise/img/icons_hb_dis_ep_42bw/24/
-chown root:staff /www/ise/img/icons_hb_dis_ep_42bw/24/*
-
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"

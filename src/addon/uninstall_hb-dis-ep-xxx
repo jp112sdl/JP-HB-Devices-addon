@@ -140,4 +140,3 @@ patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB
-rm -f /www/ise/img/icons_hb_dis_ep_42bw/24/

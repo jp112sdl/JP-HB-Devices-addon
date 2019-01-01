@@ -27,6 +27,8 @@ case "$1" in
         chmod 755 /www/config/img/devices/250/hb-*
         chown root:root /www/config/img/devices/50/hb-*
         chmod 755 /www/config/img/devices/50/hb-*
+        chown root:root /www/ise/img/icons_hm_dis_ep_wm55/24/*
+        chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
 	    	    
         echo "Running scripts..."    
         for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done

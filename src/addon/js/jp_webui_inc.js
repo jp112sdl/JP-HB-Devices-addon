@@ -60,7 +60,17 @@ HbStatusDisplayDialogEPaper = Class.create(StatusDisplayDialog, {
       translateKey("iconOK"),
       translateKey("iconInfo"),
       translateKey("iconNewMessage"),
-      translateKey("iconServiceMessage")
+      translateKey("iconServiceMessage"),
+      translateKey("iconHbGarage"),
+      translateKey("iconHbShutter"),
+      translateKey("iconHbShutterUp"),
+      translateKey("iconHbShutterDown"),
+      translateKey("iconHbUp"),
+      translateKey("iconHbDown"),
+      translateKey("iconHbSnowflake"),
+      translateKey("iconHbWarning"),
+      translateKey("iconHbError"),
+      translateKey("iconHbBell")
     ];
 
     options += "<option name='option_NotUsed' value='-1'>" + translateKey("stringTableNotUsed") + "</option>";

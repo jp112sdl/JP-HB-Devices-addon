@@ -153,3 +153,48 @@ translate_deInsert="\n    \"stringTableHbEpAlignLeft\" : \"linksb%FCndig\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignLeft\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
+
+### Edit translate.lang.extension.js
+translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
+
+translate_deSearch="\"iconServiceMessage\":\"Servicemeldung\","
+translate_deInsert="\n    \"iconHbGarage\":\"Garagentor\","
+if [ -z "`cat $translate_deFile | grep \"iconHbGarage\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbShutter\":\"Rollladen\","
+if [ -z "`cat $translate_deFile | grep \"iconHbShutter\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbShutterUp\":\"Rollladen hoch\","
+if [ -z "`cat $translate_deFile | grep \"iconHbShutterUp\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbShutterDown\":\"Rollladen runter\","
+if [ -z "`cat $translate_deFile | grep \"iconHbShutterDown\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbUp\":\"Hoch\","
+if [ -z "`cat $translate_deFile | grep \"iconHbUp\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbDown\":\"Runter\","
+if [ -z "`cat $translate_deFile | grep \"iconHbDown\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbSnowflake\":\"Frost\","
+if [ -z "`cat $translate_deFile | grep \"iconHbSnowflake\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbWarning\":\"Warnung\","
+if [ -z "`cat $translate_deFile | grep \"iconHbWarning\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbError\":\"Fehler\","
+if [ -z "`cat $translate_deFile | grep \"iconHbError\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbBell\":\"Glocke\","
+if [ -z "`cat $translate_deFile | grep \"iconHbBell\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi

@@ -13100,7 +13100,7 @@ function setStatusDisplayTableHeader() {
 
 function setIconPreview(oValue) {
   var displayType = statusDisplayDialog.displayType,
-  picPath = (displayType == "DIS") ? "/ise/img/icons_hm_dis_wm55/24/" : "/ise/img/icons_hm_dis_ep_wm55/24/";
+  picPath = (displayType == "DIS-EP42BW") ? "/ise/img/icons_hb_dis_ep_42bw/24/" : (displayType == "DIS") ? "/ise/img/icons_hm_dis_wm55/24/" : "/ise/img/icons_hm
 
   oValue.index = oValue.index.toString();
   var previewElm = jQuery("#iconPreview_"+oValue.index);

@@ -66,6 +66,7 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F3 3B | HB-UNI-SenAct-8-8-SC-BAT|
 |F3 41 | HB-UNI-RGB-LED-CTRL |
 |F3 42 | HB-UNI-DMX-MASTER |
+|F3 43 | HB-DIS-EP-42BW |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |F5 01 | HB-LC-Sw2-FM|

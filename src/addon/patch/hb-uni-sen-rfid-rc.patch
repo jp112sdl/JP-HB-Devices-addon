@@ -1,0 +1,27 @@
+--- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig	2018-10-31 21:12:18.000000000 +0100
++++ ./patchsource/www/rega/esp/datapointconfigurator.fn	2019-01-15 07:43:07.000000000 +0100
+@@ -99,6 +99,7 @@
+     var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
+     var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
+     var CN_BUTTON          = "BUTTON.";
++    var CN_RFID_BUTTON     = "RFIDBTN.";
+     var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
+     var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
+     var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
+@@ -364,6 +365,16 @@
+             sLastControlName = CN_BTN_SHORT_ONLY;
+             Call("/esp/controls/button.fn::CreateKeyShortOnly()");
+           }
++          
++          !# RFID_BUTTON
++          bIsControl = ( sControlName.Find(CN_RFID_BUTTON) > -1 );
++          if( bIsControl && (sLastControlName!=CN_RFID_BUTTON) )
++          {
++            WriteLine( "<script>conInfo('Control CN_RFID_BUTTON found.');</script>" );
++            isKnownControl = true;
++            sLastControlName = CN_RFID_BUTTON;
++            Call("/esp/controls/button_rfid.fn::CreateRfidKey()");
++          }
+ 
+           !# BUTTON
+           bIsControl = ( sControlName.Find(CN_BUTTON) > -1 );

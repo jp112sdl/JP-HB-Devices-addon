@@ -35,14 +35,14 @@ function ::CreateRfidKey() {
     WriteLine("<tr>");
       WriteLine("<td class='CLASS02518'>");
         WriteLine("<div align='center'>");
-          WriteLine("<img id='btn"#iShortId#"s' src='/ise/img/btn_no_press.png' width='80' height='80' />");
+          WriteLine("<img id='btn"#iShortId#"s' src='/ise/img/rfid_80.png' width='80' height='80' />");
         WriteLine("</div>");
       WriteLine("</td>");
     WriteLine("</tr>");
     !WriteLine("<tr><td id='sKP"#chnId#"' class='CLASS02536 _j_translate'>Kurzer RFID Tastendruck</td></tr>");
     WriteLine("<tr><td id='sKP"#chnId#"' class='CLASS02536'>&nbsp; </td></tr>");
     Write("<script type='text/javascript'>");
-      Write("jQuery('#sKP"#chnId#"').html(translateKey('actionStatusControlLblShortKeyPress'));");
+      Write("jQuery('#sKP"#chnId#"').html(translateKey('actionStatusControlLblShortRfidHold'));");
     Write("</script>");
 
     WriteLine("</table>");
@@ -52,41 +52,38 @@ function ::CreateRfidKey() {
     WriteLine("<tr>");
       WriteLine("<td  class='CLASS02518'>");
         WriteLine("<div align='center'>");
-          WriteLine("<img id='btn"#iLongId#"l' src='/ise/img/btn_no_press.png' width='80px' height='80px' />");
+          WriteLine("<img id='btn"#iLongId#"l' src='/ise/img/rfid_80.png' width='80px' height='80px' />");
         WriteLine("</div>");
       WriteLine("</td>");
     WriteLine("</tr>");
     !WriteLine("<tr><td id='lKP"#chnId#"' class='_j_translate'>AG Langer Tastendruck</td></tr>");
     WriteLine("<tr><td id='lKP"#chnId#"'>&nbsp;</td></tr>");
     Write("<script type='text/javascript'>");
-      Write("jQuery('#lKP"#chnId#"').html(translateKey('actionStatusControlLblLongKeyPress'));");
+      Write("jQuery('#lKP"#chnId#"').html(translateKey('actionStatusControlLblLongRfidHold'));");
     Write("</script>");
 
     WriteLine("</table>");
   WriteLine("</td>");
+  WriteLine("<td><div class='ControlBtnInfo CLASS02532b' style='width:140px; height:35px;'>Chip&nbsp;ID<br/>"#sRfidChipId#"</div></td>");
+  WriteLine("<td><div class='ControlBtnInfo CLASS02532b' style='width:75px; height:35px;'>Anlern-<br/>modus:</div></td>"); 
   
-  if (oRfidChipId) {
-    WriteLine("<td><div class='ControlBtnInfo CLASS02532b' style='width:160px; height:35px;'>Chip&nbsp;ID<br/>"#sRfidChipId#"</div></td>");
-  }
-
   if( objState )
   {
-   WriteLine("<td><div class='ControlBtnInfo CLASS02532b' style='width:75; height:35px;'>Anlern-<br/>modus:</div></td>");
    WriteLine("<td class='CLASS02521'>");
       !WriteLine("<div id='"#chnId#"Off' class='ControlBtnOff CLASS02522'>Aus</div>");
-      WriteLine("<div id='"#chnId#"Off' class='ControlBtnOff CLASS02522 j_translate'>${actionStatusControlLblOff}</div>");
+      WriteLine("<div id='"#chnId#"Off' class='ControlBtnOff CLASS02522 j_translate'>${optionNotActive}</div>");
     WriteLine("</td>");
 
     WriteLine("<td class='CLASS02521'>");
       !WriteLine("<div id='"#chnId#"On' class='ControlBtnOff CLASS02522'>Ein</div>");
-      WriteLine("<div id='"#chnId#"On' class='ControlBtnOff CLASS02522 j_translate'>${actionStatusControlLblOn}</div>");
+      WriteLine("<div id='"#chnId#"On' class='ControlBtnOff CLASS02522 j_translate'>${actionStatusControlLblActive}</div>");
     WriteLine("</td>");
     WriteLine("<td class='CLASS02523'></td><td class='CLASS02523'></td><td class='CLASS02523'></td>");
 
     WriteLine("<script type='text/javascript'>");
       WriteLine("ibs"#cObj.ID()#" = new iseButtonsSwitch("#cObj.ID()#", "#objState.Value()#", "#objState.ID()#", "#system.GetVar("iStatusOnly")#", '"#chnAddress#"', '"#chnLabel#"', '"#sInterface#"');");
-      Write("jQuery('#"#chnId#"Off').html(translateKey('actionStatusControlLblOff')).show();");
-      Write("jQuery('#"#chnId#"On').html(translateKey('actionStatusControlLblOn')).show();");
+      Write("jQuery('#"#chnId#"Off').html(translateKey('optionNotActive')).show();");
+      Write("jQuery('#"#chnId#"On').html(translateKey('actionStatusControlLblActive')).show();");
 
     WriteLine("</script>");
   }

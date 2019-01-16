@@ -22,6 +22,7 @@ ADDON_NAME=jp-hb-devices
 #echo "Patch HB-DIS-EP42-BW created."
 
 #diff -Naur ./patchsource/www/rega/esp/datapointconfigurator.fn.orig ./patchsource/www/rega/esp/datapointconfigurator.fn > ./src/addon/patch/hb-uni-sen-rfid-rc.patch 
+#diff -Naur ./patchsource/www/webui/js/lang/de/translate.lang.js.orig ./patchsource/www/webui/js/lang/de/translate.lang.js >> ./src/addon/patch/hb-uni-sen-rfid-rc.patch 
 #echo "Patch HB-UNI-Sen-RFID-RC created."
 
 rm ${ADDON_NAME}-addon.tgz

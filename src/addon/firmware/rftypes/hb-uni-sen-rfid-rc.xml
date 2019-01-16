@@ -5,7 +5,12 @@
       <parameter index="10.0" size="2.0" const_value="0xF33C" />
     </type>
   </supported_types>
-  <paramset type="MASTER" id="remote_dev_master"/>
+  <paramset type="MASTER" id="remote_dev_master">
+      <parameter id="HB_BUZZER_ENABLED">
+      <logical type="boolean" default="false"/>
+      <physical type="integer" interface="config" list="0" index="51" size="0.1"/>
+    </parameter>
+  </paramset>
   <channels>
     <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
       <paramset type="MASTER" id="maint_ch_master"/>

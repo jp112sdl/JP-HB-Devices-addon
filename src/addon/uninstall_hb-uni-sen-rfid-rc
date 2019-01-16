@@ -16,6 +16,23 @@ if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
     sed -i "/\($DEVICE\)/d" $webuiFile
 fi
 
+webuiSearch="HB_BUZZER_ENABLED"
+if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
+    sed -i "/\($webuiSearch\)/d" $webuiFile
+fi
+
+stringtable_deFile="/www/config/stringtable_de.txt"
+stringtable_deSearch="HB_BUZZER_ENABLED"
+if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
+	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+fi
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="stringTableHbBuzzerEnabled"
+if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
+	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+fi
+
 cd /www
 patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-uni-sen-rfid-rc.patch 
 [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig

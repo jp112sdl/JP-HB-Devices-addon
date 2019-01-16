@@ -31,6 +31,34 @@ if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
+
+webuiInsertParam="HB_BUZZER_ENABLED"
+webuiInsertValue="stringTableHbBuzzerEnabled"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+### Edit stringtable_de.txt ###
+stringtable_deFile="/www/config/stringtable_de.txt"
+
+stringtable_deInsert="HB_BUZZER_ENABLED\t\${stringTableHbBuzzerEnabled}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_BUZZER_ENABLED"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+### Edit translate.lang.stringtable.js ###
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="\"dummy\" : \"\","
+
+translate_deInsert="\n    \"stringTableHbBuzzerEnabled\" : \"Buzzer aktiviert\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbBuzzerEnabled\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
 ### Patch some files ###
 cd /www
 patch -N -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-uni-sen-rfid-rc.patch 

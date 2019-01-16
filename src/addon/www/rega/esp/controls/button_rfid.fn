@@ -64,11 +64,15 @@ function ::CreateRfidKey() {
 
     WriteLine("</table>");
   WriteLine("</td>");
-  WriteLine("<td><div class='ControlBtnInfo CLASS02532b' style='width:180px; height:35px;'>Chip&nbsp;ID<br/>"#sRfidChipId#"</div></td>");
-  WriteLine("<td><div class='ControlBtnInfo CLASS02532b' style='width:80px; height:35px;'>Anlern-<br/>modus:</div></td>");
+  
+  if (oRfidChipId) {
+    WriteLine("<td><div class='ControlBtnInfo CLASS02532b' style='width:160px; height:35px;'>Chip&nbsp;ID<br/>"#sRfidChipId#"</div></td>");
+  }
+
   if( objState )
   {
-    WriteLine("<td class='CLASS02521'>");
+   WriteLine("<td><div class='ControlBtnInfo CLASS02532b' style='width:75; height:35px;'>Anlern-<br/>modus:</div></td>");
+   WriteLine("<td class='CLASS02521'>");
       !WriteLine("<div id='"#chnId#"Off' class='ControlBtnOff CLASS02522'>Aus</div>");
       WriteLine("<div id='"#chnId#"Off' class='ControlBtnOff CLASS02522 j_translate'>${actionStatusControlLblOff}</div>");
     WriteLine("</td>");

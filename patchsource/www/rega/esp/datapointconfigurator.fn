@@ -100,6 +100,7 @@ function ::dcCreate()
     var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
     var CN_BUTTON          = "BUTTON.";
     var CN_RFID_BUTTON     = "RFIDBTN.";
+    var CN_IBTN_BUTTON     = "IBTN.";
     var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
     var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
     var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
@@ -366,16 +367,26 @@ function ::dcCreate()
             Call("/esp/controls/button.fn::CreateKeyShortOnly()");
           }
           
-          !# RFID_BUTTON
+          !# RFID
           bIsControl = ( sControlName.Find(CN_RFID_BUTTON) > -1 );
           if( bIsControl && (sLastControlName!=CN_RFID_BUTTON) )
           {
             WriteLine( "<script>conInfo('Control CN_RFID_BUTTON found.');</script>" );
             isKnownControl = true;
             sLastControlName = CN_RFID_BUTTON;
-            Call("/esp/controls/button_rfid.fn::CreateRfidKey()");
+            Call("/esp/controls/rfid_rc.fn::CreateRfidKey()");
           }
 
+          !# iBUTTON
+          bIsControl = ( sControlName.Find(CN_IBTN_BUTTON) > -1 );
+          if( bIsControl && (sLastControlName!=CN_IBTN_BUTTON) )
+          {
+            WriteLine( "<script>conInfo('Control CN_IBTN_BUTTON found.');</script>" );
+            isKnownControl = true;
+            sLastControlName = CN_IBTN_BUTTON;
+            Call("/esp/controls/ibutton.fn::CreateIButtonKey()");
+          }
+          
           !# BUTTON
           bIsControl = ( sControlName.Find(CN_BUTTON) > -1 );
           if( bIsControl && (sLastControlName!=CN_BUTTON) )

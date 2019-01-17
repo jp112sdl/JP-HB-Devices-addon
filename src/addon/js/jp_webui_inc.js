@@ -34,7 +34,7 @@ iseRFIDKey.prototype = {
   onClickShort: function() {
     setDpState(this.shortId, 1);
     ControlBtn.pushed(this.divShort);
-    $("btn" + this.shortId + "s").src = "/ise/img/rfid_80.png";
+    $("btn" + this.shortId + "s").src = "/ise/img/rfid_hold_80.png";
     var t = this;
     new PeriodicalExecuter(function(pe) {
       ControlBtn.off(t.divShort);
@@ -46,7 +46,7 @@ iseRFIDKey.prototype = {
   onClickLong: function() {
     setDpState(this.longId, 1);
     ControlBtn.pushed(this.divLong);
-    $("btn" + this.longId + "l").src = "/ise/img/rfid_80.png";
+    $("btn" + this.longId + "l").src = "/ise/img/rfid_hold_80.png";
     var t = this;
     new PeriodicalExecuter(function(pe) {
       ControlBtn.off(t.divLong);

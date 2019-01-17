@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<device version="1" rx_modes="CONFIG" peering_sysinfo_expect_channel="false" supports_aes="true">
+  <supported_types>
+    <type name="HB-IBUT-8" id="HB-IBUT-8" priority="2">
+      <parameter index="10.0" size="2.0" const_value="0xF206" />
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="remote_dev_master">
+      <parameter id="PARAM_SELECT">
+      <logical type="option">
+        <option id="RemoteControl" default="true"/>
+        <option id="ShutterContact"/>
+      </logical>
+      <physical type="integer" interface="config" list="0" index="50" size="1"/>
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master"/>
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="UNREACH"/>
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH"/>
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING"/>
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="LOWBAT"/>
+        </parameter>
+        <parameter id="AES_KEY" operations="read" ui_flags="invisible">
+          <logical type="integer" min="0" max="127"/>
+          <physical type="integer" interface="internal" value_id="AES_KEY"/>
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer"/>
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE"/>
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer"/>
+          <physical type="integer" interface="internal" value_id="RSSI_PEER"/>
+        </parameter>
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="1" type="KEY" count_from_sysinfo="23.0:1.0" pair_function="BA" function="A" paired="true" aes_default="false">
+      <link_roles>
+        <source name="SWITCH"/>
+        <source name="KEYMATIC"/>
+        <source name="WINMATIC"/>
+        <source name="REMOTECONTROL_RECEIVER"/>
+      </link_roles>
+      <paramset type="MASTER" id="remote_ch_master">
+        <subset ref="key_paramset"/>
+      </paramset>
+      <paramset type="VALUES" id="remote_ch_values">
+        <subset ref="key_valueset"/>
+      </paramset>
+      <paramset type="LINK" id="remote_ch_link">
+        <subset ref="key_linkset"/>
+      </paramset>
+    </channel>
+  </channels>
+  <frames>
+    <frame id="LEVEL_GET" direction="to_device" type="0x01" channel_field="9">
+      <parameter type="integer" index="10.0" size="1.0" const_value="14"/>
+    </frame>
+    <frame id="LEVEL_SET" direction="to_device" type="0x11" subtype="0x02" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
+      <parameter type="integer" index="12.0" size="2.0" const_value="0"/>
+    </frame>
+    <frame id="INFO_LEVEL" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
+      <parameter type="integer" index="12.4" size="0.3" param="STATE_FLAGS"/>
+    </frame>
+    <frame id="EVENT" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x41" channel_field="9:0.6">
+      <parameter type="integer" index="11.0" size="1.0" param="DSTATE"/>
+      <parameter type="integer" index="9.7" size="0.1" param="LOWBAT"/>
+    </frame>
+    <frame id="ACK_STATUS" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x02" subtype="1" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
+      <parameter type="integer" index="12.4" size="0.3" param="STATE_FLAGS"/>
+    </frame>
+    <frame id="KEY_EVENT_SHORT" direction="from_device" allowed_receivers="CENTRAL,BROADCAST,OTHER" event="true" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="0"/>
+      <parameter type="integer" index="10.0" size="1.0" param="COUNTER"/>
+      <parameter type="integer" index="10.0" size="1.0" param="TEST_COUNTER"/>
+    </frame>
+    <frame id="KEY_EVENT_LONG" direction="from_device" allowed_receivers="CENTRAL,BROADCAST,OTHER" event="true" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="1"/>
+      <parameter type="integer" index="10.0" size="1.0" param="COUNTER"/>
+      <parameter type="integer" index="10.0" size="1.0" param="TEST_COUNTER"/>
+    </frame>
+    <frame id="KEY_EVENT_LONG_BIDI" direction="from_device" allowed_receivers="CENTRAL,BROADCAST,OTHER" event="true" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="1.5" size="0.1" const_value="1"/>
+      <parameter type="integer" index="9.6" size="0.1" const_value="1"/>
+      <parameter type="integer" index="10.0" size="1.0" param="COUNTER"/>
+      <parameter type="integer" index="10.0" size="1.0" param="TEST_COUNTER"/>
+    </frame>
+    <frame id="KEY_SIM_SHORT" direction="from_device" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="0"/>
+      <parameter type="integer" index="9.7" size="0.1" const_value="0"/>
+      <parameter type="integer" index="10.0" size="1.0" param="SIM_COUNTER"/>
+    </frame>
+    <frame id="KEY_SIM_LONG" direction="from_device" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="1"/>
+      <parameter type="integer" index="9.7" size="0.1" const_value="0"/>
+      <parameter type="integer" index="10.0" size="1.0" param="SIM_COUNTER"/>
+    </frame>
+  </frames>
+  <paramset_defs>
+    <paramset id="key_valueset">
+      <parameter id="PRESS_SHORT" operations="write,event" loopback="true" control="IBTN.SHORT" burst_suppression="0">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="COUNTER">
+          <event frame="KEY_EVENT_SHORT" auth_violate_policy="reject"/>
+          <set request="KEY_SIM_SHORT"/>
+        </physical>
+        <conversion type="action_key_counter" sim_counter="SIM_COUNTER"/>
+      </parameter>
+      <parameter id="PRESS_LONG" operations="write,event" loopback="true" control="IBTN.LONG">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="COUNTER">
+          <event frame="KEY_EVENT_LONG" auth_violate_policy="reject"/>
+          <set request="KEY_SIM_LONG"/>
+        </physical>
+        <conversion type="action_key_counter" sim_counter="SIM_COUNTER"/>
+      </parameter>
+      <parameter id="PRESS_LONG_RELEASE" operations="event" ui_flags="internal" burst_suppression="0">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="COUNTER">
+          <event frame="KEY_EVENT_LONG_BIDI" auth_violate_policy="reject"/>
+        </physical>
+      </parameter>
+      <parameter id="PRESS_CONT" operations="event" ui_flags="internal" burst_suppression="0">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="COUNTER">
+          <event frame="KEY_EVENT_LONG" auth_violate_policy="reject"/>
+        </physical>
+        <conversion type="action_key_same_counter" sim_counter="SIM_CONT_COUNTER"/>
+      </parameter>
+      <parameter id="INSTALL_TEST" operations="event" ui_flags="internal">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="TEST_COUNTER">
+          <event frame="KEY_EVENT_SHORT"/>
+          <event frame="KEY_EVENT_LONG"/>
+        </physical>
+      </parameter>
+      <parameter id="DSTATE" operations="read,event" control="IBTN.DSTATE">
+        <logical type="boolean"/>
+        <physical type="integer" interface="command" value_id="DSTATE">
+          <event frame="EVENT" auth_violate_policy="reject"/>
+          <event frame="INFO_LEVEL" auth_violate_policy="reject"/>
+          <event frame="ACK_STATUS" auth_violate_policy="reject"/>
+        </physical>
+      </parameter>
+      <parameter id="STATE" operations="read,write,event" control="SWIBTN.LEARN_STATE">
+          <logical type="boolean" default="false"/>
+          <physical type="integer" interface="command" value_id="STATE">
+            <set request="LEVEL_SET"/>
+            <get request="LEVEL_GET" response="INFO_LEVEL" process_as_event="true"/>
+            <event frame="INFO_LEVEL" auth_violate_policy="get"/>
+            <event frame="ACK_STATUS" auth_violate_policy="get"/>
+          </physical>
+          <conversion type="boolean_integer" threshold="1" false="0" true="200"/>
+      </parameter>
+    </paramset>
+    <paramset id="key_paramset">
+      <parameter id="CHIP_ID_1" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="224" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_2" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="225" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_3" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="226" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_4" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="227" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_4" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="227" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_5" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="228" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_6" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="229" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_7" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="230" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_8" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="231" size="1" />
+      </parameter>                              
+      <parameter id="AES_ACTIVE" ui_flags="internal">
+        <logical type="boolean" default="false"/>
+        <physical type="boolean" interface="internal" value_id="AES"/>
+      </parameter>
+    </paramset>
+    <paramset id="key_linkset">
+      <parameter id="PEER_NEEDS_BURST">
+        <logical type="boolean" default="false"/>
+        <physical type="integer" interface="config" list="4" index="1.0" size="0.1"/>
+      </parameter>
+      <parameter id="EXPECT_AES">
+        <logical type="boolean" default="false"/>
+        <physical type="integer" interface="config" list="4" index="1.7" size="0.1"/>
+      </parameter>
+      <enforce id="EXPECT_AES" value="$PEER.AES"/>
+    </paramset>
+  </paramset_defs>
+</device>

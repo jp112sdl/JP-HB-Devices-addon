@@ -27,11 +27,11 @@ function ::CreateIButtonKey() {
     WriteLine("<tr>");
       WriteLine("<td class='CLASS02518'>");
         WriteLine("<div align='center'>");
-          WriteLine("<img id='btn"#iShortId#"s' src='/ise/img/rfid_80.png' width='80' height='80' />");
+          WriteLine("<img id='btn"#iShortId#"s' src='/ise/img/btn_no_press.png' width='80' height='80' />");
         WriteLine("</div>");
       WriteLine("</td>");
     WriteLine("</tr>");
-    !WriteLine("<tr><td id='sKP"#chnId#"' class='CLASS02536 _j_translate'>Kurzer RFID Tastendruck</td></tr>");
+    !WriteLine("<tr><td id='sKP"#chnId#"' class='CLASS02536 _j_translate'>Kurzer Tastendruck</td></tr>");
     WriteLine("<tr><td id='sKP"#chnId#"' class='CLASS02536'>&nbsp; </td></tr>");
     Write("<script type='text/javascript'>");
       Write("jQuery('#sKP"#chnId#"').html(translateKey('actionStatusControlLblShortRfidHold'));");
@@ -44,7 +44,7 @@ function ::CreateIButtonKey() {
     WriteLine("<tr>");
       WriteLine("<td  class='CLASS02518'>");
         WriteLine("<div align='center'>");
-          WriteLine("<img id='btn"#iLongId#"l' src='/ise/img/rfid_80.png' width='80px' height='80px' />");
+          WriteLine("<img id='btn"#iLongId#"l' src='/ise/img/btn_no_press.png' width='80px' height='80px' />");
         WriteLine("</div>");
       WriteLine("</td>");
     WriteLine("</tr>");
@@ -84,15 +84,9 @@ function ::CreateIButtonKey() {
     WriteLine("</table>");
   WriteLine("</td>");
   WriteLine("<td></td><td></td><td></td>");
-  object objState = cObj.DPByControl("IBTN.DSTATE");
-  WriteLine("<script type='text/javascript'>");
-    WriteLine("ibdc"#cObj.ID()#" = new iseButtonsDoorContact("#chnId#", '"#objState.Value()#"');");
-    Write("jQuery('#"#chnId#"txtClosed').text(translateKey('infoStatusControlLblClosed')).show();");
-    Write("jQuery('#"#chnId#"txtOpen').text(translateKey('infoStatusControlLblOpen')).show();");
-  WriteLine("</script>");
+  object objStateDoor = cObj.DPByControl("IBTN.DSTATE");
+
   
-
-
   WriteLine("<td><div class='ControlBtnInfo CLASS02532b' style='width:75px; height:35px;'>Anlern-<br/>modus:</div></td>"); 
   
   if( objState )
@@ -117,9 +111,11 @@ function ::CreateIButtonKey() {
   }
 
 
-
   Write("<script type='text/javascript'>");
-    WriteLine("ibk"#objID#" = new iseRFIDKey("#cObj.ID()#", "#iShortId#", "#iLongId#", "#system.GetVar("iStatusOnly")#");");    
+    WriteLine("ibk"#objID#" = new iseButtonsKey("#cObj.ID()#", "#iShortId#", "#iLongId#", "#system.GetVar("iStatusOnly")#");");    
+    WriteLine("ibdc"#cObj.ID()#" = new iseButtonsDoorContact("#chnId#", '"#objStateDoor.Value()#"');");
+    Write("jQuery('#"#chnId#"txtClosed').text(translateKey('infoStatusControlLblClosed')).show();");
+    Write("jQuery('#"#chnId#"txtOpen').text(translateKey('infoStatusControlLblOpen')).show();");
   Write("</script>");
   return;
 }

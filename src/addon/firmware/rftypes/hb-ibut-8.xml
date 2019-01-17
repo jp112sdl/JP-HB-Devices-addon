@@ -6,7 +6,7 @@
     </type>
   </supported_types>
   <paramset type="MASTER" id="remote_dev_master">
-      <parameter id="PARAM_SELECT">
+      <parameter id="Modus">
       <logical type="option">
         <option id="RemoteControl" default="true"/>
         <option id="ShutterContact"/>

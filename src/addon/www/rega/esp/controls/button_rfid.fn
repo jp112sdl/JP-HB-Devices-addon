@@ -91,9 +91,7 @@ function ::CreateRfidKey() {
 
 
   Write("<script type='text/javascript'>");
-    !WriteLine("ibk"#cObj.ID()#" = new iseButtonsKey("#cObj.ID()#", "#iShortId#", "#iLongId#", "#system.GetVar("iStatusOnly")#");");
-    WriteLine("ibk"#objID#" = new iseButtonsKey("#cObj.ID()#", "#iShortId#", "#iLongId#", "#system.GetVar("iStatusOnly")#");");
-    
+    WriteLine("ibk"#objID#" = new iseRFIDKey("#cObj.ID()#", "#iShortId#", "#iLongId#", "#system.GetVar("iStatusOnly")#");");    
   Write("</script>");
   return;
 }

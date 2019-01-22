@@ -109,8 +109,8 @@
       <parameter type="integer" index="9.7" size="0.1" const_value="0"/>
       <parameter type="integer" index="10.0" size="1.0" param="SIM_COUNTER"/>
     </frame>
-    <frame id="RFID_TEXT_EVENT" direction="from_device" event="true" type="0x53" channel_field="10">
-      <parameter type="string" index="11" size="8" param="RFID_CHIPID" />
+    <frame id="RFID_TEXT_EVENT" direction="from_device" event="true" type="0x53" channel_field="9">
+      <parameter type="string" index="10" size="16" param="RFID_CHIPID" />
     </frame>
   </frames>
   <paramset_defs>
@@ -191,6 +191,22 @@
       <parameter id="CHIP_ID_4" ui_flags="internal">
         <logical type="integer" />
         <physical type="integer" interface="config" list="1" index="227" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_5" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="228" size="1" />
+      </parameter>
+     <parameter id="CHIP_ID_6" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="229" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_7" ui_flags="internal">
+        <logical type="integer" />
+        <physical type="integer" interface="config" list="1" index="230" size="1" />
+      </parameter>
+      <parameter id="CHIP_ID_8" ui_flags="internal">
+        <logical type="integer" />
+      <physical type="integer" interface="config" list="1" index="231" size="1" />
       </parameter>
       <parameter id="AES_ACTIVE" ui_flags="internal">
         <logical type="boolean" default="false"/>

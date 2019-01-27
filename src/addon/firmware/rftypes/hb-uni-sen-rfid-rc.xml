@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<device version="1" rx_modes="CONFIG" peering_sysinfo_expect_channel="false" supports_aes="true">
+<device version="1" rx_modes="CONFIG" peering_sysinfo_expect_channel="false" supports_aes="true" cyclic_timeout="10000">
   <supported_types>
     <type name="HB-UNI-Sen-RFID-RC" id="HB-UNI-Sen-RFID-RC" priority="2">
+      <parameter index="9.0"  size="1.0" cond_op="LE" const_value="0x10"/>
       <parameter index="10.0" size="2.0" const_value="0xF33C" />
     </type>
   </supported_types>
@@ -14,6 +15,11 @@
       <logical type="integer" min="1.0" max="10.0" default="2.0"/>
       <physical type="integer" interface="config" list="0" index="20" size="1"/>
     </parameter>
+    <parameter id="CYCLIC_INFO_MSG">
+      <logical type="boolean" default="false"/>
+      <physical type="integer" interface="config" list="0" index="9" size="1"/>
+    </parameter>
+    <enforce id="CYCLIC_INFO_MSG" value="true"/>
   </paramset>
   <channels>
     <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
@@ -30,10 +36,6 @@
         <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
           <logical type="boolean"/>
           <physical type="integer" interface="internal" value_id="CONFIG_PENDING"/>
-        </parameter>
-        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
-          <logical type="boolean"/>
-          <physical type="integer" interface="internal" value_id="LOWBAT"/>
         </parameter>
         <parameter id="AES_KEY" operations="read" ui_flags="invisible">
           <logical type="integer" min="0" max="127"/>

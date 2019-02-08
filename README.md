@@ -1,10 +1,13 @@
 # JP-HB-Devices-addon [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/JP-HB-Devices-addon/total.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/releases) [![GitHub issues](https://img.shields.io/github/issues/jp112sdl/JP-HB-Devices-addon.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/issues)
 
+**:warning: getestet/lauffähig mit CCU Firmware 3.41.x | 3.37.x | 2.35.x | 2.31.x**
+
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
 Nach der Installation wird ein Neustart der Zentrale durchgeführt.<br/>
 Die eigentliche Installation des Addons erfolgt nach diesem Neustart.<br/>
-Währenddessen werden ReGa und der RFD gestoppt, so dass es im Browser zu der Meldung `Eine Komponente der Homematic Zentrale reagiert nicht mehr.` kommen kann.<br/><br/>
+Währenddessen werden ReGa und der RFD gestoppt, so dass es im Browser zu der Meldung<br/>`Eine Komponente der Homematic Zentrale reagiert nicht mehr.` kommen kann.<br/>
+_Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Installation u.U. mehrere Minuten in Anspruch nehmen!_<br/><br/>
 
 Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selbstbaugeräte herzustellen:
 

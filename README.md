@@ -49,16 +49,13 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 
 | Device Model | Gerät |
 |--------|--------|
-|F3 11 | HB-UNI-Sen-CAP-MOIST |
-|F9 D6 | HB-UNI-Sen-DIST-US |
-|F9 D7 | HB-UNI-Sen-DIST-TOF |
-|F9 D2 | HB-UNI-Sen-LEV-US |
-|F9 D3 | HB-UNI-Sen-LEV-TOF |
 |E9 01 | HB-UNI-Sen-PRESS |
 |E9 02 | HB-UNI-Sen-PRESS-SC |
+|F1 D0 | HB-UNI-Sen-WEA |
+|F2 06 | HB-IBUT-8 |
+|F3 11 | HB-UNI-Sen-CAP-MOIST |
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
 |F3 08 | HB-UNI-Sen-TEMP-IR |
-|F1 D0 | HB-UNI-Sen-WEA |
 |F3 31 | HB-UNI-SenAct-4-4-SC|
 |F3 32 | HB-UNI-SenAct-4-4-RC|
 |F3 33 | HB-UNI-SenAct-4-4-SC-BAT|
@@ -74,10 +71,14 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F3 41 | HB-UNI-RGB-LED-CTRL |
 |F3 42 | HB-UNI-DMX-MASTER |
 |F3 43 | HB-DIS-EP-42BW |
+|F3 44 | HB-UNI-MP3-LED |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |F5 01 | HB-LC-Sw2-FM |
-|F2 06 | HB-IBUT-8 |
+|F9 D6 | HB-UNI-Sen-DIST-US |
+|F9 D7 | HB-UNI-Sen-DIST-TOF |
+|F9 D2 | HB-UNI-Sen-LEV-US |
+|F9 D3 | HB-UNI-Sen-LEV-TOF |
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>.

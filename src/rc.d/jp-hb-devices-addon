@@ -35,14 +35,16 @@ case "$1" in
 
         patch -N -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/jp.patch 
 
-        [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
+        [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
+        [[ -f ./config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig ]] && rm ./config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig
         [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
         [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
         [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-        [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
+        [[ -f ./rega/pages/msg/setOUCFMMode.htm.orig ]] && rm ./rega/pages/msg/setOUCFMMode.htm.orig
         [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
-        [[ -f ./webui/js/lang/de/translate.lang.js ]] && rm ./webui/js/lang/de/translate.lang.js
-        
+        [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
+        [[ -f ./webui/js/lang/de/translate.lang.js.orig ]] && rm ./webui/js/lang/de/translate.lang.js.orig
+
         ### Create Symlink to include own js file
         ln -s /usr/local/addons/jp-hb-devices-addon/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 	    	    
@@ -101,15 +103,17 @@ case "$1" in
       patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/jp.patch 
 
       [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
-      [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
-      [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
-      [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-      [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
       [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
-      [[ -f ./webui/js/lang/de/translate.lang.js ]] && rm ./webui/js/lang/de/translate.lang.js
-
+      [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
+      [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
+      [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
+      [[ -f ./rega/pages/msg/setOUCFMMode.htm.orig ]] && rm ./rega/pages/msg/setOUCFMMode.htm.orig
+      [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
+      [[ -f ./config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig ]] && rm ./config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig
+      [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
       [[ -f ./webui/js/extern/jp_webui_inc.js ]] && rm ./webui/js/extern/jp_webui_inc.js
-    		    		    		
+      [[ -f ./webui/js/lang/de/translate.lang.js.orig ]] && rm ./webui/js/lang/de/translate.lang.js.orig
+  		    		    		
       cd /
       rm -rf $ADDON_DIR
       rm -rf $WWW_DIR

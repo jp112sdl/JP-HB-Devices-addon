@@ -156,6 +156,17 @@
        }
  
  
+--- ./patchsource/www/rega/pages/msg/setOUCFMMode.htm.orig	2018-02-28 10:46:46.000000000 +0100
++++ ./patchsource/www/rega/pages/msg/setOUCFMMode.htm	2019-02-11 16:51:13.000000000 +0100
+@@ -671,7 +671,7 @@
+ };
+ 
+ function checkAndActivateExtendedColors(channelLabel) {
+-  if (getChannelLabel() == "HM-OU-CFM-TW") {
++  if (getChannelLabel() == "HM-OU-CFM-TW" || getChannelLabel() == "HB-OU-MP3-LED") {
+     jQuery("#lblOrangeShort").text(translateKey("lblYellowShort"));
+     jQuery("#lblOrangeLong").text(translateKey("lblYellowLong"));
+     jQuery(".j_extendedColor").show();
 --- ./patchsource/www/config/ic_common.tcl.orig	2018-12-05 21:12:41.000000000 +0100
 +++ ./patchsource/www/config/ic_common.tcl	2018-12-02 10:57:56.000000000 +0100
 @@ -1074,6 +1074,7 @@
@@ -294,3 +305,14 @@
      "commentActionStatusControlEnd" : "***********************************************",
      "commentPrgRules" : "***********************************************",
      "programsCreateProgram" : "Programmerstellung",
+--- ./patchsource/www/config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig	2018-02-28 10:46:46.000000000 +0100
++++ ./patchsource/www/config/easymodes/SIGNAL_LEDM/signal_type.tcl	2019-02-11 15:29:09.000000000 +0100
+@@ -1,7 +1,7 @@
+ proc showExtendedColors {} {
+   global dev_descr_receiver
+   set result false
+-  if {$dev_descr_receiver(PARENT_TYPE) == "HM-OU-CFM-TW"} {
++  if {$dev_descr_receiver(PARENT_TYPE) == "HM-OU-CFM-TW" || $dev_descr_receiver(PARENT_TYPE) == "HB-OU-MP3-LED"} {
+     set result true
+   }
+   return $result

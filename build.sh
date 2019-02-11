@@ -18,9 +18,12 @@ diff -Naur ./patchsource/www/rega/esp/side.inc.orig ./patchsource/www/rega/esp/s
 diff -Naur ./patchsource/www/rega/esp/functions.fn.orig ./patchsource/www/rega/esp/functions.fn >> ./src/addon/patch/jp.patch 
 diff -Naur ./patchsource/www/webui/webui.js.orig ./patchsource/www/webui/webui.js >> ./src/addon/patch/jp.patch 
 diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig ./patchsource/www/rega/pages/tabs/admin/views/programs.htm >> ./src/addon/patch/jp.patch 
+diff -Naur ./patchsource/www/rega/pages/msg/setOUCFMMode.htm.orig ./patchsource/www/rega/pages/msg/setOUCFMMode.htm >> ./src/addon/patch/jp.patch 
 diff -Naur ./patchsource/www/config/ic_common.tcl.orig ./patchsource/www/config/ic_common.tcl >> ./src/addon/patch/jp.patch 
 diff -Naur ./patchsource/www/rega/esp/datapointconfigurator.fn.orig ./patchsource/www/rega/esp/datapointconfigurator.fn >> ./src/addon/patch/jp.patch 
 diff -Naur ./patchsource/www/webui/js/lang/de/translate.lang.js.orig ./patchsource/www/webui/js/lang/de/translate.lang.js >> ./src/addon/patch/jp.patch 
+diff -Naur ./patchsource/www/config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig ./patchsource/www/config/easymodes/SIGNAL_LEDM/signal_type.tcl >> ./src/addon/patch/jp.patch 
+
 echo "Patch created."
 
 rm ${ADDON_NAME}-addon.tgz

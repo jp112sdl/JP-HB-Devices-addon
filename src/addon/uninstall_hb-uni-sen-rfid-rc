@@ -33,10 +33,6 @@ if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 fi
 
-cd /www
-patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-uni-sen-rfid-rc.patch 
-[[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
-
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB

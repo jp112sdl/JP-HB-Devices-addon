@@ -14,16 +14,14 @@ ADDON_NAME=jp-hb-devices
 #wget -q -O ./patchsource/www/config/ic_common.tcl.orig https://raw.githubusercontent.com/jens-maus/RaspberryMatic/master/buildroot-external/patches/occu/0000-CCU-Firmware-Diff/occu/WebUI/www/config/ic_common.tcl
 #echo "wget ic_common.tcl exited with $?"
 
-#diff -Naur ./patchsource/www/rega/esp/side.inc.orig ./patchsource/www/rega/esp/side.inc > ./src/addon/patch/hb-dis-ep-42bw.patch 
-#diff -Naur ./patchsource/www/rega/esp/functions.fn.orig ./patchsource/www/rega/esp/functions.fn >> ./src/addon/patch/hb-dis-ep-42bw.patch 
-#diff -Naur ./patchsource/www/webui/webui.js.orig ./patchsource/www/webui/webui.js >> ./src/addon/patch/hb-dis-ep-42bw.patch 
-#diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig ./patchsource/www/rega/pages/tabs/admin/views/programs.htm >> ./src/addon/patch/hb-dis-ep-42bw.patch 
-#diff -Naur ./patchsource/www/config/ic_common.tcl.orig ./patchsource/www/config/ic_common.tcl >> ./src/addon/patch/hb-dis-ep-42bw.patch 
-#echo "Patch HB-DIS-EP42-BW created."
-
-#diff -Naur ./patchsource/www/rega/esp/datapointconfigurator.fn.orig ./patchsource/www/rega/esp/datapointconfigurator.fn > ./src/addon/patch/hb-uni-sen-rfid-rc.patch 
-#diff -Naur ./patchsource/www/webui/js/lang/de/translate.lang.js.orig ./patchsource/www/webui/js/lang/de/translate.lang.js >> ./src/addon/patch/hb-uni-sen-rfid-rc.patch 
-#echo "Patch HB-UNI-Sen-RFID-RC created."
+diff -Naur ./patchsource/www/rega/esp/side.inc.orig ./patchsource/www/rega/esp/side.inc > ./src/addon/patch/jp.patch 
+diff -Naur ./patchsource/www/rega/esp/functions.fn.orig ./patchsource/www/rega/esp/functions.fn >> ./src/addon/patch/jp.patch 
+diff -Naur ./patchsource/www/webui/webui.js.orig ./patchsource/www/webui/webui.js >> ./src/addon/patch/jp.patch 
+diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig ./patchsource/www/rega/pages/tabs/admin/views/programs.htm >> ./src/addon/patch/jp.patch 
+diff -Naur ./patchsource/www/config/ic_common.tcl.orig ./patchsource/www/config/ic_common.tcl >> ./src/addon/patch/jp.patch 
+diff -Naur ./patchsource/www/rega/esp/datapointconfigurator.fn.orig ./patchsource/www/rega/esp/datapointconfigurator.fn >> ./src/addon/patch/jp.patch 
+diff -Naur ./patchsource/www/webui/js/lang/de/translate.lang.js.orig ./patchsource/www/webui/js/lang/de/translate.lang.js >> ./src/addon/patch/jp.patch 
+echo "Patch created."
 
 rm ${ADDON_NAME}-addon.tgz
 cd src

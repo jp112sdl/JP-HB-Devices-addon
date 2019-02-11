@@ -1,6 +1,10 @@
 --- ./patchsource/www/rega/esp/side.inc.orig	2018-12-05 21:12:40.000000000 +0100
-+++ ./patchsource/www/rega/esp/side.inc	2018-11-30 18:59:29.000000000 +0100
-@@ -15,6 +15,7 @@
++++ ./patchsource/www/rega/esp/side.inc	2019-02-11 11:16:33.000000000 +0100
+@@ -12,9 +12,11 @@
+   string hm_oucfm = "HM-OU-CFM-Pl";
+   string hm_oucfmTW = "HM-OU-CFM-TW";
+   string hm_oucmpcb = "HM-OU-CM-PCB";
++  string hb_oump3led = "HB-OU-MP3-LED";
    string hm_partyDialog = "HM-CC-RT-DN HM-TC-IT-WM-W-EU HM-CC-VG-1";
    string hm_statusDisplay = "HM-Dis-WM55";
    string hm_statusDisplayEPaper = "HM-Dis-EP-WM55";
@@ -8,7 +12,11 @@
    string hm_rgbw_controller = "HM-LC-RGBW-WM";
    string hm_jalousieActor = "HM-LC-Ja1PBU";
    string heatingClimateControlTransceiver =  "HEATING_CLIMATECONTROL_TRANSCEIVER";
-@@ -454,6 +455,7 @@
+@@ -451,9 +453,11 @@
+             integer oucfm = chLabel.Find(hm_oucfm);
+             integer oucfmTW = chLabel.Find(hm_oucfmTW);
+             integer oucmpcb = chLabel.Find(hm_oucmpcb);
++            integer oump3led = chLabel.Find(hb_oump3led);
              integer partyDialogDevice = hm_partyDialog.Find(chLabel);
              integer statusDisplayDevice = hm_statusDisplay.Find(chLabel);
              integer statusDisplayEPaperDevice = hm_statusDisplayEPaper.Find(chLabel);
@@ -16,7 +24,7 @@
              integer rgbw_controller = chLabel.Find(hm_rgbw_controller);
              integer i_vir_lg_rgb_dim = chLabel.Find(s_vir_lg_rgb_dim);
              integer i_vir_lg_rgbw_dim = chLabel.Find(s_vir_lg_rgbw_dim);
-@@ -462,6 +464,7 @@
+@@ -462,6 +466,7 @@
  
              if ((statusDisplayDevice != -1)
                || (statusDisplayEPaperDevice != -1)
@@ -24,7 +32,7 @@
                || (rgbw_controller != -1)
                || ((jalousieActor != - 1) && (oDP.HSSID().Find("LEVEL_COMBINED") != -1))
                || (((i_vir_lg_rgb_dim != - 1) && (oDP.HSSID().Find("RGB") != -1)) || ((i_vir_lg_rgbw_dim != - 1) && (oDP.HSSID().Find("RGBW") != -1)) || (( i_vir_lg_group != - 1) && (oDP.HSSID().Find("RGBW") != -1)))
-@@ -482,6 +485,13 @@
+@@ -482,6 +487,13 @@
                  Write( '<input id="prgStringOptionValue'#oSD.ID()#'" onfocus="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');" type="text" class="SelectBox" size="10" value="'#iV#'" onchange="iseSingleDestination.SetValue('#oSD.ID()#',this.value,\'STRING\');" /> ' );
                }
  
@@ -38,7 +46,11 @@
                if (rgbw_controller != -1) {
  
                  if (iV == "0") {
-@@ -532,6 +542,7 @@
+@@ -529,9 +541,11 @@
+               && (oucfm == -1)
+               && (oucfmTW == -1)
+               && (oucmpcb == -1)
++              && (oump3led == -1)
                && (partyDialogDevice == -1)
                && (statusDisplayDevice == -1)
                && (statusDisplayEPaperDevice == -1)
@@ -46,7 +58,16 @@
                && (rgbw_controller == -1)
                && (jalousieActor == -1)
                && (i_vir_lg_rgb_dim == -1)
-@@ -555,6 +566,9 @@
+@@ -543,7 +557,7 @@
+               if(ouled16 != -1) {
+                 Write( '<span class="CLASS02401" onclick="ChangeOULED16Value('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
+               }
+-              if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1)) {
++              if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1) || (oump3led != -1)) {
+                 Write( '<span class="CLASS02401" onclick="ChangeOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
+               }
+               if (partyDialogDevice != -1) {
+@@ -555,6 +569,9 @@
                if (statusDisplayEPaperDevice != -1) {
                  Write( '<span id="setStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');"><img src="/ise/img/notepad.png" /></span>' );
                }
@@ -223,3 +244,53 @@
            }
          }
          append s "<td>$unit</td>"
+--- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig	2018-10-31 21:12:18.000000000 +0100
++++ ./patchsource/www/rega/esp/datapointconfigurator.fn	2019-01-17 13:28:45.000000000 +0100
+@@ -99,6 +99,8 @@
+     var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
+     var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
+     var CN_BUTTON          = "BUTTON.";
++    var CN_RFID_BUTTON     = "RFIDBTN.";
++    var CN_IBTN_BUTTON     = "IBTN.";
+     var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
+     var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
+     var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
+@@ -364,7 +366,27 @@
+             sLastControlName = CN_BTN_SHORT_ONLY;
+             Call("/esp/controls/button.fn::CreateKeyShortOnly()");
+           }
++          
++          !# RFID
++          bIsControl = ( sControlName.Find(CN_RFID_BUTTON) > -1 );
++          if( bIsControl && (sLastControlName!=CN_RFID_BUTTON) )
++          {
++            WriteLine( "<script>conInfo('Control CN_RFID_BUTTON found.');</script>" );
++            isKnownControl = true;
++            sLastControlName = CN_RFID_BUTTON;
++            Call("/esp/controls/rfid_rc.fn::CreateRfidKey()");
++          }
+ 
++          !# iBUTTON
++          bIsControl = ( sControlName.Find(CN_IBTN_BUTTON) > -1 );
++          if( bIsControl && (sLastControlName!=CN_IBTN_BUTTON) )
++          {
++            WriteLine( "<script>conInfo('Control CN_IBTN_BUTTON found.');</script>" );
++            isKnownControl = true;
++            sLastControlName = CN_IBTN_BUTTON;
++            Call("/esp/controls/ibutton.fn::CreateIButtonKey()");
++          }
++          
+           !# BUTTON
+           bIsControl = ( sControlName.Find(CN_BUTTON) > -1 );
+           if( bIsControl && (sLastControlName!=CN_BUTTON) )
+--- ./patchsource/www/webui/js/lang/de/translate.lang.js.orig	2018-10-26 07:01:22.000000000 +0200
++++ ./patchsource/www/webui/js/lang/de/translate.lang.js	2019-01-16 13:44:23.000000000 +0100
+@@ -764,6 +764,8 @@
+     "actionStatusControlLblOff" : "Aus",
+     "actionStatusControlLblShortKeyPress" : "Kurzer<br/>Tastendruck",
+     "actionStatusControlLblLongKeyPress" : "Langer<br/>Tastendruck",
++    "actionStatusControlLblShortRfidHold" : "kurzer<br/>Scan",
++    "actionStatusControlLblLongRfidHold" : "langer<br/>Scan",
+     "commentActionStatusControlEnd" : "***********************************************",
+     "commentPrgRules" : "***********************************************",
+     "programsCreateProgram" : "Programmerstellung",

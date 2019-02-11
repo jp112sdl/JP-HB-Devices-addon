@@ -29,6 +29,22 @@ case "$1" in
         chmod 755 /www/config/img/devices/50/hb-*
         chown root:root /www/ise/img/icons_hm_dis_ep_wm55/24/*
         chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
+        
+        ### Patch some files ###
+        cd /www
+
+        patch -N -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/jp.patch 
+
+        [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
+        [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
+        [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
+        [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
+        [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
+        [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
+        [[ -f ./webui/js/lang/de/translate.lang.js ]] && rm ./webui/js/lang/de/translate.lang.js
+        
+        ### Create Symlink to include own js file
+        ln -s /usr/local/addons/jp-hb-devices-addon/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 	    	    
         echo "Running scripts..."    
         for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
@@ -80,6 +96,19 @@ case "$1" in
       cd ${ADDON_DIR}
       echo "Running scripts..."    
       for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
+      
+      cd /www
+      patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/jp.patch 
+
+      [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
+      [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
+      [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
+      [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
+      [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
+      [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
+      [[ -f ./webui/js/lang/de/translate.lang.js ]] && rm ./webui/js/lang/de/translate.lang.js
+
+      [[ -f ./webui/js/extern/jp_webui_inc.js ]] && rm ./webui/js/extern/jp_webui_inc.js
     		    		    		
       cd /
       rm -rf $ADDON_DIR

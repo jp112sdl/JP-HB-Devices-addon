@@ -126,16 +126,6 @@ translate_deSearch="iconHbBell"
 if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
 	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 fi
-cd /www
-patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch 
-
-[[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
-[[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
-[[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
-[[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-[[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
-
-[[ -f ./webui/js/extern/jp_webui_inc.js ]] && rm ./webui/js/extern/jp_webui_inc.js
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

@@ -12,6 +12,7 @@
   string hm_oucfm = "HM-OU-CFM-Pl";
   string hm_oucfmTW = "HM-OU-CFM-TW";
   string hm_oucmpcb = "HM-OU-CM-PCB";
+  string hb_oump3led = "HB-OU-MP3-LED";
   string hm_partyDialog = "HM-CC-RT-DN HM-TC-IT-WM-W-EU HM-CC-VG-1";
   string hm_statusDisplay = "HM-Dis-WM55";
   string hm_statusDisplayEPaper = "HM-Dis-EP-WM55";
@@ -452,6 +453,7 @@
             integer oucfm = chLabel.Find(hm_oucfm);
             integer oucfmTW = chLabel.Find(hm_oucfmTW);
             integer oucmpcb = chLabel.Find(hm_oucmpcb);
+            integer oump3led = chLabel.Find(hb_oump3led);
             integer partyDialogDevice = hm_partyDialog.Find(chLabel);
             integer statusDisplayDevice = hm_statusDisplay.Find(chLabel);
             integer statusDisplayEPaperDevice = hm_statusDisplayEPaper.Find(chLabel);
@@ -539,6 +541,7 @@
               && (oucfm == -1)
               && (oucfmTW == -1)
               && (oucmpcb == -1)
+              && (oump3led == -1)
               && (partyDialogDevice == -1)
               && (statusDisplayDevice == -1)
               && (statusDisplayEPaperDevice == -1)
@@ -554,7 +557,7 @@
               if(ouled16 != -1) {
                 Write( '<span class="CLASS02401" onclick="ChangeOULED16Value('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
               }
-              if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1)) {
+              if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1) || (oump3led != -1)) {
                 Write( '<span class="CLASS02401" onclick="ChangeOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
               }
               if (partyDialogDevice != -1) {

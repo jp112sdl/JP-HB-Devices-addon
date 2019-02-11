@@ -15,20 +15,6 @@ if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
 	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
 fi
 
-### Patch some files ###
-cd /www
-
-patch -N -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch 
-
-[[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
-[[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
-[[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
-[[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-[[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
-
-### Create Symlink to include own js file
-ln -s /usr/local/addons/jp-hb-devices-addon/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
-
 indexFile="/www/rega/pages/index.htm"
 indexFileSearch="<script type=\"text/javascript\" src=\"/webui/webui.js"
 indexFileInsert="<script type=\"text/javascript\" src=\"/webui/js/extern/jp_webui_inc.js\"></script>"

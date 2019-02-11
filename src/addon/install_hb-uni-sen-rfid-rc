@@ -59,7 +59,3 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHbBuzzerEnabled\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-### Patch some files ###
-cd /www
-patch -N -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-uni-sen-rfid-rc.patch 
-[[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig

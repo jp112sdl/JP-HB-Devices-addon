@@ -95,6 +95,19 @@
     };
   };  
 
+  // MP3 HB Funkgong
+  ChangeHBOUCFMValue = function(sdid)
+  {
+    iseSingleDestination.reload = false;
+    dlgResult = "";
+    CreatePopup(ID_SET_HBOUCFM_MODE, "X:"+sdid);
+    PopupClose = function()
+    {
+      dlgPopup.hide();
+      ReloadSingleDestination(sdid);
+    };
+  }; 
+  
   // Heating thermostate
   SetPartyMode = function(elm) {
     var url = "/pages/msg/setPartyMode.htm";

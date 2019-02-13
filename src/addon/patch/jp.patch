@@ -1,5 +1,5 @@
 --- ./patchsource/www/rega/esp/side.inc.orig	2018-12-05 21:12:40.000000000 +0100
-+++ ./patchsource/www/rega/esp/side.inc	2019-02-11 11:16:33.000000000 +0100
++++ ./patchsource/www/rega/esp/side.inc	2019-02-13 10:43:57.000000000 +0100
 @@ -12,9 +12,11 @@
    string hm_oucfm = "HM-OU-CFM-Pl";
    string hm_oucfmTW = "HM-OU-CFM-TW";
@@ -58,16 +58,17 @@
                && (rgbw_controller == -1)
                && (jalousieActor == -1)
                && (i_vir_lg_rgb_dim == -1)
-@@ -543,7 +557,7 @@
-               if(ouled16 != -1) {
-                 Write( '<span class="CLASS02401" onclick="ChangeOULED16Value('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
-               }
--              if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1)) {
-+              if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1) || (oump3led != -1)) {
+@@ -546,6 +560,9 @@
+               if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1)) {
                  Write( '<span class="CLASS02401" onclick="ChangeOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
                }
++              if(oump3led != -1) {
++                Write( '<span class="CLASS02401" onclick="ChangeHBOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
++              }              
                if (partyDialogDevice != -1) {
-@@ -555,6 +569,9 @@
+                 Write( '<span id="setPartyMode" class="CLASS02401" onclick="SetPartyMode(this);"><img src="/ise/img/notepad.png" /></span>' );
+               }
+@@ -555,6 +572,9 @@
                if (statusDisplayEPaperDevice != -1) {
                  Write( '<span id="setStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');"><img src="/ise/img/notepad.png" /></span>' );
                }
@@ -94,7 +95,7 @@
  
  function ::showHideHmIPChannel() {
 --- ./patchsource/www/webui/webui.js.orig	2018-12-05 21:12:40.000000000 +0100
-+++ ./patchsource/www/webui/webui.js	2019-01-01 13:03:46.000000000 +0100
++++ ./patchsource/www/webui/webui.js	2019-02-13 10:49:43.000000000 +0100
 @@ -13146,7 +13146,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
@@ -122,9 +123,50 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
+@@ -22539,6 +22539,12 @@
+         this.setWidth(400);
+         this.setFile( "/pages/msg/setOUCFMMode.htm" );
+         break;
++        case ID_SET_HBOUCFM_MODE:
++        this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
++        this.addToPostBody( 'string type = "'+this.type+'";' );
++        this.setWidth(400);
++        this.setFile( "/pages/msg/setHBOUCFMMode.htm" );
++        break;
+         case ID_SET_STATUS_DISPLAY:
+         this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
+         this.addToPostBody( 'string type = "'+this.type+'";' );
+@@ -23337,6 +23343,7 @@
+ ID_EDIT_SYSVAR           = 1021;
+ ID_CHOOSE_LED            = 1022;
+ ID_SET_OUCFM_MODE        = 1023;
++ID_SET_HBOUCFM_MODE      = 1923;
+ ID_SET_STATUS_DISPLAY    = 1024;
+ ID_BIDCOS_INTERFACE = 1025;
+ 
 --- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig	2018-12-05 21:12:41.000000000 +0100
-+++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2018-11-29 22:54:25.000000000 +0100
-@@ -141,7 +141,10 @@
++++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2019-02-13 10:48:14.000000000 +0100
+@@ -95,6 +95,19 @@
+     };
+   };  
+ 
++  // MP3 HB Funkgong
++  ChangeHBOUCFMValue = function(sdid)
++  {
++    iseSingleDestination.reload = false;
++    dlgResult = "";
++    CreatePopup(ID_SET_HBOUCFM_MODE, "X:"+sdid);
++    PopupClose = function()
++    {
++      dlgPopup.hide();
++      ReloadSingleDestination(sdid);
++    };
++  }; 
++  
+   // Heating thermostate
+   SetPartyMode = function(elm) {
+     var url = "/pages/msg/setPartyMode.htm";
+@@ -141,7 +154,10 @@
    };
  
    SetStatusDisplay = function(regaDialogID, mode) {
@@ -136,7 +178,7 @@
  
      jQuery(elm).prop("disabled", true);
  
-@@ -179,6 +182,19 @@
+@@ -179,6 +195,19 @@
              inputElm.change();
            }
          }, "html");
@@ -156,17 +198,6 @@
        }
  
  
---- ./patchsource/www/rega/pages/msg/setOUCFMMode.htm.orig	2018-02-28 10:46:46.000000000 +0100
-+++ ./patchsource/www/rega/pages/msg/setOUCFMMode.htm	2019-02-11 16:51:13.000000000 +0100
-@@ -671,7 +671,7 @@
- };
- 
- function checkAndActivateExtendedColors(channelLabel) {
--  if (getChannelLabel() == "HM-OU-CFM-TW") {
-+  if (getChannelLabel() == "HM-OU-CFM-TW" || getChannelLabel() == "HB-OU-MP3-LED") {
-     jQuery("#lblOrangeShort").text(translateKey("lblYellowShort"));
-     jQuery("#lblOrangeLong").text(translateKey("lblYellowLong"));
-     jQuery(".j_extendedColor").show();
 --- ./patchsource/www/config/ic_common.tcl.orig	2018-12-05 21:12:41.000000000 +0100
 +++ ./patchsource/www/config/ic_common.tcl	2018-12-02 10:57:56.000000000 +0100
 @@ -1074,6 +1074,7 @@

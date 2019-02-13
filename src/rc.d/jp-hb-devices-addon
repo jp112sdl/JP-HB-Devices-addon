@@ -40,7 +40,6 @@ case "$1" in
         [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
         [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
         [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-        [[ -f ./rega/pages/msg/setOUCFMMode.htm.orig ]] && rm ./rega/pages/msg/setOUCFMMode.htm.orig
         [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
         [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
         [[ -f ./webui/js/lang/de/translate.lang.js.orig ]] && rm ./webui/js/lang/de/translate.lang.js.orig
@@ -107,7 +106,6 @@ case "$1" in
       [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
       [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
       [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-      [[ -f ./rega/pages/msg/setOUCFMMode.htm.orig ]] && rm ./rega/pages/msg/setOUCFMMode.htm.orig
       [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
       [[ -f ./config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig ]] && rm ./config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig
       [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig

@@ -22539,6 +22539,12 @@ iseMessageBox.prototype =
         this.setWidth(400);
         this.setFile( "/pages/msg/setOUCFMMode.htm" );
         break;
+        case ID_SET_HBOUCFM_MODE:
+        this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
+        this.addToPostBody( 'string type = "'+this.type+'";' );
+        this.setWidth(400);
+        this.setFile( "/pages/msg/setHBOUCFMMode.htm" );
+        break;
         case ID_SET_STATUS_DISPLAY:
         this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
         this.addToPostBody( 'string type = "'+this.type+'";' );
@@ -23337,6 +23343,7 @@ ID_PROGRAM_CHOOSER       = 1019;
 ID_EDIT_SYSVAR           = 1021;
 ID_CHOOSE_LED            = 1022;
 ID_SET_OUCFM_MODE        = 1023;
+ID_SET_HBOUCFM_MODE      = 1923;
 ID_SET_STATUS_DISPLAY    = 1024;
 ID_BIDCOS_INTERFACE = 1025;
 

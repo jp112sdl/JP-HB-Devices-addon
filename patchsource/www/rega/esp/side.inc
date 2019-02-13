@@ -557,9 +557,12 @@
               if(ouled16 != -1) {
                 Write( '<span class="CLASS02401" onclick="ChangeOULED16Value('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
               }
-              if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1) || (oump3led != -1)) {
+              if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1)) {
                 Write( '<span class="CLASS02401" onclick="ChangeOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
               }
+              if(oump3led != -1) {
+                Write( '<span class="CLASS02401" onclick="ChangeHBOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
+              }              
               if (partyDialogDevice != -1) {
                 Write( '<span id="setPartyMode" class="CLASS02401" onclick="SetPartyMode(this);"><img src="/ise/img/notepad.png" /></span>' );
               }

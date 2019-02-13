@@ -47,6 +47,7 @@ case "$1" in
         ### Create Symlink to include own js file
         ln -s /usr/local/addons/jp-hb-devices-addon/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 	    	    
+        cd ${ADDON_DIR}
         echo "Running scripts..."    
         for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
 

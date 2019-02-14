@@ -263,8 +263,9 @@ function setChannel1() {
   if (origValue == 0 || origValue == "0") {
     origValue = getDefaultValue(1);//"0,0," + minMaxValues.max.duration + ",0";
   }
+  //console.log("origValue="+origValue);
   var origValues = origValue.split(","); 
-  var bpm = parseInt(origValues[0]); // 0 / 1 
+  var bpm = parseInt(origValues[3]); // 0 / 1 
   var count = parseInt(origValues[1]); // 0 - 255
   var duration = parseInt(origValues[2]); // 0 - 108000
   var oTime = convertSeconds2HHMMSS(duration, minMaxValues.max.duration); 
@@ -318,7 +319,7 @@ function getDefaultValue(ch) {
   
   switch (ch) {
     case 1: 
-      return "20,128,30,0";
+      return "0,128,30,60,0";
     case 2:
       return "1.0,1," + minMaxValues.max.duration + ",0";
     default: 
@@ -356,17 +357,15 @@ function getOUCFMLEDAction(values) {
   var arrValues = [];
   var isZero = false;
   
-  for(var loop = 3; loop < values.length; loop++) {
-    if (isZero == false) {
-      arrValues.push(values[loop]); // we need the value as hex val   
+  if (isZero == false) {
+      arrValues.push(values[4]); // we need the value as hex val   
       
       // beim ersten Auftreten einer 0 sind alle weiteren Einträge auch auf 0 zu setzen
-      if (parseInt(values[loop]) == 0) {
+      if (parseInt(values[4]) == 0) {
         isZero = true;
       }
     } else {
       arrValues.push(0); // we need the value as hex val   
-    }
   }
   
   //printArray(arrValues);
@@ -561,9 +560,10 @@ function getLEDSettings() {
     
   oValues = checkMinMax(oValues);
 
-  settings += oValues.bpm + ",";
+  settings += "0,";
   settings += oValues.count + ",";
   settings += oValues.duration + ",";
+  settings += oValues.bpm +",";
   settings += oValues.action;
 
   //console.log("settings: " + settings);

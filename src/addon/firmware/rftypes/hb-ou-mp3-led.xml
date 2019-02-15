@@ -382,10 +382,11 @@
           <option id="RED" default="true"/>
           <option id="GREEN"/>
           <option id="YELLOW"/>
-          <option id="BLUE_"/>
+          <option id="BLUE"/>
           <option id="VIOLET"/>
           <option id="CYAN"/>
           <option id="WHITE"/>
+          <option id="ORANGE"/>
         </logical>
         <physical type="integer" interface="config" list="3" index="0x24" size="1.0"/>
         <conversion type="option_integer">
@@ -397,6 +398,7 @@
           <value_map device_value="0x51" parameter_value="5"/>
           <value_map device_value="0x61" parameter_value="6"/>
           <value_map device_value="0x71" parameter_value="7"/>
+          <value_map device_value="0x81" parameter_value="8"/>
         </conversion>
       </parameter>
       <parameter id="SHORT_ACT_NUM">
@@ -582,11 +584,12 @@
           <option id="NO_MSG"/>
           <option id="RED" default="true"/>
           <option id="GREEN"/>
-          <option id="ORANGE"/>
+          <option id="YELLOW"/>
           <option id="BLUE"/>
           <option id="VIOLET"/>
           <option id="CYAN"/>
           <option id="WHITE"/>
+          <option id="ORANGE"/>
         </logical>
         <physical type="integer" interface="config" list="3" index="0x24" size="1.0"/>
         <conversion type="option_integer">
@@ -598,6 +601,7 @@
           <value_map device_value="0x51" parameter_value="5"/>
           <value_map device_value="0x61" parameter_value="6"/>
           <value_map device_value="0x71" parameter_value="7"/>
+          <value_map device_value="0x81" parameter_value="8"/>
         </conversion>
       </parameter>
       <parameter id="LONG_ACT_NUM">

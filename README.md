@@ -57,6 +57,7 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F3 11 | HB-UNI-Sen-CAP-MOIST |
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
 |F3 08 | HB-UNI-Sen-TEMP-IR |
+|F3 20 | HB-LC-SW12-FM |
 |F3 31 | HB-UNI-SenAct-4-4-SC|
 |F3 32 | HB-UNI-SenAct-4-4-RC|
 |F3 33 | HB-UNI-SenAct-4-4-SC-BAT|

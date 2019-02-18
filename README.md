@@ -1,6 +1,9 @@
 # JP-HB-Devices-addon [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/JP-HB-Devices-addon/total.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/releases) [![GitHub issues](https://img.shields.io/github/issues/jp112sdl/JP-HB-Devices-addon.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/issues)
 
-**:warning: getestet/lauffähig mit CCU Firmware 3.41.x | 3.37.x | 2.35.x | 2.31.x**
+### :x: ACHTUNG: Funktioniert NICHT mit CCU Firmware 3.43.x ! 
+
+
+**:heavy_check_mark: getestet/lauffähig mit CCU Firmware 2.31.x | 2.35.x | 2.41.5 | 3.37.x | 3.41.x**
 
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 

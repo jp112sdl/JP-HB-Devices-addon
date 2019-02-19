@@ -1,10 +1,6 @@
 --- ./patchsource/www/rega/esp/side.inc.orig	2018-12-05 21:12:40.000000000 +0100
-+++ ./patchsource/www/rega/esp/side.inc	2019-02-19 09:09:39.000000000 +0100
-@@ -12,9 +12,11 @@
-   string hm_oucfm = "HM-OU-CFM-Pl";
-   string hm_oucfmTW = "HM-OU-CFM-TW";
-   string hm_oucmpcb = "HM-OU-CM-PCB";
-+  string hb_oump3led = "HB-OU-MP3-LED";
++++ ./patchsource/www/rega/esp/side.inc	2018-11-30 18:59:29.000000000 +0100
+@@ -15,6 +15,7 @@
    string hm_partyDialog = "HM-CC-RT-DN HM-TC-IT-WM-W-EU HM-CC-VG-1";
    string hm_statusDisplay = "HM-Dis-WM55";
    string hm_statusDisplayEPaper = "HM-Dis-EP-WM55";
@@ -12,11 +8,7 @@
    string hm_rgbw_controller = "HM-LC-RGBW-WM";
    string hm_jalousieActor = "HM-LC-Ja1PBU";
    string heatingClimateControlTransceiver =  "HEATING_CLIMATECONTROL_TRANSCEIVER";
-@@ -451,9 +453,11 @@
-             integer oucfm = chLabel.Find(hm_oucfm);
-             integer oucfmTW = chLabel.Find(hm_oucfmTW);
-             integer oucmpcb = chLabel.Find(hm_oucmpcb);
-+            integer oump3led = chLabel.Find(hb_oump3led);
+@@ -454,6 +455,7 @@
              integer partyDialogDevice = hm_partyDialog.Find(chLabel);
              integer statusDisplayDevice = hm_statusDisplay.Find(chLabel);
              integer statusDisplayEPaperDevice = hm_statusDisplayEPaper.Find(chLabel);
@@ -24,7 +16,7 @@
              integer rgbw_controller = chLabel.Find(hm_rgbw_controller);
              integer i_vir_lg_rgb_dim = chLabel.Find(s_vir_lg_rgb_dim);
              integer i_vir_lg_rgbw_dim = chLabel.Find(s_vir_lg_rgbw_dim);
-@@ -462,6 +466,7 @@
+@@ -462,6 +464,7 @@
  
              if ((statusDisplayDevice != -1)
                || (statusDisplayEPaperDevice != -1)
@@ -32,7 +24,7 @@
                || (rgbw_controller != -1)
                || ((jalousieActor != - 1) && (oDP.HSSID().Find("LEVEL_COMBINED") != -1))
                || (((i_vir_lg_rgb_dim != - 1) && (oDP.HSSID().Find("RGB") != -1)) || ((i_vir_lg_rgbw_dim != - 1) && (oDP.HSSID().Find("RGBW") != -1)) || (( i_vir_lg_group != - 1) && (oDP.HSSID().Find("RGBW") != -1)))
-@@ -482,6 +487,13 @@
+@@ -482,6 +485,13 @@
                  Write( '<input id="prgStringOptionValue'#oSD.ID()#'" onfocus="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');" type="text" class="SelectBox" size="10" value="'#iV#'" onchange="iseSingleDestination.SetValue('#oSD.ID()#',this.value,\'STRING\');" /> ' );
                }
  
@@ -46,11 +38,7 @@
                if (rgbw_controller != -1) {
  
                  if (iV == "0") {
-@@ -529,9 +541,11 @@
-               && (oucfm == -1)
-               && (oucfmTW == -1)
-               && (oucmpcb == -1)
-+              && (oump3led == -1)
+@@ -532,6 +542,7 @@
                && (partyDialogDevice == -1)
                && (statusDisplayDevice == -1)
                && (statusDisplayEPaperDevice == -1)
@@ -58,17 +46,7 @@
                && (rgbw_controller == -1)
                && (jalousieActor == -1)
                && (i_vir_lg_rgb_dim == -1)
-@@ -546,6 +560,9 @@
-               if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1)) {
-                 Write( '<span class="CLASS02401" onclick="ChangeOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
-               }
-+              if(oump3led != -1) {
-+                Write( '<span class="CLASS02401" onclick="ChangeHBOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
-+              }              
-               if (partyDialogDevice != -1) {
-                 Write( '<span id="setPartyMode" class="CLASS02401" onclick="SetPartyMode(this);"><img src="/ise/img/notepad.png" /></span>' );
-               }
-@@ -555,6 +572,9 @@
+@@ -555,6 +566,9 @@
                if (statusDisplayEPaperDevice != -1) {
                  Write( '<span id="setStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');"><img src="/ise/img/notepad.png" /></span>' );
                }
@@ -78,7 +56,7 @@
                if (rgbw_controller != -1) {
                  Write( '<span id="setRGBWController'#oSD.ID()#'" class="CLASS02401" onclick="SetRGBWController('#oSD.ID()#',\''#oDP.HSSID()#'\');"><img src="/ise/img/notepad.png" /></span>' );
                }
---- ./patchsource/www/rega/esp/functions.fn.orig	2019-02-18 11:16:35.000000000 +0100
+--- ./patchsource/www/rega/esp/functions.fn.orig	2018-12-05 21:12:40.000000000 +0100
 +++ ./patchsource/www/rega/esp/functions.fn	2018-12-01 10:11:26.000000000 +0100
 @@ -331,6 +331,13 @@
      ! Hide channel 3 of this device
@@ -94,8 +72,8 @@
  }
  
  function ::showHideHmIPChannel() {
---- ./patchsource/www/webui/webui.js.orig	2019-02-18 11:16:40.000000000 +0100
-+++ ./patchsource/www/webui/webui.js	2019-02-19 08:57:15.000000000 +0100
+--- ./patchsource/www/webui/webui.js.orig	2018-12-05 21:12:40.000000000 +0100
++++ ./patchsource/www/webui/webui.js	2019-01-01 13:03:46.000000000 +0100
 @@ -13146,7 +13146,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
@@ -123,50 +101,9 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
-@@ -22539,6 +22539,12 @@
-         this.setWidth(400);
-         this.setFile( "/pages/msg/setOUCFMMode.htm" );
-         break;
-+        case ID_SET_HBOUCFM_MODE:
-+        this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
-+        this.addToPostBody( 'string type = "'+this.type+'";' );
-+        this.setWidth(400);
-+        this.setFile( "/pages/msg/setHBOUCFMMode.htm" );
-+        break;
-         case ID_SET_STATUS_DISPLAY:
-         this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
-         this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -23337,6 +23343,7 @@
- ID_EDIT_SYSVAR           = 1021;
- ID_CHOOSE_LED            = 1022;
- ID_SET_OUCFM_MODE        = 1023;
-+ID_SET_HBOUCFM_MODE      = 1923;
- ID_SET_STATUS_DISPLAY    = 1024;
- ID_BIDCOS_INTERFACE = 1025;
- 
 --- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig	2018-12-05 21:12:41.000000000 +0100
-+++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2019-02-19 08:57:15.000000000 +0100
-@@ -95,6 +95,19 @@
-     };
-   };  
- 
-+  // MP3 HB Funkgong
-+  ChangeHBOUCFMValue = function(sdid)
-+  {
-+    iseSingleDestination.reload = false;
-+    dlgResult = "";
-+    CreatePopup(ID_SET_HBOUCFM_MODE, "X:"+sdid);
-+    PopupClose = function()
-+    {
-+      dlgPopup.hide();
-+      ReloadSingleDestination(sdid);
-+    };
-+  }; 
-+  
-   // Heating thermostate
-   SetPartyMode = function(elm) {
-     var url = "/pages/msg/setPartyMode.htm";
-@@ -141,7 +154,10 @@
++++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2018-11-29 22:54:25.000000000 +0100
+@@ -141,7 +141,10 @@
    };
  
    SetStatusDisplay = function(regaDialogID, mode) {
@@ -178,7 +115,7 @@
  
      jQuery(elm).prop("disabled", true);
  
-@@ -179,6 +195,19 @@
+@@ -179,6 +182,19 @@
              inputElm.change();
            }
          }, "html");
@@ -286,64 +223,3 @@
            }
          }
          append s "<td>$unit</td>"
---- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig	2019-02-18 11:16:29.000000000 +0100
-+++ ./patchsource/www/rega/esp/datapointconfigurator.fn	2019-01-17 13:28:45.000000000 +0100
-@@ -99,6 +99,8 @@
-     var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
-     var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
-     var CN_BUTTON          = "BUTTON.";
-+    var CN_RFID_BUTTON     = "RFIDBTN.";
-+    var CN_IBTN_BUTTON     = "IBTN.";
-     var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
-     var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
-     var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
-@@ -364,7 +366,27 @@
-             sLastControlName = CN_BTN_SHORT_ONLY;
-             Call("/esp/controls/button.fn::CreateKeyShortOnly()");
-           }
-+          
-+          !# RFID
-+          bIsControl = ( sControlName.Find(CN_RFID_BUTTON) > -1 );
-+          if( bIsControl && (sLastControlName!=CN_RFID_BUTTON) )
-+          {
-+            WriteLine( "<script>conInfo('Control CN_RFID_BUTTON found.');</script>" );
-+            isKnownControl = true;
-+            sLastControlName = CN_RFID_BUTTON;
-+            Call("/esp/controls/rfid_rc.fn::CreateRfidKey()");
-+          }
- 
-+          !# iBUTTON
-+          bIsControl = ( sControlName.Find(CN_IBTN_BUTTON) > -1 );
-+          if( bIsControl && (sLastControlName!=CN_IBTN_BUTTON) )
-+          {
-+            WriteLine( "<script>conInfo('Control CN_IBTN_BUTTON found.');</script>" );
-+            isKnownControl = true;
-+            sLastControlName = CN_IBTN_BUTTON;
-+            Call("/esp/controls/ibutton.fn::CreateIButtonKey()");
-+          }
-+          
-           !# BUTTON
-           bIsControl = ( sControlName.Find(CN_BUTTON) > -1 );
-           if( bIsControl && (sLastControlName!=CN_BUTTON) )
---- ./patchsource/www/webui/js/lang/de/translate.lang.js.orig	2018-10-26 07:01:22.000000000 +0200
-+++ ./patchsource/www/webui/js/lang/de/translate.lang.js	2019-01-16 13:44:23.000000000 +0100
-@@ -764,6 +764,8 @@
-     "actionStatusControlLblOff" : "Aus",
-     "actionStatusControlLblShortKeyPress" : "Kurzer<br/>Tastendruck",
-     "actionStatusControlLblLongKeyPress" : "Langer<br/>Tastendruck",
-+    "actionStatusControlLblShortRfidHold" : "kurzer<br/>Scan",
-+    "actionStatusControlLblLongRfidHold" : "langer<br/>Scan",
-     "commentActionStatusControlEnd" : "***********************************************",
-     "commentPrgRules" : "***********************************************",
-     "programsCreateProgram" : "Programmerstellung",
---- ./patchsource/www/config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig	2019-02-19 08:57:15.000000000 +0100
-+++ ./patchsource/www/config/easymodes/SIGNAL_LEDM/signal_type.tcl	2019-02-19 08:57:15.000000000 +0100
-@@ -1,7 +1,7 @@
- proc showExtendedColors {} {
-   global dev_descr_receiver
-   set result false
--  if {$dev_descr_receiver(PARENT_TYPE) == "HM-OU-CFM-TW"} {
-+  if {$dev_descr_receiver(PARENT_TYPE) == "HM-OU-CFM-TW" || $dev_descr_receiver(PARENT_TYPE) == "HB-OU-MP3-LED"} {
-     set result true
-   }
-   return $result

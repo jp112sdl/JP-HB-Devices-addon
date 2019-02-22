@@ -83,3 +83,12 @@ translate_deInsert="\n    \"stringTableHbLedCount\" : \"Anzahl LEDs\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbLedCount\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
+
+### Edit translate.lang.extension.js
+translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
+
+translate_deSearch="\"iconServiceMessage\":\"Servicemeldung\","
+translate_deInsert="\n    \"lblHbIterations\":\"Anzahl der Durchl%E4ufe\","
+if [ -z "`cat $translate_deFile | grep \"lblHbIterations\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi

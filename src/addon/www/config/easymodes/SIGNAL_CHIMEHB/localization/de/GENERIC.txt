@@ -7,5 +7,5 @@
 "signal_short" : "kurz",
 "signal_long" : "lang",
 "sound_nr" : "MP3 Nr. ",
-"iterations" : "Anzahl der Wiederholungen ",
+"iterations" : "Anzahl der Durchl&auml;ufe ",
 "volume" : "Lautst&auml;rke",

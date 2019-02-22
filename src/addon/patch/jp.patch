@@ -336,14 +336,3 @@
      "commentActionStatusControlEnd" : "***********************************************",
      "commentPrgRules" : "***********************************************",
      "programsCreateProgram" : "Programmerstellung",
---- ./patchsource/www/config/easymodes/SIGNAL_LEDM/signal_type.tcl.orig	2019-02-19 08:57:15.000000000 +0100
-+++ ./patchsource/www/config/easymodes/SIGNAL_LEDM/signal_type.tcl	2019-02-19 08:57:15.000000000 +0100
-@@ -1,7 +1,7 @@
- proc showExtendedColors {} {
-   global dev_descr_receiver
-   set result false
--  if {$dev_descr_receiver(PARENT_TYPE) == "HM-OU-CFM-TW"} {
-+  if {$dev_descr_receiver(PARENT_TYPE) == "HM-OU-CFM-TW" || $dev_descr_receiver(PARENT_TYPE) == "HB-OU-MP3-LED"} {
-     set result true
-   }
-   return $result

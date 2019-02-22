@@ -7,10 +7,6 @@
     </type>
   </supported_types>
   <paramset type="MASTER" id="maint_ch_master">
-    <parameter id="LOCAL_RESET_DISABLE">
-      <logical type="boolean" default="false"/>
-      <physical type="integer" interface="config" list="0" index="24" size="1"/>
-    </parameter>
   </paramset>
   <paramset type="MASTER" id="signal_led_dev_master"/>
   <paramset type="MASTER" id="signal_chime_dev_master"/>
@@ -72,7 +68,7 @@
       <paramset type="VALUES" id="signal_led_ch_values">
         <subset ref="signal_led_valueset"/>
       </paramset>
-      <paramset type="LINK" id="signal_mled_ch_link">
+      <paramset type="LINK" id="signal_hbled_ch_link">
         <subset ref="signal_led_linkset"/>
       </paramset>
       <enforce_link>
@@ -92,7 +88,7 @@
       <paramset type="VALUES" id="signal_chime_ch_values">
         <subset ref="signal_chime_valueset"/>
       </paramset>
-      <paramset type="LINK" id="signal_mchime_ch_link">
+      <paramset type="LINK" id="signal_hbchime_ch_link">
         <subset ref="signal_chime_linkset"/>
       </paramset>
       <enforce_link>
@@ -390,20 +386,24 @@
         </logical>
         <physical type="integer" interface="config" list="3" index="0x24" size="1.0"/>
         <conversion type="option_integer">
-          <value_map device_value="0x00" parameter_value="0"/>
-          <value_map device_value="0x11" parameter_value="1"/>
-          <value_map device_value="0x21" parameter_value="2"/>
-          <value_map device_value="0x31" parameter_value="3"/>
-          <value_map device_value="0x41" parameter_value="4"/>
-          <value_map device_value="0x51" parameter_value="5"/>
-          <value_map device_value="0x61" parameter_value="6"/>
-          <value_map device_value="0x71" parameter_value="7"/>
-          <value_map device_value="0x81" parameter_value="8"/>
+          <value_map device_value="00" parameter_value="0"/>
+          <value_map device_value="11" parameter_value="1"/>
+          <value_map device_value="21" parameter_value="2"/>
+          <value_map device_value="31" parameter_value="3"/>
+          <value_map device_value="41" parameter_value="4"/>
+          <value_map device_value="51" parameter_value="5"/>
+          <value_map device_value="61" parameter_value="6"/>
+          <value_map device_value="71" parameter_value="7"/>
+          <value_map device_value="81" parameter_value="8"/>
         </conversion>
       </parameter>
       <parameter id="SHORT_ACT_NUM">
         <logical type="integer" min="1" max="255" default="1"/>
         <physical type="integer" interface="config" list="3" index="0x25" size="1.0"/>
+      </parameter>
+      <parameter id="SHORT_ACT_INTENS">
+        <logical type="integer" min="1" max="255" default="64"/>
+        <physical type="integer" interface="config" list="3" index="0x2B" size="1.0"/>
       </parameter>
       <parameter id="LONG_CT_OFFDELAY">
         <logical type="option">
@@ -591,22 +591,26 @@
           <option id="WHITE"/>
           <option id="ORANGE"/>
         </logical>
-        <physical type="integer" interface="config" list="3" index="0x24" size="1.0"/>
+        <physical type="integer" interface="config" list="3" index="0xA4" size="1.0"/>
         <conversion type="option_integer">
-          <value_map device_value="0x00" parameter_value="0"/>
-          <value_map device_value="0x11" parameter_value="1"/>
-          <value_map device_value="0x21" parameter_value="2"/>
-          <value_map device_value="0x31" parameter_value="3"/>
-          <value_map device_value="0x41" parameter_value="4"/>
-          <value_map device_value="0x51" parameter_value="5"/>
-          <value_map device_value="0x61" parameter_value="6"/>
-          <value_map device_value="0x71" parameter_value="7"/>
-          <value_map device_value="0x81" parameter_value="8"/>
+          <value_map device_value="00" parameter_value="0"/>
+          <value_map device_value="11" parameter_value="1"/>
+          <value_map device_value="21" parameter_value="2"/>
+          <value_map device_value="31" parameter_value="3"/>
+          <value_map device_value="41" parameter_value="4"/>
+          <value_map device_value="51" parameter_value="5"/>
+          <value_map device_value="61" parameter_value="6"/>
+          <value_map device_value="71" parameter_value="7"/>
+          <value_map device_value="81" parameter_value="8"/>
         </conversion>
       </parameter>
       <parameter id="LONG_ACT_NUM">
         <logical type="integer" min="0" max="255" default="1"/>
         <physical type="integer" interface="config" list="3" index="0xA5" size="1.0"/>
+      </parameter>
+      <parameter id="LONG_ACT_INTENS">
+        <logical type="integer" min="0" max="255" default="64"/>
+        <physical type="integer" interface="config" list="3" index="0xAB" size="1.0"/>
       </parameter>
       <default_values function="A">
         <value id="LONG_JT_OFF" value="ONDELAY"/>
@@ -883,17 +887,17 @@
         </logical>
         <physical type="integer" interface="config" list="3" index="0x2B" size="1.0"/>
         <conversion type="option_integer">
-          <value_map device_value="255" parameter_value="0"/>
-          <value_map device_value="250" parameter_value="1"/>
-          <value_map device_value="246" parameter_value="2"/>
-          <value_map device_value="240" parameter_value="3"/>
-          <value_map device_value="234" parameter_value="4"/>
-          <value_map device_value="227" parameter_value="5"/>
-          <value_map device_value="218" parameter_value="6"/>
-          <value_map device_value="207" parameter_value="7"/>
-          <value_map device_value="190" parameter_value="8"/>
-          <value_map device_value="162" parameter_value="9"/>
-          <value_map device_value="10" parameter_value="10"/>
+          <value_map device_value="200" parameter_value="0"/>
+          <value_map device_value="180" parameter_value="1"/>
+          <value_map device_value="160" parameter_value="2"/>
+          <value_map device_value="140" parameter_value="3"/>
+          <value_map device_value="120" parameter_value="4"/>
+          <value_map device_value="100" parameter_value="5"/>
+          <value_map device_value="80" parameter_value="6"/>
+          <value_map device_value="60" parameter_value="7"/>
+          <value_map device_value="40" parameter_value="8"/>
+          <value_map device_value="20" parameter_value="9"/>
+          <value_map device_value="0" parameter_value="10"/>
         </conversion>
       </parameter>
       <parameter id="LONG_CT_OFFDELAY">
@@ -1094,17 +1098,17 @@
         </logical>
         <physical type="integer" interface="config" list="3" index="0xAB" size="1.0"/>
         <conversion type="option_integer">
-          <value_map device_value="255" parameter_value="0"/>
-          <value_map device_value="250" parameter_value="1"/>
-          <value_map device_value="246" parameter_value="2"/>
-          <value_map device_value="240" parameter_value="3"/>
-          <value_map device_value="234" parameter_value="4"/>
-          <value_map device_value="227" parameter_value="5"/>
-          <value_map device_value="218" parameter_value="6"/>
-          <value_map device_value="207" parameter_value="7"/>
-          <value_map device_value="190" parameter_value="8"/>
-          <value_map device_value="162" parameter_value="9"/>
-          <value_map device_value="10" parameter_value="10"/>
+          <value_map device_value="200" parameter_value="0"/>
+          <value_map device_value="180" parameter_value="1"/>
+          <value_map device_value="160" parameter_value="2"/>
+          <value_map device_value="140" parameter_value="3"/>
+          <value_map device_value="120" parameter_value="4"/>
+          <value_map device_value="100" parameter_value="5"/>
+          <value_map device_value="80" parameter_value="6"/>
+          <value_map device_value="60" parameter_value="7"/>
+          <value_map device_value="40" parameter_value="8"/>
+          <value_map device_value="20" parameter_value="9"/>
+          <value_map device_value="0" parameter_value="10"/>
         </conversion>
       </parameter>
       <default_values function="A">

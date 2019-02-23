@@ -7,8 +7,8 @@ sourceOnce user.tcl
 sourceOnce common.tcl
 sourceOnce ic_metadata.tcl
 
-source $env(DOCUMENT_ROOT)/config/easymodes/EnterFreeValue.tcl
-source $env(DOCUMENT_ROOT)/config/easymodes/etc/getStatusDisplayHelp.tcl
+source [file join $env(DOCUMENT_ROOT) config/easymodes/EnterFreeValue.tcl]
+source [file join $env(DOCUMENT_ROOT) config/easymodes/etc/getStatusDisplayHelp.tcl]
 
 
 #Flags für xmlrpc Aufruf "getLinks"
@@ -29,7 +29,7 @@ if { ![info exists env(CONFIG_ROOT)] } {
     set env(CONFIG_ROOT) "/etc/config"
 }
 
-set USERPROFILESPATH "$env(CONFIG_ROOT)/userprofiles"
+set USERPROFILESPATH [file join $env(CONFIG_ROOT) userprofiles]
 catch { file mkdir $USERPROFILESPATH }
 
 set wired "n.a"
@@ -42,7 +42,7 @@ array set nav_th ""
 array set nav_td ""
 array set TYPE_MAP { "BOOL" "bool" "ENUM" "int" "INTEGER" "int" "FLOAT" "double" "STRING" "string"}
 
-set IC_SETTINGS_CONF_FILE "$env(CONFIG_ROOT)/ic_settings.dat"
+set IC_SETTINGS_CONF_FILE [file join $env(CONFIG_ROOT) ic_settings.dat]
 array set IC_SETTINGS_VALUES ""
 #Defaults (werden von der Settings-Datei überschrieben):
 set IC_SETTINGS_VALUES(EXPERTMODE) "off"

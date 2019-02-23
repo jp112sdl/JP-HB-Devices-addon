@@ -1,5 +1,5 @@
---- ./patchsource/www/rega/esp/side.inc.orig	2018-12-05 21:12:40.000000000 +0100
-+++ ./patchsource/www/rega/esp/side.inc	2019-02-19 09:09:39.000000000 +0100
+--- ./patchsource/www/rega/esp/side.inc.orig	2019-02-23 12:13:34.000000000 +0100
++++ ./patchsource/www/rega/esp/side.inc	2019-02-23 12:25:44.000000000 +0100
 @@ -12,9 +12,11 @@
    string hm_oucfm = "HM-OU-CFM-Pl";
    string hm_oucfmTW = "HM-OU-CFM-TW";
@@ -78,8 +78,8 @@
                if (rgbw_controller != -1) {
                  Write( '<span id="setRGBWController'#oSD.ID()#'" class="CLASS02401" onclick="SetRGBWController('#oSD.ID()#',\''#oDP.HSSID()#'\');"><img src="/ise/img/notepad.png" /></span>' );
                }
---- ./patchsource/www/rega/esp/functions.fn.orig	2019-02-18 11:16:35.000000000 +0100
-+++ ./patchsource/www/rega/esp/functions.fn	2018-12-01 10:11:26.000000000 +0100
+--- ./patchsource/www/rega/esp/functions.fn.orig	2019-02-23 12:13:20.000000000 +0100
++++ ./patchsource/www/rega/esp/functions.fn	2019-02-23 12:25:40.000000000 +0100
 @@ -331,6 +331,13 @@
      ! Hide channel 3 of this device
      bShowChannel = false;
@@ -94,9 +94,9 @@
  }
  
  function ::showHideHmIPChannel() {
---- ./patchsource/www/webui/webui.js.orig	2019-02-18 11:16:40.000000000 +0100
-+++ ./patchsource/www/webui/webui.js	2019-02-19 08:57:15.000000000 +0100
-@@ -13146,7 +13146,7 @@
+--- ./patchsource/www/webui/webui.js.orig	2019-02-23 12:14:40.000000000 +0100
++++ ./patchsource/www/webui/webui.js	2019-02-23 12:37:16.000000000 +0100
+@@ -13664,7 +13664,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
    // and set the variable freeTextActive to true
@@ -105,7 +105,7 @@
      var jLine = jQuery("#textSelect_" + line),
      jCellFreeText = jQuery("#cellFreeText_"+line);
  
-@@ -13162,7 +13162,7 @@
+@@ -13680,7 +13680,7 @@
    // If at least one line has an active free text mode
    // we have to activate the placeholder for the other lines and the header (color and icon are moving up)
    if (freeTextActive) {
@@ -114,7 +114,7 @@
        var jLine = jQuery("#textSelect_" + line),
        jPlaceHolder = jQuery("#placeHolder_"+line);
  
-@@ -13174,7 +13174,7 @@
+@@ -13692,7 +13692,7 @@
      }
    } else {
      jHeadFreeText.hide().css("display", "none");
@@ -123,7 +123,7 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
-@@ -22539,6 +22539,12 @@
+@@ -23560,6 +23560,12 @@
          this.setWidth(400);
          this.setFile( "/pages/msg/setOUCFMMode.htm" );
          break;
@@ -136,7 +136,7 @@
          case ID_SET_STATUS_DISPLAY:
          this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
          this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -23337,6 +23343,7 @@
+@@ -24365,6 +24371,7 @@
  ID_EDIT_SYSVAR           = 1021;
  ID_CHOOSE_LED            = 1022;
  ID_SET_OUCFM_MODE        = 1023;
@@ -144,8 +144,8 @@
  ID_SET_STATUS_DISPLAY    = 1024;
  ID_BIDCOS_INTERFACE = 1025;
  
---- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig	2018-12-05 21:12:41.000000000 +0100
-+++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2019-02-19 08:57:15.000000000 +0100
+--- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig	2019-02-23 12:14:20.000000000 +0100
++++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2019-02-23 12:25:58.000000000 +0100
 @@ -95,6 +95,19 @@
      };
    };  
@@ -198,8 +198,8 @@
        }
  
  
---- ./patchsource/www/config/ic_common.tcl.orig	2018-12-05 21:12:41.000000000 +0100
-+++ ./patchsource/www/config/ic_common.tcl	2018-12-02 10:57:56.000000000 +0100
+--- ./patchsource/www/config/ic_common.tcl.orig	2019-02-23 12:12:35.000000000 +0100
++++ ./patchsource/www/config/ic_common.tcl	2019-02-23 12:25:31.000000000 +0100
 @@ -1074,6 +1074,7 @@
  
    set hmDisEPIdentifier "HM-Dis-EP-WM55"
@@ -286,8 +286,8 @@
            }
          }
          append s "<td>$unit</td>"
---- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig	2019-02-18 11:16:29.000000000 +0100
-+++ ./patchsource/www/rega/esp/datapointconfigurator.fn	2019-01-17 13:28:45.000000000 +0100
+--- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig	2019-02-23 12:13:06.000000000 +0100
++++ ./patchsource/www/rega/esp/datapointconfigurator.fn	2019-02-23 12:25:36.000000000 +0100
 @@ -99,6 +99,8 @@
      var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
      var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
@@ -297,7 +297,7 @@
      var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
      var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
      var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
-@@ -364,7 +366,27 @@
+@@ -369,7 +371,27 @@
              sLastControlName = CN_BTN_SHORT_ONLY;
              Call("/esp/controls/button.fn::CreateKeyShortOnly()");
            }
@@ -325,9 +325,9 @@
            !# BUTTON
            bIsControl = ( sControlName.Find(CN_BUTTON) > -1 );
            if( bIsControl && (sLastControlName!=CN_BUTTON) )
---- ./patchsource/www/webui/js/lang/de/translate.lang.js.orig	2018-10-26 07:01:22.000000000 +0200
-+++ ./patchsource/www/webui/js/lang/de/translate.lang.js	2019-01-16 13:44:23.000000000 +0100
-@@ -764,6 +764,8 @@
+--- ./patchsource/www/webui/js/lang/de/translate.lang.js.orig	2019-02-23 12:15:06.000000000 +0100
++++ ./patchsource/www/webui/js/lang/de/translate.lang.js	2019-02-23 12:26:06.000000000 +0100
+@@ -776,6 +776,8 @@
      "actionStatusControlLblOff" : "Aus",
      "actionStatusControlLblShortKeyPress" : "Kurzer<br/>Tastendruck",
      "actionStatusControlLblLongKeyPress" : "Langer<br/>Tastendruck",

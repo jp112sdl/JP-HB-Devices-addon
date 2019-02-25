@@ -75,6 +75,7 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F3 43 | HB-DIS-EP-42BW |
 |F3 44 | HB-OU-MP3-LED |
 |F3 4A | HB-UNI-Sen-VOLT |
+|F3 4B | HB-UNI-Sen-WEIGHT |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |F5 01 | HB-LC-Sw2-FM |
 |F9 D6 | HB-UNI-Sen-DIST-US |

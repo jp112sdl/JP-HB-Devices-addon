@@ -19,9 +19,8 @@ fi
 webuiFile="/www/webui/webui.js"
 
 webuiSearchBegin="DEV_HIGHLIGHT[[:space:]]*=[[:space:]]*new Array();"
+
 webuiInsert="\n"
-
-
 webuiInsert="${webuiInsert}DEV_LIST.push('$DEVICE');\n"
 webuiInsert="${webuiInsert}DEV_DESCRIPTION['$DEVICE']='$DEVICE_DESC';\n"
 webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE'] = new Object();\n"
@@ -56,10 +55,19 @@ if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
 fi
 
 
+
 webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 
 webuiInsertParam="SIGNAL_LED|HB_LED_COUNT"
 webuiInsertValue="stringTableHbLedCount"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_INTERRUPT_RUNNING"
+webuiInsertValue="stringTableHbInterruptRunning"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
@@ -75,12 +83,22 @@ if [ -z "`cat $stringtable_deFile | grep \"SIGNAL_LED|HB_LED_COUNT"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
+stringtable_deInsert="HB_INTERRUPT_RUNNING\t\${stringTableHbInterruptRunning}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_INTERRUPT_RUNNING"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
 ### Edit translate.lang.stringtable.js ###
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 
 translate_deInsert="\n    \"stringTableHbLedCount\" : \"Anzahl LEDs\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbLedCount\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbInterruptRunning\" : \"laufende Aktion unterbrechen\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbInterruptRunning\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

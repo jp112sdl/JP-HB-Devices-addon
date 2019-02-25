@@ -200,6 +200,10 @@
         <logical type="boolean" default="false"/>
         <physical type="boolean" interface="internal" value_id="AES"/>
       </parameter>
+      <parameter id="HB_INTERRUPT_RUNNING">
+        <logical type="boolean" default="true"/>
+        <physical type="integer" interface="config" list="1" index="126" size="0.1"/>
+      </parameter>
       <parameter id="HB_LED_COUNT">
         <logical type="integer" min="1" max="32" default="16" unit="" />
         <physical type="integer" interface="config" list="1" index="127" size="1" />
@@ -209,6 +213,10 @@
       <parameter id="AES_ACTIVE" ui_flags="internal">
         <logical type="boolean" default="false"/>
         <physical type="boolean" interface="internal" value_id="AES"/>
+      </parameter>
+      <parameter id="HB_INTERRUPT_RUNNING">
+        <logical type="boolean" default="true"/>
+        <physical type="integer" interface="config" list="1" index="126" size="0.1"/>
       </parameter>
     </paramset>
     <paramset id="signal_led_linkset">

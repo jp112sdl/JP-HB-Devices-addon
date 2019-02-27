@@ -70,13 +70,32 @@
          </physical>
          <conversion type="float_integer_scale" factor="100"/>
        </parameter>
-     </paramset>  
+       <parameter id="OPERATING_VOLTAGE" operations="read,event" control="NONE">
+         <logical type="float" min="0.0" max="25.5" unit=" V"/>
+         <physical type="integer" interface="command" value_id="OPERATING_VOLTAGE">
+            <event frame="MEASURE_EVENT"/>
+         </physical>
+         <conversion type="float_integer_scale" factor="10"/>
+       </parameter>
+       <parameter id="LOWBAT" operations="read,event" control="NONE">
+         <logical type="boolean"/>
+         <physical type="integer" interface="command" value_id="LOWBAT">
+           <event frame="MEASURE_EVENT"/>
+           <event frame="INFO_LEVEL"/>
+         </physical>
+       </parameter>
+     </paramset>
      <paramset type="LINK" id="HB-UNI-Sen-WEIGHT_link" />
     </channel>
   </channels>
   <frames>
-      <frame id="MEASURE_EVENT" direction="from_device" event="true" channel_field="9" type="0x53">
-         <parameter type="integer" signed="true" index="10.0" size="3.7" param="HB_WEIGHT" />
+    <frame id="INFO_LEVEL" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="12.7" size="0.1" param="LOWBAT"/>
+    </frame>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" channel_field="10" type="0x53">
+      <parameter type="integer" index="9.7" size="0.1" param="LOWBAT"/>
+      <parameter type="integer" signed="true" index="11.0" size="3.7" param="HB_WEIGHT" />
+      <parameter type="integer" signed="true" index="15.0" size="1.0" param="OPERATING_VOLTAGE" />
     </frame>
   </frames>
   <paramset_defs></paramset_defs>

@@ -3,7 +3,7 @@
 DEVICE="HB-UNI-Sen-WEIGHT"
 DEVICE_IMG=hb-uni-sen-weight.png
 DEVICE_THUMB=hb-uni-sen-weight_thumb.png
-DEVICE_DESC="universeller W%E4gesensor"
+DEVICE_DESC="universeller W&auml;gesensor"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"

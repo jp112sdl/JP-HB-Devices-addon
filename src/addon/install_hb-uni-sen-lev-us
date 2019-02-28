@@ -3,7 +3,7 @@
 DEVICE="HB-UNI-Sen-LEV-US"
 DEVICE_IMG=hb-uni-sen-lev-us.png
 DEVICE_THUMB=hb-uni-sen-lev-us_thumb.png
-DEVICE_DESC="universeller Ultraschall F%FCllstandsmesser"
+DEVICE_DESC="universeller Ultraschall F&uuml;llstandsmesser"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"

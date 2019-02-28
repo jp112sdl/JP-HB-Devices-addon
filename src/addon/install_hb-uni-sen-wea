@@ -297,7 +297,7 @@ if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_SPIKEREJECTION"`" ]; then
 fi
 
 stringtable_deInsert="WEATHER|LD_DISTURBER_DETECTION\t\${stringTableWeatherLightningDetectorDisturberDetection}"
-if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_DISTURBER_DETECTION "`" ]; then
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|LD_DISTURBER_DETECTION"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 

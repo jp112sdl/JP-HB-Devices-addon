@@ -69,7 +69,7 @@ fi
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 
-translate_deInsert="\n    \"stringTableHbIaqLevel\" : \"IAQ Messwert\","
+translate_deInsert="\n    \"stringTableHbIaqLevel\" : \"Luftg%FCte\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbIaqLevel\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

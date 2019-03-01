@@ -32,6 +32,10 @@
           <logical type="boolean" />
           <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
         </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+        <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="LOWBAT"/>
+        </parameter>
         <parameter id="RSSI_DEVICE" operations="read,event">
           <logical type="integer" />
           <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />

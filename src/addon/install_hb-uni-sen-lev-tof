@@ -3,7 +3,7 @@
 DEVICE="HB-UNI-Sen-LEV-TOF"
 DEVICE_IMG=hb-uni-sen-lev-tof.png
 DEVICE_THUMB=hb-uni-sen-lev-tof_thumb.png
-DEVICE_DESC="universeller Time-of-Flight F&uuml;llstandsmesser"
+DEVICE_DESC="universeller Time-of-Flight F\&uuml;llstandsmesser"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"

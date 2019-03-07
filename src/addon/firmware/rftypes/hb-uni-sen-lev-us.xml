@@ -64,6 +64,7 @@
         <logical type="option">
          <option id="JSN-SR04T" default="true" />
          <option id="MaxSonar EZ0..4" />
+         <option id="US-100" />
         </logical>
         <physical type="integer" interface="config" list="1" index="3" size="1"/>
       </parameter> 

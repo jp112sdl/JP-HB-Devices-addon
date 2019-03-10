@@ -104,18 +104,25 @@
            <option id="IAQ_WORSE"/>
            <option id="IAQ_VERY_BAD"/>
           </logical>
-           <physical type="integer" interface="command" value_id="IAQ_STATE">
+          <physical type="integer" interface="command" value_id="IAQ_STATE">
             <event frame="WEATHER_EVENT" auth_violate_policy="reject"/>
-           </physical>
-           <conversion type="option_integer">
+          </physical>
+          <conversion type="option_integer">
             <value_map device_value="0" parameter_value="0"/>
             <value_map device_value="32" parameter_value="1"/>
             <value_map device_value="64" parameter_value="2"/>
             <value_map device_value="100" parameter_value="3"/>
             <value_map device_value="196" parameter_value="4"/>
             <value_map device_value="200" parameter_value="5"/>
-           </conversion>
-          </parameter>
+          </conversion>
+        </parameter>
+        <parameter id="BATTERY_VOLTAGE" operations="read,event" control="NONE">
+          <logical type="float" min="0.0" max="25.5" unit="V"/>
+           <physical type="integer" interface="command" value_id="BATTERY_VOLTAGE">
+             <event frame="WEATHER_EVENT"/>
+           </physical>
+           <conversion type="float_integer_scale" factor="10"/>
+        </parameter>  
       </paramset>  
       <paramset type="LINK" id="iaq_ch_link" />
     </channel>
@@ -127,6 +134,7 @@
       <parameter type="integer" index="13.0" size="1.0" param="HUMIDITY" />
       <parameter type="integer" index="14.0" size="1.0" param="IAQ_LEVEL" />   
       <parameter type="integer" index="15.0" size="1.0" param="IAQ_STATE"/>  
+      <parameter type="integer" index="16.0" size="1.0" param="BATTERY_VOLTAGE"/>
     </frame>
   </frames>
   <paramset_defs></paramset_defs>

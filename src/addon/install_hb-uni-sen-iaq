@@ -63,6 +63,10 @@ stringtable_deInsert="WEATHER|IAQ_STATE=IAQ_VERY_BAD\t\${stringTableHbIaqStateVe
 if [ -z "`cat $stringtable_deFile | grep \"WEATHER|IAQ_STATE=IAQ_VERY_BAD"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
+stringtable_deInsert="WEATHER|BATTERY_VOLTAGE\t\${stringTableWeatherBatteryVoltage}"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|BATTERY_VOLTAGE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
 
 ### Edit translate.lang.stringtable.js ###
 
@@ -96,5 +100,10 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHbIaqStateWorse\"`" ]; then
 fi
 translate_deInsert="\n    \"stringTableHbIaqStateVeryBad\" : \"Luftqualit%E4t: sehr schlecht (5)\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbIaqStateVeryBad\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableWeatherBatteryVoltage\" : \"Batteriespannung\","
+if [ -z "`cat $translate_deFile | grep \"stringTableWeatherBatteryVoltage\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

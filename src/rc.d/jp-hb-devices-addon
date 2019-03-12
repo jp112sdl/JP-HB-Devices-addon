@@ -5,7 +5,6 @@ ADDON_NAME=`basename "$0"`
 
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
 WWW_DIR=/etc/config/addons/www/${ADDON_NAME}
-PIDFILE=/var/run/$ADDON_NAME.pid
 LOGFILE=/var/log/$ADDON_NAME.log
 ERRFILE=/var/log/$ADDON_NAME.err
 FIRMWARE_DIR=/firmware/rftypes
@@ -51,7 +50,7 @@ case "$1" in
 	    	    
         cd ${ADDON_DIR}
         echo "Running scripts..."    
-        for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
+        for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
 
 	    echo "Copying customized firmware files..."
         cp ${CUSTOMIZED_FIRMWARE_DIR}/* ${ADDON_DIR}${FIRMWARE_DIR}/
@@ -99,7 +98,7 @@ case "$1" in
 		
       cd ${ADDON_DIR}
       echo "Running scripts..."    
-      for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; echo $!> $PIDFILE & ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
+      for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
       
       cd /www
       patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch

@@ -16,8 +16,8 @@ CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 case "$1" in
     ""|start)
       if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then    
-        /etc/init.d/S61rfd stop
         /etc/init.d/S70ReGaHss stop
+        /etc/init.d/S61rfd stop
 		    
         mount -o remount,rw /
 	    	

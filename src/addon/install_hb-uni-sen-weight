@@ -40,6 +40,13 @@ webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
+webuiInsertParam="HB_GENERIC_WEIGHT|HB_TARAONRESTART"
+webuiInsertValue="stringTableHbGenericWeightTaraOnRestart"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
 
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
@@ -54,6 +61,10 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_WEIGHT|HB_TARA"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
+stringtable_deInsert="HB_GENERIC_WEIGHT|HB_TARAONRESTART\t\${stringTableHbGenericWeightTaraOnRestart}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_WEIGHT|HB_TARAONRESTART"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
 
 ### Edit translate.lang.stringtable.js ###
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
@@ -64,7 +75,11 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHbWeight\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deInsert="\n    \"stringTableHbGenericWeightTara\" : \"Tara\","
+translate_deInsert="\n    \"stringTableHbGenericWeightTara\" : \"manuelle Tara\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbGenericWeightTara\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"stringTableHbGenericWeightTaraOnRestart\" : \"autom. Tara bei Ger%E4teneustart\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbGenericWeightTaraOnRestart\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

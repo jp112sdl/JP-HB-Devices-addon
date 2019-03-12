@@ -56,6 +56,10 @@
     </channel>
     <channel autoregister="true" index="1" type="HB_GENERIC_WEIGHT" count_from_sysinfo="23.0:1.0">
      <paramset type="MASTER" id="HB-UNI-Sen-WEIGHT_master">
+      <parameter id="HB_TARAONRESTART">
+        <logical type="boolean" default="false"/>
+        <physical type="integer" interface="config" list="1" index="5" size="0.1"/>
+      </parameter>
       <parameter id="HB_TARA">
         <logical type="float" min="-50000.00" max="50000.00" unit="g" default="0"/>
         <physical type="integer" signed="true" interface="config" list="1" index="1" size="4"/>

@@ -113,7 +113,6 @@ case "$1" in
       [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
       [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
       [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
-      [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
       [[ -f ./webui/js/extern/jp_webui_inc.js ]] && rm ./webui/js/extern/jp_webui_inc.js
       [[ -f ./webui/js/lang/de/translate.lang.js.orig ]] && rm ./webui/js/lang/de/translate.lang.js.orig
   		    		    		

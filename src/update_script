@@ -33,12 +33,9 @@ chmod 755 ${ADDON_DIR}
 rm -rf ${WWW_DIR}
 ln -sf ${ADDON_DIR} ${WWW_DIR}
 
+# Installationsstatus entfernen, um Installation nach Reboot zu erzwingen
 rm -f ${ADDON_DIR}/installed
 
-# Startskript ausführen
-# ${RC_DIR}/$ADDON_NAME start
-
-# sync filesystem to make sure all changes are written to disk
 sync
 
 if [ "$1" = "" ]; then

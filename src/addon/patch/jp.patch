@@ -325,14 +325,3 @@
            !# BUTTON
            bIsControl = ( sControlName.Find(CN_BUTTON) > -1 );
            if( bIsControl && (sLastControlName!=CN_BUTTON) )
---- ./patchsource/www/webui/js/lang/de/translate.lang.js.orig	2019-02-23 12:15:06.000000000 +0100
-+++ ./patchsource/www/webui/js/lang/de/translate.lang.js	2019-02-23 12:26:06.000000000 +0100
-@@ -776,6 +776,8 @@
-     "actionStatusControlLblOff" : "Aus",
-     "actionStatusControlLblShortKeyPress" : "Kurzer<br/>Tastendruck",
-     "actionStatusControlLblLongKeyPress" : "Langer<br/>Tastendruck",
-+    "actionStatusControlLblShortRfidHold" : "kurzer<br/>Scan",
-+    "actionStatusControlLblLongRfidHold" : "langer<br/>Scan",
-     "commentActionStatusControlEnd" : "***********************************************",
-     "commentPrgRules" : "***********************************************",
-     "programsCreateProgram" : "Programmerstellung",

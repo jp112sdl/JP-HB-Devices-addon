@@ -20,7 +20,6 @@ diff -Naur ./patchsource/www/webui/webui.js.orig ./patchsource/www/webui/webui.j
 diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig ./patchsource/www/rega/pages/tabs/admin/views/programs.htm >> ./src/addon/patch/jp.patch 
 diff -Naur ./patchsource/www/config/ic_common.tcl.orig ./patchsource/www/config/ic_common.tcl >> ./src/addon/patch/jp.patch 
 diff -Naur ./patchsource/www/rega/esp/datapointconfigurator.fn.orig ./patchsource/www/rega/esp/datapointconfigurator.fn >> ./src/addon/patch/jp.patch 
-diff -Naur ./patchsource/www/webui/js/lang/de/translate.lang.js.orig ./patchsource/www/webui/js/lang/de/translate.lang.js >> ./src/addon/patch/jp.patch 
 
 echo "Patch created."
 

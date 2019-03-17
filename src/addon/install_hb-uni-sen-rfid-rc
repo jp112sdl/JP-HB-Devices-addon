@@ -59,3 +59,17 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHbBuzzerEnabled\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
+### Edit translate.lang.js ###
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.js"
+translate_deSearch="\"actionStatusControlLblLongKeyPress\" : \"Langer<br\/>Tastendruck\","
+
+translate_deInsert="\n    \"actionStatusControlLblShortRfidHold\" : \"kurzer<br\/>Scan\","
+if [ -z "`cat $translate_deFile | grep \"actionStatusControlLblShortRfidHold\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"actionStatusControlLblLongRfidHold\" : \"langer<br\/>Scan\","
+if [ -z "`cat $translate_deFile | grep \"actionStatusControlLblLongRfidHold\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi

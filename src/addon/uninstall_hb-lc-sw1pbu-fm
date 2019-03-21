@@ -5,14 +5,9 @@ FIRMWARE_FILE=/firmware/rftypes/hb-lc-sw1pbu-fm.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
-
-if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-        sed -i "s/\($devdescrSearch\)//g" $devdescrFile
-fi
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
 webuiFile="/www/webui/webui.js"
-if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
-        sed -i "/\($DEVICE\)/d" $webuiFile
-fi
+sed -i "/\($DEVICE\)/d" $webuiFile
 
 rm -f $FIRMWARE_FILE

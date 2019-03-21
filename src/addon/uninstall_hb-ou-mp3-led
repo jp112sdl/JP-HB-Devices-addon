@@ -7,52 +7,29 @@ FIRMWARE_FILE=/firmware/rftypes/hb-ou-mp3-led.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
-if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-    sed -i "s/\($devdescrSearch\)//g" $devdescrFile
-fi
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
 webuiFile="/www/webui/webui.js"
-if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
-    sed -i "/\($DEVICE\)/d" $webuiFile
-fi
-
+sed -i "/\($DEVICE\)/d" $webuiFile
 webuiSearch="SIGNAL_LED|HB_LED_COUNT"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
-
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_INTERRUPT_RUNNING"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="SIGNAL_LED|HB_LED_COUNT"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
-
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_INTERRUPT_RUNNING"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbLedCount"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
-
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbInterruptRunning"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
-
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
 translate_deSearch="lblHbIterations"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

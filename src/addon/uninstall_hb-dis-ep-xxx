@@ -7,125 +7,69 @@ FIRMWARE_FILE=/firmware/rftypes/hb-dis-ep-42bw_e_v1_0.xml
 
 indexFile="/www/rega/pages/index.htm"
 indexFileSearch="jp_webui_inc.js"
-if [ "`cat $indexFile | grep \"$indexFileSearch\"`" ]; then
-    sed -i "/${indexFileSearch}/d" $indexFile
-fi
+sed -i "/${indexFileSearch}/d" $indexFile
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
-if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-    sed -i "s/\($devdescrSearch\)//g" $devdescrFile
-fi
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
 webuiFile="/www/webui/webui.js"
-if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
-    sed -i "/\($DEVICE\)/d" $webuiFile
-fi
+sed -i "/\($DEVICE\)/d" $webuiFile
 webuiSearch="HB_EP_SHOW_LINE"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGNMENT"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGN_RIGHT"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGN_CENTER"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGN_LEFT"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="HB_EP_SHOW_LINE"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_EP_ALIGNMENT"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_EP_ALIGN_RIGHT"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_EP_ALIGN_CENTER"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_EP_ALIGN_LEFT"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbEpShowLine"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpAlignment"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpAlignRight"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpAlignCenter"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpAlignLeft"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
 translate_deSearch="iconHbGarage"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbShutter"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbShutterUp"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbShutterDown"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbUp"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbDown"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbSnowflake"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbWarning"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbError"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbBell"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

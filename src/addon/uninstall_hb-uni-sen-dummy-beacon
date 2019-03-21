@@ -7,93 +7,51 @@ FIRMWARE_FILE=/firmware/rftypes/hb-uni-sen-dummy-beacon.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
-
-if [ "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-    sed -i "s/\($devdescrSearch\)//g" $devdescrFile
-fi
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
 webuiFile="/www/webui/webui.js"
-if [ "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
-    sed -i "/\($DEVICE\)/d" $webuiFile
-fi
+sed -i "/\($DEVICE\)/d" $webuiFile
 webuiSearch="FD_ENABLED"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="FD_ENABLED=TRUE"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="FD_ENABLED=FALSE"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="FD_DEVICE_ID"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="FD_CYCLIC_TIMEOUT"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="FD_STATUS"
-if [ "`cat $webuiFile | grep \"$webuiSearch\"`" ]; then
-    sed -i "/\($webuiSearch\)/d" $webuiFile
-fi
-
+sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="FD_ENABLED"
 if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_ENABLED=TRUE"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_ENABLED=FALSE"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_DEVICE_ID"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_CYCLIC_TIMEOUT"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_STATUS"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
-	sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-fi
-
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableFdEnabled"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableFdEnabledTrue"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableFdEnabledFalse"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableFdDeviceId"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableFdCyclicTimeout"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableFdStatus"
-if [ "`cat $translate_deFile | grep \"$translate_deSearch\"`" ]; then
-	sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-fi
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

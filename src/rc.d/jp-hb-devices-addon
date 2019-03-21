@@ -101,10 +101,10 @@ case "$1" in
       for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
       
       cd /www
-      patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch
-      patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-ou-mp3-led_side.inc.not_used.patch
-      patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-uni-sen-rfid-rc.patch
       patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/jp.patch 
+      #patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch
+      #patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-ou-mp3-led_side.inc.not_used.patch
+      #patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-uni-sen-rfid-rc.patch
 
       [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
       [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig

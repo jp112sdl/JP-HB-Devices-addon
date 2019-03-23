@@ -145,7 +145,7 @@
  ID_BIDCOS_INTERFACE = 1025;
  
 --- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig	2019-02-23 12:14:20.000000000 +0100
-+++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2019-02-23 12:25:58.000000000 +0100
++++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2019-03-23 21:49:23.000000000 +0100
 @@ -95,6 +95,19 @@
      };
    };  
@@ -191,7 +191,7 @@
 +            var cfgString = this.getConfigString();
 +            conInfo(cfgString);
 +            inputElm.val(cfgString); //.change();
-+            encodeStringStatusDisplay(inputElm.prop("id"));
++            encodeStringStatusDisplay(inputElm.prop("id"),false, '0x7e');
 +            inputElm.change();
 +          }
 +        }, "html");

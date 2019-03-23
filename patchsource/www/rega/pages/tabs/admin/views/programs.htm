@@ -204,7 +204,7 @@
             var cfgString = this.getConfigString();
             conInfo(cfgString);
             inputElm.val(cfgString); //.change();
-            encodeStringStatusDisplay(inputElm.prop("id"));
+            encodeStringStatusDisplay(inputElm.prop("id"),false, '0x7e');
             inputElm.change();
           }
         }, "html");

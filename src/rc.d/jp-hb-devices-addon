@@ -36,6 +36,7 @@ case "$1" in
         patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch
         patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-ou-mp3-led_side.inc.not_used.patch
         patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-uni-sen-rfid-rc.patch
+        patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/programs_wrong_encodeStringStatusDisplay.patch
         patch -N -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/jp.patch 
       
         [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig

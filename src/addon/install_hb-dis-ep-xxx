@@ -66,8 +66,16 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
-webuiInsertParam="HB_EP_ALIGN_CENTER"
-webuiInsertValue="stringTableHbEpAlignCenter"
+webuiInsertParam="HB_EP_ALIGN_CENTER_ICON_RIGHT"
+webuiInsertValue="stringTableHbEpAlignCenterIconRight"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_EP_ALIGN_CENTER_ICON_LEFT"
+webuiInsertValue="stringTableHbEpAlignCenterIconLeft"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
@@ -101,8 +109,13 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGN_RIGHT"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="HB_EP_ALIGN_CENTER\t\${stringTableHbEpAlignCenter}"
-if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGN_CENTER"`" ]; then
+stringtable_deInsert="HB_EP_ALIGN_CENTER_ICON_RIGHT\t\${stringTableHbEpAlignCenterIconRight}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGN_CENTER_ICON_RIGHT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_EP_ALIGN_CENTER_ICON_LEFT\t\${stringTableHbEpAlignCenterIconLeft}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGN_CENTER_ICON_LEFT"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
@@ -130,8 +143,13 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignRight\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deInsert="\n    \"stringTableHbEpAlignCenter\" : \"zentriert\","
-if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignCenter\"`" ]; then
+translate_deInsert="\n    \"stringTableHbEpAlignCenterIconRight\" : \"zentriert - Icon rechts\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignCenterIconRight\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbEpAlignCenterIconLeft\" : \"zentriert - Icon links\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignCenterIconLeft\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

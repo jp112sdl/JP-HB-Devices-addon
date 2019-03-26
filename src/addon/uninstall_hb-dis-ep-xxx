@@ -21,7 +21,9 @@ webuiSearch="HB_EP_ALIGNMENT"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGN_RIGHT"
 sed -i "/\($webuiSearch\)/d" $webuiFile
-webuiSearch="HB_EP_ALIGN_CENTER"
+webuiSearch="HB_EP_ALIGN_CENTER_ICON_RIGHT"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_EP_ALIGN_CENTER_ICON_LEFT"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGN_LEFT"
 sed -i "/\($webuiSearch\)/d" $webuiFile
@@ -33,7 +35,9 @@ stringtable_deSearch="HB_EP_ALIGNMENT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_EP_ALIGN_RIGHT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-stringtable_deSearch="HB_EP_ALIGN_CENTER"
+stringtable_deSearch="HB_EP_ALIGN_CENTER_ICON_RIGHT"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_EP_ALIGN_CENTER_ICON_LEFT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_EP_ALIGN_LEFT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
@@ -45,7 +49,9 @@ translate_deSearch="stringTableHbEpAlignment"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpAlignRight"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-translate_deSearch="stringTableHbEpAlignCenter"
+translate_deSearch="stringTableHbEpAlignCenterIconRight"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbEpAlignCenterIconLeft"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpAlignLeft"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile

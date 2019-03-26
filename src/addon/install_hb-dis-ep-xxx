@@ -184,3 +184,11 @@ translate_deInsert="\n    \"iconHbBell\":\"Glocke\","
 if [ -z "`cat $translate_deFile | grep \"iconHbBell\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
+translate_deInsert="\n    \"iconHbCalendar\":\"Kalender\","
+if [ -z "`cat $translate_deFile | grep \"iconHbCalendar\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbThermometer\":\"Thermometer\","
+if [ -z "`cat $translate_deFile | grep \"iconHbThermometer\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi

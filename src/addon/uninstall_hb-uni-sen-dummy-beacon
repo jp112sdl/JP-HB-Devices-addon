@@ -26,7 +26,6 @@ sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="FD_ENABLED"
-if [ "`cat $stringtable_deFile | grep \"$stringtable_deSearch\"`" ]; then
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_ENABLED=TRUE"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile

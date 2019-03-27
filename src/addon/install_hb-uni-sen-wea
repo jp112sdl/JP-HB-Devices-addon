@@ -614,3 +614,4 @@ fi
 translate_enInsert="\n    \"stringTableWeatherRdSensorTypeStallBiz\" : \"Stall.Biz\","
 if [ -z "`cat $translate_enFile | grep \"stringTableWeatherRdSensorTypeStallBiz\"`" ]; then
 	sed -i "s/\($translate_enSearch\)/\1$translate_enInsert/g" $translate_enFile
+fi	

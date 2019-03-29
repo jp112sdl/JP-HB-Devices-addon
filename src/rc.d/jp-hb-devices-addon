@@ -12,12 +12,12 @@ CUSTOMIZED_FIRMWARE_DIR=${ADDON_DIR}/customized_firmware
 RC_DIR=/usr/local/etc/config/rc.d
 CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 
-let PATCHVERSION=0
+PATCHVERSION=0
 check_version()
 {
- let model=`cat /boot/VERSION   | awk -F'[=.]' {'print $2'}`
- let version=`cat /boot/VERSION | awk -F'[=.]' {'print $3'}`
- let build=`cat /boot/VERSION   | awk -F'[=.]' {'print $4'}`
+ model=`cat /boot/VERSION   | awk -F'[=.]' {'print $2'}`
+ version=`cat /boot/VERSION | awk -F'[=.]' {'print $3'}`
+ build=`cat /boot/VERSION   | awk -F'[=.]' {'print $4'}`
 
  if [ $model -ge 3 ] && [ $version -ge 45 ]; then
   PATCHVERSION=2

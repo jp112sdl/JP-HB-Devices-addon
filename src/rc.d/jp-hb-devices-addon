@@ -141,7 +141,7 @@ case "$1" in
       echo "######## REVOKE COMMON PATCHES ########"
       patchsubdir=common
       for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
-        patch -N -p3 -i $patchfile
+        patch -R -p3 -i $patchfile
       done
       
       echo "######## REVOKE VERSION DEPENDEND PATCHES ########"
@@ -152,7 +152,7 @@ case "$1" in
       fi
      
       for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
-        patch -N -p3 -i $patchfile
+        patch -R -p3 -i $patchfile
       done
 
       [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig

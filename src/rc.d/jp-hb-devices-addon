@@ -13,7 +13,7 @@ RC_DIR=/usr/local/etc/config/rc.d
 CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 
 PATCHVERSION=0
-check_version()
+check_ccu_fw_version()
 {
  model=`cat /boot/VERSION   | awk -F'[=.]' {'print $2'}`
  version=`cat /boot/VERSION | awk -F'[=.]' {'print $3'}`
@@ -28,14 +28,29 @@ check_version()
  echo "Found $model.$version.$build - using patchversion $PATCHVERSION"
 }
 
+MONIT=0
+check_monit()
+{
+  MONIT=`ps -ef|grep \/usr\/bin\/monit|grep -v grep|wc -l`
+}
+
 case "$1" in
     ""|start)
       if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
+      
+        #### Check if monit process exists
+        check_monit
+        
+        if [ $MONIT -ge 1 ]; then
+          echo "Stopping monitoring service for ReGaHss and RFD"
+          /usr/bin/monit unmonitor ReGaHss
+          /usr/bin/monit unmonitor rfd
+        fi
+      
         /etc/init.d/S70ReGaHss stop
         /etc/init.d/S61rfd stop
 		    
         mount -o remount,rw /
-        check_version
 	    	
         cd ${ADDON_DIR}
         cp -ar www/* /www/
@@ -47,6 +62,8 @@ case "$1" in
         chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
         
         ### Patch some files ###
+        check_ccu_fw_version
+
         cd /www
 
         echo "######## REVOKE OLD APPLIED PATCHES ########"
@@ -99,7 +116,12 @@ case "$1" in
 		    
         /etc/init.d/S61rfd start
         /etc/init.d/S70ReGaHss start
-		    
+        
+        if [ $MONIT -ge 1 ]; then
+          echo "Starting monitoring service for ReGaHss and RFD"
+          /usr/bin/monit monitor ReGaHss
+          /usr/bin/monit monitor rfd
+        fi
       else
         echo "Checking for subsequent customized firmware files..."
         changed=0
@@ -130,12 +152,13 @@ case "$1" in
 
     uninstall)
       mount -o remount,rw /
-      check_version
 		
       cd ${ADDON_DIR}
       echo "Running scripts..."    
       for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
       
+      check_ccu_fw_version
+
       cd /www
       
       echo "######## REVOKE COMMON PATCHES ########"

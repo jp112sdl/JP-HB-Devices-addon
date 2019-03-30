@@ -15,9 +15,9 @@ CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 PATCHVERSION=0
 check_ccu_fw_version()
 {
- model=`cat /boot/VERSION   | awk -F'[=.]' {'print $2'}`
- version=`cat /boot/VERSION | awk -F'[=.]' {'print $3'}`
- build=`cat /boot/VERSION   | awk -F'[=.]' {'print $4'}`
+ model=`grep VERSION /boot/VERSION   | awk -F'[=.]' {'print $2'}`
+ version=`grep VERSION /boot/VERSION | awk -F'[=.]' {'print $3'}`
+ build=`grep VERSION /boot/VERSION   | awk -F'[=.]' {'print $4'}`
 
  if [ $model -ge 3 ] && [ $version -ge 45 ]; then
   PATCHVERSION=2

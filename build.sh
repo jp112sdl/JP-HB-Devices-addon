@@ -14,12 +14,17 @@ ADDON_NAME=jp-hb-devices
 #wget -q -O ./patchsource/www/config/ic_common.tcl.orig https://raw.githubusercontent.com/jens-maus/RaspberryMatic/master/buildroot-external/patches/occu/0000-CCU-Firmware-Diff/occu/WebUI/www/config/ic_common.tcl
 #echo "wget ic_common.tcl exited with $?"
 
-diff -Naur ./patchsource/www/rega/esp/side.inc.orig ./patchsource/www/rega/esp/side.inc > ./src/addon/patch/jp.patch 
-diff -Naur ./patchsource/www/rega/esp/functions.fn.orig ./patchsource/www/rega/esp/functions.fn >> ./src/addon/patch/jp.patch 
-diff -Naur ./patchsource/www/webui/webui.js.orig ./patchsource/www/webui/webui.js >> ./src/addon/patch/jp.patch 
-diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig ./patchsource/www/rega/pages/tabs/admin/views/programs.htm >> ./src/addon/patch/jp.patch 
-diff -Naur ./patchsource/www/config/ic_common.tcl.orig ./patchsource/www/config/ic_common.tcl >> ./src/addon/patch/jp.patch 
-diff -Naur ./patchsource/www/rega/esp/datapointconfigurator.fn.orig ./patchsource/www/rega/esp/datapointconfigurator.fn >> ./src/addon/patch/jp.patch 
+diff -Naur ./patchsource/www/rega/esp/functions.fn.orig ./patchsource/www/rega/esp/functions.fn > ./src/addon/patch/common/functions.fn.patch 
+diff -Naur ./patchsource/www/webui/webui.js.orig ./patchsource/www/webui/webui.js > ./src/addon/patch/common/webui.js.patch 
+diff -Naur ./patchsource/www/config/ic_common.tcl.orig ./patchsource/www/config/ic_common.tcl > ./src/addon/patch/common/ic_common.tcl.patch 
+diff -Naur ./patchsource/www/rega/esp/datapointconfigurator.fn.orig ./patchsource/www/rega/esp/datapointconfigurator.fn > ./src/addon/patch/common/datapointconfigurator.fn.patch 
+diff -Naur ./patchsource/www/rega/esp/side.inc.orig ./patchsource/www/rega/esp/side.inc > ./src/addon/patch/le_343/side.inc.patch 
+diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig ./patchsource/www/rega/pages/tabs/admin/views/programs.htm > ./src/addon/patch/le_343/programs.htm.patch 
+
+diff -Naur ./patchsource/www/rega/esp/side.inc.orig-3.45 ./patchsource/www/rega/esp/side.inc-3.45 > ./src/addon/patch/ge_345/side.inc.patch 
+sed -i '' -e "s/-3.45//g" ./src/addon/patch/ge_345/side.inc.patch 
+diff -Naur ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig-3.45 ./patchsource/www/rega/pages/tabs/admin/views/programs.htm-3.45 > ./src/addon/patch/ge_345/programs.htm.patch 
+sed -i '' -e "s/-3.45//g" ./src/addon/patch/ge_345/programs.htm.patch 
 
 echo "Patch created."
 

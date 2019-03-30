@@ -12,9 +12,41 @@ CUSTOMIZED_FIRMWARE_DIR=${ADDON_DIR}/customized_firmware
 RC_DIR=/usr/local/etc/config/rc.d
 CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 
+PATCHVERSION=0
+check_ccu_fw_version()
+{
+ model=`cat /boot/VERSION   | awk -F'[=.]' {'print $2'}`
+ version=`cat /boot/VERSION | awk -F'[=.]' {'print $3'}`
+ build=`cat /boot/VERSION   | awk -F'[=.]' {'print $4'}`
+
+ if [ $model -ge 3 ] && [ $version -ge 45 ]; then
+  PATCHVERSION=2
+ else
+  PATCHVERSION=1
+ fi
+ 
+ echo "Found $model.$version.$build - using patchversion $PATCHVERSION"
+}
+
+MONIT=0
+check_monit()
+{
+  MONIT=`ps -ef|grep \/usr\/bin\/monit|grep -v grep|wc -l`
+}
+
 case "$1" in
     ""|start)
-      if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then    
+      if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
+      
+        #### Check if monit process exists
+        check_monit
+        
+        if [ $MONIT -ge 1 ]; then
+          echo "Stopping monitoring service for ReGaHss and RFD"
+          /usr/bin/monit unmonitor ReGaHss
+          /usr/bin/monit unmonitor rfd
+        fi
+      
         /etc/init.d/S70ReGaHss stop
         /etc/init.d/S61rfd stop
 		    
@@ -30,15 +62,34 @@ case "$1" in
         chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
         
         ### Patch some files ###
+        check_ccu_fw_version
+
         cd /www
 
-        patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/jp.patch 
-        patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch
-        patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-ou-mp3-led_side.inc.not_used.patch
-        patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-uni-sen-rfid-rc.patch
-        patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/programs_wrong_encodeStringStatusDisplay.patch
-        patch -N -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/jp.patch 
+        echo "######## REVOKE OLD APPLIED PATCHES ########"
+        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/jp.patch 
+        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/hb-dis-ep-42bw.patch
+        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/hb-ou-mp3-led_side.inc.not_used.patch
+        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/hb-uni-sen-rfid-rc.patch
+        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/programs_wrong_encodeStringStatusDisplay.patch
+        
+        echo "######## APPLY COMMON PATCHES ########"
+        patchsubdir=common
+        for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
+          patch -N -p3 -i $patchfile
+        done
+        
+        echo "######## APPLY VERSION DEPENDEND PATCHES ########"
+        if [ $PATCHVERSION -le 1 ]; then
+          patchsubdir=le_343
+        else
+          patchsubdir=ge_345
+        fi
       
+        for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
+          patch -N -p3 -i $patchfile
+        done
+         
         [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
         [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
         [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
@@ -65,7 +116,12 @@ case "$1" in
 		    
         /etc/init.d/S61rfd start
         /etc/init.d/S70ReGaHss start
-		    
+        
+        if [ $MONIT -ge 1 ]; then
+          echo "Starting monitoring service for ReGaHss and RFD"
+          /usr/bin/monit monitor ReGaHss
+          /usr/bin/monit monitor rfd
+        fi
       else
         echo "Checking for subsequent customized firmware files..."
         changed=0
@@ -101,11 +157,26 @@ case "$1" in
       echo "Running scripts..."    
       for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
       
+      check_ccu_fw_version
+
       cd /www
-      patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/jp.patch 
-      #patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-dis-ep-42bw.patch
-      #patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-ou-mp3-led_side.inc.not_used.patch
-      #patch -R -p3 -i /usr/local/addons/jp-hb-devices-addon/patch/hb-uni-sen-rfid-rc.patch
+      
+      echo "######## REVOKE COMMON PATCHES ########"
+      patchsubdir=common
+      for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
+        patch -R -p3 -i $patchfile
+      done
+      
+      echo "######## REVOKE VERSION DEPENDEND PATCHES ########"
+      if [ $PATCHVERSION -le 1 ]; then
+        patchsubdir=le_343
+      else
+        patchsubdir=ge_345
+      fi
+     
+      for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
+        patch -R -p3 -i $patchfile
+      done
 
       [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
       [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig

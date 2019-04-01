@@ -40,20 +40,25 @@ case "$1" in
       if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
         echo "Starting complete installation" > $LOGFILE
         cp /dev/null $ERRFILE
+
+        mount -o remount,rw /
         
         #### Check if monit process exists
-        check_monit
-        
-        if [ $MONIT -ge 1 ]; then
-          echo "Stopping monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
-          /usr/bin/monit unmonitor ReGaHss
-          /usr/bin/monit unmonitor rfd
+        #check_monit       
+        #if [ $MONIT -ge 1 ]; then
+        #  echo "Stopping monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
+        #  /usr/bin/monit unmonitor ReGaHss
+        #  /usr/bin/monit unmonitor rfd
+        #fi
+        #### force monit process to be stopped and prevent respawn. really.
+        if [ -f /usr/bin/monit ]; then
+          mv /usr/bin/monit /usr/bin/_monit 
         fi
+        killall monit
       
         /etc/init.d/S70ReGaHss stop
         /etc/init.d/S61rfd stop
 		    
-        mount -o remount,rw /
 	    	
         cd ${ADDON_DIR}
         cp -ar www/* /www/
@@ -120,10 +125,14 @@ case "$1" in
         /etc/init.d/S61rfd start
         /etc/init.d/S70ReGaHss start
         
-        if [ $MONIT -ge 1 ]; then
-          echo "Starting monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
-          /usr/bin/monit monitor ReGaHss
-          /usr/bin/monit monitor rfd
+        #if [ $MONIT -ge 1 ]; then
+        #  echo "Starting monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
+        #  /usr/bin/monit monitor ReGaHss
+        #  /usr/bin/monit monitor rfd
+        #fi
+        #### now we can let start monit again
+        if [ -f /usr/bin/_monit ]; then
+          mv /usr/bin/_monit /usr/bin/monit 
         fi
       else
         echo "Checking for subsequent customized firmware files..."

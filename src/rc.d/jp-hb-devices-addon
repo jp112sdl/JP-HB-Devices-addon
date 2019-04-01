@@ -32,6 +32,7 @@ MONIT=0
 check_monit()
 {
   MONIT=`ps -ef|grep \/usr\/bin\/monit|grep -v grep|wc -l`
+  echo "Found $MONIT monit processes" | tee -a $LOGFILE
 }
 
 case "$1" in

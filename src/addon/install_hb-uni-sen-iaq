@@ -35,7 +35,7 @@ fi
 stringtable_deFile="/www/config/stringtable_de.txt"
 
 stringtable_deInsert="WEATHER|IAQ_LEVEL\t\${stringTableHbIaqLevel}"
-if [ -z "`cat $stringtable_deFile | grep \"WEATHER|IAQ_STATE=IAQ_LEVEL"`" ]; then
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|IAQ_LEVEL"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 

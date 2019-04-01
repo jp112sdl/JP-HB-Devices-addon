@@ -13,7 +13,7 @@ webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
-stringtable_deSearch="WEATHER|IAQ_STATE=IAQ_LEVEL"
+stringtable_deSearch="WEATHER|IAQ_LEVEL"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="WEATHER|IAQ_STATE=IAQ_GOOD"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile

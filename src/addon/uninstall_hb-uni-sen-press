@@ -42,6 +42,12 @@ sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableUniPressure"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbGenericHysterese"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbGenericSchaltschwelle"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbGenericSensortyp"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

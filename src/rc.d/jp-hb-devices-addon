@@ -32,33 +32,47 @@ MONIT=0
 check_monit()
 {
   MONIT=`ps -ef|grep \/usr\/bin\/monit|grep -v grep|wc -l`
-  echo "Found $MONIT monit processes" | tee -a $LOGFILE
+  echo "Found $MONIT monit process(es)" | tee -a $LOGFILE
+}
+
+REGA=0
+check_rega()
+{
+  REGA=`ps -ef|grep \/bin\/ReGaHss|grep -v grep|wc -l`
+  echo "Found $REGA ReGaHss process(es)" | tee -a $LOGFILE
+}
+
+RFD=0
+check_rfd()
+{
+  RFD=`ps -ef|grep \/bin\/rfd|grep -v grep|wc -l`
+  echo "Found $RFD rfd process(es)" | tee -a $LOGFILE
 }
 
 case "$1" in
-    ""|start)
+    ""|init|start)
       if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
-        echo "Starting complete installation" > $LOGFILE
+        echo "Starting complete installation within '$1'" > $LOGFILE
         cp /dev/null $ERRFILE
 
         mount -o remount,rw /
         
         #### Check if monit process exists
-        #check_monit       
-        #if [ $MONIT -ge 1 ]; then
-        #  echo "Stopping monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
-        #  /usr/bin/monit unmonitor ReGaHss
-        #  /usr/bin/monit unmonitor rfd
-        #fi
-        #### force monit process to be stopped and prevent respawn. really.
-        if [ -f /usr/bin/monit ]; then
-          mv /usr/bin/monit /usr/bin/_monit 
+        check_monit       
+        if [ $MONIT -ge 1 ]; then
+          echo "Stopping monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
+          /usr/bin/monit unmonitor ReGaHss
+          /usr/bin/monit unmonitor rfd
         fi
-        killall monit
       
-        /etc/init.d/S70ReGaHss stop
-        /etc/init.d/S61rfd stop
-		    
+        check_rega
+        if [ $REGA -ge 1 ]; then
+          /etc/init.d/S70ReGaHss stop | tee -a $LOGFILE
+        fi
+        check_rfd
+        if [ $RFD -ge 1 ]; then
+          /etc/init.d/S61rfd stop | tee -a $LOGFILE
+		fi
 	    	
         cd ${ADDON_DIR}
         cp -ar www/* /www/
@@ -121,19 +135,19 @@ case "$1" in
         sync
         mount -o remount,ro /
         touch ${ADDON_DIR}/installed
-		    
-        /etc/init.d/S61rfd start
-        /etc/init.d/S70ReGaHss start
-        
-        #if [ $MONIT -ge 1 ]; then
-        #  echo "Starting monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
-        #  /usr/bin/monit monitor ReGaHss
-        #  /usr/bin/monit monitor rfd
-        #fi
-        #### now we can let start monit again
-        if [ -f /usr/bin/_monit ]; then
-          mv /usr/bin/_monit /usr/bin/monit 
+
+        if [ $RFD -ge 1 ]; then
+          /etc/init.d/S61rfd start | tee -a $LOGFILE
+		fi		    
+        if [ $REGA -ge 1 ]; then
+          /etc/init.d/S70ReGaHss start | tee -a $LOGFILE
         fi
+        if [ $MONIT -ge 1 ]; then
+          echo "Starting monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
+          /usr/bin/monit monitor ReGaHss
+          /usr/bin/monit monitor rfd
+        fi
+        echo "Installation done." | tee -a $LOGFILE
       else
         echo "Checking for subsequent customized firmware files..."
         changed=0
@@ -149,7 +163,7 @@ case "$1" in
         done
 
         if [ $changed -gt 0 ]; then
-          echo "$changed Firmware file(s) changed - restarting RFD"
+          echo "$changed Firmware file(s) changed - restarting RFD" | tee -a $LOGFILE
           /etc/init.d/S61rfd restart
         else
           echo "Nothing changed - nothing to do"
@@ -221,7 +235,7 @@ case "$1" in
     ;;
 	
     *)
-      echo "Usage: $ADDON_NAME {start|stop|restart|info|uninstall}" >&2
+      echo "Usage: $ADDON_NAME {start|info|uninstall}" >&2
       exit 1
     ;;
 

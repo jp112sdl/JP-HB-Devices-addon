@@ -5,8 +5,8 @@ ADDON_NAME=`basename "$0"`
 
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
 WWW_DIR=/etc/config/addons/www/${ADDON_NAME}
-LOGFILE=/var/log/$ADDON_NAME.log
-ERRFILE=/var/log/$ADDON_NAME.err
+LOGFILE=$ADDON_DIR/inst.log
+ERRFILE=$ADDON_DIR/inst.err
 FIRMWARE_DIR=/firmware/rftypes
 CUSTOMIZED_FIRMWARE_DIR=${ADDON_DIR}/customized_firmware
 RC_DIR=/usr/local/etc/config/rc.d
@@ -25,32 +25,40 @@ check_ccu_fw_version()
   PATCHVERSION=1
  fi
  
- echo "Found $model.$version.$build - using patchversion $PATCHVERSION"
+ echo "Found firmware version $model.$version.$build - using patchversion $PATCHVERSION" | tee -a $LOGFILE
 }
 
 MONIT=0
 check_monit()
 {
   MONIT=`ps -ef|grep \/usr\/bin\/monit|grep -v grep|wc -l`
+  echo "Found $MONIT monit processes" | tee -a $LOGFILE
 }
 
 case "$1" in
     ""|start)
       if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
-      
-        #### Check if monit process exists
-        check_monit
+        echo "Starting complete installation" > $LOGFILE
+        cp /dev/null $ERRFILE
+
+        mount -o remount,rw /
         
-        if [ $MONIT -ge 1 ]; then
-          echo "Stopping monitoring service for ReGaHss and RFD"
-          /usr/bin/monit unmonitor ReGaHss
-          /usr/bin/monit unmonitor rfd
+        #### Check if monit process exists
+        #check_monit       
+        #if [ $MONIT -ge 1 ]; then
+        #  echo "Stopping monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
+        #  /usr/bin/monit unmonitor ReGaHss
+        #  /usr/bin/monit unmonitor rfd
+        #fi
+        #### force monit process to be stopped and prevent respawn. really.
+        if [ -f /usr/bin/monit ]; then
+          mv /usr/bin/monit /usr/bin/_monit 
         fi
+        killall monit
       
         /etc/init.d/S70ReGaHss stop
         /etc/init.d/S61rfd stop
 		    
-        mount -o remount,rw /
 	    	
         cd ${ADDON_DIR}
         cp -ar www/* /www/
@@ -66,20 +74,20 @@ case "$1" in
 
         cd /www
 
-        echo "######## REVOKE OLD APPLIED PATCHES ########"
+        echo "######## REVOKE OLD APPLIED PATCHES ########" | tee -a $LOGFILE
         patch -R -p3 -i ${ADDON_DIR}/patch/revoke/jp.patch 
         patch -R -p3 -i ${ADDON_DIR}/patch/revoke/hb-dis-ep-42bw.patch
         patch -R -p3 -i ${ADDON_DIR}/patch/revoke/hb-ou-mp3-led_side.inc.not_used.patch
         patch -R -p3 -i ${ADDON_DIR}/patch/revoke/hb-uni-sen-rfid-rc.patch
         patch -R -p3 -i ${ADDON_DIR}/patch/revoke/programs_wrong_encodeStringStatusDisplay.patch
         
-        echo "######## APPLY COMMON PATCHES ########"
+        echo "######## APPLY COMMON PATCHES ########" | tee -a $LOGFILE
         patchsubdir=common
         for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
           patch -N -p3 -i $patchfile
         done
         
-        echo "######## APPLY VERSION DEPENDEND PATCHES ########"
+        echo "######## APPLY VERSION DEPENDEND PATCHES ########" | tee -a $LOGFILE
         if [ $PATCHVERSION -le 1 ]; then
           patchsubdir=le_343
         else
@@ -101,13 +109,13 @@ case "$1" in
         ln -s /usr/local/addons/jp-hb-devices-addon/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 	    	    
         cd ${ADDON_DIR}
-        echo "Running scripts..."    
-        for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $LOGFILE 2>$ERRFILE; done
+        echo "Running scripts..." | tee -a $LOGFILE
+        for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; ./$(basename $f) >> $LOGFILE 2>>$ERRFILE; done
 
-	    echo "Copying customized firmware files..."
+	    echo "Copying customized firmware files..." | tee -a $LOGFILE
         cp ${CUSTOMIZED_FIRMWARE_DIR}/* ${ADDON_DIR}${FIRMWARE_DIR}/
 
-        echo "Creating symlinks for firmware files..."
+        echo "Creating symlinks for firmware files..." | tee -a $LOGFILE
         for f in ${ADDON_DIR}${FIRMWARE_DIR}/* ; do rm -f ${FIRMWARE_DIR}/$(basename $f); ln -s $f ${FIRMWARE_DIR}/$(basename $f); echo "  - $(basename $f)"; done
 
         sync
@@ -117,10 +125,14 @@ case "$1" in
         /etc/init.d/S61rfd start
         /etc/init.d/S70ReGaHss start
         
-        if [ $MONIT -ge 1 ]; then
-          echo "Starting monitoring service for ReGaHss and RFD"
-          /usr/bin/monit monitor ReGaHss
-          /usr/bin/monit monitor rfd
+        #if [ $MONIT -ge 1 ]; then
+        #  echo "Starting monitoring service for ReGaHss and RFD" | tee -a $LOGFILE
+        #  /usr/bin/monit monitor ReGaHss
+        #  /usr/bin/monit monitor rfd
+        #fi
+        #### now we can let start monit again
+        if [ -f /usr/bin/_monit ]; then
+          mv /usr/bin/_monit /usr/bin/monit 
         fi
       else
         echo "Checking for subsequent customized firmware files..."

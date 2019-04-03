@@ -38,6 +38,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |<img src="src/addon/www/config/img/devices/50/hb-ou-mp3-led_thumb.png" width=25/> | [HB-OU-MP3-LED](https://github.com/jp112sdl/HB-OU-MP3-LED) | MP3-Player mit LED |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-weight_thumb.png" width=25/> | [HB-UNI-Sen-WEIGHT](https://github.com/jp112sdl/HB-UNI-Sen-WEIGHT) | universeller Wägesensor |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-iaq_thumb.png" width=25/> | [HB-UNI-Sen-IAQ](https://github.com/jp112sdl/HB-UNI-Sen-IAQ) | universeller Luftgütesensor _(temporary discontinued)_ [(see HM-Forum)](https://homematic-forum.de/forum/viewtopic.php?f=76&t=49422)|
+|<img src="src/addon/www/config/img/devices/50/hb-rc-12-ep-c_thumb.png" width=25/> | [HB-RC-12-EP-C](https://github.com/jp112sdl/HB-RC-12-EP-C) | 12 Kanal Fernbedienung mit ePaper Display _(coming soon)_ | 
 
 Zu diesem Zweck ist die [aktuellste Version](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) des Addons herunterzuladen und wie gewohnt in der WebUI über "Einstellungen"->"Systemsteuerung"->"Zusatzsoftware" zu installieren.
 <br>_Wie immer bei Addons der Hinweis:<br>Die heruntergeladene Datei mit der Endung `.tgz` darf nicht entpackt werden!_
@@ -77,6 +78,7 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F3 42 | HB-UNI-DMX-MASTER |
 |F3 43 | HB-DIS-EP-42BW |
 |F3 44 | HB-OU-MP3-LED |
+|F3 45 | HB-RC-12-EP-C |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 4B | HB-UNI-Sen-WEIGHT |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |

@@ -19,7 +19,7 @@ check_ccu_fw_version()
  version=`grep VERSION /boot/VERSION | awk -F'[=.]' {'print $3'}`
  build=`grep VERSION /boot/VERSION   | awk -F'[=.]' {'print $4'}`
 
- if [ $model -ge 3 ] && [ $version -ge 45 ]; then
+ if [ $model -ge 2 ] && [ $version -ge 45 ]; then
   PATCHVERSION=2
  else
   PATCHVERSION=1

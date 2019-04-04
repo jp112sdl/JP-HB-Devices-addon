@@ -4,6 +4,7 @@
 ADDON_NAME=`basename "$0"`
 
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
+PATCH_DIR=${ADDON_DIR}/patch
 WWW_DIR=/etc/config/addons/www/${ADDON_NAME}
 LOGFILE=$ADDON_DIR/inst.log
 ERRFILE=$ADDON_DIR/inst.err
@@ -89,16 +90,16 @@ case "$1" in
         cd /www
 
         echo "######## REVOKE OLD APPLIED PATCHES ########" | tee -a $LOGFILE
-        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/jp.patch 
-        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/hb-dis-ep-42bw.patch
-        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/hb-ou-mp3-led_side.inc.not_used.patch
-        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/hb-uni-sen-rfid-rc.patch
-        patch -R -p3 -i ${ADDON_DIR}/patch/revoke/programs_wrong_encodeStringStatusDisplay.patch
+        for patchfile in `ls ${PATCH_DIR}/revoke/ | sort`; do 
+          echo "Rejecting patch file $patchfile" | tee -a $LOGFILE
+          patch -R -p3 -i ${PATCH_DIR}/revoke/$patchfile >> $LOGFILE 2>>$ERRFILE
+        done
         
         echo "######## APPLY COMMON PATCHES ########" | tee -a $LOGFILE
         patchsubdir=common
-        for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
-          patch -N -p3 -i $patchfile
+        for patchfile in ${PATCH_DIR}/$patchsubdir/* ; do
+          echo "Applying $patchsubdir patch file $(basename $patchfile)" | tee -a $LOGFILE
+          patch -N -p3 -i $patchfile >> $LOGFILE 2>>$ERRFILE
         done
         
         echo "######## APPLY VERSION DEPENDEND PATCHES ########" | tee -a $LOGFILE
@@ -108,8 +109,9 @@ case "$1" in
           patchsubdir=ge_345
         fi
       
-        for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
-          patch -N -p3 -i $patchfile
+        for patchfile in ${PATCH_DIR}/$patchsubdir/* ; do
+          echo "Applying $patchsubdir patch file $(basename $patchfile)" | tee -a $LOGFILE
+          patch -N -p3 -i $patchfile >> $LOGFILE 2>>$ERRFILE
         done
          
         [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
@@ -189,7 +191,8 @@ case "$1" in
       
       echo "######## REVOKE COMMON PATCHES ########"
       patchsubdir=common
-      for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
+      for patchfile in ${PATCH_DIR}/$patchsubdir/* ; do
+        echo "Rejecting $patchsubdir patch file $(basename $patchfile)" | tee -a $LOGFILE
         patch -R -p3 -i $patchfile
       done
       
@@ -200,7 +203,8 @@ case "$1" in
         patchsubdir=ge_345
       fi
      
-      for patchfile in ${ADDON_DIR}/patch/$patchsubdir/* ; do
+      for patchfile in ${PATCH_DIR}/$patchsubdir/* ; do
+        echo "Rejecting $patchsubdir patch file $(basename $patchfile)" | tee -a $LOGFILE
         patch -R -p3 -i $patchfile
       done
 

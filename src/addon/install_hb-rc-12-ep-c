@@ -57,6 +57,169 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="HB_ICON_NUM"
+webuiInsertValue="lblIcon"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="ICON_NOTUSED"
+webuiInsertValue="stringTableNotUsed"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_OFF"
+webuiInsertValue="iconOff"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_ON"
+webuiInsertValue="iconOn"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_OPEN"
+webuiInsertValue="iconOpen"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_CLOSED"
+webuiInsertValue="iconClosed"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_ERROR"
+webuiInsertValue="iconError"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_OK"
+webuiInsertValue="iconOK"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_INFO"
+webuiInsertValue="iconInfo"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_NEWMESSAGE"
+webuiInsertValue="iconNewMessage"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_SERVICEMESSAGE"
+webuiInsertValue="iconServiceMessage"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBGARAGE"
+webuiInsertValue="iconHbGarage"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBSHUTTER"
+webuiInsertValue="iconHbShutter"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBSHUTTERUP"
+webuiInsertValue="iconHbShutterUp"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBSHUTTERDOWN"
+webuiInsertValue="iconHbShutterDown"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBUP"
+webuiInsertValue="iconHbUp"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBDOWN"
+webuiInsertValue="iconHbDown"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBSNOWFLAKE"
+webuiInsertValue="iconHbSnowflake"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBWARNING"
+webuiInsertValue="iconHbWarning"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBERROR"
+webuiInsertValue="iconHbError"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBBELL"
+webuiInsertValue="iconHbBell"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBCALENDAR"
+webuiInsertValue="iconHbCalendar"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+webuiInsertParam="ICON_HBTHERMOMETER"
+webuiInsertValue="iconHbThermometer"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
@@ -73,6 +236,100 @@ fi
 
 stringtable_deInsert="HB_EP_ALIGN_CENTER_NO_ICON\t\${stringTableHbEpAlignCenterNoIcon}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGN_CENTER_NO_ICON"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_ICON_NUM\t\${lblIcon}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_ICON_NUM"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="ICON_NOTUSED\t\${stringTableNotUsed}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_NOTUSED"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_OFF\t\${iconOff}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_OFF"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_ON\t\${iconOn}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_ON"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_OPEN\t\${iconOpen}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_OPEN"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_CLOSED\t\${iconClosed}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_CLOSED"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_ERROR\t\${iconError}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_ERROR"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_OK\t\${iconOK}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_OK"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_INFO\t\${iconInfo}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_INFO"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_NEWMESSAGE\t\${iconNewMessage}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_NEWMESSAGE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_SERVICEMESSAGE\t\${iconServiceMessage}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_SERVICEMESSAGE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBGARAGE\t\${iconHbGarage}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBGARAGE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBSHUTTER\t\${iconHbShutter}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBSHUTTER"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBSHUTTERUP\t\${iconHbShutterUp}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBSHUTTERUP"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBSHUTTERDOWN\t\${iconHbShutterDown}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBSHUTTERDOWN"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBUP\t\${iconHbUp}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBUP"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBDOWN\t\${iconHbDown}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBDOWN"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBSNOWFLAKE\t\${iconHbSnowflake}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBSNOWFLAKE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBWARNING\t\${iconHbWarning}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBWARNING"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBERROR\t\${iconHbError}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBERROR"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBBELL\t\${iconHbBell}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBBELL"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBCALENDAR\t\${iconHbCalendar}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBCALENDAR"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="ICON_HBTHERMOMETER\t\${iconHbThermometer}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_HBTHERMOMETER"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 

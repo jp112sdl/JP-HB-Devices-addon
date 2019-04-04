@@ -31,7 +31,5 @@ if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
-webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
-
 ### Patch some files ###
 ### done by hb-uni-sen-rfid-rc installation routine

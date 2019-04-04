@@ -64,8 +64,8 @@ webuiInsertValue="stringTableNotUsed"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
-webuiInsertParam="ICON_CH_DIR"
-webuiInsertValue="iconChDir"
+webuiInsertParam="ICON_CH_DIR_ARROW"
+webuiInsertValue="iconChDirArrow"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
@@ -191,8 +191,8 @@ stringtable_deInsert="HB_ICON_NUM\t\${lblIcon}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_ICON_NUM"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="ICON_NOTUSED\t\${stringTableNotUsed}"
 if [ -z "`cat $stringtable_deFile | grep \"ICON_NOTUSED"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
-stringtable_deInsert="ICON_CH_DIR\t\${iconChDir}"
-if [ -z "`cat $stringtable_deFile | grep \"ICON_CH_DIR"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
+stringtable_deInsert="ICON_CH_DIR_ARROW\t\${iconChDirArrow}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_CH_DIR_ARROW"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="ICON_OFF\t\${iconOff}"
 if [ -z "`cat $stringtable_deFile | grep \"ICON_OFF"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="ICON_ON\t\${iconOn}"
@@ -241,7 +241,7 @@ translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 
 translate_deInsert="\n    \"stringTableHbEpTextBold\" : \"Text Fettschrift\","
-if [ -z "`cat $translate_deFile | grep \"stringTableHbEpTextColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpTextBold\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbEpTextColored\" : \"Text farbig\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpTextColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbEpIconColored\" : \"Icon farbig\","
@@ -255,5 +255,5 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignCenterNoIcon\"`" ];
 translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
 
 translate_deSearch="\"iconServiceMessage\":\"Servicemeldung\","
-translate_deInsert="\n    \"iconChDir\":\"Pfeil zum Taster\","
-if [ -z "`cat $translate_deFile | grep \"iconChDir\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+translate_deInsert="\n    \"iconChDirArrow\":\"Pfeil zum Taster\","
+if [ -z "`cat $translate_deFile | grep \"iconChDirArrow\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi

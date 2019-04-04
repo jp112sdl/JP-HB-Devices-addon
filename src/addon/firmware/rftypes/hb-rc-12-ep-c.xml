@@ -148,7 +148,7 @@
       <parameter id="HB_ICON_NUM">
         <logical type="option">
          <option id="ICON_NOTUSED" default="true" /> 
-         <option id="ICON_CH_DIR" />                                                                                                                                                                                                                      
+         <option id="ICON_CH_DIR_ARROW" />                                                                                                                                                                                                                      
          <option id="ICON_OFF" />                                                                                              
          <option id="ICON_ON" />                                                                                              
          <option id="ICON_OPEN" />                                                                                              

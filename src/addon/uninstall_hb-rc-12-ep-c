@@ -36,6 +36,7 @@ webuiSearch="ICON_HBERROR"; sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="ICON_HBBELL"; sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="ICON_HBCALENDAR"; sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="ICON_HBTHERMOMETER"; sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="ICON_CH_DIR_ARROW"; sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="HB_EP_TEXT_BOLD"; sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
@@ -65,6 +66,7 @@ stringtable_deSearch="ICON_HBERROR"; sed -i "/\($stringtable_deSearch\)/d" $stri
 stringtable_deSearch="ICON_HBBELL"; sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="ICON_HBCALENDAR"; sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="ICON_HBTHERMOMETER"; sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="ICON_CH_DIR_ARROW"; sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbEpTextColored"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
@@ -73,7 +75,7 @@ translate_deSearch="stringTableHbEpIconColored"; sed -i "/\(${translate_deSearch
 translate_deSearch="stringTableHbEpAlignCenterNoIcon"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
-translate_deSearch="iconChDir"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="iconChDirArrow"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 
 rm -f $FIRMWARE_FILE

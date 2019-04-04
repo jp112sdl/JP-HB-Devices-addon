@@ -11,6 +11,28 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
+webuiSearch="HB_EP_TEXT_COLORED"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_EP_ICON_COLORED"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_EP_ALIGN_CENTER_NO_ICON"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+
+stringtable_deFile="/www/config/stringtable_de.txt"
+stringtable_deSearch="HB_EP_TEXT_COLORED"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_EP_ICON_COLORED"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_EP_ALIGN_CENTER_NO_ICON"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="stringTableHbEpTextColored"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbEpIconColored"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbEpAlignCenterNoIcon"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

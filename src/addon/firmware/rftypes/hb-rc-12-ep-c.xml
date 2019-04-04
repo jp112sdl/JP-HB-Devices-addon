@@ -147,7 +147,8 @@
       </parameter>
       <parameter id="HB_ICON_NUM">
         <logical type="option">
-         <option id="ICON_NOTUSED" default="true" />                                                                                                                                                                                                                     
+         <option id="ICON_NOTUSED" default="true" /> 
+         <option id="ICON_CH_DIR" />                                                                                                                                                                                                                      
          <option id="ICON_OFF" />                                                                                              
          <option id="ICON_ON" />                                                                                              
          <option id="ICON_OPEN" />                                                                                              
@@ -175,6 +176,10 @@
       <parameter id="HB_EP_ICON_COLORED">
         <logical type="boolean" default="false"/>
         <physical type="integer" interface="config" list="1" index="144.2" size="0.1"/>
+      </parameter>
+      <parameter id="HB_EP_TEXT_BOLD">
+        <logical type="boolean" default="false"/>
+        <physical type="integer" interface="config" list="1" index="144.3" size="0.1"/>
       </parameter>
       <parameter id="HB_EP_TEXT_COLORED">
         <logical type="boolean" default="false"/>

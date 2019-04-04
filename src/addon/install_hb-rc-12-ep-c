@@ -29,6 +29,12 @@ if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($webuiSearchBe
 
 webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 
+webuiInsertParam="HB_EP_TEXT_BOLD"
+webuiInsertValue="stringTableHbEpTextBold"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
+
 webuiInsertParam="HB_EP_TEXT_COLORED"
 webuiInsertValue="stringTableHbEpTextColored"
 webuiInsert="\n"
@@ -55,6 +61,11 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($web
 
 webuiInsertParam="ICON_NOTUSED"
 webuiInsertValue="stringTableNotUsed"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
+webuiInsertParam="ICON_CH_DIR"
+webuiInsertValue="iconChDir"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
@@ -168,6 +179,8 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($web
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
+stringtable_deInsert="HB_EP_TEXT_BOLD\t\${stringTableHbEpTextBold}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_EP_TEXT_BOLD"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="HB_EP_TEXT_COLORED\t\${stringTableHbEpTextColored}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_EP_TEXT_COLORED"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="HB_EP_ICON_COLORED\t\${stringTableHbEpIconColored}"
@@ -178,6 +191,8 @@ stringtable_deInsert="HB_ICON_NUM\t\${lblIcon}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_ICON_NUM"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="ICON_NOTUSED\t\${stringTableNotUsed}"
 if [ -z "`cat $stringtable_deFile | grep \"ICON_NOTUSED"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
+stringtable_deInsert="ICON_CH_DIR\t\${iconChDir}"
+if [ -z "`cat $stringtable_deFile | grep \"ICON_CH_DIR"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="ICON_OFF\t\${iconOff}"
 if [ -z "`cat $stringtable_deFile | grep \"ICON_OFF"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="ICON_ON\t\${iconOn}"
@@ -225,9 +240,20 @@ if [ -z "`cat $stringtable_deFile | grep \"ICON_HBTHERMOMETER"`" ]; then echo -e
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 
+translate_deInsert="\n    \"stringTableHbEpTextBold\" : \"Text Fettschrift\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpTextColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbEpTextColored\" : \"Text farbig\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpTextColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbEpIconColored\" : \"Icon farbig\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpIconColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbEpAlignCenterNoIcon\" : \"zentriert\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignCenterNoIcon\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+
+
+
+### Edit translate.lang.extension.js
+translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
+
+translate_deSearch="\"iconServiceMessage\":\"Servicemeldung\","
+translate_deInsert="\n    \"iconChDir\":\"Pfeil zum Taster\","
+if [ -z "`cat $translate_deFile | grep \"iconChDir\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi

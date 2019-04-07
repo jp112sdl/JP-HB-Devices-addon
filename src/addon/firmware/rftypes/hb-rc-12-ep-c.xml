@@ -185,14 +185,6 @@
         <logical type="boolean" default="false"/>
         <physical type="integer" interface="config" list="1" index="144.1" size="0.1"/>
       </parameter>
-      <parameter id="HB_EP_ALIGNMENT">
-        <logical type="option">
-         <option id="HB_EP_ALIGN_RIGHT" />                                                                                              
-         <option id="HB_EP_ALIGN_CENTER_NO_ICON" default="true" />                                                                                                                                                                                                                     
-         <option id="HB_EP_ALIGN_LEFT" />  
-        </logical>
-        <physical type="integer" interface="config" list="1" index="145.0" size="1.0"/>
-      </parameter>
       <parameter id="TEXTLINE_1">
         <logical type="string"/>
         <physical type="string" interface="config_string" list="1" index="54" size="10"/>

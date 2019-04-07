@@ -47,12 +47,6 @@ webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
 
-webuiInsertParam="HB_EP_ALIGN_CENTER_NO_ICON"
-webuiInsertValue="stringTableHbEpAlignCenterNoIcon"
-webuiInsert="\n"
-webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
-if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
-
 webuiInsertParam="HB_ICON_NUM"
 webuiInsertValue="lblIcon"
 webuiInsert="\n"
@@ -185,8 +179,6 @@ stringtable_deInsert="HB_EP_TEXT_COLORED\t\${stringTableHbEpTextColored}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_EP_TEXT_COLORED"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="HB_EP_ICON_COLORED\t\${stringTableHbEpIconColored}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ICON_COLORED"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
-stringtable_deInsert="HB_EP_ALIGN_CENTER_NO_ICON\t\${stringTableHbEpAlignCenterNoIcon}"
-if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGN_CENTER_NO_ICON"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="HB_ICON_NUM\t\${lblIcon}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_ICON_NUM"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 stringtable_deInsert="ICON_NOTUSED\t\${stringTableNotUsed}"
@@ -246,9 +238,6 @@ translate_deInsert="\n    \"stringTableHbEpTextColored\" : \"Text farbig\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpTextColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbEpIconColored\" : \"Icon farbig\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpIconColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
-translate_deInsert="\n    \"stringTableHbEpAlignCenterNoIcon\" : \"zentriert\","
-if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignCenterNoIcon\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
-
 
 
 ### Edit translate.lang.extension.js

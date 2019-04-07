@@ -165,8 +165,12 @@ case "$1" in
         done
 
         if [ $changed -gt 0 ]; then
-          echo "$changed Firmware file(s) changed - restarting RFD" | tee -a $LOGFILE
-          /etc/init.d/S61rfd restart
+          echo "$changed Firmware file(s) changed" | tee -a $LOGFILE
+          check_rfd
+          if [ $RFD -ge 1 ]; then
+            echo " - restarting RFD"
+            /etc/init.d/S61rfd restart | tee -a $LOGFILE
+		  fi
         else
           echo "Nothing changed - nothing to do"
         fi

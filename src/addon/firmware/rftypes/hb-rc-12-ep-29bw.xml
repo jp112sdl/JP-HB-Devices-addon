@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <device version="11" rx_modes="CONFIG" peering_sysinfo_expect_channel="false" supports_aes="true">
   <supported_types>
-    <type name="HB RemoteControl with ePaper Color" id="HB-RC-12-EP-C" priority="2">
-      <parameter index="10.0" size="2.0" const_value="0xf345"/>
+    <type name="HB RemoteControl with 2.9inch ePaper BlackWhite" id="HB-RC-12-EP-29BW" priority="2">
+      <parameter index="10.0" size="2.0" const_value="0xf346"/>
     </type>
   </supported_types>
   <paramset type="MASTER" id="remote_dev_master">
@@ -173,17 +173,9 @@
         </logical>
         <physical type="integer" interface="config" list="1" index="146.0" size="1.0"/>
       </parameter>      
-      <parameter id="HB_EP_ICON_COLORED">
-        <logical type="boolean" default="false"/>
-        <physical type="integer" interface="config" list="1" index="144.2" size="0.1"/>
-      </parameter>
       <parameter id="HB_EP_TEXT_BOLD">
         <logical type="boolean" default="false"/>
         <physical type="integer" interface="config" list="1" index="144.3" size="0.1"/>
-      </parameter>
-      <parameter id="HB_EP_TEXT_COLORED">
-        <logical type="boolean" default="false"/>
-        <physical type="integer" interface="config" list="1" index="144.1" size="0.1"/>
       </parameter>
       <parameter id="TEXTLINE_1">
         <logical type="string"/>

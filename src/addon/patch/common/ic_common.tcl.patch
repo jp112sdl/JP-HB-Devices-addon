@@ -1,15 +1,18 @@
 --- ./patchsource/www/config/ic_common.tcl.orig	2019-02-23 12:12:35.000000000 +0100
-+++ ./patchsource/www/config/ic_common.tcl	2019-04-04 08:15:06.000000000 +0200
-@@ -1074,6 +1074,8 @@
++++ ./patchsource/www/config/ic_common.tcl	2019-04-10 07:17:18.000000000 +0200
+@@ -1074,7 +1074,10 @@
  
    set hmDisEPIdentifier "HM-Dis-EP-WM55"
    set hmDisWM55Identifier "HM-Dis-WM55"
+-
 +  set hbDis42BWIdentifier "HB-DIS-EP-42BW"
-+  set hbRc12EpcIdentifier "HB-RC-12-EP-C"
- 
++  set hbRc12EpcIdentifier "HB-RC-12-EP-29C"
++  set hbRc12EpBwIdentifier "HB-RC-12-EP-29BW"
++  
    if { ! [catch { array set ch_descr [xmlrpc $iface_url($iface) getDeviceDescription [list string $address]] } ] } then {
      set channel_type $ch_descr(TYPE)
-@@ -1167,40 +1169,53 @@
+     catch {set chn $ch_descr(INDEX)}
+@@ -1167,40 +1170,53 @@
            append s "<td><input type=\"text\" name=\"$param_id\" value=\"$value\" $id $access /></td>"
          } else {
            puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/KEY_4Dis.js');</script>"
@@ -18,7 +21,7 @@
 -          # The parameter numbering of the channels 1 and 2 are the same as from the HM-Dis-WM55
 -          if {($parent_type != $hmDisEPIdentifier) || ($chn < 4)} {
 +          set helpText [getStatusDisplayHelp]  
-+          if {($parent_type == $hbRc12EpcIdentifier)} then {
++          if {($parent_type == $hbRc12EpcIdentifier) || ($parent_type == $hbRc12EpBwIdentifier)} then {
              if {$param_id == "TEXTLINE_1"} {
 -              # Fortlaufende Nummerierung der Textblöcke hinzufügen.
 -              # Berechnung:

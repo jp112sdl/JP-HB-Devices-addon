@@ -1075,8 +1075,8 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
   set hmDisEPIdentifier "HM-Dis-EP-WM55"
   set hmDisWM55Identifier "HM-Dis-WM55"
   set hbDis42BWIdentifier "HB-DIS-EP-42BW"
-  set hbRc12EpcIdentifier "HB-RC-12-EP-29C"
-  set hbRc12EpBwIdentifier "HB-RC-12-EP-29BW"
+  set hbRc12EpcIdentifier "HB-RC-12-EP-C"
+  set hbRc12EpBwIdentifier "HB-RC-12-EP-BW"
   
   if { ! [catch { array set ch_descr [xmlrpc $iface_url($iface) getDeviceDescription [list string $address]] } ] } then {
     set channel_type $ch_descr(TYPE)

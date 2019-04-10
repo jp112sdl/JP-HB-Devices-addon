@@ -1,13 +1,13 @@
 --- ./patchsource/www/config/ic_common.tcl.orig	2019-02-23 12:12:35.000000000 +0100
-+++ ./patchsource/www/config/ic_common.tcl	2019-04-10 07:17:18.000000000 +0200
++++ ./patchsource/www/config/ic_common.tcl	2019-04-10 08:36:52.000000000 +0200
 @@ -1074,7 +1074,10 @@
  
    set hmDisEPIdentifier "HM-Dis-EP-WM55"
    set hmDisWM55Identifier "HM-Dis-WM55"
 -
 +  set hbDis42BWIdentifier "HB-DIS-EP-42BW"
-+  set hbRc12EpcIdentifier "HB-RC-12-EP-29C"
-+  set hbRc12EpBwIdentifier "HB-RC-12-EP-29BW"
++  set hbRc12EpcIdentifier "HB-RC-12-EP-C"
++  set hbRc12EpBwIdentifier "HB-RC-12-EP-BW"
 +  
    if { ! [catch { array set ch_descr [xmlrpc $iface_url($iface) getDeviceDescription [list string $address]] } ] } then {
      set channel_type $ch_descr(TYPE)

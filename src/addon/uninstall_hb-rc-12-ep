@@ -1,9 +1,9 @@
 #!/bin/sh
 
-DEVICE="HB-RC-12-EP-29C"
-DEVICE_IMG=hb-rc-12-ep-29c.png
-DEVICE_THUMB=hb-rc-12-ep-29c_thumb.png
-FIRMWARE_FILE=/firmware/rftypes/hb-rc-ep-29c.xml
+DEVICE="HB-RC-12-EP-C"
+DEVICE_IMG=hb-rc-12-ep-c.png
+DEVICE_THUMB=hb-rc-12-ep-c_thumb.png
+FIRMWARE_FILE=/firmware/rftypes/hb-rc-ep-c.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "; sed -i "s/\($devdescrSearch\)//g" $devdescrFile
@@ -79,10 +79,10 @@ rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB
 
-DEVICE="HB-RC-12-EP-29BW"
+DEVICE="HB-RC-12-EP-BW"
 DEVICE_IMG=hb-rc-12-ep-bw.png
 DEVICE_THUMB=hb-rc-12-ep-bw_thumb.png
-FIRMWARE_FILE=/firmware/rftypes/hb-rc-ep-29bw.xml
+FIRMWARE_FILE=/firmware/rftypes/hb-rc-ep-bw.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "; sed -i "s/\($devdescrSearch\)//g" $devdescrFile

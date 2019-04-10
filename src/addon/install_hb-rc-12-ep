@@ -1,9 +1,9 @@
 #!/bin/sh
 
-DEVICE="HB-RC-12-EP-29C"
-DEVICE_IMG=hb-rc-12-ep-29c.png
-DEVICE_THUMB=hb-rc-12-ep-29c_thumb.png
-DEVICE_DESC="RemoteControl with 2.9inch ePaper Color"
+DEVICE="HB-RC-12-EP-C"
+DEVICE_IMG=hb-rc-12-ep-c.png
+DEVICE_THUMB=hb-rc-12-ep-c_thumb.png
+DEVICE_DESC="RemoteControl with ePaper Color"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
@@ -251,10 +251,10 @@ if [ -z "`cat $translate_deFile | grep \"iconChDirArrow\"`" ]; then sed -i "s/\(
 ###############################################################################
 #           Device Description for b/W
 ###############################################################################
-DEVICE="HB-RC-12-EP-29BW"
-DEVICE_IMG=hb-rc-12-ep-29bw.png
-DEVICE_THUMB=hb-rc-12-ep-29bw_thumb.png
-DEVICE_DESC="RemoteControl with 2.9inch ePaper b\/w"
+DEVICE="HB-RC-12-EP-BW"
+DEVICE_IMG=hb-rc-12-ep-bw.png
+DEVICE_THUMB=hb-rc-12-ep-bw_thumb.png
+DEVICE_DESC="RemoteControl with ePaper b\/w"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"

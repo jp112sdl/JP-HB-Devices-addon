@@ -333,7 +333,7 @@ function ::showHideRFChannel() {
   }
   
   ! HB Status Display EPaper 42BW
-  if(( (oDevHssType == "HB-DIS-EP-42BW") ) && (chNumber == 11)) {
+  if(( (oDevHssType == "HB-DIS-EP-42BW") || (oDevHssType == "HB-DIS-EP-42BW-MAINS") ) && (chNumber == 11)) {
     ! Hide channel 11 of this device
     bShowChannel = false;
   }

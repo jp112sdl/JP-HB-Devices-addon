@@ -3,7 +3,7 @@
 DEVICE="HB-DIS-EP-42BW"
 DEVICE_IMG=hb-dis-ep-42bw.png
 DEVICE_THUMB=hb-dis-ep-42bw_thumb.png
-DEVICE_DESC="ePaper Display 4.2 b\/w"
+DEVICE_DESC="battery powered ePaper Display 4.2 b\/w"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
@@ -39,6 +39,41 @@ webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['250'] = '\/config\/img\/devices
 if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
+
+######################################################################
+
+DEVICE="HB-DIS-EP-42BW-MAINS"
+DEVICE_IMG=hb-dis-ep-42bw-mains.png
+DEVICE_THUMB=hb-dis-ep-42bw-mains_thumb.png
+DEVICE_DESC="mains powered ePaper Display 4.2 b\/w"
+
+### Edit DEVDB.tcl ###
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+
+devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+
+if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
+	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
+fi
+
+### Edit webui.js ###
+webuiFile="/www/webui/webui.js"
+
+webuiSearchBegin="DEV_HIGHLIGHT[[:space:]]*=[[:space:]]*new Array();"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}DEV_HIGHLIGHT['$DEVICE'] = new Object();\n"
+webuiInsert="${webuiInsert}DEV_LIST.push('$DEVICE');\n"
+webuiInsert="${webuiInsert}DEV_DESCRIPTION['$DEVICE']='$DEVICE_DESC';\n"
+webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE'] = new Object();\n"
+webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['50'] = '\/config\/img\/devices\/50\/$DEVICE_THUMB';\n"
+webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['250'] = '\/config\/img\/devices\/250\/$DEVICE_IMG';"
+
+if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+######################################################################
 
 webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 

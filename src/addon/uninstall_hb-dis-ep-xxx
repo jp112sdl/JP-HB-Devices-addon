@@ -5,9 +5,16 @@ DEVICE_IMG=hb-dis-ep-42bw.png
 DEVICE_THUMB=hb-dis-ep-42bw_thumb.png
 FIRMWARE_FILE=/firmware/rftypes/hb-dis-ep-42bw_*.xml
 
-indexFile="/www/rega/pages/index.htm"
-indexFileSearch="jp_webui_inc.js"
-sed -i "/${indexFileSearch}/d" $indexFile
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+
+webuiFile="/www/webui/webui.js"
+sed -i "/\($DEVICE\)/d" $webuiFile
+
+DEVICE="HB-DIS-EP-42BW-MAINS"
+DEVICE_IMG=hb-dis-ep-42bw-mains.png
+DEVICE_THUMB=hb-dis-ep-42bw-mains_thumb.png
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
@@ -15,6 +22,8 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
+
+
 webuiSearch="HB_EP_SHOW_LINE"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_DISPLAY_REFRESH_WAIT_TIME"
@@ -86,6 +95,12 @@ translate_deSearch="iconHbCalendar"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbThermometer"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="iconHbBattery"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
+indexFile="/www/rega/pages/index.htm"
+indexFileSearch="jp_webui_inc.js"
+sed -i "/${indexFileSearch}/d" $indexFile
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/easymodes/HB-DIS-EP-42BW_dev_master.tcl

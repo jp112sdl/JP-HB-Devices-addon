@@ -89,12 +89,27 @@ case "$1" in
 
         cd /www
 
-        echo "######## REVOKE OLD APPLIED PATCHES ########" | tee -a $LOGFILE
-        for patchfile in `ls ${PATCH_DIR}/revoke/ | sort`; do 
-          echo "### Rejecting patch file $patchfile" | tee -a $LOGFILE | tee -a $ERRFILE
-          patch -R -p3 -i ${PATCH_DIR}/revoke/$patchfile >> $LOGFILE 2>>$ERRFILE
+		########################	REVOKE  	######################
+        echo "######## REVOKE COMMON APPLIED PATCHES ########" | tee -a $LOGFILE
+        patchsubdir=common
+        for patchfile in `ls ${PATCH_DIR}/revoke/$patchsubdir/* | sort`; do 
+          echo "### Rejecting $patchsubdir patch file $patchfile" | tee -a $LOGFILE | tee -a $ERRFILE
+          patch -R -p3 -i ${PATCH_DIR}/revoke/$patchsubdir/$patchfile >> $LOGFILE 2>>$ERRFILE
         done
         
+        echo "######## REVOKE VERSION DEPENDEND PATCHES ########" | tee -a $LOGFILE
+        if [ $PATCHVERSION -le 1 ]; then
+          patchsubdir=le_343
+        else
+          patchsubdir=ge_345
+        fi
+        for patchfile in `ls ${PATCH_DIR}/revoke/$patchsubdir/* | sort`; do 
+          echo "### Rejecting $patchsubdir patch file $patchfile" | tee -a $LOGFILE | tee -a $ERRFILE
+          patch -R -p3 -i ${PATCH_DIR}/revoke/$patchsubdir/$patchfile >> $LOGFILE 2>>$ERRFILE
+        done
+        
+        
+        ########################	APPLY   	######################
         echo "######## APPLY COMMON PATCHES ########" | tee -a $LOGFILE
         patchsubdir=common
         for patchfile in ${PATCH_DIR}/$patchsubdir/* ; do

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<device version="1" rx_modes="BURST" supports_aes="true">
+<device version="1" supports_aes="true">
   <supported_types>
-    <type name="HB Wireless 4.2 inch bw e-Paper Status Display with push button, battery powered" id="HB-DIS-EP-42BW-BAT" updatable="false" priority="2">
+    <type name="HB Wireless 4.2 inch bw e-Paper Status Display with push button, mains powered" id="HB-DIS-EP-42BW-MAINS" updatable="false" priority="2">
       <parameter index="9.0" size="1.0" cond_op="E" const_value="0x11"/>
-      <parameter index="10.0" size="2.0" const_value="0xF343"/>
+      <parameter index="10.0" size="2.0" const_value="0xF353"/>
     </type>
   </supported_types>
   <paramset type="MASTER" id="HB-DIS-EP-42BW_dev_master">
@@ -14,11 +14,6 @@
     <parameter id="HB_DISPLAY_REFRESH_WAIT_TIME">
       <logical type="float" min="0.0" max="25.5" default="5.0" unit="s"/>
       <physical type="integer" interface="config" list="0" index="7.0" size="1"/>
-      <conversion type="float_integer_scale" factor="10"/>
-    </parameter>
-    <parameter id="LOW_BAT_LIMIT">
-      <logical type="float" min="1.0" max="5.0" default="2.4" unit="V"/>
-      <physical type="integer" interface="config" list="0" index="18" size="1"/>
       <conversion type="float_integer_scale" factor="10"/>
     </parameter>
     <parameter id="DEVICE_LED_MODE">
@@ -48,10 +43,6 @@
         <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
           <logical type="boolean"/>
           <physical type="integer" interface="internal" value_id="CONFIG_PENDING"/>
-        </parameter>
-        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
-          <logical type="boolean"/>
-          <physical type="integer" interface="internal" value_id="LOWBAT"/>
         </parameter>
         <parameter id="AES_KEY" operations="read" ui_flags="invisible">
           <logical type="integer" min="0" max="127"/>

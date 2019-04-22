@@ -131,10 +131,11 @@ HbStatusDisplayDialogEPaper = Class.create(StatusDisplayDialog, {
       translateKey("iconHbBell"),
       translateKey("iconHbCalendar"),
       translateKey("iconHbThermometer")
+      translateKey("iconHbBattery")
     ];
 
     options += "<option name='option_NotUsed' value='-1'>" + translateKey("stringTableNotUsed") + "</option>";
-    for (var loop = 0; loop < 21; loop++) {
+    for (var loop = 0; loop < 22; loop++) {
       options += "<option name='option_"+loop+"' value='"+loop+"'>" + arOptionText[loop] + "</option>";
     }
     return options;

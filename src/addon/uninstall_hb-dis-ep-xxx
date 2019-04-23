@@ -97,6 +97,16 @@ translate_deSearch="iconHbThermometer"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbBattery"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="iconHbRadiatorHorizontal"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="iconHbRadiatorVertical"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="iconHbBathtub"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="iconHbValve"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="iconHbSprinkler"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 indexFile="/www/rega/pages/index.htm"
 indexFileSearch="jp_webui_inc.js"

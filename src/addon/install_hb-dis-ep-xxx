@@ -267,3 +267,23 @@ translate_deInsert="\n    \"iconHbBattery\":\"Batterie\","
 if [ -z "`cat $translate_deFile | grep \"iconHbBattery\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
+translate_deInsert="\n    \"iconHbRadiatorHorizontal\":\"Heizk%F6rper quer\","
+if [ -z "`cat $translate_deFile | grep \"iconHbRadiatorHorizontal\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbRadiatorVertical\":\"Heizk%F6rper hoch\","
+if [ -z "`cat $translate_deFile | grep \"iconHbRadiatorVertical\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbBathtub\":\"Badewanne\","
+if [ -z "`cat $translate_deFile | grep \"iconHbBathtub\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbValve\":\"Wasserhahn\","
+if [ -z "`cat $translate_deFile | grep \"iconHbValve\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"iconHbSprinkler\":\"Sprinkler\","
+if [ -z "`cat $translate_deFile | grep \"iconHbSprinkler\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi

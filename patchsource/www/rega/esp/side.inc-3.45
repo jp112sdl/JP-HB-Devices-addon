@@ -12,6 +12,7 @@
 
   string hb_oump3led = "HB-OU-MP3-LED";
   string hb_statusDisplayEPaper = "HB-DIS-EP-42BW";
+  string hb_statusDisplayEPaperMains = "HB-DIS-EP-42BW-MAINS";
   string hm_ouled16 =  "HM-OU-LED16";
   string hm_oucfm = "HM-OU-CFM-Pl";
   string hm_oucfmTW = "HM-OU-CFM-TW";

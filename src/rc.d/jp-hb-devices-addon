@@ -94,7 +94,7 @@ case "$1" in
         patchsubdir=common
         for patchfile in `ls ${PATCH_DIR}/revoke/$patchsubdir/* | sort`; do 
           echo "### Rejecting $patchsubdir patch file $patchfile" | tee -a $LOGFILE | tee -a $ERRFILE
-          patch -R -p3 -i ${PATCH_DIR}/revoke/$patchsubdir/$patchfile >> $LOGFILE 2>>$ERRFILE
+          patch -R -p3 -i $patchfile >> $LOGFILE 2>>$ERRFILE
         done
         
         echo "######## REVOKE VERSION DEPENDEND PATCHES ########" | tee -a $LOGFILE
@@ -105,7 +105,7 @@ case "$1" in
         fi
         for patchfile in `ls ${PATCH_DIR}/revoke/$patchsubdir/* | sort`; do 
           echo "### Rejecting $patchsubdir patch file $patchfile" | tee -a $LOGFILE | tee -a $ERRFILE
-          patch -R -p3 -i ${PATCH_DIR}/revoke/$patchsubdir/$patchfile >> $LOGFILE 2>>$ERRFILE
+          patch -R -p3 -i $patchfile >> $LOGFILE 2>>$ERRFILE
         done
         
         

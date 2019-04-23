@@ -130,7 +130,7 @@ HbStatusDisplayDialogEPaper = Class.create(StatusDisplayDialog, {
       translateKey("iconHbError"),
       translateKey("iconHbBell"),
       translateKey("iconHbCalendar"),
-      translateKey("iconHbThermometer")
+      translateKey("iconHbThermometer"),
       translateKey("iconHbBattery")
     ];
 

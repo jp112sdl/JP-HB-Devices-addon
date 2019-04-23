@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <device version="1" rx_modes="BURST" supports_aes="true">
   <supported_types>
-    <type name="HB Wireless 4.2 inch bw e-Paper Status Display with push button, battery powered" id="HB-DIS-EP-42BW-BAT" updatable="false" priority="2">
+    <type name="HB Wireless 4.2 inch bw e-Paper Status Display with push button, battery powered" id="HB-DIS-EP-42BW" updatable="false" priority="2">
       <parameter index="9.0" size="1.0" cond_op="E" const_value="0x11"/>
       <parameter index="10.0" size="2.0" const_value="0xF343"/>
     </type>

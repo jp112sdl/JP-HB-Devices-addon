@@ -1075,6 +1075,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
   set hmDisEPIdentifier "HM-Dis-EP-WM55"
   set hmDisWM55Identifier "HM-Dis-WM55"
   set hbDis42BWIdentifier "HB-DIS-EP-42BW"
+  set hbDis42BWMainsIdentifier "HB-DIS-EP-42BW-MAINS"
   set hbRc12EpcIdentifier "HB-RC-12-EP-C"
   set hbRc12EpBwIdentifier "HB-RC-12-EP-BW"
   
@@ -1176,7 +1177,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
               append s "<td><input type=\"text\" name=\"$param_id\" maxlength=\"10\" onblur=\"encodeStringStatusDisplay('$idval', true);\" value=\"$value\" $id $access /></td>"
             }
           } else {        
-           if {($parent_type == $hbDis42BWIdentifier)} then {
+           if {(($parent_type == $hbDis42BWIdentifier) || ($parent_type == $hbDis42BWMainsIdentifier))} then {
              if {$param_id == "TEXTLINE_1"} {
                append s "<td>[expr $chn * 2 - 1]&nbsp;&nbsp;<input type=\"text\" name=\"$param_id\" maxlength=\"16\" onblur=\"encodeStringStatusDisplay('$idval', true);\" value=\"$value\" $id $access /></td>"
              } else {

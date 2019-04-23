@@ -65,7 +65,7 @@ proc getTextField {prn param val} {
 
 proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   global iface_url psDescr
-
+  
   upvar PROFILES_MAP  PROFILES_MAP
   upvar HTML_PARAMS   HTML_PARAMS
   upvar PROFILE_PNAME PROFILE_PNAME
@@ -77,7 +77,9 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/HB-DIS-EP-42BW_HELP.js')</script>"
 
   array set psDescr [xmlrpc $iface_url($iface) getParamsetDescription [list string $address] [list string MASTER]]
-
+  array set devDescr [xmlrpc $iface_url($iface) getDeviceDescription [list string $address]]                                                       
+  set DEVICE $devDescr(TYPE) 
+  
   append HTML_PARAMS(separate_1) "<table class=\"ProfileTbl\">"
   set prn 1
   set param DISPLAY_INVERTING
@@ -98,13 +100,15 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     append HTML_PARAMS(separate_1) "<td>[getComboBox options $prn '$param' $ps($param)]</td>"
   append HTML_PARAMS(separate_1) "</tr>"
 
-  incr prn
-  set param LOW_BAT_LIMIT
-  append HTML_PARAMS(separate_1) "<tr>"
-    append HTML_PARAMS(separate_1) "<td>\${stringTableBatteryLowBatLimit}</td>"
-    append HTML_PARAMS(separate_1) "<td>[getTextField $prn $param $ps($param)]&nbsp;V&nbsp;[getMinMaxValueDescr $param]</td>"
-  append HTML_PARAMS(separate_1) "</tr>"
-
+  if { $DEVICE == "HB-DIS-EP-42BW" } {
+    incr prn
+    set param LOW_BAT_LIMIT
+    append HTML_PARAMS(separate_1) "<tr>"
+      append HTML_PARAMS(separate_1) "<td>\${stringTableBatteryLowBatLimit}</td>"
+      append HTML_PARAMS(separate_1) "<td>[getTextField $prn $param $ps($param)]&nbsp;V&nbsp;[getMinMaxValueDescr $param]</td>"
+    append HTML_PARAMS(separate_1) "</tr>"
+  }
+  
   incr prn
   set param HB_DISPLAY_REFRESH_WAIT_TIME
   append HTML_PARAMS(separate_1) "<tr>"

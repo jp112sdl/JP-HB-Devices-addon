@@ -17,6 +17,7 @@
   string hm_statusDisplay = "HM-Dis-WM55";
   string hm_statusDisplayEPaper = "HM-Dis-EP-WM55";
   string hb_statusDisplayEPaper = "HB-DIS-EP-42BW";
+  string hb_statusDisplayEPaperMains = "HB-DIS-EP-42BW-MAINS";
   string hm_rgbw_controller = "HM-LC-RGBW-WM";
   string hm_jalousieActor = "HM-LC-Ja1PBU";
   string heatingClimateControlTransceiver =  "HEATING_CLIMATECONTROL_TRANSCEIVER";
@@ -458,6 +459,7 @@
             integer statusDisplayDevice = hm_statusDisplay.Find(chLabel);
             integer statusDisplayEPaperDevice = hm_statusDisplayEPaper.Find(chLabel);
             integer statusHbDisplayEPaperDevice = hb_statusDisplayEPaper.Find(chLabel);
+            integer statusHbDisplayEPaperDeviceMains = hb_statusDisplayEPaperMains.Find(chLabel);
             integer rgbw_controller = chLabel.Find(hm_rgbw_controller);
             integer i_vir_lg_rgb_dim = chLabel.Find(s_vir_lg_rgb_dim);
             integer i_vir_lg_rgbw_dim = chLabel.Find(s_vir_lg_rgbw_dim);
@@ -467,6 +469,7 @@
             if ((statusDisplayDevice != -1)
               || (statusDisplayEPaperDevice != -1)
               || (statusHbDisplayEPaperDevice != -1)
+              || (statusHbDisplayEPaperDeviceMains != -1)
               || (rgbw_controller != -1)
               || ((jalousieActor != - 1) && (oDP.HSSID().Find("LEVEL_COMBINED") != -1))
               || (((i_vir_lg_rgb_dim != - 1) && (oDP.HSSID().Find("RGB") != -1)) || ((i_vir_lg_rgbw_dim != - 1) && (oDP.HSSID().Find("RGBW") != -1)) || (( i_vir_lg_group != - 1) && (oDP.HSSID().Find("RGBW") != -1)))
@@ -487,7 +490,7 @@
                 Write( '<input id="prgStringOptionValue'#oSD.ID()#'" onfocus="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');" type="text" class="SelectBox" size="10" value="'#iV#'" onchange="iseSingleDestination.SetValue('#oSD.ID()#',this.value,\'STRING\');" /> ' );
               }
 
-              if (statusHbDisplayEPaperDevice != -1) {
+              if (statusHbDisplayEPaperDevice != -1 || statusHbDisplayEPaperDeviceMain != -1) {
                 if(iV == "1") {
                   ! This is the default string for 'all values not used'
                   iV = "0x02,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x03";
@@ -546,6 +549,7 @@
               && (statusDisplayDevice == -1)
               && (statusDisplayEPaperDevice == -1)
               && (statusHbDisplayEPaperDevice == -1)
+              && (statusHbDisplayEPaperDeviceMains == -1)
               && (rgbw_controller == -1)
               && (jalousieActor == -1)
               && (i_vir_lg_rgb_dim == -1)
@@ -572,7 +576,7 @@
               if (statusDisplayEPaperDevice != -1) {
                 Write( '<span id="setStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');"><img src="/ise/img/notepad.png" /></span>' );
               }
-              if (statusHbDisplayEPaperDevice != -1) {
+              if (statusHbDisplayEPaperDevice != -1 || statusHbDisplayEPaperDeviceMains != -1) {
                 Write( '<span id="setHbStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP42BW\');"><img src="/ise/img/notepad.png" /></span>' );
               }
               if (rgbw_controller != -1) {

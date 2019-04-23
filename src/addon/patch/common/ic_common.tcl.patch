@@ -1,5 +1,5 @@
 --- ./patchsource/www/config/ic_common.tcl.orig	2019-02-23 12:12:35.000000000 +0100
-+++ ./patchsource/www/config/ic_common.tcl	2019-04-22 22:09:32.000000000 +0200
++++ ./patchsource/www/config/ic_common.tcl	2019-04-23 21:11:37.000000000 +0200
 @@ -1074,7 +1074,11 @@
  
    set hmDisEPIdentifier "HM-Dis-EP-WM55"

@@ -65,18 +65,25 @@
       <link_roles>
         <source name="WEATHER_TH" />
       </link_roles>
-       <paramset type="VALUES" id="HB-UNI-Sen-TEMP-DS18B20_values">
-            <parameter id="TEMPERATURE" operations="read,event">
-               <logical type="float" min="-150.0" max="150.0" unit="°C" />
-               <physical type="integer" interface="command" value_id="TEMPERATURE" no_init="true">
-                  <event frame="MEASURE_EVENT" />
-               </physical>
-               <conversion type="float_integer_scale" factor="10.0" />
-               <description>
-                  <field id="AutoconfRoles" value="WEATHER" />
-               </description>
-            </parameter>
-         </paramset>
+      <paramset type="MASTER" id="HB-UNI-Sen-TEMP-DS18B20_master">                       
+       <parameter id="TEMPERATURE_OFFSET">                                
+        <logical type="float" min="-5.0" max="5.0" unit="K" default="0"/>                      
+        <physical type="integer" signed="true" interface="config" list="1" index="1" size="4"/>
+        <conversion type="float_integer_scale" factor="10"/>                                
+       </parameter>                                            
+      </paramset> 
+      <paramset type="VALUES" id="HB-UNI-Sen-TEMP-DS18B20_values">
+       <parameter id="TEMPERATURE" operations="read,event">
+        <logical type="float" min="-150.0" max="150.0" unit="°C" />
+        <physical type="integer" interface="command" value_id="TEMPERATURE" no_init="true">
+         <event frame="MEASURE_EVENT" />
+        </physical>
+        <conversion type="float_integer_scale" factor="10.0" />
+        <description>
+         <field id="AutoconfRoles" value="WEATHER" />
+        </description>
+       </parameter>
+      </paramset>
       <paramset type="LINK" id="HB-UNI-Sen-TEMP-DS18B20_link"></paramset>
     </channel>
   </channels>

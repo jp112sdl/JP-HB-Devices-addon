@@ -1167,7 +1167,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
       "STRING" {
         # Prüfen, ob es sich um einen Text-Parameter des Gerätes vom Typ 'HM Wireless Status Display' handelt.
         # In diesem Fall wird dem Texteingabefeld eine fortlaufende Nr. vorangestellt.
-        if {$param_id != "TEXTLINE_1" && $param_id != "TEXTLINE_2"} {
+        if {$param_id != "TEXTLINE_1" && $param_id != "TEXTLINE_2" && $param_id != "HBTEXTLINE_1" && $param_id != "HBTEXTLINE_2"} {
           append s "<td><input type=\"text\" name=\"$param_id\" value=\"$value\" $id $access /></td>"
         } else {
           puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/KEY_4Dis.js');</script>"
@@ -1178,7 +1178,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
             }
           } else {        
            if {(($parent_type == $hbDis42BWIdentifier) || ($parent_type == $hbDis42BWMainsIdentifier))} then {
-             if {$param_id == "TEXTLINE_1"} {
+             if {$param_id == "HBTEXTLINE_1"} {
                append s "<td>[expr $chn * 2 - 1]&nbsp;&nbsp;<input type=\"text\" name=\"$param_id\" maxlength=\"16\" onblur=\"encodeStringStatusDisplay('$idval', true);\" value=\"$value\" $id $access /></td>"
              } else {
                append s "<td>[expr $chn * 2]&nbsp;&nbsp;<input type=\"text\" name=\"$param_id\" maxlength=\"16\" onblur=\"encodeStringStatusDisplay('$idval', true);\" value=\"$value\" $id $access /></td>"

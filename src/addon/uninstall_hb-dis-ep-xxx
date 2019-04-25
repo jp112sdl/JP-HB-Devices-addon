@@ -23,7 +23,6 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
 
-
 webuiSearch="HB_EP_SHOW_LINE"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_DISPLAY_REFRESH_WAIT_TIME"
@@ -37,6 +36,10 @@ sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGN_CENTER_ICON_LEFT"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGN_LEFT"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HBTEXTLINE_1"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HBTEXTLINE_2"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
@@ -54,6 +57,10 @@ stringtable_deSearch="HB_EP_ALIGN_CENTER_ICON_LEFT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_EP_ALIGN_LEFT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HBTEXTLINE_1"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HBTEXTLINE_2"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbEpShowLine"
@@ -70,6 +77,9 @@ translate_deSearch="stringTableHbEpAlignCenterIconLeft"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpAlignLeft"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbTextLine"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
 translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
 translate_deSearch="iconHbGarage"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile

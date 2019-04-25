@@ -182,11 +182,11 @@
          <value_map device_value="0x02" parameter_value="3"/>
         </conversion>
       </parameter>
-      <parameter id="TEXTLINE_1">
+      <parameter id="HBTEXTLINE_1">
         <logical type="string"/>
         <physical type="string" interface="config_string" list="1" index="54" size="16"/>
       </parameter>
-      <parameter id="TEXTLINE_2">
+      <parameter id="HBTEXTLINE_2">
         <logical type="string"/>
         <physical type="string" interface="config_string" list="1" index="70" size="16"/>
       </parameter>

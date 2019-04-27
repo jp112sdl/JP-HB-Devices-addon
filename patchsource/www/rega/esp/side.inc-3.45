@@ -506,7 +506,7 @@
                 Write( '<input id="prgStringOptionValue'#oSD.ID()#'" onfocus="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');" type="text" class="SelectBox" size="10" value="'#iV#'" onchange="iseSingleDestination.SetValue('#oSD.ID()#',this.value,\'STRING\');" /> ' );
               }
               
-              if (statusHbDisplayEPaperDevice != -1 || statusHbDisplayEPaperDeviceMains != -1) {
+              if ((statusHbDisplayEPaperDevice != -1) || (statusHbDisplayEPaperDeviceMains != -1)) {
                 if(iV == "1") {
                   ! This is the default string for 'all values not used'
                   iV = "0x02,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x03";
@@ -602,7 +602,7 @@
               if (statusDisplayEPaperDevice != -1) {
                 Write( '<span id="setStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');"><img src="/ise/img/notepad.png" /></span>' );
               }
-              if (statusHbDisplayEPaperDevice != -1 || statusHbDisplayEPaperDeviceMains != -1) {
+              if ((statusHbDisplayEPaperDevice != -1) || (statusHbDisplayEPaperDeviceMains != -1)) {
                 Write( '<span id="setHbStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP42BW\');"><img src="/ise/img/notepad.png" /></span>' );
               }
               if (ePaperAcousticDisplay != -1) {

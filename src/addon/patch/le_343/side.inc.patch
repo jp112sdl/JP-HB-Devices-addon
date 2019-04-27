@@ -1,5 +1,5 @@
 --- ./patchsource/www/rega/esp/side.inc.orig	2019-02-23 12:13:34.000000000 +0100
-+++ ./patchsource/www/rega/esp/side.inc	2019-04-23 21:11:37.000000000 +0200
++++ ./patchsource/www/rega/esp/side.inc	2019-04-27 21:34:13.000000000 +0200
 @@ -12,9 +12,12 @@
    string hm_oucfm = "HM-OU-CFM-Pl";
    string hm_oucfmTW = "HM-OU-CFM-TW";
@@ -39,7 +39,7 @@
                  Write( '<input id="prgStringOptionValue'#oSD.ID()#'" onfocus="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');" type="text" class="SelectBox" size="10" value="'#iV#'" onchange="iseSingleDestination.SetValue('#oSD.ID()#',this.value,\'STRING\');" /> ' );
                }
  
-+              if (statusHbDisplayEPaperDevice != -1 || statusHbDisplayEPaperDeviceMain != -1) {
++              if ((statusHbDisplayEPaperDevice != -1) || (statusHbDisplayEPaperDeviceMains != -1)) {
 +                if(iV == "1") {
 +                  ! This is the default string for 'all values not used'
 +                  iV = "0x02,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x03";
@@ -76,7 +76,7 @@
                if (statusDisplayEPaperDevice != -1) {
                  Write( '<span id="setStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');"><img src="/ise/img/notepad.png" /></span>' );
                }
-+              if (statusHbDisplayEPaperDevice != -1 || statusHbDisplayEPaperDeviceMains != -1) {
++              if ((statusHbDisplayEPaperDevice != -1) || (statusHbDisplayEPaperDeviceMains != -1)) {
 +                Write( '<span id="setHbStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP42BW\');"><img src="/ise/img/notepad.png" /></span>' );
 +              }
                if (rgbw_controller != -1) {

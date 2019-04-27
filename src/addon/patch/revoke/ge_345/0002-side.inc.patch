@@ -1,5 +1,5 @@
 --- ./patchsource/www/rega/esp/side.inc.orig	2019-03-30 19:10:05.000000000 +0100
-+++ ./patchsource/www/rega/esp/side.inc	2019-04-27 21:32:41.000000000 +0200
++++ ./patchsource/www/rega/esp/side.inc	2019-04-23 21:11:37.000000000 +0200
 @@ -10,6 +10,9 @@
    integer iVP = oSD.DestinationValueParam();
    integer iVPT = oSD.DestinationValueParamType();
@@ -35,7 +35,7 @@
                }
 -
 +              
-+              if ((statusHbDisplayEPaperDevice != -1) || (statusHbDisplayEPaperDeviceMains != -1)) {
++              if (statusHbDisplayEPaperDevice != -1 || statusHbDisplayEPaperDeviceMains != -1) {
 +                if(iV == "1") {
 +                  ! This is the default string for 'all values not used'
 +                  iV = "0x02,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x03";
@@ -70,7 +70,7 @@
                if (statusDisplayEPaperDevice != -1) {
                  Write( '<span id="setStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');"><img src="/ise/img/notepad.png" /></span>' );
                }
-+              if ((statusHbDisplayEPaperDevice != -1) || (statusHbDisplayEPaperDeviceMains != -1)) {
++              if (statusHbDisplayEPaperDevice != -1 || statusHbDisplayEPaperDeviceMains != -1) {
 +                Write( '<span id="setHbStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP42BW\');"><img src="/ise/img/notepad.png" /></span>' );
 +              }
                if (ePaperAcousticDisplay != -1) {

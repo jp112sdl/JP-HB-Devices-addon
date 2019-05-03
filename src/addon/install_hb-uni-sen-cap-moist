@@ -30,3 +30,47 @@ webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['250'] = '\/config\/img\/devices
 if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
 	sed -i "s/\($webuiSearch\)/\1$webuiInsert/g" $webuiFile
 fi
+
+webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
+
+webuiInsertParam="WEATHER|CAP_MOIST_HIGH_VALUE"
+webuiInsertValue="stringTableHbCapMoistHighValue"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="WEATHER|CAP_MOIST_LOW_VALUE"
+webuiInsertValue="stringTableHbCapMoistLowValue"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+### Edit stringtable_de.txt ###
+stringtable_deFile="/www/config/stringtable_de.txt"
+
+stringtable_deInsert="WEATHER|CAP_MOIST_HIGH_VALUE\t\${stringTableHbCapMoistHighValue}"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|CAP_MOIST_HIGH_VALUE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="WEATHER|CAP_MOIST_LOW_VALUE\t\${stringTableHbCapMoistLowValue}"
+if [ -z "`cat $stringtable_deFile | grep \"WEATHER|CAP_MOIST_LOW_VALUE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+### Edit translate.lang.stringtable.js ###
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="\"dummy\" : \"\","
+
+translate_deInsert="\n    \"stringTableHbCapMoistHighValue\" : \"HIGH Value (Trocken [0 %25])\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbCapMoistHighValue\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"stringTableHbCapMoistLowValue\" : \"LOW Value (Nass [100 %25])\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbCapMoistLowValue\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi

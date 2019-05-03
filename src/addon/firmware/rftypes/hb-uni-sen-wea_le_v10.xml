@@ -7,7 +7,7 @@
     </type>
   </supported_types>
   <paramset type="MASTER" id="hm_uni_sen_dev_master">
-    <parameter id="Sendeintervall">
+    <parameter id="HBWEA_TRANSMIT_INTERVAL">
       <logical type="integer" min="10" max="3600" default="60" unit="s" />
       <physical type="integer" interface="config" list="0" index="32" size="2" />
     </parameter>

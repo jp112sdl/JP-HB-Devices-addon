@@ -12,7 +12,7 @@
       <physical type="integer" interface="config" list="0" index="18" size="1" />
       <conversion type="float_integer_scale" factor="10" />
     </parameter>
-    <parameter id="Sendeintervall">                       
+    <parameter id="HBWEA_TRANSMIT_INTERVAL">                       
       <logical type="integer" min="60" max="600" unit="s" default="180" />
       <physical type="integer" interface="config" list="0" index="33.0" size="2" />
     </parameter> 

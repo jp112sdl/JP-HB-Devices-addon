@@ -59,6 +59,7 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F1 D1 | HB-UNI-Sen-IAQ |
 |F2 06 | HB-IBUT-8 |
 |F3 11 | HB-UNI-Sen-CAP-MOIST |
+|F3 12 | HB-UNI-Sen-CAP-MOIST-T |
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
 |F3 08 | HB-UNI-Sen-TEMP-IR |
 |F3 20 | HB-LC-SW12-FM |

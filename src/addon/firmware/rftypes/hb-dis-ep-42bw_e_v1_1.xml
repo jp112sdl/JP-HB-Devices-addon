@@ -172,6 +172,16 @@
         <logical type="boolean" default="false"/>
         <physical type="boolean" interface="internal" value_id="AES"/>
       </parameter>
+      <parameter id="LONG_PRESS_TIME">
+        <logical type="float" min="0.3" max="1.8" default="0.4" unit="s"/>
+        <physical type="integer" interface="config" list="1" index="4.4" size="0.4"/>
+        <conversion type="float_integer_scale" factor="10" offset="-0.3"/>
+      </parameter>
+      <parameter id="DBL_PRESS_TIME">
+        <logical type="float" min="0.0" max="1.5" default="0.0" unit="s"/>
+        <physical type="integer" interface="config" list="1" index="9.0" size="0.4"/>
+        <conversion type="float_integer_scale" factor="10" offset="0.0"/>
+      </parameter>
       <parameter id="HB_EP_SHOW_LINE">
         <logical type="boolean" default="false"/>
         <physical type="integer" interface="config" list="1" index="144.0" size="0.1"/>

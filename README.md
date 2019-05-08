@@ -13,8 +13,7 @@ Ich stelle es
 
 zur Verfügung.<br/>
 Da es sich um ein reines Hobby-Projekt handelt, kann ich **weder (umfangreichen) Support** leisten, **noch auf individuelle Wünsche eingehen** oder **zeitnah die neueste CCU-Firmware unterstützen**!<br/>
-Es sollte klar sein, dass mit einer eventuellen Aufgabe dieses Hobbys, mittel-/langfristig (teilweise) keine Verwendung u.g. Geräte mehr möglich ist.<br/>
-_Jedoch steht es jedem frei, sich an den Quellen zu bedienen und das Addon weiterzuentwickeln._
+Es sollte klar sein, dass mit (m)einer eventuellen Aufgabe dieses Hobbys, mittel-/langfristig (teilweise) keine Verwendung u.g. Geräte mehr möglich ist. _Jedoch steht es jedem frei, sich an den Quellen zu bedienen und das Addon weiterzuentwickeln._
 
 Nach der Installation wird ein Neustart der Zentrale durchgeführt.<br/>
 Die eigentliche Installation des Addons erfolgt nach diesem Neustart.<br/>

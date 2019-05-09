@@ -13,7 +13,7 @@ Ich stelle es
 
 zur Verfügung.<br/>
 Da es sich um ein reines Hobby-Projekt handelt, kann ich **weder (umfangreichen) Support** leisten, **noch auf individuelle Wünsche eingehen** oder **zeitnah die neueste CCU-Firmware unterstützen**!<br/>
-Es sollte klar sein, dass mit (m)einer eventuellen Aufgabe dieses Hobbys, mittel-/langfristig (teilweise) keine Verwendung u.g. Geräte mehr möglich ist. _Wie bei Open Source Projekten üblich, kann sich jedoch jeder an der Entwicklung beteiligen!_
+Es sollte klar sein, dass mit (m)einer eventuellen Aufgabe dieses Hobbys, mittel-/langfristig (teilweise) keine Verwendung u.g. Geräte mehr möglich ist. <i>Wie bei Open Source Projekten üblich, kann sich jedoch jeder an der Entwicklung beteiligen!</i>
 
 Nach der Installation wird ein Neustart der Zentrale durchgeführt.<br/>
 Die eigentliche Installation des Addons erfolgt nach diesem Neustart.<br/>
@@ -33,8 +33,8 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-press_thumb.png" width=25/> | [HB-UNI-Sen-PRESS](https://github.com/jp112sdl/HB-UNI-Sen-PRESS) | Drucksensor | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-ds18b20_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-DS18B20](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-DS18B20) | 1..8fach DS18B20 Temperatursensor | ⚡️ / 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-wea_thumb.png" width=25/> | [HB-UNI-Sen-WEA](https://github.com/jp112sdl/HB-UNI-Sen-WEA) | Wetterstation | ⚡️ | 
-|<img src="src/addon/www/config/img/devices/50/hb-uni-senact-4-4_thumb.png" width=25/> | <strike>[HB-UNI-SenAct-4-4](https://github.com/jp112sdl/HB-UNI-SenAct-4-4)</strike> | <strike>4fach - Sender & - Aktor</strike> | ⚡️ / 🔋 | 
-|<img src="src/addon/www/config/img/devices/50/hb-uni-senact-8-8_thumb.png" width=25/> |  <strike>[HB-UNI-SenAct-8-8](https://github.com/jp112sdl/HB-UNI-SenAct-8-8) <strike> | <strike>8fach - Sender & - Aktor</strike> | ⚡️ / 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-senact-4-4_thumb.png" width=25/> | [HB-UNI-SenAct-4-4](https://github.com/jp112sdl/HB-UNI-SenAct-4-4) | 4fach - Sender & - Aktor | ⚡️ / 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-senact-8-8_thumb.png" width=25/> |  [HB-UNI-SenAct-8-8](https://github.com/jp112sdl/HB-UNI-SenAct-8-8)  | 8fach - Sender & - Aktor | ⚡️ / 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-rgb-led-ctrl_thumb.png" width=25/> | [HB-UNI-RGB-LED-CTRL](https://github.com/jp112sdl/HB-UNI-RGB-LED-CTRL) | RGB Controller für WS28xx / Neopixel / etc. | ⚡️ / 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-ir_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-IR](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-IR) | MLX90614 Infrarot Temperatursensor | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-dummy-beacon_thumb.png" width=25/> | [HB-UNI-Sen-DUMMY-BEACON](https://github.com/jp112sdl/HB-UNI-Sen-DUMMY-BEACON) | Dummy-Device zum Simulieren<br/>zyklischer Statusmeldungen sowie Ack-Nachrichten | ⚡️ / 🔋 | 
@@ -47,7 +47,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |<img src="src/addon/www/config/img/devices/50/hb-dis-ep-42bw_thumb.png" width=25/> | [HB-Dis-EP-42BW](https://github.com/jp112sdl/HB-Dis-EP-42BW) | 4.2" ePaper Display | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-rfid-rc_thumb.png" width=25/> | [HB-UNI-Sen-RFID-RC](https://github.com/jp112sdl/HB-UNI-Sen-RFID-RC) | RFID-Reader als Sender (Tasterschnittstelle) | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-ibut-8_thumb.png" width=25/> | [HB-IBUT-8](https://github.com/pa-pa/AskSinPP/tree/master/examples/custom/HB-IBUT-8) | iButton Sender Taster/Schließer | ⚡️ | 
-|<img src="src/addon/www/config/img/devices/50/hb-ou-mp3-led_thumb.png" width=25/> | <strike>[HB-OU-MP3-LED](https://github.com/jp112sdl/HB-OU-MP3-LED)</strike> | <strike>MP3-Player mit LED</strike> | ⚡️ | 
+|<img src="src/addon/www/config/img/devices/50/hb-ou-mp3-led_thumb.png" width=25/> | [HB-OU-MP3-LED](https://github.com/jp112sdl/HB-OU-MP3-LED) | MP3-Player mit LED | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-weight_thumb.png" width=25/> | [HB-UNI-Sen-WEIGHT](https://github.com/jp112sdl/HB-UNI-Sen-WEIGHT) | universeller Wägesensor | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-iaq_thumb.png" width=25/> | [HB-UNI-Sen-IAQ](https://github.com/jp112sdl/HB-UNI-Sen-IAQ) | universeller Luftgütesensor _(temporarily discontinued)_ [(see HM-Forum)](https://homematic-forum.de/forum/viewtopic.php?f=76&t=49422)| 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-12-ep-bw_thumb.png" width=25/> | [HB-RC-12-EP](https://github.com/jp112sdl/HB-RC-12-EP) | 12 Kanal Fernbedienung mit Farb- oder Schwarz/Weiß-ePaper-Display | 🔋 | 
@@ -75,22 +75,22 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
 |F3 08 | HB-UNI-Sen-TEMP-IR |
 |F3 20 | HB-LC-SW12-FM |
-|<strike>F3 31</strike> | <strike>HB-UNI-SenAct-4-4-SC</strike>|
-|<strike>F3 32</strike> | <strike>HB-UNI-SenAct-4-4-RC</strike>|
-|<strike>F3 33</strike> | <strike>HB-UNI-SenAct-4-4-SC-BAT</strike>|
-|<strike>F3 34</strike> | <strike>HB-UNI-SenAct-4-4-RC-BAT</strike>|
+|F3 31 | HB-UNI-SenAct-4-4-SC|
+|F3 32 | HB-UNI-SenAct-4-4-RC|
+|F3 33 | HB-UNI-SenAct-4-4-SC-BAT|
+|F3 34 | HB-UNI-SenAct-4-4-RC-BAT|
 |F3 35 | HB-LC-Sw1PBU-FM|
 |F3 36 | HB-LC-Sw2PBU-FM|
 |F3 37 | HB-LC-Bl1PBU-FM|
-|<strike>F3 38</strike> | <strike>HB-UNI-SenAct-8-8-RC</strike>|
-|<strike>F3 39</strike> | <strike>HB-UNI-SenAct-8-8-RC-BAT</strike>|
-|<strike>F3 3A</strike> | <strike>HB-UNI-SenAct-8-8-SC</strike>|
-|<strike>F3 3B</strike> | <strike>HB-UNI-SenAct-8-8-SC-BAT</strike>|
+|F3 38 | HB-UNI-SenAct-8-8-RC|
+|F3 39 | HB-UNI-SenAct-8-8-RC-BAT|
+|F3 3A | HB-UNI-SenAct-8-8-SC|
+|F3 3B | HB-UNI-SenAct-8-8-SC-BAT|
 |F3 3C | HB-UNI-Sen-RFID-RC|
 |F3 41 | HB-UNI-RGB-LED-CTRL |
 |F3 42 | HB-UNI-DMX-MASTER |
 |F3 43 | HB-DIS-EP-42BW |
-|<strike>F3 44</strike> | <strike>HB-OU-MP3-LED</strike> |
+|F3 44 | HB-OU-MP3-LED |
 |F3 45 | HB-RC-12-EP-29C |
 |F3 46 | HB-RC-12-EP-29BW |
 |F3 4A | HB-UNI-Sen-VOLT |

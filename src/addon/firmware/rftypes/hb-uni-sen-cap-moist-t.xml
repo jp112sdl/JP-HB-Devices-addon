@@ -127,6 +127,18 @@
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="18.0:0.6">
        <parameter type="integer" index="19.0" size="1.0" param="HUMIDITY"/>
      </frame>
+     <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="20.0:0.6">
+       <parameter type="integer" index="21.0" size="1.0" param="HUMIDITY"/>
+     </frame>
+     <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="22.0:0.6">
+       <parameter type="integer" index="23.0" size="1.0" param="HUMIDITY"/>
+     </frame>
+     <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="24.0:0.6">
+       <parameter type="integer" index="25.0" size="1.0" param="HUMIDITY"/>
+     </frame>
+     <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="26.0:0.6">
+       <parameter type="integer" index="27.0" size="1.0" param="HUMIDITY"/>
+     </frame>
      <frame id="MEASURE_EV_BAT" direction="from_device" event="true" type="0x53" fixed_channel="*">
        <parameter type="integer" index="9.7" size="0.1" param="LOWBAT" />
      </frame>

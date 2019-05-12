@@ -24,7 +24,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 
 |  | Name | Beschreibung | 🔋Batterie-/<br/>⚡️Netzbetrieb |
 |--------|--------|--------|:--------:|
-|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-cap-moist_thumb.png" width=25/> | [HB-UNI-Sen-CAP-MOIST](https://github.com/jp112sdl/HB-UNI-Sen-CAP-MOIST) | kapazitiver Bodenfeuchtesensor | 🔋 |
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-cap-moist_thumb.png" width=25/> | [HB-UNI-Sen-CAP-MOIST](https://github.com/jp112sdl/HB-UNI-Sen-CAP-MOIST) | _work in progress_ kapazitiver Bodenfeuchtesensor<br/>_optional mit DS18B20 Temperatursensor_ | 🔋 |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-cap-moist-t_thumb.png" width=25/> | [HB-UNI-Sen-CAP-MOIST-T](https://github.com/jp112sdl/HB-UNI-Sen-CAP-MOIST-T) | kapazitiver Bodenfeuchtesensor<br/>mit DS18B20 Temperatursensor| 🔋 |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-dist-tof_thumb.png" width=25/> | [HB-UNI-Sen-DIST-TOF](https://github.com/jp112sdl/HB-UNI-Sen-DIST-TOF) | Time-of-Flight Abstandsensor | 🔋 |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-dist-us_thumb.png" width=25/> | [HB-UNI-Sen-DIST-US](https://github.com/jp112sdl/HB-UNI-Sen-DIST-US) | Ultraschall Abstandsensor | 🔋 |
@@ -71,7 +71,6 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F1 D1 | HB-UNI-Sen-IAQ |
 |F2 06 | HB-IBUT-8 |
 |F3 11 | HB-UNI-Sen-CAP-MOIST |
-|F3 12 | HB-UNI-Sen-CAP-MOIST-T |
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
 |F3 08 | HB-UNI-Sen-TEMP-IR |
 |F3 20 | HB-LC-SW12-FM |

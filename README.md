@@ -1,6 +1,6 @@
 # JP-HB-Devices-addon [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/JP-HB-Devices-addon/total.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/releases) [![GitHub issues](https://img.shields.io/github/issues/jp112sdl/JP-HB-Devices-addon.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/issues)
 
-**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.45.6 | 3.37.x - 3.45.7**<br/>
+**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.45.7 | 3.37.x - 3.45.7**<br/>
 
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
@@ -71,6 +71,7 @@ Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Post
 |F1 D1 | HB-UNI-Sen-IAQ |
 |F2 06 | HB-IBUT-8 |
 |F3 11 | HB-UNI-Sen-CAP-MOIST |
+|F3 12 | HB-UNI-Sen-CAP-MOIST-T |
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
 |F3 08 | HB-UNI-Sen-TEMP-IR |
 |F3 20 | HB-LC-SW12-FM |

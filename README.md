@@ -52,16 +52,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-iaq_thumb.png" width=25/> | [HB-UNI-Sen-IAQ](https://github.com/jp112sdl/HB-UNI-Sen-IAQ) | universeller Luftgütesensor _(temporarily discontinued)_ [(see HM-Forum)](https://homematic-forum.de/forum/viewtopic.php?f=76&t=49422)| 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-12-ep-bw_thumb.png" width=25/> | [HB-RC-12-EP](https://github.com/jp112sdl/HB-RC-12-EP) | 12 Kanal Fernbedienung mit Farb- oder Schwarz/Weiß-ePaper-Display | 🔋 | 
 
-Zu diesem Zweck ist die [aktuellste Version](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) des Addons herunterzuladen und wie gewohnt in der WebUI über "Einstellungen"->"Systemsteuerung"->"Zusatzsoftware" zu installieren.
-<br>_Wie immer bei Addons der Hinweis:<br>Die heruntergeladene Datei mit der Endung `.tgz` darf nicht entpackt werden!_
-
-**Hinweis, falls bereits die früheren einzelnen Addons aus den jeweiligen Projekten genutzt werden:**<br>
-Die Addons **müssen zuerst deinstalliert** werden.<br>
-Anschließend muss das JP-HB-Devices-addon installiert werden.<br>
-Zwischenzeitlich darf **kein Reboot** erfolgen! _(Es erfolgt nach der Installation ohnehin automatisch ein Neustart.)_<br>
-Achtung: Bereits angelernte Selbstbaugeräte sind nach dem Neustart u.U. im Posteingang wiederzufinden!
-
-**Info:** Bisher verwendete IDs der Device Model meiner HB-Geräte
+**Hinweis für Entwickler** _(verwendete Device Model meiner HB-Geräte)_ **:**
 
 | Device Model | Gerät |
 |--------|--------|

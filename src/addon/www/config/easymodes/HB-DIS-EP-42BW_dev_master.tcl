@@ -116,7 +116,33 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     append HTML_PARAMS(separate_1) "<td>[getTextField $prn $param $ps($param)]&nbsp;s&nbsp;[getMinMaxValueDescr $param]&nbsp;[getHelpIcon $param $hlpBoxWidth $hlpBoxHeight]</td>"
   append HTML_PARAMS(separate_1) "</tr>"
   
+  incr prn
+  set param POWERUP_ACTION
+  append HTML_PARAMS(separate_1) "<tr>"
+    array_clear options
+    set options(0) "\${stringTablePowerUpOFF}"
+    set options(1) "\${stringTableKeyPressShort}"
+    set options(2) "\${stringTableKeyPressLong}"
+    append HTML_PARAMS(separate_1) "<td>\${stringTableDimmerPowerUpAction}</td>"
+    append HTML_PARAMS(separate_1) "<td>[getComboBox options $prn '$param' $ps($param)]</td>"
+  incr prn
+  set param KEY_TRANSCEIVER
+      array_clear options
+    set options(0) "1"
+    set options(1) "2"
+    set options(2) "3"
+    set options(3) "4"
+    set options(4) "5"
+    set options(5) "6"
+    set options(6) "7"
+    set options(7) "8"
+    set options(8) "9"
+    set options(9) "10"
+    append HTML_PARAMS(separate_1) "<td>\${stringTableKeyTranseiverTitle}</td>"
+    append HTML_PARAMS(separate_1) "<td>[getComboBox options $prn '$param' $ps($param)]&nbsp;(1-10)&nbsp;[getHelpIcon $param $hlpBoxWidth $hlpBoxHeight]</td>"
+    
+  append HTML_PARAMS(separate_1) "</tr>"
+  
   append HTML_PARAMS(separate_1) "</table>"
-
 }
 constructor

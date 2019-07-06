@@ -109,6 +109,14 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="HB_CRITICAL_BAT_LIMIT"
+webuiInsertValue="stringTableHbCriticalBatLimit"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 webuiInsertParam="HB_EP_ALIGNMENT"
 webuiInsertValue="stringTableHbEpAlignment"
 webuiInsert="\n"
@@ -173,6 +181,11 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_DISPLAY_REFRESH_WAIT_TIME"`" ]; th
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
+stringtable_deInsert="HB_CRITICAL_BAT_LIMIT\t\${stringTableHbCriticalBatLimit}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_CRITICAL_BAT_LIMIT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
 stringtable_deInsert="HB_EP_ALIGNMENT\t\${stringTableHbEpAlignment}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_EP_ALIGNMENT"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
@@ -214,6 +227,11 @@ fi
 
 translate_deInsert="\n    \"stringTableHbDisplayRefreshWaitTime\" : \"Refresh-Wartezeit nach Empfang\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbDisplayRefreshWaitTime\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbCriticalBatLimit\" : \"kritische Bat.-Schwelle\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbCriticalBatLimit\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

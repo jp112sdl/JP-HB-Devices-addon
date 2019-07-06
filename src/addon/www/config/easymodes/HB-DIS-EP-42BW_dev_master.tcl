@@ -109,6 +109,15 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     append HTML_PARAMS(separate_1) "</tr>"
   }
   
+  if { $DEVICE == "HB-DIS-EP-42BW" } {
+    incr prn
+    set param HB_CRITICAL_BAT_LIMIT
+    append HTML_PARAMS(separate_1) "<tr>"
+      append HTML_PARAMS(separate_1) "<td>\${stringTableHbCriticalBatLimit}</td>"
+      append HTML_PARAMS(separate_1) "<td>[getTextField $prn $param $ps($param)]&nbsp;V&nbsp;[getMinMaxValueDescr $param]</td>"
+    append HTML_PARAMS(separate_1) "</tr>"
+  }
+  
   incr prn
   set param HB_DISPLAY_REFRESH_WAIT_TIME
   append HTML_PARAMS(separate_1) "<tr>"

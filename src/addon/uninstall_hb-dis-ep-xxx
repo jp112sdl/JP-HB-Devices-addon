@@ -27,6 +27,8 @@ webuiSearch="HB_EP_SHOW_LINE"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_DISPLAY_REFRESH_WAIT_TIME"
 sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_CRITICAL_BAT_LIMIT"
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGNMENT"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_EP_ALIGN_RIGHT"
@@ -47,6 +49,8 @@ stringtable_deSearch="HB_EP_SHOW_LINE"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_DISPLAY_REFRESH_WAIT_TIME"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_CRITICAL_BAT_LIMIT"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_EP_ALIGNMENT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_EP_ALIGN_RIGHT"
@@ -66,6 +70,8 @@ translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbEpShowLine"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbDisplayRefreshWaitTime"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbCriticalBatLimit"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpAlignment"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile

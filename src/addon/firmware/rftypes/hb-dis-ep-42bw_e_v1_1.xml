@@ -21,6 +21,11 @@
       <physical type="integer" interface="config" list="0" index="18" size="1"/>
       <conversion type="float_integer_scale" factor="10"/>
     </parameter>
+    <parameter id="HB_CRITICAL_BAT_LIMIT">
+      <logical type="float" min="1.0" max="5.0" default="2.1" unit="V"/>
+      <physical type="integer" interface="config" list="0" index="53" size="1"/>
+      <conversion type="float_integer_scale" factor="10"/>
+    </parameter>
     <parameter id="DEVICE_LED_MODE">
       <logical type="option">
         <option id="OFF"/>

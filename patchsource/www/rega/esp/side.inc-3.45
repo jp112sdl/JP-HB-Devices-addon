@@ -13,6 +13,8 @@
   string hb_oump3led = "HB-OU-MP3-LED";
   string hb_statusDisplayEPaper = "HB-DIS-EP-42BW";
   string hb_statusDisplayEPaperMains = "HB-DIS-EP-42BW-MAINS";
+  string hb_statusDisplayEPaper75 = "HB-DIS-EP-75BW";
+  string hb_statusDisplayEPaper75Mains = "HB-DIS-EP-75BW-MAINS";
   string hm_ouled16 =  "HM-OU-LED16";
   string hm_oucfm = "HM-OU-CFM-Pl";
   string hm_oucfmTW = "HM-OU-CFM-TW";
@@ -467,6 +469,8 @@
             integer oump3led = chLabel.Find(hb_oump3led);
             integer statusHbDisplayEPaperDevice = hb_statusDisplayEPaper.Find(chLabel);
             integer statusHbDisplayEPaperDeviceMains = hb_statusDisplayEPaperMains.Find(chLabel);
+            integer statusHbDisplayEPaperDevice75 = hb_statusDisplayEPaper75.Find(chLabel);
+            integer statusHbDisplayEPaperDevice75Mains = hb_statusDisplayEPaper75Mains.Find(chLabel);
             integer ouled16 = chLabel.Find(hm_ouled16);
             integer oucfm = chLabel.Find(hm_oucfm);
             integer oucfmTW = chLabel.Find(hm_oucfmTW);
@@ -485,6 +489,8 @@
               || (statusDisplayEPaperDevice != -1)
               || (statusHbDisplayEPaperDevice != -1)
               || (statusHbDisplayEPaperDeviceMains != -1)
+              || (statusHbDisplayEPaperDevice75 != -1)
+              || (statusHbDisplayEPaperDevice75Mains != -1)
               || (ePaperAcousticDisplay != -1)
               || (rgbw_controller != -1)
               || ((jalousieActor != - 1) && (oDP.HSSID().Find("LEVEL_COMBINED") != -1))
@@ -512,6 +518,14 @@
                   iV = "0x02,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x03";
                 }
                 Write( '<input id="prgStringOptionValue'#oSD.ID()#'" onfocus="SetStatusDisplay('#oSD.ID()#',\'DIS-EP42BW\');" type="text" class="SelectBox" size="10" value="'#iV#'" onchange="iseSingleDestination.SetValue('#oSD.ID()#',this.value,\'STRING\');" /> ' );
+              }
+
+              if ((statusHbDisplayEPaperDevice75 != -1) || (statusHbDisplayEPaperDevice75Mains != -1)) {
+                if(iV == "1") {
+                  ! This is the default string for 'all values not used'
+                  iV = "0x02,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x0A,0x03";
+                }
+                Write( '<input id="prgStringOptionValue'#oSD.ID()#'" onfocus="SetStatusDisplay('#oSD.ID()#',\'DIS-EP75BW\');" type="text" class="SelectBox" size="48" value="'#iV#'" onchange="iseSingleDestination.SetValue('#oSD.ID()#',this.value,\'STRING\');" /> ' );
               }
               
               if (ePaperAcousticDisplay != -1) {
@@ -569,6 +583,8 @@
               && (oump3led == -1)
               && (statusHbDisplayEPaperDevice == -1)
               && (statusHbDisplayEPaperDeviceMains == -1)
+              && (statusHbDisplayEPaperDevice75 == -1)
+              && (statusHbDisplayEPaperDevice75Mains == -1)
               && (oucfm == -1)
               && (oucfmTW == -1)
               && (oucmpcb == -1)

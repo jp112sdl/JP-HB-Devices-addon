@@ -337,6 +337,12 @@ function ::showHideRFChannel() {
     ! Hide channel 11 of this device
     bShowChannel = false;
   }
+
+  ! HB Status Display EPaper 75BW
+  if(( (oDevHssType == "HB-DIS-EP-75BW") || (oDevHssType == "HB-DIS-EP-75BW-MAINS") ) && (chNumber == 9)) {
+    ! Hide channel 9 of this device
+    bShowChannel = false;
+  }
   
 }
 

@@ -353,6 +353,11 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHbEpAlignLeft\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
+translate_deInsert="\n    \"stringTableHbIconOverview\" : \"Icon%FCbersicht\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbIconOverview\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
 ### Edit translate.lang.extension.js
 translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
 

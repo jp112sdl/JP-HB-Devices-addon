@@ -115,6 +115,8 @@ translate_deSearch="stringTableHbEpAlignLeft"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbTextLine"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbIconOverview"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
 translate_deSearch="iconHbGarage"

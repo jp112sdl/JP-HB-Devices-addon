@@ -1,5 +1,5 @@
---- ./patchsource/www/rega/esp/side.inc.orig	2019-02-23 12:13:34.000000000 +0100
-+++ ./patchsource/www/rega/esp/side.inc	2019-07-16 23:07:49.000000000 +0200
+--- ./patchsource/www/rega/esp/side.inc.orig
++++ ./patchsource/www/rega/esp/side.inc
 @@ -12,9 +12,14 @@
    string hm_oucfm = "HM-OU-CFM-Pl";
    string hm_oucfmTW = "HM-OU-CFM-TW";

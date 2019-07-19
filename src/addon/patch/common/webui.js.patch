@@ -1,5 +1,5 @@
---- ./patchsource/www/webui/webui.js.orig	2019-02-23 12:14:40.000000000 +0100
-+++ ./patchsource/www/webui/webui.js	2019-02-23 12:37:16.000000000 +0100
+--- ./patchsource/www/webui/webui.js.orig
++++ ./patchsource/www/webui/webui.js
 @@ -13664,7 +13664,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field

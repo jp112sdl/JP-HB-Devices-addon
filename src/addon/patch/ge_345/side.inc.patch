@@ -1,5 +1,5 @@
---- ./patchsource/www/rega/esp/side.inc.orig	2019-03-30 19:10:05.000000000 +0100
-+++ ./patchsource/www/rega/esp/side.inc	2019-07-16 23:07:43.000000000 +0200
+--- ./patchsource/www/rega/esp/side.inc.orig
++++ ./patchsource/www/rega/esp/side.inc
 @@ -10,6 +10,11 @@
    integer iVP = oSD.DestinationValueParam();
    integer iVPT = oSD.DestinationValueParamType();

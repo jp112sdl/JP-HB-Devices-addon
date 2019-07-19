@@ -152,6 +152,11 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     
   append HTML_PARAMS(separate_1) "</tr>"
   
+  append HTML_PARAMS(separate_1) "<tr>"
+    append HTML_PARAMS(separate_1) "<td>\${stringTableHbIconOverview}</td>"
+    append HTML_PARAMS(separate_1) "<td>&nbsp;[getHelpIcon AVAILABLE_ICONS $hlpBoxWidth $hlpBoxHeight]</td>"
+  append HTML_PARAMS(separate_1) "</tr>"
+
   append HTML_PARAMS(separate_1) "</table>"
 }
 constructor

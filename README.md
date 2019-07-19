@@ -17,8 +17,10 @@ Es sollte klar sein, dass mit (m)einer eventuellen Aufgabe dieses Hobbys, mittel
 
 Nach der Installation wird ein Neustart der Zentrale durchgeführt.<br/>
 Die eigentliche Installation des Addons erfolgt nach diesem Neustart.<br/>
-Währenddessen werden ReGa und der RFD gestoppt, so dass es im Browser zu der Meldung<br/>`Eine Komponente der Homematic Zentrale reagiert nicht mehr.` kommen kann.<br/>
+Währenddessen werden ReGa und der RFD gestoppt, so dass es _(nicht bei RaspberryMatic!)_ im Browser zu der Meldung<br/>`Eine Komponente der Homematic Zentrale reagiert nicht mehr.` kommen kann.<br/>
 _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Installation u.U. mehrere Minuten in Anspruch nehmen!_<br/><br/>
+
+📍 Sollten anschließend keine Geräte-Icons und/oder -beschreibungen angezeigt werden, muss der Browser-Cache gelöscht werden.
 
 Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selbstbaugeräte herzustellen:
 

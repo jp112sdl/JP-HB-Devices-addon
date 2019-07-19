@@ -17,8 +17,10 @@ Es sollte klar sein, dass mit (m)einer eventuellen Aufgabe dieses Hobbys, mittel
 
 Nach der Installation wird ein Neustart der Zentrale durchgeführt.<br/>
 Die eigentliche Installation des Addons erfolgt nach diesem Neustart.<br/>
-Währenddessen werden ReGa und der RFD gestoppt, so dass es im Browser zu der Meldung<br/>`Eine Komponente der Homematic Zentrale reagiert nicht mehr.` kommen kann.<br/>
+Währenddessen werden ReGa und der RFD gestoppt, so dass es _(nicht bei RaspberryMatic!)_ im Browser zu der Meldung<br/>`Eine Komponente der Homematic Zentrale reagiert nicht mehr.` kommen kann.<br/>
 _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Installation u.U. mehrere Minuten in Anspruch nehmen!_<br/><br/>
+
+📍 Sollten anschließend keine Geräte-Icons und/oder -beschreibungen angezeigt werden, muss der Browser-Cache gelöscht werden.
 
 Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selbstbaugeräte herzustellen:
 
@@ -45,6 +47,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/5_hm-lc-sw2-fm_thumb.png" width=25/> | [HB-LC-Sw2-FM](https://github.com/stan23/HB-LC-Sw2-FM) | alternative Firmware für den<br/>HB-LC-Sw2-FM (getrennte Taster-/Relais-Kanäle) special thx to [stan23](https://github.com/stan23)! | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-dmx-master_thumb.png" width=25/> | [HB-UNI-DMX-Master](https://github.com/jp112sdl/HB-UNI-DMX-Master) | (sehr) einfacher DMX Master Controller | ⚡️ |  
 |<img src="src/addon/www/config/img/devices/50/hb-dis-ep-42bw_thumb.png" width=25/> | [HB-Dis-EP-42BW](https://github.com/jp112sdl/HB-Dis-EP-42BW) | 4.2" ePaper Display | 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-dis-ep-75bw_thumb.png" width=25/> | [HB-Dis-EP-75BW](https://github.com/jp112sdl/HB-Dis-EP-75BW) | 7.5" ePaper Display | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-rfid-rc_thumb.png" width=25/> | [HB-UNI-Sen-RFID-RC](https://github.com/jp112sdl/HB-UNI-Sen-RFID-RC) | RFID-Reader als Sender (Tasterschnittstelle) | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-ibut-8_thumb.png" width=25/> | [HB-IBUT-8](https://github.com/pa-pa/AskSinPP/tree/master/examples/custom/HB-IBUT-8) | iButton Sender Taster/Schließer | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-ou-mp3-led_thumb.png" width=25/> | [HB-OU-MP3-LED](https://github.com/jp112sdl/HB-OU-MP3-LED) | MP3-Player mit LED | ⚡️ | 
@@ -84,9 +87,11 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |F3 44 | HB-OU-MP3-LED |
 |F3 45 | HB-RC-12-EP-29C |
 |F3 46 | HB-RC-12-EP-29BW |
+|F3 47 | HB-DIS-EP-47BW |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 4B | HB-UNI-Sen-WEIGHT |
 |F3 53 | HB-DIS-EP-42BW-MAINS |
+|F3 57 | HB-DIS-EP-75BW-MAINS |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |F5 01 | HB-LC-Sw2-FM |
 |F9 D6 | HB-UNI-Sen-DIST-US |

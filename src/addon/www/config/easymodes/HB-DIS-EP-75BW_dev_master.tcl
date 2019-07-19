@@ -10,7 +10,7 @@ proc getHelpIcon {topic x y} {
 }
 
 proc getIconOverviewIcon {topic x y} {
-  set ret "<img src=\"/ise/img/visible.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '350', '520')\">"
+  set ret "<img src=\"/ise/img/visible.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '410', '520')\">"
   return $ret
 }
 
@@ -157,7 +157,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   
   append HTML_PARAMS(separate_1) "<tr>"
     append HTML_PARAMS(separate_1) "<td>\${stringTableHbIconOverview}</td>"
-    append HTML_PARAMS(separate_1) "<td>&nbsp;[getHelpIcon AVAILABLE_ICONS $hlpBoxWidth $hlpBoxHeight]</td>"
+    append HTML_PARAMS(separate_1) "<td>&nbsp;[getIconOverviewIcon AVAILABLE_ICONS $hlpBoxWidth $hlpBoxHeight]</td>"
   append HTML_PARAMS(separate_1) "</tr>"
 
   append HTML_PARAMS(separate_1) "</table>"

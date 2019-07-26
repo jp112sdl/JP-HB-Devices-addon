@@ -43,6 +43,11 @@ proc getUnit {ps_descr param} {
   return "$unit"
 }
 
+proc getHelpIcon {topic x y} {
+  set ret "<img src=\"/ise/img/help.png\" style=\"cursor: pointer; width:24px; height:24px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '$x', '210')\">"
+  return $ret
+}
+
 # Runded die Nachkommstelle auf 0 oder 5
 proc setDecimalPlaces {val} {
   set splittedVal [split $val .]
@@ -105,8 +110,11 @@ proc displayFields {id mode} {
 
 
 proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
+  set hlpBoxWidth 450
+  set hlpBoxHeight 160
 
   puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/js/HBFillingLevelSensor.js');</script>"
+  puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/js/HB-UNI-Sen-LEV-US_HELP.js')</script>"
   puts "<script type=\"text/javascript\">getLangInfo_Special('CAPACITIVE_FILLING_SENSOR.txt');</script>"
 
   global iface_url
@@ -158,7 +166,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
           append HTML_PARAMS(separate_1) "<option value=\"1\">MaxSonar EZ0..4</option>"
         append HTML_PARAMS(separate_1) "</select>"   
         setSelectedSensorType $selectedSensorType "separate_CHANNEL_1_$paramNr"                                  
-      append HTML_PARAMS(separate_1) "</td>"                                           
+      append HTML_PARAMS(separate_1) "</td><td>[getHelpIcon $param $hlpBoxWidth $hlpBoxHeight]</td>"                                           
     append HTML_PARAMS(separate_1) "</tr>"   
 
     incr paramNr

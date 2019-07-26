@@ -82,9 +82,9 @@ jQuery.extend(true,langJSON, {
         "<td><img src=/ise/img/icons_hb_dis_ep_75bw/fts_garage.png></td>"+
         "<td><img src=/ise/img/icons_hb_dis_ep_75bw/measure_pressure_bar.png></td>"+
         "<td><img src=/ise/img/icons_hb_dis_ep_75bw/weather_frost.png></td>"+
-        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/empty.png></td>"+
-        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/empty.png></td>"+
-        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/empty.png></td>"+
+        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/scene_plant.png></td>"+
+        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/sani_heating.png></td>"+
+        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/scene_making_love.png></td>"+
       "</tr>"+
       "<tr>"+
         "<td>0x98</td>"+

@@ -1,5 +1,5 @@
---- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig	2019-02-23 12:14:20.000000000 +0100
-+++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm	2019-03-23 21:49:23.000000000 +0100
+--- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig
++++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm
 @@ -95,6 +95,19 @@
      };
    };  

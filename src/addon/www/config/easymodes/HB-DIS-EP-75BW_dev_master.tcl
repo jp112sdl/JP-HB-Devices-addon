@@ -9,6 +9,11 @@ proc getHelpIcon {topic x y} {
   return $ret
 }
 
+proc getIconOverviewIcon {topic x y} {
+  set ret "<img src=\"/ise/img/visible.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '410', '520')\">"
+  return $ret
+}
+
 proc getCheckBox {param value prn} {
   set checked ""
   if { $value } then { set checked "checked=\"checked\"" }
@@ -74,7 +79,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   set hlpBoxWidth 450
   set hlpBoxHeight 160
 
-  puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/HB-DIS-EP-42BW_HELP.js')</script>"
+  puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/HB-DIS-EP-75BW_HELP.js')</script>"
 
   array set psDescr [xmlrpc $iface_url($iface) getParamsetDescription [list string $address] [list string MASTER]]
   array set devDescr [xmlrpc $iface_url($iface) getDeviceDescription [list string $address]]                                                       
@@ -100,7 +105,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     append HTML_PARAMS(separate_1) "<td>[getComboBox options $prn '$param' $ps($param)]</td>"
   append HTML_PARAMS(separate_1) "</tr>"
 
-  if { $DEVICE == "HB-DIS-EP-42BW" } {
+  if { $DEVICE == "HB-DIS-EP-75BW" } {
     incr prn
     set param LOW_BAT_LIMIT
     append HTML_PARAMS(separate_1) "<tr>"
@@ -109,7 +114,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     append HTML_PARAMS(separate_1) "</tr>"
   }
   
-  if { $DEVICE == "HB-DIS-EP-42BW" } {
+  if { $DEVICE == "HB-DIS-EP-75BW" } {
     incr prn
     set param HB_CRITICAL_BAT_LIMIT
     append HTML_PARAMS(separate_1) "<tr>"
@@ -145,16 +150,14 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     set options(5) "6"
     set options(6) "7"
     set options(7) "8"
-    set options(8) "9"
-    set options(9) "10"
     append HTML_PARAMS(separate_1) "<td>\${stringTableKeyTranseiverTitle}</td>"
-    append HTML_PARAMS(separate_1) "<td>[getComboBox options $prn '$param' $ps($param)]&nbsp;(1-10)&nbsp;[getHelpIcon $param $hlpBoxWidth $hlpBoxHeight]</td>"
+    append HTML_PARAMS(separate_1) "<td>[getComboBox options $prn '$param' $ps($param)]&nbsp;(1-8)&nbsp;[getHelpIcon $param $hlpBoxWidth $hlpBoxHeight]</td>"
     
   append HTML_PARAMS(separate_1) "</tr>"
   
   append HTML_PARAMS(separate_1) "<tr>"
     append HTML_PARAMS(separate_1) "<td>\${stringTableHbIconOverview}</td>"
-    append HTML_PARAMS(separate_1) "<td>&nbsp;[getHelpIcon AVAILABLE_ICONS $hlpBoxWidth $hlpBoxHeight]</td>"
+    append HTML_PARAMS(separate_1) "<td>&nbsp;[getIconOverviewIcon AVAILABLE_ICONS $hlpBoxWidth $hlpBoxHeight]</td>"
   append HTML_PARAMS(separate_1) "</tr>"
 
   append HTML_PARAMS(separate_1) "</table>"

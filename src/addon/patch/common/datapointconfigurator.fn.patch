@@ -1,5 +1,5 @@
---- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig	2019-02-23 12:13:06.000000000 +0100
-+++ ./patchsource/www/rega/esp/datapointconfigurator.fn	2019-02-23 12:25:36.000000000 +0100
+--- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig
++++ ./patchsource/www/rega/esp/datapointconfigurator.fn
 @@ -99,6 +99,8 @@
      var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
      var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";

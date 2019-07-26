@@ -10,7 +10,7 @@ proc getHelpIcon {topic x y} {
 }
 
 proc getIconOverviewIcon {topic x y} {
-  set ret "<img src=\"/ise/img/visible.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '410', '520')\">"
+  set ret "<img src=\"/ise/img/visible.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '$x', '210')\">"
   return $ret
 }
 

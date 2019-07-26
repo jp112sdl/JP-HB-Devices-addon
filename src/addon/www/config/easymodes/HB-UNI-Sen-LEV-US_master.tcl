@@ -44,7 +44,7 @@ proc getUnit {ps_descr param} {
 }
 
 proc getHelpIcon {topic x y} {
-  set ret "<img src=\"/ise/img/help.png\" style=\"cursor: pointer; width:24px; height:24px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '$x', '210')\">"
+  set ret "<img src=\"/ise/img/help.png\" style=\"cursor: pointer; width:24px; height:24px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '$x', '$y')\">"
   return $ret
 }
 
@@ -110,8 +110,8 @@ proc displayFields {id mode} {
 
 
 proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
-  set hlpBoxWidth 450
-  set hlpBoxHeight 160
+  set hlpBoxWidth  350
+  set hlpBoxHeight  50
 
   puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/js/HBFillingLevelSensor.js');</script>"
   puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/js/HB-UNI-Sen-LEV-US_HELP.js')</script>"

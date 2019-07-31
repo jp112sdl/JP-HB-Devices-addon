@@ -39,3 +39,4 @@ rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB
 rm -f /www/config/easymodes/HB-UNI-Sen-LEV-US_master.tcl
 rm -f /www/config/easymodes/js/HBFillingLevelSensor.js
+rm -f /www/config/easymodes/js/HB-UNI-Sen-LEV-US_HELP.js

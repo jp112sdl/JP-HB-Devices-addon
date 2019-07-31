@@ -11,6 +11,10 @@
       <logical type="boolean" default="false"/>
       <physical type="integer" interface="config" list="0" index="6.0" size="0.1"/>
     </parameter>
+    <parameter id="HB_EP_SHOW_GRID">
+      <logical type="boolean" default="false"/>
+      <physical type="integer" interface="config" list="0" index="144.0" size="0.1"/>
+    </parameter>
     <parameter id="HB_DISPLAY_REFRESH_WAIT_TIME">
       <logical type="float" min="0.0" max="25.5" default="5.0" unit="s"/>
       <physical type="integer" interface="config" list="0" index="7.0" size="1"/>

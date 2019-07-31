@@ -184,6 +184,14 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="HB_EP_SHOW_GRID"
+webuiInsertValue="stringTableHbEpShowGrid"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 webuiInsertParam="HB_DISPLAY_REFRESH_WAIT_TIME"
 webuiInsertValue="stringTableHbDisplayRefreshWaitTime"
 webuiInsert="\n"
@@ -269,6 +277,11 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_EP_SHOW_LINE"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
+stringtable_deInsert="HB_EP_SHOW_GRID\t\${stringTableHbEpShowGrid}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_EP_SHOW_GRID"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
 stringtable_deInsert="HB_DISPLAY_REFRESH_WAIT_TIME\t\${stringTableHbDisplayRefreshWaitTime}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_DISPLAY_REFRESH_WAIT_TIME"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
@@ -315,6 +328,11 @@ fi
 
 translate_deInsert="\n    \"stringTableHbEpShowLine\" : \"Linie nach Zeile\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpShowLine\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbEpShowGrid\" : \"Gitterlinien anzeigen\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbEpShowGrid\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

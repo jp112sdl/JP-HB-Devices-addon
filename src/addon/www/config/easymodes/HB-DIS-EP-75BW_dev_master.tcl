@@ -5,12 +5,12 @@ set PROFILES_MAP(0)  "Experte"
 set PROFILES_MAP(1)  "TheOneAndOnlyEasyMode"
 
 proc getHelpIcon {topic x y} {
-  set ret "<img src=\"/ise/img/help.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '$x', '210')\">"
+  set ret "<img src=\"/ise/img/help.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '$x', '$y')\">"
   return $ret
 }
 
-proc getIconOverviewIcon {topic x y} {
-  set ret "<img src=\"/ise/img/visible.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '410', '520')\">"
+proc getIconOverviewIcon {topic} {
+  set ret "<img src=\"/ise/img/visible.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '440', '525')\">"
   return $ret
 }
 
@@ -77,7 +77,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   upvar $pps          ps
 
   set hlpBoxWidth 450
-  set hlpBoxHeight 160
+  set hlpBoxHeight 210
 
   puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/HB-DIS-EP-75BW_HELP.js')</script>"
 
@@ -90,6 +90,15 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   set param DISPLAY_INVERTING
   append HTML_PARAMS(separate_1) "<tr>"
     append HTML_PARAMS(separate_1) "<td>\${stringTableDisplayInverting}</td>"
+    append HTML_PARAMS(separate_1) "<td>"
+     append HTML_PARAMS(separate_1) "[getCheckBox '$param' $ps($param) $prn]"
+    append HTML_PARAMS(separate_1) "</td>"
+  append HTML_PARAMS(separate_1) "</tr>"
+
+  incr prn
+  set param HB_EP_SHOW_GRID
+  append HTML_PARAMS(separate_1) "<tr>"
+    append HTML_PARAMS(separate_1) "<td>\${stringTableHbEpShowGrid}</td>"
     append HTML_PARAMS(separate_1) "<td>"
      append HTML_PARAMS(separate_1) "[getCheckBox '$param' $ps($param) $prn]"
     append HTML_PARAMS(separate_1) "</td>"
@@ -157,7 +166,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   
   append HTML_PARAMS(separate_1) "<tr>"
     append HTML_PARAMS(separate_1) "<td>\${stringTableHbIconOverview}</td>"
-    append HTML_PARAMS(separate_1) "<td>&nbsp;[getIconOverviewIcon AVAILABLE_ICONS $hlpBoxWidth $hlpBoxHeight]</td>"
+    append HTML_PARAMS(separate_1) "<td>&nbsp;[getIconOverviewIcon AVAILABLE_ICONS]</td>"
   append HTML_PARAMS(separate_1) "</tr>"
 
   append HTML_PARAMS(separate_1) "</table>"

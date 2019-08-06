@@ -87,7 +87,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |F3 44 | HB-OU-MP3-LED |
 |F3 45 | HB-RC-12-EP-29C |
 |F3 46 | HB-RC-12-EP-29BW |
-|F3 47 | HB-DIS-EP-47BW |
+|F3 47 | HB-DIS-EP-75BW |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 4B | HB-UNI-Sen-WEIGHT |
 |F3 53 | HB-DIS-EP-42BW-MAINS |

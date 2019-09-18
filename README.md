@@ -1,6 +1,6 @@
 # JP-HB-Devices-addon [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/JP-HB-Devices-addon/total.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/releases) [![GitHub issues](https://img.shields.io/github/issues/jp112sdl/JP-HB-Devices-addon.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/issues)
 
-**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.45.7 | 3.37.x - 3.47.18**<br/>
+**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.47.18 | 3.37.x - 3.47.18**<br/>
 
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
@@ -54,6 +54,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-weight_thumb.png" width=25/> | [HB-UNI-Sen-WEIGHT](https://github.com/jp112sdl/HB-UNI-Sen-WEIGHT) | universeller Wägesensor | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-iaq_thumb.png" width=25/> | [HB-UNI-Sen-IAQ](https://github.com/jp112sdl/HB-UNI-Sen-IAQ) | universeller Luftgütesensor _(temporarily discontinued)_ [(see HM-Forum)](https://homematic-forum.de/forum/viewtopic.php?f=76&t=49422)| 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-12-ep-bw_thumb.png" width=25/> | [HB-RC-12-EP](https://github.com/jp112sdl/HB-RC-12-EP) | 12 Kanal Fernbedienung mit Farb- oder Schwarz/Weiß-ePaper-Display | 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-rc-2-pbu-led_thumb.png" width=25/> | [HB-RC-2-PBU-LED](https://github.com/jp112sdl/HB-RC-2-PBU-LED) | 2 Kanal Taster mit RGB-Hintergrundbeleuchtung | ⚡️ | 
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner HB-Geräte)_ **:**
 
@@ -69,6 +70,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
 |F3 08 | HB-UNI-Sen-TEMP-IR |
 |F3 20 | HB-LC-SW12-FM |
+|F3 30 | HB-RC-2-PBU-LED|
 |F3 31 | HB-UNI-SenAct-4-4-SC|
 |F3 32 | HB-UNI-SenAct-4-4-RC|
 |F3 33 | HB-UNI-SenAct-4-4-SC-BAT|

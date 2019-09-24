@@ -12,17 +12,17 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
 
-webuiSearch="HB_GENERIC_WEIGHT|HB_TARA"
+webuiSearch="HB_TARA"
 sed -i "/\($webuiSearch\)/d" $webuiFile
-webuiSearch="HB_GENERIC_WEIGHT|HB_TARAONRESTART"
+webuiSearch="HB_TARAONRESTART"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="HB_GENERIC_WEIGHT|HB_WEIGHT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-stringtable_deSearch="HB_GENERIC_WEIGHT|HB_TARA"
+stringtable_deSearch="HB_TARA"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-stringtable_deSearch="HB_GENERIC_WEIGHT|HB_TARAONRESTART"
+stringtable_deSearch="HB_TARAONRESTART"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"

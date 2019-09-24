@@ -33,14 +33,14 @@ fi
 
 webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 
-webuiInsertParam="HB_GENERIC_WEIGHT|HB_TARA"
+webuiInsertParam="HB_TARA"
 webuiInsertValue="stringTableHbGenericWeightTara"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
-webuiInsertParam="HB_GENERIC_WEIGHT|HB_TARAONRESTART"
+webuiInsertParam="HB_TARAONRESTART"
 webuiInsertValue="stringTableHbGenericWeightTaraOnRestart"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
@@ -56,12 +56,12 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_WEIGHT|HB_WEIGHT"`" ]; the
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="HB_GENERIC_WEIGHT|HB_TARA\t\${stringTableHbGenericWeightTara}"
+stringtable_deInsert="HB_TARA\t\${stringTableHbGenericWeightTara}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_WEIGHT|HB_TARA"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="HB_GENERIC_WEIGHT|HB_TARAONRESTART\t\${stringTableHbGenericWeightTaraOnRestart}"
+stringtable_deInsert="HB_TARAONRESTART\t\${stringTableHbGenericWeightTaraOnRestart}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_WEIGHT|HB_TARAONRESTART"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi

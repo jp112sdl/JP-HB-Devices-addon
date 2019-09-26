@@ -51,6 +51,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |<img src="src/addon/www/config/img/devices/50/hb-ibut-8_thumb.png" width=25/> | [HB-IBUT-8](https://github.com/pa-pa/AskSinPP/tree/master/examples/custom/HB-IBUT-8) | iButton Sender Taster/Schließer | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-ou-mp3-led_thumb.png" width=25/> | [HB-OU-MP3-LED](https://github.com/jp112sdl/HB-OU-MP3-LED) | MP3-Player mit LED | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-weight_thumb.png" width=25/> | [HB-UNI-Sen-WEIGHT](https://github.com/jp112sdl/HB-UNI-Sen-WEIGHT) | universeller Wägesensor | 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-weight-sc_thumb.png" width=25/> | [HB-UNI-Sen-WEIGHT-SC](https://github.com/jp112sdl/HB-UNI-Sen-WEIGHT-SC) | universeller Wägesensor mit Schließerkontakt | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-iaq_thumb.png" width=25/> | [HB-UNI-Sen-IAQ](https://github.com/jp112sdl/HB-UNI-Sen-IAQ) | universeller Luftgütesensor _(temporarily discontinued)_ [(see HM-Forum)](https://homematic-forum.de/forum/viewtopic.php?f=76&t=49422)| 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-12-ep-bw_thumb.png" width=25/> | [HB-RC-12-EP](https://github.com/jp112sdl/HB-RC-12-EP) | 12 Kanal Fernbedienung mit Farb- oder Schwarz/Weiß-ePaper-Display | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-2-pbu-led_thumb.png" width=25/> | [HB-RC-2-PBU-LED](https://github.com/jp112sdl/HB-RC-2-PBU-LED) | 2 Kanal Taster mit RGB-Hintergrundbeleuchtung | ⚡️ | 
@@ -91,7 +92,7 @@ Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selb
 |F3 47 | HB-DIS-EP-75BW |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 4B | HB-UNI-Sen-WEIGHT |
-|F3 4C | HB-UNI-Sen-WEIGHT |
+|F3 4C | HB-UNI-Sen-WEIGHT-SC |
 |F3 53 | HB-DIS-EP-42BW-MAINS |
 |F3 57 | HB-DIS-EP-75BW-MAINS |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |

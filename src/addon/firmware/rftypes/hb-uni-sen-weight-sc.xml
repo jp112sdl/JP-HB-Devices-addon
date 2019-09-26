@@ -19,6 +19,10 @@
       <logical type="boolean" default="false"/>
       <physical type="integer" interface="config" list="0" index="5" size="0.1"/>
     </parameter>
+    <parameter id="HB_AVERAGING">
+     <logical type="integer" min="1" max="20" unit="" default="8"/>
+     <physical type="integer" interface="config" list="0" index="6" size="1"/>
+    </parameter>
     <parameter id="Schaltschwelle">
      <logical type="float" min="-50000.00" max="50000.00" unit="g" default="0.0" />              
      <physical type="integer" signed="true" interface="config" list="0" index="35.0" size="4" />

@@ -14,6 +14,8 @@ sed -i "/\($DEVICE\)/d" $webuiFile
 
 webuiSearch="HB_TARA"
 sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_AVERAGING"
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_TARAONRESTART"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 
@@ -21,6 +23,8 @@ stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="HB_GENERIC_WEIGHT|HB_WEIGHT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_TARA"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_AVERAGING"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_TARAONRESTART"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile

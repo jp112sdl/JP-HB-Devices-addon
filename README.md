@@ -22,7 +22,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 
 📍 Sollten anschließend keine Geräte-Icons und/oder -beschreibungen angezeigt werden, muss der Browser-Cache gelöscht werden.
 
-Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selbstbaugeräte herzustellen:
+#### Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selbstbaugeräte herzustellen:
 
 |  | Name | Beschreibung | 🔋Batterie-/<br/>⚡️Netzbetrieb |
 |--------|--------|--------|:--------:|

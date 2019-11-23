@@ -1,4 +1,174 @@
 /**
+ * ise/iseButtonsServo.js
+ **/
+
+/**
+ * @fileOverview ?
+ * @author ise
+ **/
+
+/**
+ * @class
+ **/ 
+iseButtonsServo = Class.create();
+
+iseButtonsServo.prototype = {
+  /*
+   * id = DOM-ID of switch
+   * initState = Creation State 
+   */
+  initialize: function(id, initState, lvlDP, oldLvlDP, iViewOnly, bSliderPosFlag, label)
+  {
+    conInfo( "iseServo: initialize()" );
+    this.id = id;
+    this.state = initState;
+    this.lvlDP = lvlDP;
+    this.oldLvlDP = oldLvlDP;
+
+    if(bSliderPosFlag)
+    {
+        this.bSliderPosFlag = bSliderPosFlag;
+    }
+    else
+    {
+        this.bSliderPosFlag = false;
+    }
+    this.slider = new sliderControl("Servo", this.id, initState, iViewOnly,this.bSliderPosFlag, 0, 180, 0.555556, '&deg;');
+    
+    this.hasRampClicked = false;
+    
+    this.txtDeg = $(this.id + "Deg");
+    
+    // Add event handlers
+    if (iViewOnly === 0)
+    {
+      this.mouseOut = this.onMouseOut.bindAsEventListener(this);
+      Event.observe($("slidCtrl" + this.id), 'mouseout', this.mouseOut);
+    
+      this.rampClick = this.onRampClick.bindAsEventListener(this);
+      Event.observe(this.slider.e_base, 'mousedown', this.rampClick);
+      
+      this.handleClick = this.onHandleClick.bindAsEventListener(this);
+      Event.observe($("slidCtrl" + this.id), 'mouseup', this.handleClick);
+      
+      this.clickUp = this.onClickUp.bindAsEventListener(this);
+      Event.observe($(this.id + "Up"), 'click', this.clickUp);
+
+      this.clickDown = this.onClickDown.bindAsEventListener(this);
+      Event.observe($(this.id + "Down"), 'click', this.clickDown);
+      
+      this.DegChange = this.onDegChange.bindAsEventListener(this);
+      Event.observe($(this.id + "Deg"), 'change', this.DegChange);
+    }
+    this.refresh(false);
+  },
+  
+  onMouseOut: function(event)
+  {
+    var e = event;
+    if (!e) { e = window.event; }
+    var relTarg = e.relatedTarget || e.fromElement;
+    if( relTarg )
+    {
+      var b1 = (relTarg.id.indexOf("slider")!=-1);
+      var b2 = (relTarg.id.indexOf("base")!=-1);
+      var b3 = (relTarg.id.indexOf("green")!=-1);
+      if( !b1 && !b2 && !b3 ) 
+      {
+        if( this.hasRampClicked )
+        {
+          conInfo( "iseServo: onMouseOut() ["+relTarg.id+"] "+this.slider.n_value  );
+          this.hasRampClicked = false;
+          this.state = this.slider.n_value;
+          //this.refresh();
+        }
+      }
+    }
+  },
+ 
+  onRampClick: function(ev)
+  {
+     conInfo( "iseServo: onRampClick()" );
+     this.hasRampClicked = true;
+     var pos = Position.page(this.slider.e_base);
+     var offset = ev.clientX - pos[0];
+     var val = ( offset * 180 ) / this.slider.n_controlWidth;  
+     var oldstate = parseInt(this.state);
+     this.state = Math.floor(val);
+     if (this.state < (oldstate-3))
+     {
+       this.slider.f_setValue(val);     
+     }     
+     else if (this.state > (oldstate+3))
+     {
+       this.slider.f_setValue(val);     
+     } 
+     conInfo("setting Servo DP "+this.lvlDP+" State --> " + this.state + " -- old State --> "+oldstate);   
+     //window.setTimeout("ibd"+this.id+".refresh()",1000);
+  },
+  
+  onHandleClick: function()
+  {
+    conInfo( "iseServo: onHandleClick()" );
+    //this.state = this.txtDeg.value;
+    this.refresh();
+  },
+  
+  onClickUp: function()
+  {
+    conInfo( "iseServo: onClickUp()" );
+    this.state = this.slider.n_value;
+    this.state += 10; 
+    if (this.state > 180)
+    {
+      this.state = 180;
+    }
+    this.refresh();
+  },
+  
+  onClickDown: function()
+  {
+    conInfo( "iseServo: onClickDown()" );
+    this.state = this.slider.n_value;
+    this.state -= 10; 
+    if (this.state < 0)
+      this.state = 0;
+    this.refresh();
+  },
+   
+  
+  onDegChange: function()
+  {
+    conInfo( "iseServo: onDegChange()" );
+    if( isNaN(this.txtDeg.value) ) return;
+    if( parseInt(this.txtDeg.value) > 180 ) this.txtDeg.value = 180;
+    if( parseInt(this.txtDeg.value) < 0 ) this.txtDeg.value = 0;
+    this.state = this.txtDeg.value;
+    this.refresh();
+  },
+  
+  update: function(newVal)
+  {
+    conInfo( "iseServo: update()" );
+    this.state = newVal;
+    this.refresh(newVal);
+  },
+  
+  refresh: function(setstate)
+  {
+    conInfo( "iseServo: refresh() " + this.state );
+    this.slider.f_setValue(this.state, true);
+    this.txtDeg.value = this.state;
+
+    if(typeof setstate == "undefined")
+    {
+      conInfo("setting Servo DP "+this.lvlDP+" State -------> " + this.state);    
+      setDpState(this.lvlDP, (this.state / 180));
+    }
+  }
+};
+
+/**
  * @class
  **/
 iseRFIDKey = Class.create();

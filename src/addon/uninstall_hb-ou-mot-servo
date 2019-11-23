@@ -1,0 +1,47 @@
+#!/bin/sh
+
+DEVICE="HB-OU-MOT-SERVO"
+DEVICE_IMG=hb-ou-mot-servo.png
+DEVICE_THUMB=hb-ou-mot-servo_thumb.png
+FIRMWARE_FILE=/firmware/rftypes/hb-ou-mot-servo.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+
+webuiFile="/www/webui/webui.js"
+sed -i "/\($DEVICE\)/d" $webuiFile
+webuiSearch="RELEASE_AFTER_MOVE"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="SERVO_STAY"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="SERVO_MOVE0"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+
+stringtable_deFile="/www/config/stringtable_de.txt"
+stringtable_deSearch="SERVO|LEVEL"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="RELEASE_AFTER_MOVE"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="SERVO_STAY"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="SERVO_MOVE0"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="stringTableHbServoLevel"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbReleaseAfterMove"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbServoStay"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbServoMove0"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
+channelsFile="/www/rega/esp/channels.htm"
+channelsSearch="servoOldVal"
+sed -i "/\(${channelsSearch}\)/d" $channelsFile
+
+rm -f $FIRMWARE_FILE
+rm -f /www/config/img/devices/250/$DEVICE_IMG
+rm -f /www/config/img/devices/50/$DEVICE_THUMB

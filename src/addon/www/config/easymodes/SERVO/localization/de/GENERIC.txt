@@ -1,0 +1,5 @@
+"dim_down" : "Servo - kleinerer Winkel",
+"dim_up" : "Servo - heller",
+"dimmer_off" : "Servo - 0&deg;",
+"dimmer_on" : "Servo - 180&deg;",
+"dimmer_on_off" : "Servo - 0&deg;/180&deg;",

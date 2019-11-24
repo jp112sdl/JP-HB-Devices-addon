@@ -55,6 +55,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-iaq_thumb.png" width=25/> | [HB-UNI-Sen-IAQ](https://github.com/jp112sdl/HB-UNI-Sen-IAQ) | universeller Luftgütesensor _(temporarily discontinued)_ [(see HM-Forum)](https://homematic-forum.de/forum/viewtopic.php?f=76&t=49422)| 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-12-ep-bw_thumb.png" width=25/> | [HB-RC-12-EP](https://github.com/jp112sdl/HB-RC-12-EP) | 12 Kanal Fernbedienung mit Farb- oder Schwarz/Weiß-ePaper-Display | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-2-pbu-led_thumb.png" width=25/> | [HB-RC-2-PBU-LED](https://github.com/jp112sdl/HB-RC-2-PBU-LED) | 2 Kanal Taster mit RGB-Hintergrundbeleuchtung | ⚡️ | 
+|<img src="src/addon/www/config/img/devices/50/hb-ou-mot-servo_thumb.png" width=25/> | [HB-OU-MOT-SERVO](https://github.com/jp112sdl/HB-OU-MOT-SERVO) | Servo-Motor Steuerung | ⚡️ | 
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner HB-Geräte)_ **:**
 
@@ -90,6 +91,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 45 | HB-RC-12-EP-29C |
 |F3 46 | HB-RC-12-EP-29BW |
 |F3 47 | HB-DIS-EP-75BW |
+|F3 48 | HB-OU-MOT-SERVO |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 4B | HB-UNI-Sen-WEIGHT |
 |F3 4C | HB-UNI-Sen-WEIGHT-SC |

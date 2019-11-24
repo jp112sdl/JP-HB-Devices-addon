@@ -21,6 +21,10 @@ sed -i "/\($webuiSearch\)/d" $webuiFile
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="SERVO|LEVEL"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="SERVO|OLD_LEVEL"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="SERVO|RAMP_TIME"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="RELEASE_AFTER_MOVE"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="SERVO_STAY"
@@ -30,6 +34,10 @@ sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbServoLevel"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbServoOldLevel"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbServoRampTime"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbReleaseAfterMove"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile

@@ -65,6 +65,16 @@ if [ -z "`cat $stringtable_deFile | grep \"SERVO|LEVEL"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
+stringtable_deInsert="SERVO|OLD_LEVEL\t\${stringTableHbServoOldLevel}"
+if [ -z "`cat $stringtable_deFile | grep \"SERVO|OLD_LEVEL"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="SERVO|RAMP_TIME\t\${stringTableHbServoRampTime}"
+if [ -z "`cat $stringtable_deFile | grep \"SERVO|RAMP_TIME"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
 stringtable_deInsert="RELEASE_AFTER_MOVE\t\${stringTableHbReleaseAfterMove}"
 if [ -z "`cat $stringtable_deFile | grep \"RELEASE_AFTER_MOVE"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
@@ -86,6 +96,16 @@ translate_deSearch="\"dummy\" : \"\","
 
 translate_deInsert="\n    \"stringTableHbServoLevel\" : \"Stellwinkel\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbServoLevel\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbServoOldLevel\" : \"Letzter Stellwinkel\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbServoOldLevel\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbServoRampTime\" : \"Anfahrzeit\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbServoRampTime\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

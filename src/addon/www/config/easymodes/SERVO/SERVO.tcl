@@ -96,7 +96,7 @@ set PROFILE_1(SHORT_ON_TIME_MODE) 0
 set PROFILE_1(SHORT_RAMPOFF_TIME) {0.5 range 0.0 - 111600.00} 
 set PROFILE_1(SHORT_RAMPON_TIME)  {0.5 range 0.0 - 111600.00}
 set PROFILE_1(SHORT_RAMP_START_STEP)  0.05
-set PROFILE_1(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wird das Licht auf die eingestellte Helligkeit eingeschaltet. Mit einem langen Tastendruck wird das Licht hochgedimmt."
+set PROFILE_1(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wird der eingestellte Winkel angefahren. Mit einem langen Tastendruck wird der Stellwinkel vergr&ouml;&szlig;ert."
 set PROFILE_1(UI_TEMPLATE)    $PROFILE_1(UI_DESCRIPTION)
 set PROFILE_1(UI_HINT)  1
 
@@ -173,7 +173,7 @@ set PROFILE_2(SHORT_ON_TIME_MODE) 0
 set PROFILE_2(SHORT_RAMPOFF_TIME) {0.5 range 0.0 - 111600.0}
 set PROFILE_2(SHORT_RAMPON_TIME)  0.5
 set PROFILE_2(SHORT_RAMP_START_STEP)  0.05
-set PROFILE_2(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wird das Licht ausgeschaltet. Mit einem langen Tastendruck wird das Licht runtergedimmt."
+set PROFILE_2(UI_DESCRIPTION) "Mit einem kurzen Tastendruck werden 0&deg; angefahren. Mit einem langen Tastendruck wird der Stellwinkel verkleinert."
 set PROFILE_2(UI_TEMPLATE)    $PROFILE_2(UI_DESCRIPTION)
 set PROFILE_2(UI_HINT)  2
 
@@ -250,7 +250,7 @@ set PROFILE_3(SHORT_ON_TIME_MODE) 0
 set PROFILE_3(SHORT_RAMPOFF_TIME) {0.5 range 0.0 - 108000}
 set PROFILE_3(SHORT_RAMPON_TIME)    {0.5 range 0.0 - 108000}
 set PROFILE_3(SHORT_RAMP_START_STEP)  0.05
-set PROFILE_3(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wechselt das Licht zwischen der eingestellten Helligkeit und aus. Mit einem langen Tastendruck wird das Licht abwechselnd hoch- und runtergedimmt."
+set PROFILE_3(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wechselt der Stellwinkel zwischen dem eingestellten Stellwinkel und 0&deg;. Mit einem langen Tastendruck wird der Stellwinkel abwechselnd verg&ouml;&szlig;ert und verringert."
 set PROFILE_3(UI_TEMPLATE)    $PROFILE_3(UI_DESCRIPTION)
 set PROFILE_3(UI_HINT)  3
 
@@ -327,7 +327,7 @@ set PROFILE_4(SHORT_ON_TIME_MODE) 1
 set PROFILE_4(SHORT_RAMPOFF_TIME) {20.0 range 0.0 - 108000.0}
 set PROFILE_4(SHORT_RAMPON_TIME)  {0.5 range 0.0 - 108000.0}
 set PROFILE_4(SHORT_RAMP_START_STEP)  0.05
-set PROFILE_4(UI_DESCRIPTION) "Das Licht wird durch kurzen oder langen Tastendruck f&uuml;r die eingestellte Zeit eingeschaltet. In der Ausschaltverz&ouml;gerung wird der Pegel zur Vorwarnung leicht abgesenkt, um anschlie&szlig;end langsam bis auf aus runterzudimmen."
+set PROFILE_4(UI_DESCRIPTION) "Der Stellwinkel wird durch kurzen oder langen Tastendruck f&uuml;r die eingestellte Zeit eingestellt. In der Ausschaltverz&ouml;gerung wird der Winkel leicht verringert, um anschlie&szlig;end langsam bis auf 0&deg; zu fahren."
 set PROFILE_4(UI_TEMPLATE)    $PROFILE_4(UI_DESCRIPTION)
 set PROFILE_4(UI_HINT)  4
 
@@ -404,7 +404,7 @@ set PROFILE_5(SHORT_ON_TIME_MODE) 0
 set PROFILE_5(SHORT_RAMPOFF_TIME) {1800.0 range 0.0 - 108000}
 set PROFILE_5(SHORT_RAMPON_TIME)  0.5
 set PROFILE_5(SHORT_RAMP_START_STEP)  0.0
-set PROFILE_5(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wird das Licht auf die eingestellte Helligkeit eingeschaltet und nach der eingestellten Zeit langsam auf aus runtergedimmt. Mit einem langen Tastendruck wird das Licht abwechselnd hoch- und runtergedimmt."
+set PROFILE_5(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wird der eingestellte Stellwinkel angefahren und nach der eingestellten Zeit langsam auf 0&deg; reduziert. Mit einem langen Tastendruck wird der Stellwinkel abwechselnd verg&ouml;&szlig;ert und verringert."
 set PROFILE_5(UI_TEMPLATE)    $PROFILE_5(UI_DESCRIPTION)
 set PROFILE_5(UI_HINT)  5
 
@@ -481,7 +481,7 @@ set PROFILE_6(SHORT_ON_TIME_MODE) 0
 set PROFILE_6(SHORT_RAMPOFF_TIME) 0.0
 set PROFILE_6(SHORT_RAMPON_TIME)  0.0
 set PROFILE_6(SHORT_RAMP_START_STEP)  0.0
-set PROFILE_6(UI_DESCRIPTION) "Das Licht wechselt im eingestellten Takt endlos zwischen den beiden Helligkeitswerten."
+set PROFILE_6(UI_DESCRIPTION) "Der Stellwinkel wechselt im eingestellten Takt endlos zwischen den beiden Werten."
 set PROFILE_6(UI_TEMPLATE)    $PROFILE_6(UI_DESCRIPTION)
 set PROFILE_6(UI_HINT)  6
 
@@ -558,7 +558,7 @@ set PROFILE_7(SHORT_ON_TIME_MODE) 0
 set PROFILE_7(SHORT_RAMPOFF_TIME) 0.5
 set PROFILE_7(SHORT_RAMPON_TIME)    {60.0 range 0.0 - 108000}
 set PROFILE_7(SHORT_RAMP_START_STEP)  0.05
-set PROFILE_7(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wird das Licht langsam auf die eingestellten Helligkeit hochgedimmt. Mit einem langen Tastendruck wird das Licht abwechselnd hoch- und runtergedimmt."
+set PROFILE_7(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wird der Stellwinkel langsam auf den eingestellten Wert verg&ouml;&szlig;ert. Mit einem langen Tastendruck wird der Stellwinkel abwechselnd verg&ouml;&szlig;ert und verringert."
 set PROFILE_7(UI_TEMPLATE)    $PROFILE_7(UI_DESCRIPTION)
 set PROFILE_7(UI_HINT)  7
 
@@ -635,7 +635,7 @@ set PROFILE_8(SHORT_ON_TIME_MODE) 0
 set PROFILE_8(SHORT_RAMPOFF_TIME) 0.5
 set PROFILE_8(SHORT_RAMPON_TIME)    {0.5 range 0.0 - 108000}
 set PROFILE_8(SHORT_RAMP_START_STEP)  0.05
-set PROFILE_8(UI_DESCRIPTION) "Das Licht wird durch kurzen oder langen Tastendruck auf die eingestellten Helligkeit eingeschaltet."
+set PROFILE_8(UI_DESCRIPTION) "Der Stellwinkel wird durch kurzen oder langen Tastendruck auf den eingestellten Winkel angefahren."
 set PROFILE_8(UI_TEMPLATE)  $PROFILE_8(UI_DESCRIPTION)
 set PROFILE_8(UI_HINT)  8
 
@@ -712,7 +712,7 @@ set PROFILE_9(SHORT_ON_TIME_MODE) 0
 set PROFILE_9(SHORT_RAMPOFF_TIME) {0.5 range 0.0 - 108000}
 set PROFILE_9(SHORT_RAMPON_TIME)  0.5
 set PROFILE_9(SHORT_RAMP_START_STEP)  0.05
-set PROFILE_9(UI_DESCRIPTION) "Das Licht wird durch kurzen oder langen Tastendruck ausgeschaltet."
+set PROFILE_9(UI_DESCRIPTION) "Der Stellwinkel wird durch kurzen oder langen Tastendruck auf 0&deg; gefahren."
 set PROFILE_9(UI_TEMPLATE)    $PROFILE_9(UI_DESCRIPTION)
 set PROFILE_9(UI_HINT)  9
 
@@ -789,7 +789,7 @@ set PROFILE_10(SHORT_ON_TIME_MODE)  0
 set PROFILE_10(SHORT_RAMPOFF_TIME)  0.5
 set PROFILE_10(SHORT_RAMPON_TIME) 0.5
 set PROFILE_10(SHORT_RAMP_START_STEP) 0.05
-set PROFILE_10(UI_DESCRIPTION)  "Das Licht wird durch kurzen oder langen Tastendruck hochgedimmt."
+set PROFILE_10(UI_DESCRIPTION)  "Der Stellwinkel wird durch kurzen oder langen Tastendruck verg&ouml;&szlig;ert."
 set PROFILE_10(UI_TEMPLATE) $PROFILE_10(UI_DESCRIPTION)
 set PROFILE_10(UI_HINT) 10
 
@@ -866,7 +866,7 @@ set PROFILE_11(SHORT_ON_TIME_MODE)  1
 set PROFILE_11(SHORT_RAMPOFF_TIME)  0.5
 set PROFILE_11(SHORT_RAMPON_TIME) 0.5
 set PROFILE_11(SHORT_RAMP_START_STEP) 0.05
-set PROFILE_11(UI_DESCRIPTION)  "Das Licht wird durch kurzen oder langen Tastendruck runtergedimmt."
+set PROFILE_11(UI_DESCRIPTION)  "Der Stellwinkel wird durch kurzen oder langen Tastendruck verringert."
 set PROFILE_11(UI_TEMPLATE)   $PROFILE_11(UI_DESCRIPTION)
 set PROFILE_11(UI_HINT) 11
 
@@ -890,10 +890,6 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
 
   set simulateLongKeyPress 0
   set device $dev_descr_sender(TYPE)
-
-  if {$device == "DUAL_WHITE_BRIGHTNESS"} {
-    set device "DIMMER"
-  }
 
   set ch $dev_descr_sender(INDEX)
   

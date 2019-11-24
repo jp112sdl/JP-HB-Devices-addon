@@ -3,7 +3,7 @@
 # dev_descr(TYPE) enthaelt den Sendertype (KEY, WATERDETECTIONSENSOR usw.)
 
 proc isLongKeyPressAvailable {} {
-  return 0
+  return 1
 }
 
 global env dev_descr internalKey iface iface_url

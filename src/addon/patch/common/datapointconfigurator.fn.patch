@@ -1,15 +1,16 @@
 --- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig
 +++ ./patchsource/www/rega/esp/datapointconfigurator.fn
-@@ -99,6 +99,8 @@
+@@ -99,6 +99,9 @@
      var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
      var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
      var CN_BUTTON          = "BUTTON.";
 +    var CN_RFID_BUTTON     = "RFIDBTN.";
 +    var CN_IBTN_BUTTON     = "IBTN.";
++    var CN_SERVO           = "SERVO.";
      var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
      var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
      var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
-@@ -369,7 +371,27 @@
+@@ -369,7 +372,38 @@
              sLastControlName = CN_BTN_SHORT_ONLY;
              Call("/esp/controls/button.fn::CreateKeyShortOnly()");
            }
@@ -33,6 +34,17 @@
 +            sLastControlName = CN_IBTN_BUTTON;
 +            Call("/esp/controls/ibutton.fn::CreateIButtonKey()");
 +          }
++                    
++          !# SERVO
++          bIsControl = ( sControlName.Find(CN_SERVO) > -1 );
++          if( bIsControl && (sLastControlName!=CN_SERVO) )
++          {
++            object ch = dom.GetObject(chnId);
++            isKnownControl = true;
++            sLastControlName = CN_SERVO;
++            WriteLine( "<script>conInfo('Control SERVO found.');</script>" );
++            Call("/esp/controls/servo.fn::CreateServoActuator()");
++          } 
 +          
            !# BUTTON
            bIsControl = ( sControlName.Find(CN_BUTTON) > -1 );

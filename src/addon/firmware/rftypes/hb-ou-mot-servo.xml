@@ -8,7 +8,7 @@
   </supported_types>
   <paramset type="MASTER" id="servo_dev_master">
     <parameter id="INTERNAL_KEYS_VISIBLE" ui_flags="internal">
-      <logical type="boolean" default="false"/>
+      <logical type="boolean" default="true"/>
       <physical type="integer" interface="config" list="0" index="2.7" size="0.1"/>
     </parameter>
     <parameter id="RELEASE_AFTER_MOVE">
@@ -133,7 +133,7 @@
   <paramset_defs>
     <paramset id="servo_valueset">
       <parameter id="LEVEL" operations="read,write,event" control="SERVO.LEVEL">
-        <logical type="float" default="0.0" min="0.0" max="1.0" unit="180°"/>
+        <logical type="float" default="0.0" min="0.0" max="1.0" unit="von 180°"/>
         <physical type="integer" interface="command" value_id="LEVEL">
           <set request="LEVEL_SET"/>
           <get request="LEVEL_GET" response="INFO_LEVEL" process_as_event="true"/>
@@ -458,24 +458,24 @@
         <physical type="integer" interface="config" list="3" index="0xE.5" size="0.1"/>
       </parameter>
       <parameter id="SHORT_OFF_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="0.0" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.0" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0xF" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="SHORT_ON_MIN_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="0.1" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.1" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x10" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="SHORT_ON_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="1.0" unit="180°">
+        <logical type="float" min="0.0" max="1.0" default="1.0" unit="von 180°">
           <special_value id="OLD_LEVEL" value="1.005"/>
         </logical>
         <physical type="integer" interface="config" list="3" index="0x11" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="SHORT_RAMP_START_STEP">
-        <logical type="float" min="0.0" max="1.0" default="0.05" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.05" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x12" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
@@ -490,22 +490,22 @@
         <conversion type="float_configtime"/>
       </parameter>
       <parameter id="SHORT_DIM_MIN_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="0.0" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.0" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x15" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="SHORT_DIM_MAX_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="1.0" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="1.0" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x16" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="SHORT_DIM_STEP">
-        <logical type="float" min="0.0" max="1.0" default="0.0" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.0" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x17" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="SHORT_OFFDELAY_STEP">
-        <logical type="float" min="0.0" max="1.0" default="0.05" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.05" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x18" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
@@ -746,24 +746,24 @@
         <physical type="integer" interface="config" list="3" index="0x8E.5" size="0.1"/>
       </parameter>
       <parameter id="LONG_OFF_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="0.0" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.0" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x8F" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="LONG_ON_MIN_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="0.1" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.1" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x90" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="LONG_ON_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="1.0" unit="180°">
+        <logical type="float" min="0.0" max="1.0" default="1.0" unit="von 180°">
           <special_value id="OLD_LEVEL" value="1.005"/>
         </logical>
         <physical type="integer" interface="config" list="3" index="0x91" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="LONG_RAMP_START_STEP">
-        <logical type="float" min="0.0" max="1.0" default="0.05" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.05" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x92" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
@@ -778,22 +778,22 @@
         <conversion type="float_configtime"/>
       </parameter>
       <parameter id="LONG_DIM_MIN_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="0.0" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.0" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x95" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="LONG_DIM_MAX_LEVEL">
-        <logical type="float" min="0.0" max="1.0" default="1.0" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="1.0" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x96" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="LONG_DIM_STEP">
-        <logical type="float" min="0.0" max="1.0" default="0.0" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.0" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x97" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>
       <parameter id="LONG_OFFDELAY_STEP">
-        <logical type="float" min="0.0" max="1.0" default="0.05" unit="180°"/>
+        <logical type="float" min="0.0" max="1.0" default="0.05" unit="von 180°"/>
         <physical type="integer" interface="config" list="3" index="0x98" size="1"/>
         <conversion type="float_integer_scale" factor="200"/>
       </parameter>

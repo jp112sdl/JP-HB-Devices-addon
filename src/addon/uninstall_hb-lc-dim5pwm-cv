@@ -12,4 +12,4 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
 
-#rm -f $FIRMWARE_FILE
+rm -f $FIRMWARE_FILE

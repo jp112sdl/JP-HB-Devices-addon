@@ -73,6 +73,7 @@
       <enforce_link>
         <value id="LCD_SYMBOL" value="2"/>
         <value id="LCD_LEVEL_INTERP" value="1"/>
+        <value id="PEER_NEEDS_BURST" value="true"/>
       </enforce_link>
     </channel>
     <channel autoregister="true" index="5" type="SHUTTER_CONTACT" count="4" aes_default="false">

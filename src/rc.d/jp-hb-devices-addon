@@ -118,6 +118,7 @@ case "$1" in
         for patchfile in ${PATCH_DIR}/$patchsubdir/* ; do
           echo "### Applying $patchsubdir patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
           patch -N -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$GLOBAL_ERRFILE
+          echo "- done" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
         done
         
         echo "######## APPLY VERSION DEPENDEND PATCHES ########" | tee -a $GLOBAL_LOGFILE
@@ -128,8 +129,9 @@ case "$1" in
         fi
       
         for patchfile in ${PATCH_DIR}/$patchsubdir/* ; do
-          echo "Applying $patchsubdir patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE
+          echo "Applying $patchsubdir patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
           patch -N -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$GLOBAL_ERRFILE
+          echo "- done" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
         done
          
         [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig

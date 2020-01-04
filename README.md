@@ -95,6 +95,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 4B | HB-UNI-Sen-WEIGHT |
 |F3 4C | HB-UNI-Sen-WEIGHT-SC |
+|F3 4D | HB-UNI-Sen-CF-SC |
 |F3 53 | HB-DIS-EP-42BW-MAINS |
 |F3 57 | HB-DIS-EP-75BW-MAINS |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |

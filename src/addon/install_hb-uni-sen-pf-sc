@@ -1,0 +1,365 @@
+#!/bin/sh
+
+DEVICE="HB-UNI-Sen-PF-SC"
+DEVICE_IMG=hb-uni-sen-pf-sc.png
+DEVICE_THUMB=hb-uni-sen-pf-sc_thumb.png
+DEVICE_DESC="Tierklappensensor"
+
+### Edit DEVDB.tcl ###
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+
+devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+
+if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
+	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
+fi
+
+### Edit webui.js ###
+webuiFile="/www/webui/webui.js"
+
+webuiSearchBegin="DEV_HIGHLIGHT[[:space:]]*=[[:space:]]*new Array();"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}DEV_HIGHLIGHT['$DEVICE'] = new Object();\n"
+webuiInsert="${webuiInsert}DEV_LIST.push('$DEVICE');\n"
+webuiInsert="${webuiInsert}DEV_DESCRIPTION['$DEVICE']='$DEVICE_DESC';\n"
+webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE'] = new Object();\n"
+webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['50'] = '\/config\/img\/devices\/50\/$DEVICE_THUMB';\n"
+webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['250'] = '\/config\/img\/devices\/250\/$DEVICE_IMG';"
+
+if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
+
+webuiInsertParam="ROTARY_HANDLE_SENSOR"
+webuiInsertValue="stringTableHBPFSTitle"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_A"
+webuiInsertValue="stringTableHBPFSMsgPosA"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_A=CLOSED"
+webuiInsertValue="stringTableHBPFSMsgPosClosed"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_A=NO_MSG"
+webuiInsertValue="stringTableHBPFSMsgPosNoMsg"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_A=OPEN_IN"
+webuiInsertValue="stringTableHBPFSMsgPosOpenIn"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_A=OPEN_OUT"
+webuiInsertValue="stringTableHBPFSMsgPosOpenOut"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_B"
+webuiInsertValue="stringTableHBPFSMsgPosB"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_B=CLOSED"
+webuiInsertValue="stringTableHBPFSMsgPosClosed"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_B=NO_MSG"
+webuiInsertValue="stringTableHBPFSMsgPosNoMsg"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_B=OPEN_IN"
+webuiInsertValue="stringTableHBPFSMsgPosOpenIn"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_B=OPEN_OUT"
+webuiInsertValue="stringTableHBPFSMsgPosOpenOut"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_C"
+webuiInsertValue="stringTableHBPFSMsgPosC"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_C=CLOSED"
+webuiInsertValue="stringTableHBPFSMsgPosClosed"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_C=NO_MSG"
+webuiInsertValue="stringTableHBPFSMsgPosNoMsg"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_C=OPEN_IN"
+webuiInsertValue="stringTableHBPFSMsgPosOpenIn"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|MSG_FOR_POS_C=OPEN_OUT"
+webuiInsertValue="stringTableHBPFSMsgPosOpenOut"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|STATE=CLOSED"
+webuiInsertValue="stringTableHBPFSStateClosed"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|STATE=OPEN_IN"
+webuiInsertValue="stringTableHBPFSStateOpenIN"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|STATE=OPEN_OUT"
+webuiInsertValue="stringTableHBPFSStateOpenOut"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+### Edit stringtable_de.txt ###
+stringtable_deFile="/www/config/stringtable_de.txt"
+
+stringtable_deInsert="HB_PETFLAP_SENSOR\t\${stringTableHBPFSTitle}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_A\t\${stringTableHBPFSMsgPosA}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_A"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_A=CLOSED\t\${stringTableHBPFSMsgPosClosed}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_A=CLOSED"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_A=NO_MSG\t\${stringTableHBPFSMsgPosNoMsg}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_A=NO_MSG"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_A=OPEN_IN\t\${stringTableHBPFSMsgPosOpenIn}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_A=OPEN_IN"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_A=OPEN_OUT\t\${stringTableHBPFSMsgPosOpenOut}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_A=OPEN_OUT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_B\t\${stringTableHBPFSMsgPosB}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_B"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_B=CLOSED\t\${stringTableHBPFSMsgPosClosed}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_B=CLOSED"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_B=NO_MSG\t\${stringTableHBPFSMsgPosNoMsg}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_B=NO_MSG"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_B=OPEN_IN\t\${stringTableHBPFSMsgPosOpenIn}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_B=OPEN_IN"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_B=OPEN_OUT\t\${stringTableHBPFSMsgPosOpenOut}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_B=OPEN_OUT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_C\t\${stringTableHBPFSMsgPosC}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_B"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_C=CLOSED\t\${stringTableHBPFSMsgPosClosed}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_C=CLOSED"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_C=NO_MSG\t\${stringTableHBPFSMsgPosNoMsg}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_C=NO_MSG"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_C=OPEN_IN\t\${stringTableHBPFSMsgPosOpenIn}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_C=OPEN_IN"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|MSG_FOR_POS_C=OPEN_OUT\t\${stringTableHBPFSMsgPosOpenOut}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|MSG_FOR_POS_C=OPEN_OUT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|STATE=CLOSED\t\${stringTableHBPFSStateClosed}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|STATE=CLOSED"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|STATE=OPEN_IN\t\${stringTableHBPFSStateOpenIn}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|STATE=OPEN_IN"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|STATE=OPEN_OUT\t\${stringTableHBPFSStateOpenOut}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|STATE=OPEN_OUT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+### Edit translate.lang.stringtable.js ###
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="\"dummy\" : \"\","
+
+translate_deInsert="\n    \"stringTableHBPFSMsgPosA\" : \"Meldung in Position 180%B0\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSMsgPosA\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSMsgPosB\" : \"Meldung in Position > 180%B0\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSMsgPosB\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSMsgPosC\" : \"Meldung in Position < 180%B0\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSMsgPosC\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSMsgPosClosed\" : \"geschlossen\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSMsgPosClosed\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSMsgPosNoMsg\" : \"keine Meldung\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSMsgPosNoMsg\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSMsgPosOpenIn\" : \"offen - einw%E4rts\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSMsgPosOpenIn\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSMsgPosOpenOut\" : \"offen - ausw%E4rts\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSMsgPosOpenOut\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSStateClosed\" : \"Klappenzustand: geschlossen\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSStateClosed\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSStateOpenIn\" : \"Klappenzustand: offen - einw%E4rts\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSStateOpenIn\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSStateOpenOut\" : \"Klappenzustand: offen - ausw%E4rts\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSStateOpenOut\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSTitle\" : \"Tierklappenzustand\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSTitle\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+### Edit translate.lang.extension.js
+translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
+
+translate_deSearch="\"iconServiceMessage\":\"Servicemeldung\","
+translate_deInsert="\n    \"actionStatusControlPFSOpenIn\":\"offen - einw%E4rts\","
+if [ -z "`cat $translate_deFile | grep \"actionStatusControlPFSOpenIn\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"actionStatusControlPFSOpenOut\":\"offen - ausw%E4rts\","
+if [ -z "`cat $translate_deFile | grep \"actionStatusControlPFSOpenOut\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"actionStatusControlPFSClosed\":\"geschlossen\","
+if [ -z "`cat $translate_deFile | grep \"actionStatusControlPFSClose\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi

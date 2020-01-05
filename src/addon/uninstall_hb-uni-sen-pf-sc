@@ -50,6 +50,17 @@ sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_PETFLAP_SENSOR|STATE=OPEN_OUT"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 
+webuiSearch="HB_PETFLAP_SENSOR|HB_ANGLE_MEASUREINTERVAL"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_PETFLAP_SENSOR|HB_ANGLE_DEFAULT"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_PETFLAP_SENSOR|HB_ANGLE_HYSTERESIS"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+
+webuiSearch="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+
+
 stringtable_deFile="/www/config/stringtable_de.txt"
 
 stringtable_deSearch="HB_PETFLAP_SENSOR|MSG_FOR_POS_A=CLOSED"
@@ -92,6 +103,16 @@ sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_PETFLAP_SENSOR|STATE=OPEN_OUT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
+stringtable_deSearch="HB_PETFLAP_SENSOR|HB_ANGLE_MEASUREINTERVAL"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_PETFLAP_SENSOR|HB_ANGLE_DEFAULT"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_PETFLAP_SENSOR|HB_ANGLE_HYSTERESIS"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+
+stringtable_deSearch="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+
 stringtable_deSearch="HB_PETFLAP_SENSOR"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
@@ -117,6 +138,14 @@ sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHBPFSStateOpenOut"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHBPFSTitle"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBPFSAngleMeasureInterval"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBPFSAngleDefault"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBPFSAngleHysteresis"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBPFSAngleSensorFailure"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"

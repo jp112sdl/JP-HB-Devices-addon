@@ -111,6 +111,20 @@
           <logical type="boolean" default="false"/>
           <physical type="boolean" interface="internal" value_id="AES"/>
         </parameter>
+        <parameter id="HB_ANGLE_MEASUREINTERVAL">
+          <logical type="integer" min="250" max="5000" unit="ms" default="1000"/>
+          <physical type="integer" interface="config" list="1" index="0x94" size="2"/>
+        </parameter>
+        <parameter id="HB_ANGLE_DEFAULT">
+          <logical type="integer" min="0" max="359" unit="°" default="180"/>
+          <physical type="integer" interface="config" list="1" index="0x96" size="1"/>
+          <conversion type="integer_integer_scale" div="2"/>
+        </parameter>
+        <parameter id="HB_ANGLE_HYSTERESIS">
+          <logical type="integer" min="10" max="180" unit="°" default="20"/>
+          <physical type="integer" interface="config" list="1" index="0x97" size="1"/>
+          <conversion type="integer_integer_scale" div="2"/>
+        </parameter>
         <parameter id="EVENT_DELAYTIME">
           <logical type="float" min="0.0" max="7620.0" unit="s" default="0.0"/>
           <physical type="integer" interface="config" list="1" index="33" size="1"/>
@@ -147,6 +161,7 @@
         <parameter id="ERROR" operations="read,event" ui_flags="service" control="NONE">
           <logical type="option">
             <option id="NO_ERROR" index="0" default="true"/>
+            <option id="ANGLE_SENSOR_FAIL" index="5"/>
           </logical>
           <physical type="integer" interface="command" value_id="ERROR">
             <event frame="INFO_LEVEL"/>

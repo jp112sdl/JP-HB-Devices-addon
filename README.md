@@ -56,7 +56,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-rc-12-ep-bw_thumb.png" width=25/> | [HB-RC-12-EP](https://github.com/jp112sdl/HB-RC-12-EP) | 12 Kanal Fernbedienung mit Farb- oder Schwarz/Weiß-ePaper-Display | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-2-pbu-led_thumb.png" width=25/> | [HB-RC-2-PBU-LED](https://github.com/jp112sdl/HB-RC-2-PBU-LED) | 2 Kanal Taster mit RGB-Hintergrundbeleuchtung | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-ou-mot-servo_thumb.png" width=25/> | [HB-OU-MOT-SERVO](https://github.com/jp112sdl/HB-OU-MOT-SERVO) | Servo-Motor Steuerung | ⚡️ | 
-|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-pf-sc_thumb.png" width=25/> | [HB-UNI-Sen-PF-SC](https://github.com/jp112sdl/HB-UNI-Sen-PF-SC) | Tierklappenüberwachung _noch nicht verfügbar_ | 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-pf-sc_thumb.png" width=25/> | [HB-UNI-Sen-PF-SC](https://github.com/jp112sdl/HB-UNI-Sen-PF-SC) | Tierklappenüberwachung | 🔋 | 
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner HB-Geräte)_ **:**
 

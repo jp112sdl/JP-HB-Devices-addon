@@ -1,6 +1,6 @@
 function ::CreatePFSensor() {
   WriteLine("<td>");
-    WriteLine("<table class='ControlBtnOff CLASS02514' id='"#chnId#"OpenH' >");
+    WriteLine("<table class='ControlBtnOff CLASS02514' id='"#chnId#"OpenV' >");
     WriteLine("<tr>");
       WriteLine("<td class='CLASS02513'>");
         WriteLine("<div align='center'>");
@@ -26,7 +26,7 @@ function ::CreatePFSensor() {
   WriteLine("</td>");
   
   WriteLine("<td>");
-    WriteLine("<table class='ControlBtnOff CLASS02514' id='"#chnId#"OpenV' >");
+    WriteLine("<table class='ControlBtnOff CLASS02514' id='"#chnId#"OpenH' >");
     WriteLine("<tr>");
       WriteLine("<td class='CLASS02513'>");
         WriteLine("<div align='center'>");

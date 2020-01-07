@@ -161,6 +161,10 @@
         <parameter id="ERROR" operations="read,event" ui_flags="service" control="NONE">
           <logical type="option">
             <option id="NO_ERROR" index="0" default="true"/>
+            <option id="ANGLE_SENSOR_FAIL1" index="1"/>
+            <option id="ANGLE_SENSOR_FAIL2" index="2"/>
+            <option id="ANGLE_SENSOR_FAIL3" index="3"/>
+            <option id="ANGLE_SENSOR_FAIL4" index="4"/>
             <option id="ANGLE_SENSOR_FAIL" index="5"/>
           </logical>
           <physical type="integer" interface="command" value_id="ERROR">

@@ -220,6 +220,38 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL1"
+webuiInsertValue="stringTableHBPFSAngleSensorFailure1"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL2"
+webuiInsertValue="stringTableHBPFSAngleSensorFailure2"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL3"
+webuiInsertValue="stringTableHBPFSAngleSensorFailure3"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL4"
+webuiInsertValue="stringTableHBPFSAngleSensorFailure4"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
@@ -338,6 +370,27 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
+stringtable_deInsert="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL1\t\${stringTableHBPFSAngleSensorFailure1}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL1"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL2\t\${stringTableHBPFSAngleSensorFailure2}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL2"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL3\t\${stringTableHBPFSAngleSensorFailure3}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL3"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL4\t\${stringTableHBPFSAngleSensorFailure4}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PETFLAP_SENSOR|ERROR=ANGLE_SENSOR_FAIL4"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+
 ### Edit translate.lang.stringtable.js ###
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
@@ -412,8 +465,28 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleHysteresis\"`" ]; 
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure\" : \"Fehler Magnetwinkelsensor\","
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure\" : \"Fehler Magnetwinkelsensor%0ASensor nicht erkannt\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure1\" : \"Fehler Magnetwinkelsensor%0AError-Code: 0x08\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure1\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure2\" : \"Fehler Magnetwinkelsensor%0AError-Code: 0x10\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure2\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure3\" : \"Fehler Magnetwinkelsensor%0AError-Code: 0x28\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure3\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure4\" : \"Fehler Magnetwinkelsensor%0AError-Code: 0x30\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure4\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

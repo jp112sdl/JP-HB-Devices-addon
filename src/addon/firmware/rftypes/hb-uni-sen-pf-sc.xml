@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <device version="1" rx_modes="CONFIG,WAKEUP" supports_aes="true" cyclic_timeout="88200">
   <supported_types>
-    <type name="pet flap state sensor" id="HB-UNI-Sen-PF-SC" priority="2">
+    <type name="pet flap state sensor" id="HB-UNI-Sen-PF-SC" priority="2" updatable="true">
       <parameter index="9.0" size="1.0" cond_op="GE" const_value="0x01"/>
       <parameter index="10.0" size="2.0" const_value="0xF34D"/>
     </type>
@@ -37,6 +37,10 @@
       <parameter type="integer" index="12.1" size="0.3" param="ERROR"/>
       <parameter type="integer" index="12.7" size="0.1" param="LOWBAT"/>
     </frame>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" fixed_channel="2" type="0x53">
+         <parameter type="integer" index="9.0" size="2.0" param="OPERATING_VOLTAGE" />
+    </frame>
+    <frame id="ENTER_BOOTLOADER" direction="to_device" type="0x11" subtype="0xCA" subtype_index="9"/>
   </frames>
   <channels>
     <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
@@ -70,9 +74,24 @@
           <logical type="integer"/>
           <physical type="integer" interface="internal" value_id="RSSI_PEER"/>
         </parameter>
+        <parameter id="ENTER_BOOTLOADER" operations="write" ui_flags="internal">
+          <logical type="action"/>
+          <physical type="integer" interface="command">
+            <set request="ENTER_BOOTLOADER"/>
+          </physical>
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
+        </parameter>
       </paramset>
     </channel>
-    <channel autoregister="true" index="1" type="HB_PETFLAP_SENSOR" count_from_sysinfo="23.0:0.3" aes_default="false">
+    <channel autoregister="true" index="1" type="HB_PETFLAP_SENSOR" count="1" aes_default="false">
+    
       <link_roles>
         <source name="SWITCH"/>
         <source name="KEYMATIC"/>
@@ -220,6 +239,20 @@
         <value id="SHORT_JT_RAMPOFF" value="2"/>
         <value id="SHORT_JT_RAMPON" value="4"/>
       </enforce_link>
+    </channel>
+    <channel autoregister="true" index="2" type="HB_PETFLAP_SENSOR_VOLT" count="1">
+     <paramset type="MASTER" id="HB_PETFLAP_SENSOR_VOLT_master">
+     </paramset>
+     <paramset type="VALUES" id="HB_PETFLAP_SENSOR_VOLT_values">
+         <parameter id="OPERATING_VOLTAGE" operations="read,event" control="NONE">
+         <logical type="float" min="0.0" max="25.5" unit=" V"/>
+         <physical type="integer" interface="command" value_id="OPERATING_VOLTAGE">
+            <event frame="MEASURE_EVENT"/>
+         </physical>
+         <conversion type="float_integer_scale" factor="10"/>
+       </parameter>
+     </paramset>  
+     <paramset type="LINK" id="HB_PETFLAP_SENSOR_VOLT_link" />
     </channel>
   </channels>
 </device>

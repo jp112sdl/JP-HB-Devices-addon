@@ -38,7 +38,7 @@
       <parameter type="integer" index="12.7" size="0.1" param="LOWBAT"/>
     </frame>
     <frame id="MEASURE_EVENT" direction="from_device" event="true" fixed_channel="2" type="0x53">
-         <parameter type="integer" index="9.0" size="2.0" param="OPERATING_VOLTAGE" />
+         <parameter type="integer" index="9.0" size="1.0" param="OPERATING_VOLTAGE" />
     </frame>
     <frame id="ENTER_BOOTLOADER" direction="to_device" type="0x11" subtype="0xCA" subtype_index="9"/>
   </frames>
@@ -91,7 +91,6 @@
       </paramset>
     </channel>
     <channel autoregister="true" index="1" type="HB_PETFLAP_SENSOR" count="1" aes_default="false">
-    
       <link_roles>
         <source name="SWITCH"/>
         <source name="KEYMATIC"/>

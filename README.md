@@ -58,6 +58,8 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-ou-mot-servo_thumb.png" width=25/> | [HB-OU-MOT-SERVO](https://github.com/jp112sdl/HB-OU-MOT-SERVO) | Servo-Motor Steuerung | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-pf-sc_thumb.png" width=25/> | [HB-UNI-Sen-PF-SC](https://github.com/jp112sdl/HB-UNI-Sen-PF-SC) | Tierklappenüberwachung | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-ou-rgb-tealight_thumb.png" width=25/> | [HB-OU-RGB-TEALIGHT](https://github.com/pafra-123/HB_RGB_LED_Candle) | RGB-LED-Kerze / Teelicht | ⚡️ / 🔋 | 
+|<img src="https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/config/img/devices/50/114_hm-lc-dim1t-fm-lf_thumb.png" width=25/> | [HB-LC-Dim5PWM-CV](https://github.com/pa-pa/AskSinPP/tree/master/examples/stm32/HB-LC-Dim5PWM-CV) | 5-Kanal PWM Dimmer (STM32) | ⚡️ | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-max6675_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-MAX6675](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-MAX6675) | MAX6675 Temperatursensor bis 1000°C _(coming soon)_ | 🔋 | 
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner HB-Geräte)_ **:**
 
@@ -104,7 +106,8 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 53 | HB-DIS-EP-42BW-MAINS |
 |F3 57 | HB-DIS-EP-75BW-MAINS |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
-|F5 01 | HB-LC-Sw2-FM |
+|_F5 01_ | _HB-LC-Sw2-FM_ |
+|_F5 11_ | _HB-LC-Dim5PWM-CV_ |
 |F9 D6 | HB-UNI-Sen-DIST-US |
 |F9 D7 | HB-UNI-Sen-DIST-TOF |
 |F9 D2 | HB-UNI-Sen-LEV-US |

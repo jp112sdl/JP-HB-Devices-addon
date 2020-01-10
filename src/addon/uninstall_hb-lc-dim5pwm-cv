@@ -1,0 +1,15 @@
+#!/bin/sh
+
+DEVICE="HB-LC-Dim5PWM-CV"
+DEVICE_IMG=114_hm-lc-dim1t-fm-lf.png
+DEVICE_THUMB=114_hm-lc-dim1t-fm-lf_thumb.png
+FIRMWARE_FILE=/firmware/rftypes/hb-lc-dim5pwm-cv.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+
+webuiFile="/www/webui/webui.js"
+sed -i "/\($DEVICE\)/d" $webuiFile
+
+rm -f $FIRMWARE_FILE

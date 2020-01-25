@@ -105,38 +105,8 @@
         </parameter>
       </paramset>
     </channel>
-    <channel index="5" type="WEATHER">
-      <link_roles>
-        <source name="WEATHER_T"/>
-      </link_roles>
-      <paramset type="MASTER" id="wds30ot2_ch_master"/>
-      <paramset type="VALUES" id="wds30ot2_ch_values">
-        <parameter id="TEMPERATURE" operations="read,event">
-          <logical type="float" min="-450.0" max="450.0" unit="°C"/>
-          <physical type="integer" interface="command" value_id="TEMPERATURE" no_init="true">
-            <event frame="WEATHER_EVENT"/>
-          </physical>
-          <conversion type="float_integer_scale" factor="10.0"/>
-          <description>
-            <field id="AutoconfRoles" value="WEATHER"/>
-          </description>
-        </parameter>
-        <parameter id="LOWBAT" operations="read,event" control="NONE">
-          <logical type="boolean"/>
-          <physical type="integer" interface="command" value_id="LOWBAT">
-            <event frame="WEATHER_EV_BAT"/>
-            <event frame="MEASURE_EV_BAT"/>
-            <event frame="INFO_LEVEL"/>
-          </physical>
-        </parameter>
-      </paramset>
-      <paramset type="LINK" id="wds30ot2_ch_link"/>
-    </channel>
   </channels>
   <frames>
-    <frame id="WEATHER_EVENT" direction="from_device" event="true" fixed_channel="5" type="0x70">
-      <parameter type="integer" signed="true" index="9.0" size="1.7" param="TEMPERATURE"/>
-    </frame>
     <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="10.0:0.6">
       <parameter type="integer" signed="true" index="11.0" size="2.0" param="TEMPERATURE"/>
     </frame>

@@ -10,6 +10,11 @@
       <logical type="integer" min="10" max="3600" default="60" unit="s" />
       <physical type="integer" interface="config" list="0" index="32" size="2" />
     </parameter>
+    <parameter id="LOW_BAT_LIMIT">
+      <logical type="float" min="1.0" max="8.0" default="2.2" unit="V"/>
+      <physical type="integer" interface="config" list="0" index="18" size="1"/>
+      <conversion type="float_integer_scale" factor="10"/>
+    </parameter>
     <parameter id="PARAM_SELECT">
       <logical type="option">
         <option id="INACTIVE"/>
@@ -86,7 +91,8 @@
             <option id="HB_ERROR_MAX6675_FAILURE" index="1"/>
           </logical>
           <physical type="integer" interface="command" value_id="ERROR">
-            <event frame="INFO_LEVEL"/>
+            <event frame="INFO_LEV_ERR_SENS1"/>
+            <event frame="INFO_LEV_ERR_SENS2"/>
           </physical>
         </parameter>
         <parameter id="LOWBAT" operations="read,event" control="NONE">
@@ -144,8 +150,13 @@
       <parameter type="integer" signed="true" index="20.0" size="2.0" param="TEMPERATURE"/>
     </frame>
     <frame id="INFO_LEVEL" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="*">
-      <parameter type="integer" index="12.1" size="0.3" param="ERROR"/>
       <parameter type="integer" index="12.7" size="0.1" param="LOWBAT"/>
+    </frame>
+    <frame id="INFO_LEV_ERR_SENS1" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="1">      
+      <parameter type="integer" index="12.1" size="0.1" param="ERROR"/>                                                                                                  
+    </frame>
+    <frame id="INFO_LEV_ERR_SENS2" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="2">       
+      <parameter type="integer" index="12.2" size="0.1" param="ERROR"/>                                                                                    
     </frame>
     <frame id="WEATHER_EV_BAT" direction="from_device" event="true" fixed_channel="*" type="0x70">
       <parameter type="integer" index="9.7" size="0.1" param="LOWBAT"/>

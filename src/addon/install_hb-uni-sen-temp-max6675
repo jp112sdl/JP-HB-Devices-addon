@@ -53,7 +53,7 @@ fi
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 
-translate_deInsert="\n    \"stringTableHBErrorMax6675Failure\" : \"Fehler MAX6675%0ASensor nicht gefunden\","
+translate_deInsert="\n    \"stringTableHBErrorMax6675Failure\" : \"Fehler MAX6675<br\/>Sensor nicht gefunden\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBErrorMax6675Failure\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

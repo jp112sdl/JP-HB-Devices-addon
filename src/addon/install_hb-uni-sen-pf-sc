@@ -465,27 +465,27 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleHysteresis\"`" ]; 
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure\" : \"Fehler Magnetwinkelsensor%0ASensor nicht erkannt\","
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure\" : \"Fehler Magnetwinkelsensor<br\/>Sensor nicht erkannt\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure1\" : \"Fehler Magnetwinkelsensor%0AError-Code: 0x08\","
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure1\" : \"Fehler Magnetwinkelsensor<br\/>Error-Code: 0x08\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure1\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure2\" : \"Fehler Magnetwinkelsensor%0AError-Code: 0x10\","
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure2\" : \"Fehler Magnetwinkelsensor<br\/>Error-Code: 0x10\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure2\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure3\" : \"Fehler Magnetwinkelsensor%0AError-Code: 0x28\","
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure3\" : \"Fehler Magnetwinkelsensor<br\/>Error-Code: 0x28\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure3\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
-translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure4\" : \"Fehler Magnetwinkelsensor%0AError-Code: 0x30\","
+translate_deInsert="\n    \"stringTableHBPFSAngleSensorFailure4\" : \"Fehler Magnetwinkelsensor<br\/>Error-Code: 0x30\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBPFSAngleSensorFailure4\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

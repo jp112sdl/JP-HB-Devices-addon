@@ -43,7 +43,7 @@
       <paramset type="MASTER" id="wds40_th_ch_master" />
       <paramset type="VALUES" id="wds40_th_ch_values">
         <parameter id="TEMPERATURE" operations="read,event">
-          <logical type="float" min="0.0" max="1024.0" unit="°C"/>
+          <logical type="float" min="-1.0" max="1024.0" unit="°C"/>
           <physical type="integer" interface="command" value_id="TEMPERATURE">
             <event frame="WEATHER_EVENT"/>
           </physical>
@@ -67,7 +67,7 @@
   </channels>
   <frames>
     <frame id="WEATHER_EVENT" direction="from_device" event="true" fixed_channel="1" type="0x70">
-      <parameter type="integer" index="9.0" size="1.7" param="TEMPERATURE"/>
+      <parameter type="integer" signed="true" index="9.0" size="1.7" param="TEMPERATURE"/>
     </frame>
     <frame id="INFO_LEV_ERROR" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="1">
       <parameter type="integer" index="12.1" size="0.3" param="ERROR"/>

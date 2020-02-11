@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<device version="5" rx_modes="CONFIG,WAKEUP" cyclic_timeout="40000">
+  <supported_types>
+    <type name="HB-UNI-Sen-TEMP-MAX6675-DT" id="HB-UNI-Sen-TEMP-MAX6675-DT">
+      <parameter index="10.0" size="2.0" const_value="0xf310"/>
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="wds30ot2_dev_master">
+    <parameter id="HBWEA_TRANSMIT_INTERVAL">
+      <logical type="integer" min="10" max="3600" default="60" unit="s" />
+      <physical type="integer" interface="config" list="0" index="32" size="2" />
+    </parameter>
+    <parameter id="LOW_BAT_LIMIT">
+      <logical type="float" min="1.0" max="8.0" default="2.2" unit="V"/>
+      <physical type="integer" interface="config" list="0" index="18" size="1"/>
+      <conversion type="float_integer_scale" factor="10"/>
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master"/>
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="UNREACH"/>
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH"/>
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING"/>
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service" control="NONE">
+          <logical type="boolean"/>
+          <physical type="integer" interface="command" value_id="LOWBAT">
+            <event frame="MEASURE_EV_BAT"/>
+            <event frame="INFO_LEVEL"/>
+          </physical>
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer"/>
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE"/>
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer"/>
+          <physical type="integer" interface="internal" value_id="RSSI_PEER"/>
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER"/>
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING"/>
+        </parameter>
+      </paramset>
+    </channel>
+    <channel index="1" type="WEATHER" count="4">
+      <paramset type="MASTER" id="wds30ot2_ch_master"/>
+      <paramset type="VALUES" id="wds30ot2_ch_values">
+        <parameter id="TEMPERATURE" operations="read,event">
+          <logical type="float" min="-1024.0" max="1024.0" unit="°C"/>
+          <physical type="integer" interface="command" value_id="TEMPERATURE" no_init="true">
+            <event frame="MEASURE_EVENT"/>
+          </physical>
+          <conversion type="float_integer_scale" factor="10.0"/>
+          <description>
+            <field id="AutoconfRoles" value="WEATHER"/>
+          </description>
+        </parameter>
+        <parameter id="ERROR" operations="read,event" ui_flags="service" control="NONE">
+          <logical type="option">
+            <option id="NO_ERROR" index="0" default="true"/>
+            <option id="HB_ERROR_MAX6675_FAILURE" index="1"/>
+          </logical>
+          <physical type="integer" interface="command" value_id="ERROR">
+            <event frame="INFO_LEV_ERR_SENS1"/>
+            <event frame="INFO_LEV_ERR_SENS2"/>
+          </physical>
+        </parameter>
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="5" type="HB_PETFLAP_SENSOR_VOLT" count="1">
+     <paramset type="MASTER" id="wds30ot2_ch_master">
+     </paramset>
+     <paramset type="VALUES" id="wds30ot2_ch_values">
+         <parameter id="OPERATING_VOLTAGE" operations="read,event" control="NONE">
+         <logical type="float" min="0.0" max="25.5" unit=" V"/>
+         <physical type="integer" interface="command" value_id="OPERATING_VOLTAGE">
+            <event frame="MEASURE_EVENT"/>
+         </physical>
+         <conversion type="float_integer_scale" factor="10"/>
+       </parameter>
+       <parameter id="LOWBAT" operations="read,event" control="NONE">
+         <logical type="boolean"/>
+         <physical type="integer" interface="command" value_id="LOWBAT">
+           <event frame="MEASURE_EV_BAT"/>
+           <event frame="INFO_LEVEL"/>
+         </physical>
+       </parameter>
+     </paramset>  
+    </channel>
+  </channels>
+  <frames>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="10.0:0.6">
+      <parameter type="integer" signed="true" index="11.0" size="2.0" param="TEMPERATURE"/>
+    </frame>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="13.0:0.6">
+      <parameter type="integer" signed="true" index="14.0" size="2.0" param="TEMPERATURE"/>
+    </frame>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="16.0:0.6">
+      <parameter type="integer" signed="true" index="17.0" size="2.0" param="TEMPERATURE"/>
+    </frame>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="19.0:0.6">
+      <parameter type="integer" signed="true" index="20.0" size="2.0" param="TEMPERATURE"/>
+    </frame>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="22.0:0.6">
+      <parameter type="integer" signed="true" index="23.0" size="1.0" param="OPERATING_VOLTAGE"/>
+    </frame>
+    <frame id="INFO_LEVEL" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="*">
+      <parameter type="integer" index="12.7" size="0.1" param="LOWBAT"/>
+    </frame>
+    <frame id="INFO_LEV_ERR_SENS1" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="1">      
+      <parameter type="integer" index="12.1" size="0.1" param="ERROR"/>                                                                                                  
+    </frame>
+    <frame id="INFO_LEV_ERR_SENS2" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="2">       
+      <parameter type="integer" index="12.2" size="0.1" param="ERROR"/>                                                                                    
+    </frame>
+    <frame id="MEASURE_EV_BAT" direction="from_device" event="true" type="0x53" fixed_channel="5">
+      <parameter type="integer" index="9.7" size="0.1" param="LOWBAT"/>
+    </frame>
+  </frames>
+  <paramset_defs/>
+</device>

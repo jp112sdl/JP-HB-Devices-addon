@@ -185,7 +185,17 @@
          <option id="ICON_HBERROR" />                                                                                              
          <option id="ICON_HBBELL" />                                                                                              
          <option id="ICON_HBCALENDAR" />                                                                                              
-         <option id="ICON_HBTHERMOMETER" />                                                                                              
+         <option id="ICON_HBTHERMOMETER" />       
+         <option id="ICON_HB_CUSTOM01" />                                                                                              
+         <option id="ICON_HB_CUSTOM02" />                                                                                              
+         <option id="ICON_HB_CUSTOM03" />                                                                                              
+         <option id="ICON_HB_CUSTOM04" />                                                                                              
+         <option id="ICON_HB_CUSTOM05" />                                                                                              
+         <option id="ICON_HB_CUSTOM06" />                                                                                              
+         <option id="ICON_HB_CUSTOM07" />                                                                                              
+         <option id="ICON_HB_CUSTOM08" />                                                                                              
+         <option id="ICON_HB_CUSTOM09" />                                                                                              
+         <option id="ICON_HB_CUSTOM10" />                                                                                          
         </logical>
         <physical type="integer" interface="config" list="1" index="146.0" size="1.0"/>
       </parameter>      

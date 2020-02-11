@@ -1,6 +1,6 @@
 # JP-HB-Devices-addon [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/JP-HB-Devices-addon/total.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/releases) [![GitHub issues](https://img.shields.io/github/issues/jp112sdl/JP-HB-Devices-addon.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/issues)
 
-**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.47.20 | 3.37.x - 3.47.22**<br/>
+**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.49.18 | 3.37.x - 3.51.6**<br/>
 
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
@@ -55,6 +55,12 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-iaq_thumb.png" width=25/> | [HB-UNI-Sen-IAQ](https://github.com/jp112sdl/HB-UNI-Sen-IAQ) | universeller Luftgütesensor _(temporarily discontinued)_ [(see HM-Forum)](https://homematic-forum.de/forum/viewtopic.php?f=76&t=49422)| 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-12-ep-bw_thumb.png" width=25/> | [HB-RC-12-EP](https://github.com/jp112sdl/HB-RC-12-EP) | 12 Kanal Fernbedienung mit Farb- oder Schwarz/Weiß-ePaper-Display | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-2-pbu-led_thumb.png" width=25/> | [HB-RC-2-PBU-LED](https://github.com/jp112sdl/HB-RC-2-PBU-LED) | 2 Kanal Taster mit RGB-Hintergrundbeleuchtung | ⚡️ | 
+|<img src="src/addon/www/config/img/devices/50/hb-ou-mot-servo_thumb.png" width=25/> | [HB-OU-MOT-SERVO](https://github.com/jp112sdl/HB-OU-MOT-SERVO) | Servo-Motor Steuerung | ⚡️ | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-pf-sc_thumb.png" width=25/> | [HB-UNI-Sen-PF-SC](https://github.com/jp112sdl/HB-UNI-Sen-PF-SC) | Tierklappenüberwachung | 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-ou-rgb-tealight_thumb.png" width=25/> | [HB-OU-RGB-TEALIGHT](https://github.com/pafra-123/HB_RGB_LED_Candle) | RGB-LED-Kerze / Teelicht | ⚡️ / 🔋 | 
+|<img src="https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/config/img/devices/50/114_hm-lc-dim1t-fm-lf_thumb.png" width=25/> | [HB-LC-Dim5PWM-CV](https://github.com/pa-pa/AskSinPP/tree/master/examples/stm32/HB-LC-Dim5PWM-CV) | 5-Kanal PWM Dimmer (STM32) | ⚡️ | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-max6675_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-MAX6675](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-MAX6675) | MAX6675 Temperatursensor bis 1000°C | 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-max6675-dt_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-MAX6675-DT](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-MAX6675) | MAX6675 Temperatur-Differenzsensor bis 1000°C | 🔋 | 
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner HB-Geräte)_ **:**
 
@@ -69,6 +75,8 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 12 | HB-UNI-Sen-CAP-MOIST-T |
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
 |F3 08 | HB-UNI-Sen-TEMP-IR |
+|F3 09 | HB-UNI-Sen-TEMP-MAX6675 |
+|F3 10 | HB-UNI-Sen-TEMP-MAX6675-DT |
 |F3 20 | HB-LC-SW12-FM |
 |F3 30 | HB-RC-2-PBU-LED|
 |F3 31 | HB-UNI-SenAct-4-4-SC|
@@ -90,13 +98,18 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 45 | HB-RC-12-EP-29C |
 |F3 46 | HB-RC-12-EP-29BW |
 |F3 47 | HB-DIS-EP-75BW |
+|F3 48 | HB-OU-MOT-SERVO |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 4B | HB-UNI-Sen-WEIGHT |
 |F3 4C | HB-UNI-Sen-WEIGHT-SC |
+|F3 4D | HB-UNI-Sen-PF-SC |
+|F3 50 | HB-OU-RGB-TEALIGHT-BAT |
+|F3 51 | HB-OU-RGB-TEALIGHT |
 |F3 53 | HB-DIS-EP-42BW-MAINS |
 |F3 57 | HB-DIS-EP-75BW-MAINS |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
-|F5 01 | HB-LC-Sw2-FM |
+|_F5 01_ | _HB-LC-Sw2-FM_ |
+|_F5 11_ | _HB-LC-Dim5PWM-CV_ |
 |F9 D6 | HB-UNI-Sen-DIST-US |
 |F9 D7 | HB-UNI-Sen-DIST-TOF |
 |F9 D2 | HB-UNI-Sen-LEV-US |

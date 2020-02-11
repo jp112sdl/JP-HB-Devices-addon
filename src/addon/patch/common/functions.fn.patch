@@ -1,10 +1,9 @@
 --- ./patchsource/www/rega/esp/functions.fn.orig
 +++ ./patchsource/www/rega/esp/functions.fn
-@@ -331,6 +331,19 @@
-     ! Hide channel 3 of this device
+@@ -326,6 +326,18 @@
      bShowChannel = false;
    }
-+  
+ 
 +  ! HB Status Display EPaper 42BW
 +  if(( (oDevHssType == "HB-DIS-EP-42BW") || (oDevHssType == "HB-DIS-EP-42BW-MAINS") ) && (chNumber == 11)) {
 +    ! Hide channel 11 of this device
@@ -17,6 +16,6 @@
 +    bShowChannel = false;
 +  }
 +  
- }
- 
- function ::showHideHmIPChannel() {
+   ! Status Display EPaper
+   if(( (oDevHssType == "HM-Dis-EP-WM55") ) && (chNumber == 3)) {
+     ! Hide channel 3 of this device

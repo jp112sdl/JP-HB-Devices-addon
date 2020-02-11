@@ -1,0 +1,27 @@
+#!/bin/sh
+
+DEVICE="HB-UNI-Sen-TEMP-MAX6675"
+DEVICE_IMG=hb-uni-sen-temp-max6675.png
+DEVICE_THUMB=hb-uni-sen-temp-max6675_thumb.png
+FIRMWARE_FILE=/firmware/rftypes/hb-uni-sen-temp-max6675.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+
+webuiFile="/www/webui/webui.js"
+sed -i "/\($DEVICE\)/d" $webuiFile
+webuiSearch="WEATHER|ERROR=HB_ERROR_MAX6675_FAILURE"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+
+stringtable_deFile="/www/config/stringtable_de.txt"
+stringtable_deSearch="WEATHER|ERROR=HB_ERROR_MAX6675_FAILURE"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="stringTableHBErrorMax6675Failure"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
+rm -f $FIRMWARE_FILE
+rm -f /www/config/img/devices/250/$DEVICE_IMG
+rm -f /www/config/img/devices/50/$DEVICE_THUMB

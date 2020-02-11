@@ -1,0 +1,48 @@
+function ::CreatePFSensor() {
+  WriteLine("<td>");
+    WriteLine("<table class='ControlBtnOff CLASS02514' id='"#chnId#"OpenV' >");
+    WriteLine("<tr>");
+      WriteLine("<td class='CLASS02513'>");
+        WriteLine("<div align='center'>");
+          WriteLine("<img src='/ise/img/window/open_h.png' width='80' height='80' />");
+        WriteLine("</div>");
+      WriteLine("</td>");
+    WriteLine("</tr>");
+    WriteLine("<tr><td>${actionStatusControlPFSOpenIn}</td></tr>");
+    WriteLine("</table>");
+  WriteLine("</td>");
+  
+    WriteLine("<td>");
+    WriteLine("<table class='ControlBtnOff CLASS02514' id='"#chnId#"Closed' >");
+    WriteLine("<tr>");
+      WriteLine("<td class='CLASS02513'>");
+        WriteLine("<div align='center'>");
+          WriteLine("<img src='/ise/img/window/closed.png' width='80' height='80' />");
+        WriteLine("</div>");
+      WriteLine("</td>");
+    WriteLine("</tr>");
+    WriteLine("<tr><td>${actionStatusControlPFSClosed}</td></tr>");
+    WriteLine("</table>");
+  WriteLine("</td>");
+  
+  WriteLine("<td>");
+    WriteLine("<table class='ControlBtnOff CLASS02514' id='"#chnId#"OpenH' >");
+    WriteLine("<tr>");
+      WriteLine("<td class='CLASS02513'>");
+        WriteLine("<div align='center'>");
+          WriteLine("<img src='/ise/img/window/open_h.png' width='80' height='80' />");
+        WriteLine("</div>");
+      WriteLine("</td>");
+    WriteLine("</tr>");
+    WriteLine("<tr><td>${actionStatusControlPFSOpenOut}</td></tr>");
+    WriteLine("</table>");
+  WriteLine("</td>");
+
+
+  object objState = cObj.DPByControl("PFS.STATE");
+  WriteLine("<td></td><td></td>");
+  WriteLine("<script type='text/javascript'>");
+  WriteLine("ibw"#cObj.ID()#" = new iseButtonsWindow("#chnId#", "#objState.Value()#");");
+  WriteLine("</script>");
+  return;
+}

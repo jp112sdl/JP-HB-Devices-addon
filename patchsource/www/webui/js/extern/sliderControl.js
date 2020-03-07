@@ -45,8 +45,8 @@ sliderControl = function(type,id, val, iViewOnly, bSliderPosFlag,min, max, facto
   this.n_pathLeft = 1;
   this.n_pathTop = 1;
   this.n_pathLength = 190;
+  this.s_imgControlGreen = (type == "Servo") ?'/ise/img/slider/servoslider_grey.png':'/ise/img/slider/slider_yellow.png';
   this.s_imgControlGray = (type == "Servo") ?'/ise/img/slider/servoslider_grey.png':'/ise/img/slider/slider_grey.png';
-  this.s_imgControlGray = (type == "Servo") ?'/ise/img/slider/servoslider_grey.png':'/ise/img/slider/slider_yellow.png';
   this.s_imgSlider = '/ise/img/slider/slider.gif';  
   
   // register in the global collection  

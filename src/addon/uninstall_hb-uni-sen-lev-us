@@ -35,8 +35,8 @@ translate_deSearch="stringTableCapacitiveFillingSensorDistanceOffset"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableCapacitiveFillingSensorSensorType"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-# translate_deSearch="stringTableCapacitiveFillingSensorFillingLiter"
-# sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableCapacitiveFillingSensorFillingLiter"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableCapacitiveFillingSensorFillingHeight"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 

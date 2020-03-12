@@ -61,6 +61,11 @@ if [ -z "`cat $stringtable_deFile | grep \"CAPACITIVE_FILLING_LEVEL_SENSOR|FILLI
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
+stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_HEIGHT\t\${stringTableCapacitiveFillingSensorFillingHeight}"
+if [ -z "`cat $stringtable_deFile | grep \"CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_HEIGHT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
 stringtable_deInsert="CAPACITIVE_FILLING_LEVEL_SENSOR|SENSOR_TYPE\t\${stringTableCapacitiveFillingSensorSensorType}"
 if [ -z "`cat $stringtable_deFile | grep \"CAPACITIVE_FILLING_LEVEL_SENSOR|SENSOR_TYPE"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
@@ -81,6 +86,11 @@ fi
 
 translate_deInsert="\n    \"stringTableCapacitiveFillingSensorFillingLiter\" : \"Liter\","
 if [ -z "`cat $translate_deFile | grep \"stringTableCapacitiveFillingSensorFillingLiter\"`" ]; then
+        sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableCapacitiveFillingSensorFillingHeight\" : \"Aktuelle F%FCllh%F6he\","
+if [ -z "`cat $translate_deFile | grep \"stringTableCapacitiveFillingSensorFillingHeight\"`" ]; then
         sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

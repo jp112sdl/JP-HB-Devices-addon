@@ -126,8 +126,8 @@
          <parameter type="integer" index="9.0" size="1.0" param="FILLING_LEVEL" />
          <parameter type="integer" index="10.0" size="1.0" param="BATTERY_VOLTAGE"/>
          <parameter type="integer" index="11.0" size="4.0" param="FILLING_LITER"/>
-	 <parameter type="integer" index="15.0" size="2.0" param="FILLING_HEIGHT" />
-	 </frame>
+         <parameter type="integer" index="15.0" size="2.0" param="FILLING_HEIGHT" />
+      </frame>
   </frames>
   <paramset_defs></paramset_defs>
 </device>

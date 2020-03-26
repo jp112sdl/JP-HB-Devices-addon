@@ -55,7 +55,7 @@ check_rfd()
 case "$1" in
     ""|init|start)
       if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
-        echo "Starting complete installation within '$1'" > $GLOBAL_LOGFILE
+        echo "Starting complete installation within '$1'" | tee $GLOBAL_LOGFILE
         cp /dev/null $GLOBAL_ERRFILE
         cp /dev/null $PATCH_REVOKE_ERRFILE
 
@@ -143,7 +143,7 @@ case "$1" in
 
         ### Create Symlink to include own js file
         echo "(Re-)Creating symlinks for jp_webui_inc.js..." | tee -a $GLOBAL_LOGFILE
-        [[ ! -f /www/webui/js/extern/jp_webui_inc.js ]] && ln -s /usr/local/addons/jp-hb-devices-addon/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
+        [[ ! -f /www/webui/js/extern/jp_webui_inc.js ]] && ln -s ${ADDON_DIR}/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 	    	    
         cd ${ADDON_DIR}
         echo "Running scripts..." | tee -a $GLOBAL_LOGFILE

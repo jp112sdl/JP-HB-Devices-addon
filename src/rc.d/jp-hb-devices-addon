@@ -143,7 +143,7 @@ case "$1" in
 
         ### Create Symlink to include own js file
         echo "(Re-)Creating symlinks for jp_webui_inc.js..." | tee -a $GLOBAL_LOGFILE
-        [[ ! -f /www/webui/js/extern/jp_webui_inc.js ]] && ln -s /usr/local/addons/${ADDON_NAME}/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
+        [[ ! -f /www/webui/js/extern/jp_webui_inc.js ]] && ln -s ${ADDON_DIR}/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 	    	    
         cd ${ADDON_DIR}
         echo "Running scripts..." | tee -a $GLOBAL_LOGFILE

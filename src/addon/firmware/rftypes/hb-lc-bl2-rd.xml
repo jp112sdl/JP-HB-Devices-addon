@@ -56,7 +56,7 @@
             </parameter>
          </paramset>
       </channel>
-      <channel index="1" type="BLIND" count_from_sysinfo="23.0:1.0">
+      <channel index="1" type="BLIND" count="2">
          <link_roles>
             <target name="SWITCH" />
             <target name="WEATHER_CS" />

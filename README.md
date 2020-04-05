@@ -62,7 +62,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-max6675_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-MAX6675](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-MAX6675) | MAX6675 Temperatursensor bis 1000°C | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-max6675-dt_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-MAX6675-DT](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-MAX6675) | MAX6675 Temperatur-Differenzsensor bis 1000°C | 🔋 | 
 
-**Hinweis für Entwickler** _(verwendete Device Model meiner HB-Geräte)_ **:**
+**Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 
 | Device Model | Gerät |
 |--------|--------|
@@ -115,6 +115,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F9 D7 | HB-UNI-Sen-DIST-TOF |
 |F9 D2 | HB-UNI-Sen-LEV-US |
 |F9 D3 | HB-UNI-Sen-LEV-TOF |
+|FA 00 | [HB-LC-Bl2-RD](https://github.com/SteMaker/HB-LC-Bl2-RD) |
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>.

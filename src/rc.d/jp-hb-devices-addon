@@ -55,7 +55,7 @@ check_rfd()
 case "$1" in
     ""|init|start)
       if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
-        echo "Starting complete installation within '$1'" | tee $GLOBAL_LOGFILE
+        echo "Starting complete installation within '$1' $(date +"%d.%m.%Y %H:%M:%S")" | tee $GLOBAL_LOGFILE
         cp /dev/null $GLOBAL_ERRFILE
         cp /dev/null $PATCH_REVOKE_ERRFILE
 

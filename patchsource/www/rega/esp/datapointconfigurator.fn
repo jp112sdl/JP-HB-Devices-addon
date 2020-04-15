@@ -103,6 +103,7 @@ function ::dcCreate()
     var CN_IBTN_BUTTON     = "IBTN.";
     var CN_SERVO           = "SERVO.";
     var CN_PFS             = "PFS.";
+    var CN_LDRSC           = "LDRSC.";
     var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
     var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
     var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
@@ -413,6 +414,16 @@ function ::dcCreate()
             isKnownControl = true;
             sLastControlName = CN_PFS;
             Call("/esp/controls/pfs.fn::CreatePFSensor()");
+          }
+          
+          !# LDRSC
+          bIsControl = ( sControlName.Find(CN_LDRSC) > -1 );
+          if( bIsControl && (sLastControlName!=CN_LDRSC) )
+          {
+            WriteLine( "<script>conInfo('Control LDRSC found.');</script>" );
+            isKnownControl = true;
+            sLastControlName = CN_LDRSC;
+            Call("/esp/controls/ldrsc.fn::CreateLDRSC()");
           }
           
           !# BUTTON

@@ -12,8 +12,8 @@ proc LDRSCControl_getStatus { channelId dataPoint } {
 	}
 	
 	switch -exact -- [rega_exec $script] {
-		false		{ set status "Kein Licht erkannt"}
-		true		{ set status "Licht erkannt"}
+		0		{ set status "Kein Licht erkannt"}
+		1		{ set status "Licht erkannt"}
 		default	{ set status "unbekannt" }
 	}
 	

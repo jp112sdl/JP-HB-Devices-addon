@@ -5,6 +5,9 @@
       <parameter index="9.0" size="1.0" cond_op="GE" const_value="0x01"/>
       <parameter index="10.0" size="2.0" const_value="0xf321"/>
     </type>
+    <type name="battery powered radio-controlled blind actuator 1-channel for Velux" id="HB-LC-Bl1-Velux" priority="2">
+      <parameter index="10.0" size="2.0" const_value="0xf20a"/>
+    </type>
   </supported_types>
   <paramset type="MASTER" id="blind_dev_master">
     <parameter id="INTERNAL_KEYS_VISIBLE" ui_flags="internal">
@@ -37,6 +40,10 @@
         <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
           <logical type="boolean"/>
           <physical type="integer" interface="internal" value_id="CONFIG_PENDING"/>
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="LOWBAT" />
         </parameter>
         <parameter id="AES_KEY" operations="read" ui_flags="invisible">
           <logical type="integer" min="0" max="127"/>

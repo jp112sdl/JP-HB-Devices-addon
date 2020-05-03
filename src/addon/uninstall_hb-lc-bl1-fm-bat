@@ -10,5 +10,15 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
 
+
+DEVICE="HB-LC-Bl1-Velux"
+
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+
+webuiFile="/www/webui/webui.js"
+sed -i "/\($DEVICE\)/d" $webuiFile
+
+
 rm -f $FIRMWARE_FILE
 

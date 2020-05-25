@@ -117,6 +117,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F9 D2 | HB-UNI-Sen-LEV-US |
 |F9 D3 | HB-UNI-Sen-LEV-TOF |
 |FA 00 | [HB-LC-Bl2-RD](https://github.com/SteMaker/HB-LC-Bl2-RD) |
+|F2 0A | [HB-LC-Bl1-Velux](https://github.com/pa-pa/AskSinPP/tree/master/examples/custom/HB-LC-Bl1-Velux) |
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>.

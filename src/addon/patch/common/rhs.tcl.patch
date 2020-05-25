@@ -1,0 +1,10 @@
+--- ./patchsource/www/pda/eq3/controls/rhs.tcl.orig
++++ ./patchsource/www/pda/eq3/controls/rhs.tcl
+@@ -15,6 +15,7 @@
+ 		0       { set status "Verriegelt" }
+ 		1       { set status "Kippstellung" }
+ 		2       { set status "Offen" }
++		3       { set status "Extra" }
+ 		default { set status "unbekannt" }
+ 	}
+ 	

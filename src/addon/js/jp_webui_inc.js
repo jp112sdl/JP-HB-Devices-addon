@@ -1,4 +1,56 @@
 /**
+ * ise/iseButtonsWindowHB.js
+ **/
+
+/**
+ * @fileOverview ?
+ * @author ise
+ **/
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * iseButtonsWindowHB                          *
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+/**
+ * @class
+ **/
+iseButtonsWindowHB = Class.create();
+
+iseButtonsWindowHB.prototype = {
+  /*
+   * id = datapoint-ID of switch
+   * initState = Creation State (0 or 1)
+   */
+  initialize: function(id, initState) {
+    this.id = id;
+    this.state = initState;
+    this.divOpenH = $(this.id + "OpenH");
+    this.divOpenV = $(this.id + "OpenV");
+    this.divClosed = $(this.id + "Closed");
+    this.divExtra = $(this.id + "Extra");
+
+    switch (initState) {
+      case 0:
+      case false:
+        ControlBtn.on(this.divClosed);
+        break;
+      case 1:
+        ControlBtn.on(this.divOpenV);
+        break;
+      case 2:
+      case true:
+        ControlBtn.on(this.divOpenH);
+        break;
+      case 3:
+        ControlBtn.on(this.divExtra);
+        break;
+      default:
+        break;
+    }
+  }
+};
+
+/**
  * ise/iseButtonsServo.js
  **/
 

@@ -4,6 +4,10 @@ ADDON_NAME=jp-hb-devices
 
 file=./patchsource/www/rega/esp/functions.fn
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
+file=./patchsource/www/rega/esp/controls/rhs.fn
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
+file=./patchsource/www/pda/eq3/controls/rhs.tcl
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 file=./patchsource/www/webui/webui.js
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 file=./patchsource/www/config/ic_common.tcl

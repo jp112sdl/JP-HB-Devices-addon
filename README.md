@@ -61,6 +61,9 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/config/img/devices/50/114_hm-lc-dim1t-fm-lf_thumb.png" width=25/> | [HB-LC-Dim5PWM-CV](https://github.com/pa-pa/AskSinPP/tree/master/examples/stm32/HB-LC-Dim5PWM-CV) | 5-Kanal PWM Dimmer (STM32) | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-max6675_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-MAX6675](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-MAX6675) | MAX6675 Temperatursensor bis 1000°C | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-max6675-dt_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-MAX6675-DT](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-MAX6675) | MAX6675 Temperatur-Differenzsensor bis 1000°C | 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-lc-bl2-rd_thumb.png" width=25/> | [HB-LC-Bl2-RD](https://github.com/SteMaker/HB-LC-Bl2-RD) | zwei Rolladenaktoren und ein Regensensor _([SteMaker](https://github.com/SteMaker))_ | ⚡️ | 
+|<img src="https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/config/img/devices/50/7_hm-lc-bl1-fm_thumb.png" width=25/> | [HB-LC-Bl1-Velux](https://github.com/pa-pa/AskSinPP/tree/master/examples/custom/HB-LC-Bl1-Velux) | Velux Rolladensteuerung _([pa-pa](https://github.com/pa-pa))_ | 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-sec-rhs-3_thumb.png" width=25/> | [HB-Sec-RHS-3](https://github.com/pa-pa/HB-Sec-RHS-3) | Fenster-Drehgriffsensor m. Batt.-Spannungsanzeige und 4 mögl. Status _([pa-pa](https://github.com/pa-pa))_ | ⚡️ | 
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 
@@ -118,6 +121,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F9 D3 | HB-UNI-Sen-LEV-TOF |
 |FA 00 | [HB-LC-Bl2-RD](https://github.com/SteMaker/HB-LC-Bl2-RD) |
 |F2 0A | [HB-LC-Bl1-Velux](https://github.com/pa-pa/AskSinPP/tree/master/examples/custom/HB-LC-Bl1-Velux) |
+|F2 09 | [HB-Sec-RHS-3](https://github.com/pa-pa/HB-Sec-RHS-3) |
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>.

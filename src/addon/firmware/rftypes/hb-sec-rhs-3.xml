@@ -78,7 +78,7 @@
         </parameter>
       </paramset>
     </channel>
-    <channel autoregister="true" index="1" type="ROTARY_HANDLE_SENSOR" count_from_sysinfo="23.0:0.3" aes_default="true">
+    <channel autoregister="true" index="1" type="ROTARY_HANDLE_SENSOR" count_from_sysinfo="23.0:0.3" aes_default="false">
       <link_roles>
         <source name="SWITCH" />
         <source name="KEYMATIC" />

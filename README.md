@@ -75,6 +75,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F1 D1 | HB-UNI-Sen-IAQ |
 |F2 06 | HB-IBUT-8 |
 |F3 01 | HB-UNI-Sen-TEMP-DS18B20 |
+|F3 07 | HB-WDS40-THP-O-BME280 |
 |F3 08 | HB-UNI-Sen-TEMP-IR |
 |F3 09 | HB-UNI-Sen-TEMP-MAX6675 |
 |F3 10 | HB-UNI-Sen-TEMP-MAX6675-DT |

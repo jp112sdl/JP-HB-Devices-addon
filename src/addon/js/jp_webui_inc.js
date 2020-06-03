@@ -278,6 +278,65 @@ iseRFIDKey.prototype = {
   }
 };
 
+/**
+ * @class
+ **/
+iseIRKey = Class.create();
+
+iseIRKey.prototype = {
+  /*
+   * id = datapoint-ID of switch
+   */
+  initialize: function(id, shortId, longId, iViewOnly) {
+    this.id = id;
+    this.divShort = $(this.id + "Short");
+    this.divLong = $(this.id + "Long");
+    this.shortId = shortId;
+    this.longId = longId;
+    
+    if( this.divShort ) { ControlBtn.off(this.divShort); }
+    if( this.divLong ) { ControlBtn.off(this.divLong); }
+    
+    // Add event handlers
+    if (iViewOnly === 0)
+    {
+      if (this.divShort) {
+        this.clickShort = this.onClickShort.bindAsEventListener(this);
+        Event.observe(this.divShort, 'mousedown', this.clickShort);
+      }
+      if (this.divLong) {
+        this.clickLong = this.onClickLong.bindAsEventListener(this);
+        Event.observe(this.divLong, 'mousedown', this.clickLong);
+      }
+    }
+  },
+  
+  onClickShort: function() {
+    setDpState(this.shortId, 1);
+    ControlBtn.pushed(this.divShort);
+    $("btn" + this.shortId + "s").src = "/ise/img/ir_hold_80.png";
+    var t = this;
+    new PeriodicalExecuter(function(pe) {
+      ControlBtn.off(t.divShort);
+      $("btn" + t.shortId + "s").src = "/ise/img/ir_80.png";
+      pe.stop();
+    }, 1);
+  },
+  
+  onClickLong: function() {
+    setDpState(this.longId, 1);
+    ControlBtn.pushed(this.divLong);
+    $("btn" + this.longId + "l").src = "/ise/img/ir_hold_80.png";
+    var t = this;
+    new PeriodicalExecuter(function(pe) {
+      ControlBtn.off(t.divLong);
+      $("btn" + t.longId + "l").src = "/ise/img/ir_80.png";
+      pe.stop();
+    }, 1);
+  }
+};
+
+
 HbStatusDisplayDialogEPaper = Class.create(StatusDisplayDialog, {
 
   initEPaper: function () {

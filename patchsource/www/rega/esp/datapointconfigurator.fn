@@ -100,6 +100,7 @@ function ::dcCreate()
     var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
     var CN_BUTTON          = "BUTTON.";
     var CN_RFID_BUTTON     = "RFIDBTN.";
+    var CN_IRRC_BUTTON     = "IRRCBTN.";
     var CN_IBTN_BUTTON     = "IBTN.";
     var CN_SERVO           = "SERVO.";
     var CN_PFS             = "PFS.";
@@ -385,6 +386,16 @@ function ::dcCreate()
             Call("/esp/controls/rfid_rc.fn::CreateRfidKey()");
           }
 
+          !# IRRC
+          bIsControl = ( sControlName.Find(CN_IRRC_BUTTON) > -1 );
+          if( bIsControl && (sLastControlName!=CN_IRRC_BUTTON) )
+          {
+            WriteLine( "<script>conInfo('Control CN_IRRC_BUTTON found.');</script>" );
+            isKnownControl = true;
+            sLastControlName = CN_IRRC_BUTTON;
+            Call("/esp/controls/ir_rc.fn::CreateIRKey()");
+          }
+          
           !# iBUTTON
           bIsControl = ( sControlName.Find(CN_IBTN_BUTTON) > -1 );
           if( bIsControl && (sLastControlName!=CN_IBTN_BUTTON) )

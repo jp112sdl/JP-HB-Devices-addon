@@ -2,7 +2,7 @@
 <device version="2" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" cyclic_timeout="88700">
   <supported_types>
     <type name="HB-UNI-Sen-LEV-US" id="HB-UNI-Sen-LEV-US">
-	  <parameter index="9.0" size="1.0" cond_op="GE" const_value="0x11"/>
+	  <parameter index="9.0" size="1.0" cond_op="GE" const_value="0x12"/>
       <parameter index="10.0" size="2.0" const_value="0xF9D2" />
     </type>
   </supported_types>
@@ -55,7 +55,7 @@
         </parameter>
       </paramset>
     </channel>
-    <channel autoregister="true" index="1" type="CAPACITIVE_FILLING_LEVEL_SENSOR" count_from_sysinfo="23.0:0.3">
+    <channel index="1" type="CAPACITIVE_FILLING_LEVEL_SENSOR" count="1">
      <paramset type="MASTER" id="HB-UNI-Sen-LEV-US_master">
       <parameter id="DISTANCE_OFFSET">
         <logical type="integer" min="0" max="600" unit="cm" default="0"/>
@@ -105,7 +105,7 @@
         </parameter>
         <parameter id="BATTERY_VOLTAGE" operations="read,event" control="NONE">
           <logical type="float" min="0.0" max="25.5" unit="V"/>
-          <physical type="integer" interface="command" value_id="BATTERY_VOLTAGE">
+          <physical type="integer" interface="command" value_id="BATTERY_VOLTAGE" no_init="true">
              <event frame="MEASURE_EVENT"/>
           </physical>
           <conversion type="float_integer_scale" factor="10"/>
@@ -116,18 +116,54 @@
             <event frame="MEASURE_EVENT"/>
           </physical>
           <conversion type="float_integer_scale" factor="1.0"/>
-        </parameter>				
-      </paramset>  
+        </parameter>
+        <parameter id="ERROR" operations="read,event" ui_flags="service" control="NONE">
+          <logical type="option">
+            <option id="NO_ERROR" index="0" default="true"/>
+            <option id="TEMP_SENSOR_FAIL" index="1"/>
+          </logical>
+          <physical type="integer" interface="command" value_id="ERROR">
+            <event frame="INFO_LEVEL"/>
+          </physical>
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" control="NONE">
+          <logical type="boolean"/>
+          <physical type="integer" interface="command" value_id="LOWBAT">
+            <event frame="MEASURE_EVENT"/>
+            <event frame="INFO_LEVEL"/>
+          </physical>
+        </parameter>
+      </paramset>    
       <paramset type="LINK" id="HB-UNI-Sen-LEV-US_link" />
     </channel>
+    <channel index="2" type="WEATHER" count="1">
+     <paramset type="MASTER" id="ash550_ch_master"/>
+     <paramset type="VALUES" id="ash550_ch_values">
+       <parameter id="TEMPERATURE" operations="read,event">
+         <logical type="float" min="-60.0" max="125.0" unit="°C"/>
+         <physical type="integer" interface="command" value_id="TEMPERATURE" no_init="true">
+           <event frame="MEASURE_EVENT"/>
+         </physical>
+         <conversion type="float_integer_scale" factor="10.0"/>
+       </parameter>			
+     </paramset>
+     <paramset type="LINK" id="ash550_ch_link" />
+    </channel> 
   </channels>
   <frames>
+      <frame id="INFO_LEVEL" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" channel_field="10">
+        <parameter type="integer" index="12.1" size="0.3" param="ERROR"/>
+        <parameter type="integer" index="12.7" size="0.1" param="LOWBAT"/>
+      </frame>
       <frame id="MEASURE_EVENT" direction="from_device" event="true" fixed_channel="1" type="0x53">
          <parameter type="integer" index="9.0" size="1.0" param="FILLING_LEVEL" />
          <parameter type="integer" index="10.0" size="1.0" param="BATTERY_VOLTAGE"/>
          <parameter type="integer" index="11.0" size="4.0" param="FILLING_LITER"/>
          <parameter type="integer" index="15.0" size="2.0" param="FILLING_HEIGHT" />
       </frame>
+     <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="17.0:0.6">
+         <parameter type="integer" signed="true" index="18.0" size="2.0" param="TEMPERATURE"/>
+    </frame>
   </frames>
   <paramset_defs></paramset_defs>
 </device>

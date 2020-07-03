@@ -107,10 +107,12 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 46 | HB-RC-12-EP-29BW |
 |F3 47 | HB-DIS-EP-75BW |
 |F3 48 | HB-OU-MOT-SERVO |
+|F3 49 | HB-OU-MOT-FAN |
 |F3 4A | HB-UNI-Sen-VOLT |
 |F3 4B | HB-UNI-Sen-WEIGHT |
 |F3 4C | HB-UNI-Sen-WEIGHT-SC |
 |F3 4D | HB-UNI-Sen-PF-SC |
+|F3 4E | HB-UNI-Sen-VOLT |
 |F3 50 | HB-OU-RGB-TEALIGHT-BAT |
 |F3 51 | HB-OU-RGB-TEALIGHT |
 |F3 53 | HB-DIS-EP-42BW-MAINS |

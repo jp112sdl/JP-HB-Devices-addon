@@ -8,9 +8,9 @@ set PROFILES_MAP(0)   "\${expert}"
 set PROFILES_MAP(1)   "\${dimmer_on_brighter}"
 set PROFILES_MAP(2)   "\${dimmer_off_darker}"
 set PROFILES_MAP(3)   "\${dimmer_on_off_b_d}"
-set PROFILES_MAP(4)   "\${light_stairway}"
+#set PROFILES_MAP(4)   "\${light_stairway}"
 set PROFILES_MAP(5)   "\${sleep_well}"
-set PROFILES_MAP(6)   "\${blink}"
+#set PROFILES_MAP(6)   "\${blink}"
 set PROFILES_MAP(7)   "\${wake_up_light}"
 set PROFILES_MAP(8)   "\${dimmer_on}"
 set PROFILES_MAP(9)   "\${dimmer_off}"
@@ -254,83 +254,6 @@ set PROFILE_3(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wechselt der Stellwi
 set PROFILE_3(UI_TEMPLATE)    $PROFILE_3(UI_DESCRIPTION)
 set PROFILE_3(UI_HINT)  3
 
-set PROFILE_4(LONG_ACTION_TYPE)   1
-set PROFILE_4(LONG_COND_VALUE_HI) 100
-set PROFILE_4(LONG_COND_VALUE_LO) 50
-set PROFILE_4(LONG_CT_OFF)      0
-set PROFILE_4(LONG_CT_OFFDELAY)   0
-set PROFILE_4(LONG_CT_ON)     0
-set PROFILE_4(LONG_CT_ONDELAY)    0
-set PROFILE_4(LONG_CT_RAMPOFF)    0
-set PROFILE_4(LONG_CT_RAMPON)   0
-set PROFILE_4(LONG_DIM_MAX_LEVEL) 1.0
-set PROFILE_4(LONG_DIM_MIN_LEVEL) 0.0
-set PROFILE_4(LONG_DIM_STEP)    0.05
-set PROFILE_4(LONG_JT_OFF)      1
-set PROFILE_4(LONG_JT_OFFDELAY)   2
-set PROFILE_4(LONG_JT_ON)     2
-set PROFILE_4(LONG_JT_ONDELAY)    2
-set PROFILE_4(LONG_JT_RAMPOFF)    2
-set PROFILE_4(LONG_JT_RAMPON)   0
-set PROFILE_4(LONG_MULTIEXECUTE)  1
-set PROFILE_4(LONG_OFFDELAY_BLINK)  {0 1}
-set PROFILE_4(LONG_OFFDELAY_NEWTIME)  0.5
-set PROFILE_4(LONG_OFFDELAY_OLDTIME)  0.5
-set PROFILE_4(LONG_OFFDELAY_STEP) 0.05
-set PROFILE_4(LONG_OFFDELAY_TIME) {20.0 range 0.0 - 111600.0}
-set PROFILE_4(LONG_OFF_LEVEL)   0.0
-set PROFILE_4(LONG_OFF_TIME)    111600.0
-set PROFILE_4(LONG_OFF_TIME_MODE) 0
-set PROFILE_4(LONG_ONDELAY_MODE)  0
-set PROFILE_4(LONG_ONDELAY_TIME)  {0.0 range 0.0 - 111600.0}
-set PROFILE_4(LONG_ON_LEVEL)    {0.9 range 0.0 - 1.005}
-set PROFILE_4(LONG_ON_LEVEL_PRIO) 1
-set PROFILE_4(LONG_ON_MIN_LEVEL)  0.1
-set PROFILE_4(LONG_ON_TIME)   {120.0 range 0.0 - 111600}
-set PROFILE_4(LONG_ON_TIME_MODE)  1
-set PROFILE_4(LONG_RAMPOFF_TIME)  {20.0 range 0.0 - 111600.0}
-set PROFILE_4(LONG_RAMPON_TIME) {0.5 range 0.0 - 111600.0}
-set PROFILE_4(LONG_RAMP_START_STEP) 0.05
-set PROFILE_4(SHORT_ACTION_TYPE)  1
-set PROFILE_4(SHORT_COND_VALUE_HI)  100
-set PROFILE_4(SHORT_COND_VALUE_LO)  50
-set PROFILE_4(SHORT_CT_OFF)     0
-set PROFILE_4(SHORT_CT_OFFDELAY)  0
-set PROFILE_4(SHORT_CT_ON)      0
-set PROFILE_4(SHORT_CT_ONDELAY)   0
-set PROFILE_4(SHORT_CT_RAMPOFF)   0
-set PROFILE_4(SHORT_CT_RAMPON)    0
-set PROFILE_4(SHORT_DIM_MAX_LEVEL)  1.0
-set PROFILE_4(SHORT_DIM_MIN_LEVEL)  0.0
-set PROFILE_4(SHORT_DIM_STEP)   0.05
-set PROFILE_4(SHORT_JT_OFF)     1
-set PROFILE_4(SHORT_JT_OFFDELAY)  2
-set PROFILE_4(SHORT_JT_ON)      2
-set PROFILE_4(SHORT_JT_ONDELAY)   2
-set PROFILE_4(SHORT_JT_RAMPOFF)   2
-set PROFILE_4(SHORT_JT_RAMPON)    0
-set PROFILE_4(SHORT_OFFDELAY_BLINK) {0 1}
-set PROFILE_4(SHORT_OFFDELAY_NEWTIME) 0.5
-set PROFILE_4(SHORT_OFFDELAY_OLDTIME) 0.5
-set PROFILE_4(SHORT_OFFDELAY_STEP)  0.05
-set PROFILE_4(SHORT_OFFDELAY_TIME)  {20.0 range 0.0 - 111600.0}
-set PROFILE_4(SHORT_OFF_LEVEL)    0.0
-set PROFILE_4(SHORT_OFF_TIME)   111600.0
-set PROFILE_4(SHORT_OFF_TIME_MODE)  0
-set PROFILE_4(SHORT_ONDELAY_MODE) 0
-set PROFILE_4(SHORT_ONDELAY_TIME) {0.0 range 0.0 - 111600.0}
-set PROFILE_4(SHORT_ON_LEVEL)   {0.9 range 0.0 - 1.005}
-set PROFILE_4(SHORT_ON_LEVEL_PRIO)  1
-set PROFILE_4(SHORT_ON_MIN_LEVEL) 0.1
-set PROFILE_4(SHORT_ON_TIME)    {120.0 range 0.0 - 111600.0}
-set PROFILE_4(SHORT_ON_TIME_MODE) 1
-set PROFILE_4(SHORT_RAMPOFF_TIME) {20.0 range 0.0 - 108000.0}
-set PROFILE_4(SHORT_RAMPON_TIME)  {0.5 range 0.0 - 108000.0}
-set PROFILE_4(SHORT_RAMP_START_STEP)  0.05
-set PROFILE_4(UI_DESCRIPTION) "Der Stellwinkel wird durch kurzen oder langen Tastendruck f&uuml;r die eingestellte Zeit eingestellt. In der Ausschaltverz&ouml;gerung wird der Winkel leicht verringert, um anschlie&szlig;end langsam bis auf 0&deg; zu fahren."
-set PROFILE_4(UI_TEMPLATE)    $PROFILE_4(UI_DESCRIPTION)
-set PROFILE_4(UI_HINT)  4
-
 set PROFILE_5(LONG_ACTION_TYPE)   6
 set PROFILE_5(LONG_COND_VALUE_HI) 100
 set PROFILE_5(LONG_COND_VALUE_LO) 50
@@ -407,83 +330,6 @@ set PROFILE_5(SHORT_RAMP_START_STEP)  0.0
 set PROFILE_5(UI_DESCRIPTION) "Mit einem kurzen Tastendruck wird der eingestellte Stellwinkel angefahren und nach der eingestellten Zeit langsam auf 0&deg; reduziert. Mit einem langen Tastendruck wird der Stellwinkel abwechselnd verg&ouml;&szlig;ert und verringert."
 set PROFILE_5(UI_TEMPLATE)    $PROFILE_5(UI_DESCRIPTION)
 set PROFILE_5(UI_HINT)  5
-
-set PROFILE_6(LONG_ACTION_TYPE)   1
-set PROFILE_6(LONG_COND_VALUE_HI) 100
-set PROFILE_6(LONG_COND_VALUE_LO) 50
-set PROFILE_6(LONG_CT_OFF)      0
-set PROFILE_6(LONG_CT_OFFDELAY)   0
-set PROFILE_6(LONG_CT_ON)     0
-set PROFILE_6(LONG_CT_ONDELAY)    0
-set PROFILE_6(LONG_CT_RAMPOFF)    0
-set PROFILE_6(LONG_CT_RAMPON)   0
-set PROFILE_6(LONG_DIM_MAX_LEVEL) 1.0
-set PROFILE_6(LONG_DIM_MIN_LEVEL) 0.0
-set PROFILE_6(LONG_DIM_STEP)    0.05
-set PROFILE_6(LONG_JT_OFF)      1
-set PROFILE_6(LONG_JT_OFFDELAY)   1
-set PROFILE_6(LONG_JT_ON)     4
-set PROFILE_6(LONG_JT_ONDELAY)    4
-set PROFILE_6(LONG_JT_RAMPOFF)    1
-set PROFILE_6(LONG_JT_RAMPON)   4
-set PROFILE_6(LONG_MULTIEXECUTE)  0
-set PROFILE_6(LONG_OFFDELAY_BLINK)  1
-set PROFILE_6(LONG_OFFDELAY_NEWTIME)  0.5
-set PROFILE_6(LONG_OFFDELAY_OLDTIME)  0.5
-set PROFILE_6(LONG_OFFDELAY_STEP) 0.05
-set PROFILE_6(LONG_OFFDELAY_TIME) 0.0
-set PROFILE_6(LONG_OFF_LEVEL)   {0.0 range 0.0 - 1.0}
-set PROFILE_6(LONG_OFF_TIME)    {1.0 range 0.0 - 111600}
-set PROFILE_6(LONG_OFF_TIME_MODE) 0
-set PROFILE_6(LONG_ONDELAY_MODE)  0
-set PROFILE_6(LONG_ONDELAY_TIME)  0.0
-set PROFILE_6(LONG_ON_LEVEL)    {1.0 range 0.0 - 1.005}
-set PROFILE_6(LONG_ON_LEVEL_PRIO) 0
-set PROFILE_6(LONG_ON_MIN_LEVEL)  0.1
-set PROFILE_6(LONG_ON_TIME)     {1.0  range 0.0 - 111600}
-set PROFILE_6(LONG_ON_TIME_MODE)  0
-set PROFILE_6(LONG_RAMPOFF_TIME)  0.0
-set PROFILE_6(LONG_RAMPON_TIME)   0.0
-set PROFILE_6(LONG_RAMP_START_STEP) 0.05
-set PROFILE_6(SHORT_ACTION_TYPE)  1
-set PROFILE_6(SHORT_COND_VALUE_HI)  100
-set PROFILE_6(SHORT_COND_VALUE_LO)  50
-set PROFILE_6(SHORT_CT_OFF)     0
-set PROFILE_6(SHORT_CT_OFFDELAY)  0
-set PROFILE_6(SHORT_CT_ON)      0
-set PROFILE_6(SHORT_CT_ONDELAY)   0
-set PROFILE_6(SHORT_CT_RAMPOFF)   0
-set PROFILE_6(SHORT_CT_RAMPON)    0
-set PROFILE_6(SHORT_DIM_MAX_LEVEL)  1.0
-set PROFILE_6(SHORT_DIM_MIN_LEVEL)  0.0
-set PROFILE_6(SHORT_DIM_STEP)   0.05
-set PROFILE_6(SHORT_JT_OFF)     1
-set PROFILE_6(SHORT_JT_OFFDELAY)  1
-set PROFILE_6(SHORT_JT_ON)      4
-set PROFILE_6(SHORT_JT_ONDELAY)   4
-set PROFILE_6(SHORT_JT_RAMPOFF)   1
-set PROFILE_6(SHORT_JT_RAMPON)    4
-set PROFILE_6(SHORT_OFFDELAY_BLINK) 1
-set PROFILE_6(SHORT_OFFDELAY_NEWTIME) 0.5
-set PROFILE_6(SHORT_OFFDELAY_OLDTIME) 0.5
-set PROFILE_6(SHORT_OFFDELAY_STEP)  0.05
-set PROFILE_6(SHORT_OFFDELAY_TIME)  0.0
-set PROFILE_6(SHORT_OFF_LEVEL)    {0.0 range 0.0 - 1.0}
-set PROFILE_6(SHORT_OFF_TIME)   {1.0 range 0.0 - 111600}
-set PROFILE_6(SHORT_OFF_TIME_MODE)  0
-set PROFILE_6(SHORT_ONDELAY_MODE) 0
-set PROFILE_6(SHORT_ONDELAY_TIME) 0.0
-set PROFILE_6(SHORT_ON_LEVEL)   {1.0 range 0.0 - 1.005}
-set PROFILE_6(SHORT_ON_LEVEL_PRIO)  0
-set PROFILE_6(SHORT_ON_MIN_LEVEL) 0.1
-set PROFILE_6(SHORT_ON_TIME)      {1.0  range 0.0 - 111600}
-set PROFILE_6(SHORT_ON_TIME_MODE) 0
-set PROFILE_6(SHORT_RAMPOFF_TIME) 0.0
-set PROFILE_6(SHORT_RAMPON_TIME)  0.0
-set PROFILE_6(SHORT_RAMP_START_STEP)  0.0
-set PROFILE_6(UI_DESCRIPTION) "Der Stellwinkel wechselt im eingestellten Takt endlos zwischen den beiden Werten."
-set PROFILE_6(UI_TEMPLATE)    $PROFILE_6(UI_DESCRIPTION)
-set PROFILE_6(UI_HINT)  6
 
 set PROFILE_7(LONG_ACTION_TYPE)   6
 set PROFILE_7(LONG_COND_VALUE_HI) 100
@@ -950,7 +796,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
 
   incr pref ;# 4
   append HTML_PARAMS(separate_$prn) "<td colspan =\"2\"><hr>\${description_longkey}</td>"
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${DIM_MAX_LEVEL}</td><td>"
+  append HTML_PARAMS(separate_$prn) "<tr><td><span class=\"pname_color\">Winkelbegrenzung bei</span></td><td>"
   option DIM_ONLEVEL
   append HTML_PARAMS(separate_$prn) [get_ComboBox options LONG_DIM_MAX_LEVEL separate_${special_input_id}_$prn\_$pref PROFILE_$prn        LONG_DIM_MAX_LEVEL "onchange=\"ActivateFreePercent4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
   EnterPercent $prn $pref ${special_input_id} ps_descr LONG_DIM_MAX_LEVEL
@@ -988,7 +834,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
 
   incr pref ;# 4
   append HTML_PARAMS(separate_$prn) "<td colspan =\"2\"><hr>\${description_longkey}</td>"
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${DIM_MIN_LEVEL}</td><td>"
+  append HTML_PARAMS(separate_$prn) "<tr><td><span class=\"pname_color\">Winkelbegrenzung bei</span></td><td>"
   option DIM_OFFLEVEL
   append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_DIM_MIN_LEVEL|LONG_DIM_MIN_LEVEL separate_${special_input_id}_$prn\_$pref PROFILE_$prn        LONG_DIM_MIN_LEVEL "onchange=\"ActivateFreePercent4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
   EnterPercent $prn $pref ${special_input_id} ps_descr LONG_DIM_MIN_LEVEL
@@ -1048,7 +894,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   append HTML_PARAMS(separate_$prn) "<td colspan =\"2\"><hr>\${description_longkey}</td>"
   
   incr pref ;# 7
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${DIM_MAX_LEVEL}</td><td>"
+  append HTML_PARAMS(separate_$prn) "<tr><td><span class=\"pname_color\">Winkelbegrenzung bei</span></td><td>"
   option DIM_ONLEVEL
   append HTML_PARAMS(separate_$prn) [get_ComboBox options LONG_DIM_MAX_LEVEL separate_${special_input_id}_$prn\_$pref PROFILE_$prn        LONG_DIM_MAX_LEVEL "onchange=\"ActivateFreePercent4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
   EnterPercent $prn $pref ${special_input_id} ps_descr LONG_DIM_MAX_LEVEL
@@ -1057,55 +903,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   append HTML_PARAMS(separate_$prn) "</table></textarea></div>"
 #4  
   incr prn
-  set pref 1
-  if {$cur_profile == $prn} then {array set PROFILE_$prn [array get ps]}
-  append HTML_PARAMS(separate_$prn) "<div id=\"param_$prn\"><textarea id=\"profile_$prn\" style=\"display:none\">"
-  append HTML_PARAMS(separate_$prn) "\${description_$prn}"
-  append HTML_PARAMS(separate_$prn) "<table class=\"ProfileTbl\">"
 
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${RAMPON_TIME}</td><td>"
-  option RAMPTIME
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_RAMPON_TIME|LONG_RAMPON_TIME separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_RAMPON_TIME "onchange=\"ActivateFreeTime4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
-  EnterTime_h_m_s $prn $pref ${special_input_id} ps_descr SHORT_RAMPON_TIME
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-  
-  incr pref ;# 2
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${ON_TIME}</td><td>"
-  option LENGTH_OF_STAY
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_ON_TIME|LONG_ON_TIME separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_ON_TIME "onchange=\"ActivateFreeTime4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
-  EnterTime_h_m_s $prn $pref ${special_input_id} ps_descr SHORT_ON_TIME
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-  
-  incr pref ;# 3
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${ON_LEVEL}</td><td>"
-  option DIM_ONLEVEL
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_ON_LEVEL|LONG_ON_LEVEL separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_ON_LEVEL "onchange=\"ActivateFreePercent4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
-  EnterPercent $prn $pref ${special_input_id} ps_descr SHORT_ON_LEVEL
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-  
-  incr pref ;# 4
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${OFFDELAY_TIME}</td><td>"
-  option DELAY
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_OFFDELAY_TIME|LONG_OFFDELAY_TIME separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_OFFDELAY_TIME "onchange=\"ActivateFreeTime4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
-  EnterTime_h_m_s $prn $pref ${special_input_id} ps_descr SHORT_OFFDELAY_TIME
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-
-  incr pref ;# 5
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${OFFDELAY_BLINK}</td><td>"
-  array_clear options
-  set options(0) "\${off}"
-  set options(1) "\${on}"
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_OFFDELAY_BLINK|LONG_OFFDELAY_BLINK separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_OFFDELAY_BLINK]
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-
-  incr pref ;# 6
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${RAMPOFF_TIME}</td><td>"
-  option RAMPTIME
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_RAMPOFF_TIME|LONG_RAMPOFF_TIME separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_RAMPOFF_TIME "onchange=\"ActivateFreeTime4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
-  EnterTime_h_m_s $prn $pref ${special_input_id} ps_descr SHORT_RAMPOFF_TIME
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-
-  append HTML_PARAMS(separate_$prn) "</table></textarea></div>"
 #5
   incr prn
   set pref 1
@@ -1137,40 +935,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   append HTML_PARAMS(separate_$prn) "</table></textarea></div>"
 #6  
   incr prn
-  set pref 1
-  if {$cur_profile == $prn} then {array set PROFILE_$prn [array get ps]}
-  append HTML_PARAMS(separate_$prn) "<div id=\"param_$prn\"><textarea id=\"profile_$prn\" style=\"display:none\">"
-  append HTML_PARAMS(separate_$prn) "\${description_$prn}"
-  append HTML_PARAMS(separate_$prn) "<table class=\"ProfileTbl\">"
 
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${ON_TIME}</td><td>"
-  option BLINK
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_ON_TIME|LONG_ON_TIME separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_ON_TIME "onchange=\"ActivateFreeTime4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
-  EnterTime_h_m_s $prn $pref ${special_input_id} ps_descr SHORT_ON_TIME
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-
-  incr pref ;# 2
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${ON_LEVEL}</td><td>"
-  option DIM_ONLEVEL
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_ON_LEVEL|LONG_ON_LEVEL separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_ON_LEVEL "onchange=\"ActivateFreePercent4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
-  EnterPercent $prn $pref ${special_input_id} ps_descr SHORT_ON_LEVEL
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-
-  incr pref ;# 3
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${OFF_TIME}</td><td>"
-  option BLINK
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_OFF_TIME|LONG_OFF_TIME separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_OFF_TIME "onchange=\"ActivateFreeTime4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
-  EnterTime_h_m_s $prn $pref ${special_input_id} ps_descr SHORT_OFF_TIME
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-  
-  incr pref ;# 4
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${OFF_LEVEL}</td><td>"
-  option DIM_OFFLEVEL
-  append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_OFF_LEVEL|LONG_OFF_LEVEL separate_${special_input_id}_$prn\_$pref PROFILE_$prn        SHORT_OFF_LEVEL "onchange=\"ActivateFreePercent4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
-  EnterPercent $prn $pref ${special_input_id} ps_descr SHORT_OFF_LEVEL
-  append HTML_PARAMS(separate_$prn) "</td></tr>"
-
-  append HTML_PARAMS(separate_$prn) "</table></textarea></div>"
 #7
   incr prn
   set pref 1 
@@ -1274,7 +1039,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   append HTML_PARAMS(separate_$prn) "</td></tr>"
 
   incr pref ;# 2
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${DIM_MAX_LEVEL}</td><td>"
+  append HTML_PARAMS(separate_$prn) "<tr><td><span class=\"pname_color\">Winkelbegrenzung bei</span></td><td>"
   option DIM_ONLEVEL
   append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_DIM_MAX_LEVEL|LONG_DIM_MAX_LEVEL separate_${special_input_id}_$prn\_$pref PROFILE_$prn        LONG_DIM_MAX_LEVEL "onchange=\"ActivateFreePercent4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
   EnterPercent $prn $pref ${special_input_id} ps_descr LONG_DIM_MAX_LEVEL
@@ -1289,7 +1054,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
   append HTML_PARAMS(separate_$prn) "\${description_$prn}"
   append HTML_PARAMS(separate_$prn) "<table class=\"ProfileTbl\">"
 
-  append HTML_PARAMS(separate_$prn) "<tr><td>\${DIM_MIN_LEVEL}</td><td>"
+  append HTML_PARAMS(separate_$prn) "<tr><td><span class=\"pname_color\">Winkelbegrenzung bei</span></td><td>"
   option DIM_OFFLEVEL
   append HTML_PARAMS(separate_$prn) [get_ComboBox options SHORT_DIM_MIN_LEVEL|LONG_DIM_MIN_LEVEL separate_${special_input_id}_$prn\_$pref PROFILE_$prn         LONG_DIM_MIN_LEVEL "onchange=\"ActivateFreePercent4InternalKey(\$('${special_input_id}_profiles'),$pref);Disable_SimKey($ch, $prn, '${special_input_id}');\""]
   EnterPercent $prn $pref ${special_input_id} ps_descr LONG_DIM_MIN_LEVEL

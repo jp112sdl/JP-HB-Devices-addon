@@ -5,7 +5,7 @@ set DPControls_GETCONTROLS(SERVO.LEVEL) [list ServoControl_getControls]
 #set DPControls_GETTOPCONTROLS(SERVO.LEVEL) [list ServoControl_getTopControls]
 
 set COMMANDS(serv180) [list ServoControl_serv180]
-set COMMANDS(serv135)  [list ServoControl_serv135]
+set COMMANDS(serv135) [list ServoControl_serv135]
 set COMMANDS(serv90)  [list ServoControl_serv90]
 set COMMANDS(serv45)  [list ServoControl_serv45]
 set COMMANDS(serv0)   [list ServoControl_serv0]
@@ -68,27 +68,27 @@ proc ServoControl_dim { channelId level } {
 	rega_exec $script
 }
 
-proc ServoControl_dim180 { } {
+proc ServoControl_serv180 { } {
 	global fav
 	ServoControl_dim $fav(ID) 1.00;
 }
 
-proc ServoControl_dim135 { } {
+proc ServoControl_serv135 { } {
 	global fav
 	ServoControl_dim $fav(ID) 0.75;
 }
 
-proc ServoControl_dim90 { } {
+proc ServoControl_serv90 { } {
 	global fav
 	ServoControl_dim $fav(ID) 0.50;
 }
 
-proc ServoControl_dim45 { } {
+proc ServoControl_serv45 { } {
 	global fav
 	ServoControl_dim $fav(ID) 0.25;
 }
 
-proc ServoControl_dim0 { } {
+proc ServoControl_serv0 { } {
 	global fav
 	ServoControl_dim $fav(ID) 0.00;
 }

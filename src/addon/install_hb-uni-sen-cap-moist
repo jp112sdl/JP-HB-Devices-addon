@@ -66,11 +66,11 @@ fi
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 
-translate_deInsert="\n    \"stringTableHbCapMoistHighValue\" : \"HIGH Value (Trocken [0%25 Feuchte])\","
+translate_deInsert="\n    \"stringTableHbCapMoistHighValue\" : \"HIGH Value (Trocken [bei 0%25 Feuchte])\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbCapMoistHighValue\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
-translate_deInsert="\n    \"stringTableHbCapMoistLowValue\" : \"LOW Value (Nass [100%25 Feuchte])\","
+translate_deInsert="\n    \"stringTableHbCapMoistLowValue\" : \"LOW Value (Nass [bei 100%25 Feuchte])\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbCapMoistLowValue\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

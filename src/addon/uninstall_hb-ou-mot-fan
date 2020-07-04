@@ -29,7 +29,7 @@ translate_deSearch="stringTableHbFanRampTime"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 channelsFile="/www/rega/esp/channels.htm"
-channelsSearch="servoOldVal"
+channelsSearch="fanOldVal"
 sed -i "/\(${channelsSearch}\)/d" $channelsFile
 
 rm -f $FIRMWARE_FILE

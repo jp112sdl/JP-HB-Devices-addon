@@ -103,6 +103,7 @@ function ::dcCreate()
     var CN_IRRC_BUTTON     = "IRRCBTN.";
     var CN_IBTN_BUTTON     = "IBTN.";
     var CN_SERVO           = "SERVO.";
+    var CN_FAN             = "FAN.";
     var CN_PFS             = "PFS.";
     var CN_LDRSC           = "LDRSC.";
     var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
@@ -417,6 +418,17 @@ function ::dcCreate()
             Call("/esp/controls/servo.fn::CreateServoActuator()");
           } 
           
+          !# FAN
+          bIsControl = ( sControlName.Find(CN_FAN) > -1 );
+          if( bIsControl && (sLastControlName!=CN_FAN) )
+          {
+            object ch = dom.GetObject(chnId);
+            isKnownControl = true;
+            sLastControlName = CN_FAN;
+            WriteLine( "<script>conInfo('Control FAN found.');</script>" );
+            Call("/esp/controls/fan.fn::CreateFanActuator()");
+          } 
+                    
           !# PFS (Pet Flap Sensor - Tierklappensensor)
           bIsControl = ( sControlName.Find(CN_PFS) > -1 );
           if( bIsControl && (sLastControlName!=CN_PFS) )

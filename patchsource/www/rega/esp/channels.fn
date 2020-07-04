@@ -777,6 +777,22 @@ function ::servoOldVal()
 }
 
 ! [chnId]
+function ::fanOldVal()
+{
+  object chn = dom.GetObject( system.GetVar("chnId") );
+  if (chn)
+  {
+    object oOL = chn.DPByControl("FAN.OLD_LEVEL");
+    object oL = chn.DPByControl("FAN.LEVEL");
+    if( oL && oOL )
+    {
+      oOL.State(1);
+    }
+  }
+  return;
+}
+
+! [chnId]
 ! --> bhasReadDPs
 function ::chnHasReadDPs() {
   boolean bHasReadDPs = false;

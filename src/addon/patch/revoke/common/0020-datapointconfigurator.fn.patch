@@ -1,6 +1,6 @@
 --- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig
 +++ ./patchsource/www/rega/esp/datapointconfigurator.fn
-@@ -99,6 +99,13 @@
+@@ -99,6 +99,12 @@
      var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
      var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
      var CN_BUTTON          = "BUTTON.";
@@ -8,13 +8,12 @@
 +    var CN_IRRC_BUTTON     = "IRRCBTN.";
 +    var CN_IBTN_BUTTON     = "IBTN.";
 +    var CN_SERVO           = "SERVO.";
-+    var CN_FAN             = "FAN.";
 +    var CN_PFS             = "PFS.";
 +    var CN_LDRSC           = "LDRSC.";
      var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
      var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
      var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
-@@ -369,7 +376,79 @@
+@@ -369,7 +375,68 @@
              sLastControlName = CN_BTN_SHORT_ONLY;
              Call("/esp/controls/button.fn::CreateKeyShortOnly()");
            }
@@ -60,17 +59,6 @@
 +            Call("/esp/controls/servo.fn::CreateServoActuator()");
 +          } 
 +          
-+          !# FAN
-+          bIsControl = ( sControlName.Find(CN_FAN) > -1 );
-+          if( bIsControl && (sLastControlName!=CN_FAN) )
-+          {
-+            object ch = dom.GetObject(chnId);
-+            isKnownControl = true;
-+            sLastControlName = CN_FAN;
-+            WriteLine( "<script>conInfo('Control FAN found.');</script>" );
-+            Call("/esp/controls/fan.fn::CreateFanActuator()");
-+          } 
-+                    
 +          !# PFS (Pet Flap Sensor - Tierklappensensor)
 +          bIsControl = ( sControlName.Find(CN_PFS) > -1 );
 +          if( bIsControl && (sLastControlName!=CN_PFS) )

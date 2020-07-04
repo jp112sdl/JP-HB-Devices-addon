@@ -126,7 +126,7 @@ fi
 
 ### Edit channels.html ###
 channelsFile="/www/rega/esp/channels.htm"
-channelsInsert="  if (action == \"servoOldVal\")     { Call(\"channels.fn::servoOldVal()\"); }"
+channelsInsert="\n<%  if (action == \"servoOldVal\")     { Call(\"channels.fn::servoOldVal()\"); } %>"
 if [ -z "`cat $channelsFile | grep \"servoOldVal"`" ]; then
     echo -e $channelsInsert >> $channelsFile
 fi

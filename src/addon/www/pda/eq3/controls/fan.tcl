@@ -26,7 +26,7 @@ proc FanControl_getStatus { channelId dataPoint } {
 	
 	set    result [status_separator]
 	append result {<tr><td class="status">}
-	append result {<div class="caption">Dimmwert</div>}
+	append result {<div class="caption">Leistungswert</div>}
 	append result "<div class=\"center\">$level %</div>"
 	append result {</td></tr>}
 	return $result

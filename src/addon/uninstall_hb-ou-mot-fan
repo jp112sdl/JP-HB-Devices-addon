@@ -3,7 +3,7 @@
 DEVICE="HB-OU-MOT-FAN"
 DEVICE_IMG=hb-ou-mot-fan.png
 DEVICE_THUMB=hb-ou-mot-fan_thumb.png
-FIRMWARE_FILE=/firmware/rftypes/hb-ou-mot-fan.xml
+FIRMWARE_FILES=/firmware/rftypes/hb-ou-mot-fan*.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
@@ -11,6 +11,10 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
+webuiSearch="ERROR=FAN_RPM_FAIL"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_GENERIC|HB_RPM_ERRMIN"
+sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="FAN|LEVEL"
@@ -18,6 +22,12 @@ sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FAN|OLD_LEVEL"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FAN|RAMP_TIME"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_GENERIC|HB_RPM"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="ERROR=FAN_RPM_FAIL"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_GENERIC|HB_RPM_ERRMIN"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
@@ -27,11 +37,29 @@ translate_deSearch="stringTableHbFanOldLevel"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbFanRampTime"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbGenericRpm"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBFanRpmFailure"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBRpmErrorMin"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 channelsFile="/www/rega/esp/channels.htm"
 channelsSearch="fanOldVal"
 sed -i "/\(${channelsSearch}\)/d" $channelsFile
 
-rm -f $FIRMWARE_FILE
+rm -f $FIRMWARE_FILES
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB
+
+##########################################################################
+DEVICE="HB-OU-MOT-FAN-RPM"
+DEVICE_IMG=hb-ou-mot-fan.png
+DEVICE_THUMB=hb-ou-mot-fan_thumb.png
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+
+webuiFile="/www/webui/webui.js"
+sed -i "/\($DEVICE\)/d" $webuiFile

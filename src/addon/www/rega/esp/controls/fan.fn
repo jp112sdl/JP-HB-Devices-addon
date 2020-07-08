@@ -52,6 +52,7 @@ function ::CreateFanActuator()
             WriteLine("</table>");
           WriteLine("</div>");
         WriteLine("</td>");
+        
         WriteLine("<td class='CLASS02529'>");
           WriteLine("<table width='100%' height='100%' cellspacing='10'>");
             WriteLine("<tr><td><div id='"#chnId#"On'  class='ControlBtnOn CLASS02545 j_translate'>${actionStatusControlLblOn}</div></td></tr>");
@@ -64,6 +65,9 @@ function ::CreateFanActuator()
   string sCtrlId = "slidCtrl"#chnId;
   WriteLine("<script type='text/javascript'>");
   WriteLine("ibd"#chnId#" = new iseButtonsDimmer("#chnId#", "#iState#", "#iLvlDpId#", "#iOldLvlDpId#", "#system.GetVar("iStatusOnly")#", "#system.GetVar('bSliderFlag')#", '"#cObj.Label()#"' );");
+  
+  Write("jQuery('#"#chnId#"Off').html(translateKey('actionStatusControlLblOff')).show();");                                                        
+  Write("jQuery('#"#chnId#"On').html(translateKey('actionStatusControlLblOn')).show();");     
   WriteLine("</script>");
 
   return;

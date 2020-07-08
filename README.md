@@ -65,7 +65,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/config/img/devices/50/7_hm-lc-bl1-fm_thumb.png" width=25/> | [HB-LC-Bl1-Velux](https://github.com/pa-pa/AskSinPP/tree/master/examples/custom/HB-LC-Bl1-Velux) | Velux Rolladensteuerung _([pa-pa](https://github.com/pa-pa))_ | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-sec-rhs-3_thumb.png" width=25/> | [HB-Sec-RHS-3](https://github.com/pa-pa/HB-Sec-RHS-3) | Fenster-Drehgriffsensor m. Batt.-Spannungsanzeige und 4 mögl. Status _([pa-pa](https://github.com/pa-pa))_ | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-ir-rcv-rc_thumb.png" width=25/> | [HB-IR-Rcv-RC](https://github.com/jp112sdl/HB-IR-Rcv-RC) | IR-Empfänger -> HM Taster | ⚡️ | 
-|<img src="src/addon/www/config/img/devices/50/hb-ou-mot-fan_thumb.png" width=25/> | [HB-OU-MOT-FAN](https://github.com/jp112sdl/HB-OU-MOT-FAN) | PWM Lüftersteuerung | ⚡️ | 
+|<img src="src/addon/www/config/img/devices/50/hb-ou-mot-fan_thumb.png" width=25/> | [HB-OU-MOT-FAN](https://github.com/jp112sdl/HB-OU-MOT-FAN)(-RPM) | PWM Lüftersteuerung (mit optionaler RPM-Überwachung) | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-current_thumb.png" width=25/> | [HB-UNI-Sen-CURRENT](https://github.com/jp112sdl/HB-UNI-Sen-CURRENT) | universeller Strom-Sensor _coming soon_| ⚡️ / 🔋 | 
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
@@ -115,6 +115,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 4C | HB-UNI-Sen-WEIGHT-SC |
 |F3 4D | HB-UNI-Sen-PF-SC |
 |F3 4E | HB-UNI-Sen-CURRENT |
+|F3 4F | HB-OU-MOT-FAN-RPM |
 |F3 50 | HB-OU-RGB-TEALIGHT-BAT |
 |F3 51 | HB-OU-RGB-TEALIGHT |
 |F3 53 | HB-DIS-EP-42BW-MAINS |

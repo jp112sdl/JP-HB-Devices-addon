@@ -4,6 +4,8 @@
 
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
+<hr/>
+
 **Das Wichtigste vorweg:**<br/>
 Dieses Addon integriert die unten aufgelisteten HomeBrew Projekte in die CCU-Firmware.</font><br/>
 Ich stelle es 
@@ -15,12 +17,14 @@ zur Verfügung.<br/>
 Da es sich um ein reines Hobby-Projekt handelt, kann ich **weder (umfangreichen) Support** leisten, **noch auf individuelle Wünsche eingehen** oder **zeitnah die neueste CCU-Firmware unterstützen**!<br/>
 Es sollte klar sein, dass mit (m)einer eventuellen Aufgabe dieses Hobbys, mittel-/langfristig (teilweise) keine Verwendung u.g. Geräte mehr möglich ist. <i>Wie bei Open Source Projekten üblich, kann sich jedoch jeder an der Entwicklung beteiligen!</i>
 
-Nach der Installation wird ein Neustart der Zentrale durchgeführt.<br/>
-Die eigentliche Installation des Addons erfolgt nach diesem Neustart.<br/>
-Währenddessen werden ReGa und der RFD gestoppt, so dass es _(nicht bei RaspberryMatic!)_ im Browser zu der Meldung<br/>`Eine Komponente der Homematic Zentrale reagiert nicht mehr.` kommen kann.<br/>
+<hr/>
+
+Nach der Installation wird automatisch ein Neustart der Zentrale durchgeführt.<br/>
+Die eigentliche Installation des Addons erfolgt nach diesem Neustart, während die Zentrale hochfährt.<br/>
+In dieser Zeit werden die Dienste **ReGaHss** und **RFD** gestoppt, so dass es **_(nicht bei RaspberryMatic!)_** im Browser zu der Meldung<br/>`Eine Komponente der Homematic Zentrale reagiert nicht mehr.` kommen kann.<br/>
 _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Installation u.U. mehrere Minuten in Anspruch nehmen!_<br/><br/>
 
-📍 Sollten anschließend keine Geräte-Icons und/oder -beschreibungen angezeigt werden, muss der Browser-Cache gelöscht werden.
+❗ Sollten anschließend keine Geräte-Icons und/oder -beschreibungen in der WebUI angezeigt werden, muss der Browser-Cache gelöscht werden.
 
 #### Dieses Addon wird benötigt, um die Kompatibilität der folgenden HomeMatic Selbstbaugeräte herzustellen:
 

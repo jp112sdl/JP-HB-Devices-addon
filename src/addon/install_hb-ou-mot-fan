@@ -3,7 +3,7 @@
 DEVICE="HB-OU-MOT-FAN"
 DEVICE_IMG=hb-ou-mot-fan.png
 DEVICE_THUMB=hb-ou-mot-fan_thumb.png
-DEVICE_DESC="PWM 3-pin fan control"
+DEVICE_DESC="PWM fan control"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
@@ -128,7 +128,7 @@ fi
 DEVICE="HB-OU-MOT-FAN-RPM"
 DEVICE_IMG=hb-ou-mot-fan.png
 DEVICE_THUMB=hb-ou-mot-fan_thumb.png
-DEVICE_DESC="PWM 4-pin fan control"
+DEVICE_DESC="PWM fan control with rpm monitoring"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"

@@ -51,8 +51,12 @@ if [ ! -e /www/config/easymodes/KEY/localization/en/KEY.txt ]; then
  cp /www/config/easymodes/BLIND/localization/en/KEY.txt /www/config/easymodes/KEY/localization/en/    
 fi                                                                                                    
                                                                                                       
-if [ ! -e /www/config/easymodes/KEY/localization/tr/GENERIC.txt ]; then                               
- cp /www/config/easymodes/BLIND/localization/tr/GENERIC.txt /www/config/easymodes/KEY/localization/tr/
-fi                                                                                                    
+#if [ ! -e /www/config/easymodes/KEY/localization/tr/GENERIC.txt ]; then                               
+# cp /www/config/easymodes/BLIND/localization/tr/GENERIC.txt /www/config/easymodes/KEY/localization/tr/
+#fi                                                                                                    
                                                                                                       
+#if [ ! -e /www/config/easymodes/KEY/localization/tr/KEY.txt ]; then                                   
+# cp /www/config/easymodes/BLIND/localization/tr/KEY.txt /www/config/easymodes/KEY/localization/tr/    
+#fi 
+
 chmod -R 755 /www/config/easymodes/KEY/localization/ 

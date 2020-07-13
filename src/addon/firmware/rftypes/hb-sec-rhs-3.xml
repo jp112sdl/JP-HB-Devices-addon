@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <device version="14" rx_modes="CONFIG,WAKEUP" supports_aes="true" cyclic_timeout="88200">
   <supported_types>
-    <type name="HB Rotary Handle Sensor with battery state" id="HB-Sec-RHS-3" priority="2">
+    <type name="HB Rotary Handle Sensor with battery state" id="HB-Sec-RHS-3" updatable="true" priority="2">
       <parameter index="9.0" size="1.0" cond_op="GE" const_value="0x10" />
       <parameter index="10.0" size="2.0" const_value="0xF209" />
     </type>
@@ -75,6 +75,14 @@
         <parameter id="RSSI_PEER" operations="read,event">
           <logical type="integer" />
           <physical type="integer" interface="internal" value_id="RSSI_PEER" />
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
         </parameter>
       </paramset>
     </channel>

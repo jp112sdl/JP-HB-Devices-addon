@@ -198,11 +198,11 @@ case "$1" in
           if [ $RFD -ge 1 ]; then
             check_monit       
             if [ $MONIT -ge 1 ]; then
-              echo " - restarting RFD [monit]"
+              echo " - restarting RFD [monit]" | tee -a $GLOBAL_LOGFILE
               /usr/bin/monit restart rfd
             else
-              echo " - restarting RFD [init.d]"
-              /etc/init.d/S61rfd restart | tee -a $GLOBAL_LOGFILE
+              echo " - restarting RFD [init.d]" | tee -a $GLOBAL_LOGFILE
+              /etc/init.d/S61rfd restart
             fi
           fi
         else

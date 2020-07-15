@@ -76,8 +76,8 @@ case "$1" in
         check_rfd
         if [ $RFD -ge 1 ]; then
           /etc/init.d/S61rfd stop | tee -a $GLOBAL_LOGFILE
-		fi
-	    	
+        fi
+
         cd ${ADDON_DIR}
         cp -ar www/* /www/
         chown root:root /www/config/img/devices/250/hb-*
@@ -147,7 +147,7 @@ case "$1" in
         ### Create Symlink to include own js file
         echo "(Re-)Creating symlinks for jp_webui_inc.js..." | tee -a $GLOBAL_LOGFILE
         [[ ! -f /www/webui/js/extern/jp_webui_inc.js ]] && ln -s ${ADDON_DIR}/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
-	    	    
+
         cd ${ADDON_DIR}
         echo "Running scripts..." | tee -a $GLOBAL_LOGFILE
         for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; ./$(basename $f) >> $GLOBAL_LOGFILE 2>>$GLOBAL_ERRFILE; done
@@ -168,7 +168,7 @@ case "$1" in
 
         if [ $RFD -ge 1 ]; then
           /etc/init.d/S61rfd start | tee -a $GLOBAL_LOGFILE
-		fi		    
+        fi
         if [ $REGA -ge 1 ]; then
           /etc/init.d/S70ReGaHss start | tee -a $GLOBAL_LOGFILE
         fi
@@ -181,9 +181,9 @@ case "$1" in
       else
         echo "Checking for subsequent customized firmware files..."
         changed=0
-	
+
         for f in ${ADDON_DIR}${FIRMWARE_DIR}/* ; do
-	      $(cmp -s ${CUSTOMIZED_FIRMWARE_DIR}/$(basename $f) $f)
+          $(cmp -s ${CUSTOMIZED_FIRMWARE_DIR}/$(basename $f) $f)
           rc=$?
           if [ $rc -eq 1 ]; then
             echo "Difference detected for $(basename $f). Copying..."
@@ -217,7 +217,7 @@ case "$1" in
 
     uninstall)
       mount -o remount,rw /
-		
+
       cd ${ADDON_DIR}
       echo "Running scripts..."    
       for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $GLOBAL_LOGFILE 2>$GLOBAL_ERRFILE; done
@@ -252,7 +252,7 @@ case "$1" in
       [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
       [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
       [[ -f ./webui/js/extern/jp_webui_inc.js ]] && rm ./webui/js/extern/jp_webui_inc.js
-  		    		    		
+
       cd /
       rm -rf $ADDON_DIR
       rm -rf $WWW_DIR
@@ -274,7 +274,7 @@ case "$1" in
       #echo "Config-Url: ${CONFIG_URL}"                                                                                                                                                                                                 
       echo "Update: /addons/${ADDON_NAME}/update-check.cgi"
     ;;
-	
+
     *)
       echo "Usage: $ADDON_NAME {start|info|uninstall}" >&2
       exit 1

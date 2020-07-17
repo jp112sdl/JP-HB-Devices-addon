@@ -92,6 +92,10 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
 
   append HTML_PARAMS(separate_1) "<table class=\"ProfileTbl\">"
 
+      append HTML_PARAMS(separate_1) "<tr><td colspan='2'>"
+        append HTML_PARAMS(separate_1) "<div><b>\${stringTableConditionCurrentTitle}</b></div>"
+      append HTML_PARAMS(separate_1) "</td></tr>"
+      
     set prn 1
 
     set param "SENSOR_TYPE"                                                            
@@ -143,8 +147,8 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     append HTML_PARAMS(separate_1) "</tr>"
 
 
-   append HTML_PARAMS(separate_1) "<tr class=\"j_custom j_currentsensor\"><td colspan=\"100%\"><hr/></td></tr>"    
-    
+    append HTML_PARAMS(separate_1) "<tr class=\"j_custom j_currentsensor\"><td colspan=\"100%\"><hr/></td></tr>"    
+     
     incr prn
     set param "COND_TX_THRESHOLD_LO"
     set min [getMinValue ps_descr $param]

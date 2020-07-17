@@ -13,24 +13,43 @@ webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
 webuiSearch="HB_GENERIC|HB_CURRENT"
 sed -i "/\($webuiSearch\)/d" $webuiFile
-webuiSearch="HB_GENERIC|SAMPLE_TIME"
+webuiSearch="HB_SAMPLE_TIME"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_MEASURE_INTERVAL"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_CONDITIONCHECK_AVERAGE"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_CHECK_EACH_MEASURE"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_CHECK_AVERAGE"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="HB_GENERIC|HB_CURRENT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-
-stringtable_deFile="/www/config/stringtable_de.txt"
-stringtable_deSearch="HB_GENERIC|SAMPLE_TIME"
+stringtable_deSearch="HB_SAMPLE_TIME"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-
+stringtable_deSearch="HB_MEASURE_INTERVAL"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_CONDITIONCHECK_AVERAGE"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_CHECK_EACH_MEASURE"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_CHECK_AVERAGE"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHBCurrent"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-
-translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHBSampleTime"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBMeasureInterval"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBConditionCheckAverage"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBCheckEachMeasure"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBCheckAverage"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 rm -f $FIRMWARE_FILE

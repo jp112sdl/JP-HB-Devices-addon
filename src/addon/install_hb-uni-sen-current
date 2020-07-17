@@ -41,8 +41,40 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
-webuiInsertParam="HB_GENERIC|SAMPLE_TIME"
+webuiInsertParam="HB_SAMPLE_TIME"
 webuiInsertValue="stringTableHBSampleTime"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_MEASURE_INTERVAL"
+webuiInsertValue="stringTableHBMeasureInterval"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_CONDITIONCHECK_AVERAGE"
+webuiInsertValue="stringTableHBConditionCheckAverage"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_CHECK_EACH_MEASURE"
+webuiInsertValue="stringTableHBCheckEachMeasure"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_CHECK_AVERAGE"
+webuiInsertValue="stringTableHBCheckAverage"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
@@ -58,8 +90,28 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC|HB_CURRENT"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
-stringtable_deInsert="HB_GENERIC|SAMPLE_TIME\t\${stringTableHBSampleTime}"
-if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC|SAMPLE_TIME"`" ]; then
+stringtable_deInsert="HB_SAMPLE_TIME\t\${stringTableHBSampleTime}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_SAMPLE_TIME"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_MEASURE_INTERVAL\t\${stringTableHBMeasureInterval}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_MEASURE_INTERVAL"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_CONDITIONCHECK_AVERAGE\t\${stringTableHBConditionCheckAverage}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_CONDITIONCHECK_AVERAGE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_CHECK_EACH_MEASURE\t\${stringTableHBCheckEachMeasure}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_CHECK_EACH_MEASURE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_CHECK_AVERAGE\t\${stringTableHBCheckAverage}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_CHECK_AVERAGE"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
@@ -72,7 +124,27 @@ if [ -z "`cat $translate_deFile | grep \"stringTableHBSampleTime\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 
+translate_deInsert="\n    \"stringTableHBMeasureInterval\" : \"Messintervall\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBMeasureInterval\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
 translate_deInsert="\n    \"stringTableHBCurrent\" : \"Stromst%E4rke\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBCurrent\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
+
+translate_deInsert="\n    \"stringTableHBConditionCheckAverage\" : \"Pr%fcfung auf Grenzwerte\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBConditionCheckAverage\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+translate_deInsert="\n    \"stringTableHBCheckEachMeasure\" : \"bei jeder Messung\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBCheckEachMeasure\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBCheckAverage\" : \"Mittelwert\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBCheckAverage\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+

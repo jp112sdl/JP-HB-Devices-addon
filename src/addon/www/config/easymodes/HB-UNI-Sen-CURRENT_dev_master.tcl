@@ -1,6 +1,11 @@
 #!/bin/tclsh
 source [file join /www/config/easymodes/em_common.tcl]
 
+proc getHelpIcon {topic x y} {
+  set ret "<img src=\"/ise/img/help.png\" style=\"cursor: pointer; width:24px; height:24px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '$x', '$y')\">"
+  return $ret
+}
+
 proc getCheckBox {param value prn} {
   set checked ""
   if { $value } then { set checked "checked=\"checked\"" }
@@ -12,6 +17,19 @@ proc getComboBox {arOptions prn param val} {
   upvar $arOptions options
   set s "<select  id=\"separate_DEVICE\_$prn\" name=$param onchange=\"powerSupplyHasChanged(this)\">"
   #set s "<select id=\"separate_DEVICE\_$prn\" name=$param>"
+  foreach value [lsort -real [array names options]] {
+    set selected ""
+    if {$value == $val} {set selected "selected=\"selected\""}
+    append s "<option value=$value $selected>$options($value)</option>"
+  }
+  append s "</select>"
+  return $s
+}
+
+proc getComboBox1 {arOptions prn param val} {
+  upvar $arOptions options
+
+  set s "<select id=\"separate_DEVICE\_$prn\" name=$param>"
   foreach value [lsort -real [array names options]] {
     set selected ""
     if {$value == $val} {set selected "selected=\"selected\""}
@@ -66,22 +84,13 @@ proc displayFields {id mode} {
   puts "</script>"
 }
 
-proc setSelectedPowerSupply {selCase elmID} {
-  puts "<script type=\"text/javasscript\">"
-    puts "var options = \$\$('select#$elmID option');"
-    puts "if \('$selCase' != '1' \) \{"
-
-      #puts "document.getElementById(\"j_lowbat\").style.display = \"inline\";"
-    puts "\} else \{"
-      #puts "document.getElementById(\"j_lowbat\").style.display = \"inline\";"
-    puts "\}"
-
-   puts "options\[$selCase\].selected = true;"
-  puts "</script>"
-}
-
 proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
+  set hlpBoxWidth  350
+  set hlpBoxHeight  70
+
+  puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/js/HB-UNI-Sen-CURRENT_HELP.js')</script>"
   puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/js/HBCurrentSensor.js');</script>"
+  puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/HM_ES_PMSw.js');</script>"
 
   global iface_url psDescr
   
@@ -118,11 +127,37 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     append HTML_PARAMS(separate_1) "<tr class=\"j_custom j_currentsensor\"><td colspan=\"100%\"><hr/></td></tr>"    
 
   incr prn                       
-  set param HBWEA_TRANSMIT_INTERVAL       
+  set param HB_MEASURE_INTERVAL       
   append HTML_PARAMS(separate_1) "<tr>"  
-    append HTML_PARAMS(separate_1) "<td>\${stringTableHbWeaTransmitInterval}</td>"  
+    append HTML_PARAMS(separate_1) "<td>\${stringTableHBMeasureInterval}</td>"  
     append HTML_PARAMS(separate_1) "<td>[getTextField $prn $param $ps($param)]&nbsp;s&nbsp;[getMinMaxValueDescr $param]</td>"  
   append HTML_PARAMS(separate_1) "</tr>"  
+  
+  incr prn                       
+  set param HBWEA_TRANSMIT_INTERVAL       
+  append HTML_PARAMS(separate_1) "<tr>"  
+    append HTML_PARAMS(separate_1) "<td>\${stringTableHbWeaTransmitInterval} alle</td>"  
+    append HTML_PARAMS(separate_1) "<td>[getTextField $prn $param $ps($param)]&nbsp;Messungen&nbsp;[getMinMaxValueDescr $param]</td>"  
+    append HTML_PARAMS(separate_1) "<td>[getHelpIcon $param $hlpBoxWidth $hlpBoxHeight]</td>"
+  append HTML_PARAMS(separate_1) "</tr>"  
+  
+  incr prn                       
+  set param BACKLIGHT_ON_TIME       
+  append HTML_PARAMS(separate_1) "<tr>"  
+    append HTML_PARAMS(separate_1) "<td>\${stringTableDisplayBacklightTime}</td>"  
+    append HTML_PARAMS(separate_1) "<td>[getTextField $prn $param $ps($param)]&nbsp;s&nbsp;[getMinMaxValueDescr $param]</td>"  
+    append HTML_PARAMS(separate_1) "<td>[getHelpIcon $param $hlpBoxWidth $hlpBoxHeight]</td>"
+  append HTML_PARAMS(separate_1) "</tr>"  
+  
+  incr prn                       
+  set param HB_CONDITIONCHECK_AVERAGE
+  append HTML_PARAMS(separate_1) "<tr>"
+    array_clear options
+    set options(0) "\${stringTableHBCheckEachMeasure}"
+    set options(1) "\${stringTableHBCheckAverage}"
+    append HTML_PARAMS(separate_1) "<td>\${stringTableHBConditionCheckAverage}</td>"
+    append HTML_PARAMS(separate_1) "<td>[getComboBox1 options $prn '$param' $ps($param)]</td>"
+  append HTML_PARAMS(separate_1) "</tr>"
   
   append HTML_PARAMS(separate_1) "</table>"
 

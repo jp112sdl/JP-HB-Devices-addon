@@ -22,9 +22,28 @@
       <physical type="integer" interface="config" list="0" index="18" size="1" />
       <conversion type="float_integer_scale" factor="10" />
     </parameter>
+    <parameter id="HB_MEASURE_INTERVAL">                       
+      <logical type="integer" min="5" max="3600" unit="s" default="10" />
+      <physical type="integer" interface="config" list="0" index="31.0" size="2" />
+    </parameter>
     <parameter id="HBWEA_TRANSMIT_INTERVAL">                       
-      <logical type="integer" min="10" max="3600" unit="Sekunden" default="120" />
-      <physical type="integer" interface="config" list="0" index="33.0" size="2" />
+      <logical type="integer" min="1" max="255" unit="Messungen" default="12" />
+      <physical type="integer" interface="config" list="0" index="33.0" size="1" />
+    </parameter>
+    <parameter id="BACKLIGHT_ON_TIME">
+      <logical type="integer" min="0" max="255" default="10" unit="s"/>
+      <physical type="integer" interface="config" list="0" index="14.0" size="1.0"/>
+    </parameter>
+    <parameter id="HB_CONDITIONCHECK_AVERAGE">
+      <logical type="option">
+        <option id="HB_CHECK_EACH_MEASURE" default="true" />
+        <option id="HB_CHECK_AVERAGE" />
+      </logical>
+      <physical type="integer" interface="config" list="0" index="7" size="1" />
+      <conversion type="option_integer">
+        <value_map device_value="0x00" parameter_value="0" />
+        <value_map device_value="0x01" parameter_value="1" />
+      </conversion>
     </parameter>
   </paramset>
   <channels>
@@ -101,7 +120,7 @@
           <physical type="integer" interface="config" list="1" index="133" size="1" />
         </parameter>
         <parameter id="COND_TX_THRESHOLD_LO" operations="read,write">
-          <logical type="float" min="0.00" max="655.2" unit="A" default="0.10" />
+          <logical type="float" min="0.00" max="655.2" unit="A" default="1.00" />
           <physical type="integer" interface="config" list="1" index="139" size="4" />
           <conversion type="float_integer_scale" factor="100" />
         </parameter>

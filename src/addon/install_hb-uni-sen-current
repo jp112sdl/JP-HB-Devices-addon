@@ -81,6 +81,14 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="ERROR=CURRENTSENSOR_FAIL"
+webuiInsertValue="stringTableHBCurrentSensorFailure"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
@@ -115,6 +123,11 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_CHECK_AVERAGE"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
+stringtable_deInsert="ERROR=CURRENTSENSOR_FAIL\t\${stringTableHBCurrentSensorFailure}"
+if [ -z "`cat $stringtable_deFile | grep \"ERROR=CURRENTSENSOR_FAIL"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
 ### Edit translate.lang.stringtable.js ###
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
@@ -145,6 +158,11 @@ fi
 
 translate_deInsert="\n    \"stringTableHBCheckAverage\" : \"Mittelwert\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBCheckAverage\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHBCurrentSensorFailure\" : \"Fehler Stromsensor\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHBCurrentSensorFailure\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

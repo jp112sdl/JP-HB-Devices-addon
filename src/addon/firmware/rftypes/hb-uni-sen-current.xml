@@ -144,6 +144,15 @@
           <event frame="CONDITIONAL_SWITCH_COMMAND" auth_violate_policy="reject" />
         </physical>
        </parameter>
+       <parameter id="ERROR" operations="read,event" ui_flags="service" control="NONE">
+          <logical type="option">
+            <option id="NO_ERROR" index="0" default="true"/>
+            <option id="CURRENTSENSOR_FAIL" index="1"/>
+          </logical>
+          <physical type="integer" interface="command" value_id="ERROR">
+            <event frame="MEASURE_EVENT"/>
+          </physical>
+        </parameter>       
       </paramset>  
       <paramset type="LINK" id="HB-UNI-Sen-CURRENT_link">
        <parameter id="PEER_NEEDS_BURST">
@@ -163,21 +172,27 @@
        <parameter type="integer" index="11.0" size="1.0" param="DECISION_VALUE" />
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="10.0:0.6">
+       <parameter type="integer" index="10.7" size="0.1" param="ERROR" />
        <parameter type="integer" index="11.0" size="2.0" param="HB_CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="13.0:0.6">
+       <parameter type="integer" index="13.7" size="0.1" param="ERROR" />
        <parameter type="integer" index="14.0" size="2.0" param="HB_CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="16.0:0.6">
+       <parameter type="integer" index="16.7" size="0.1" param="ERROR" />
        <parameter type="integer" index="17.0" size="2.0" param="HB_CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="19.0:0.6">
+       <parameter type="integer" index="18.7" size="0.1" param="ERROR" />
        <parameter type="integer" index="19.0" size="2.0" param="HB_CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="22.0:0.6">
+       <parameter type="integer" index="22.7" size="0.1" param="ERROR" />
        <parameter type="integer" index="23.0" size="2.0" param="HB_CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="25.0:0.6">
+       <parameter type="integer" index="25.7" size="0.1" param="ERROR" />
        <parameter type="integer" index="26.0" size="2.0" param="HB_CURRENT"/>
      </frame>
      <frame id="MEASURE_EV_BAT" direction="from_device" event="true" type="0x53" fixed_channel="*">

@@ -80,6 +80,7 @@
       <enforce_link>
         <value id="LCD_SYMBOL" value="5"/>
         <value id="LCD_LEVEL_INTERP" value="3"/>
+        <value id="PEER_NEEDS_BURST" value="true" />
       </enforce_link>
     </channel>
   </channels>

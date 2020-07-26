@@ -33,8 +33,8 @@ fi
 
 webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 
-webuiInsertParam="HB_GENERIC|HB_CURRENT"
-webuiInsertValue="stringTableHBCurrent"
+webuiInsertParam="HB_GENERIC|CURRENT"
+webuiInsertValue="stringTablePowerMeterCurrent"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
@@ -93,8 +93,8 @@ fi
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
-stringtable_deInsert="HB_GENERIC|HB_CURRENT\t\${stringTableHBCurrent}"
-if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC|HB_CURRENT"`" ]; then
+stringtable_deInsert="HB_GENERIC|CURRENT\t\${stringTablePowerMeterCurrent}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC|CURRENT"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
@@ -139,11 +139,6 @@ fi
 
 translate_deInsert="\n    \"stringTableHBMeasureInterval\" : \"Messintervall\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBMeasureInterval\"`" ]; then
-	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
-fi
-
-translate_deInsert="\n    \"stringTableHBCurrent\" : \"Stromst%E4rke\","
-if [ -z "`cat $translate_deFile | grep \"stringTableHBCurrent\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 

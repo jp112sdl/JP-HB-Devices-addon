@@ -131,9 +131,9 @@
       </paramset>
       
       <paramset type="VALUES" id="HB-UNI-Sen-CURRENT_values">
-       <parameter id="HB_CURRENT" operations="read,event" control="NONE">
+       <parameter id="CURRENT" operations="read,event" control="NONE">
          <logical type="float" min="0.0" max="655.25" unit="A"/>
-         <physical type="integer" interface="command" value_id="HB_CURRENT" no_init="true">
+         <physical type="integer" interface="command" value_id="CURRENT" no_init="true">
            <event frame="MEASURE_EVENT"/>
          </physical>
          <conversion type="float_integer_scale" factor="100"/>
@@ -173,27 +173,27 @@
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="10.0:0.6">
        <parameter type="integer" index="10.7" size="0.1" param="ERROR" />
-       <parameter type="integer" index="11.0" size="2.0" param="HB_CURRENT"/>
+       <parameter type="integer" index="11.0" size="2.0" param="CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="13.0:0.6">
        <parameter type="integer" index="13.7" size="0.1" param="ERROR" />
-       <parameter type="integer" index="14.0" size="2.0" param="HB_CURRENT"/>
+       <parameter type="integer" index="14.0" size="2.0" param="CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="16.0:0.6">
        <parameter type="integer" index="16.7" size="0.1" param="ERROR" />
-       <parameter type="integer" index="17.0" size="2.0" param="HB_CURRENT"/>
+       <parameter type="integer" index="17.0" size="2.0" param="CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="19.0:0.6">
        <parameter type="integer" index="18.7" size="0.1" param="ERROR" />
-       <parameter type="integer" index="19.0" size="2.0" param="HB_CURRENT"/>
+       <parameter type="integer" index="19.0" size="2.0" param="CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="22.0:0.6">
        <parameter type="integer" index="22.7" size="0.1" param="ERROR" />
-       <parameter type="integer" index="23.0" size="2.0" param="HB_CURRENT"/>
+       <parameter type="integer" index="23.0" size="2.0" param="CURRENT"/>
      </frame>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="25.0:0.6">
        <parameter type="integer" index="25.7" size="0.1" param="ERROR" />
-       <parameter type="integer" index="26.0" size="2.0" param="HB_CURRENT"/>
+       <parameter type="integer" index="26.0" size="2.0" param="CURRENT"/>
      </frame>
      <frame id="MEASURE_EV_BAT" direction="from_device" event="true" type="0x53" fixed_channel="*">
        <parameter type="integer" index="9.7" size="0.1" param="LOWBAT" />

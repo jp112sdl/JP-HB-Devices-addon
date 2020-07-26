@@ -11,7 +11,7 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
-webuiSearch="HB_GENERIC|HB_CURRENT"
+webuiSearch="HB_GENERIC|CURRENT"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_SAMPLE_TIME"
 sed -i "/\($webuiSearch\)/d" $webuiFile
@@ -27,7 +27,7 @@ webuiSearch="CURRENTSENSOR_FAIL"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
-stringtable_deSearch="HB_GENERIC|HB_CURRENT"
+stringtable_deSearch="HB_GENERIC|CURRENT"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_SAMPLE_TIME"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
@@ -43,8 +43,6 @@ stringtable_deSearch="CURRENTSENSOR_FAIL"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
-translate_deSearch="stringTableHBCurrent"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHBSampleTime"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHBMeasureInterval"

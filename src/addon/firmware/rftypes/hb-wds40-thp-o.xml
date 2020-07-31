@@ -48,7 +48,7 @@
       <paramset type="MASTER" id="ash550_ch_master" />
       <paramset type="VALUES" id="ash550_ch_values">
         <parameter id="TEMPERATURE" operations="read,event">
-          <logical type="float" min="-40.0" max="80.0" unit="C" />
+          <logical type="float" min="-40.0" max="80.0" unit="°C" />
           <physical type="integer" interface="command" value_id="TEMPERATURE">
             <event frame="WEATHER_EVENT" />
           </physical>

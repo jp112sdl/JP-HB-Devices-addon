@@ -1080,6 +1080,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
   set hbDis75BWMainsIdentifier "HB-DIS-EP-75BW-MAINS"
   set hbRc12EpcIdentifier "HB-RC-12-EP-C"
   set hbRc12EpBwIdentifier "HB-RC-12-EP-BW"
+  set hbRc4DisThIdentifier "HB-RC-4-Dis-TH"
   
   if { ! [catch { array set ch_descr [xmlrpc $iface_url($iface) getDeviceDescription [list string $address]] } ] } then {
     set channel_type $ch_descr(TYPE)
@@ -1169,11 +1170,22 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
       "STRING" {
         # Prüfen, ob es sich um einen Text-Parameter des Gerätes vom Typ 'HM Wireless Status Display' handelt.
         # In diesem Fall wird dem Texteingabefeld eine fortlaufende Nr. vorangestellt.
-        if {$param_id != "TEXTLINE_1" && $param_id != "TEXTLINE_2" && $param_id != "HBTEXTLINE_1" && $param_id != "HBTEXTLINE_2" && $param_id != "HBTEXTLINE_3" && $param_id != "HBTEXTLINE_4"} {
+        if {$param_id != "TEXTLINE_1" && $param_id != "TEXTLINE_2" && $param_id != "HBTEXTLINE_1" && $param_id != "HBTEXTLINE_2" && $param_id != "HBTEXTLINE_3" && $param_id != "HBTEXTLINE_4" && $param_id != "HBTEXTLINE_UPPER" && $param_id != "HBTEXTLINE_LOWER" && $param_id != "HB_HEADERLINE"} {
           append s "<td><input type=\"text\" name=\"$param_id\" value=\"$value\" $id $access /></td>"
         } else {
           puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/KEY_4Dis.js');</script>"
           set helpText [getStatusDisplayHelp]
+          if {($parent_type == $hbRc4DisThIdentifier)} then {
+            if {$param_id == "HB_HEADERLINE"} {
+              append s "<td><input type=\"text\" name=\"$param_id\" maxlength=\"10\" onblur=\"encodeStringStatusDisplay('$idval', true);\" value=\"$value\" $id $access /></td>"
+            }
+            if {$param_id == "HBTEXTLINE_UPPER"} {
+              append s "<td><input type=\"text\" name=\"$param_id\" maxlength=\"10\" onblur=\"encodeStringStatusDisplay('$idval', true);\" value=\"$value\" $id $access /></td>"
+            }
+            if {$param_id == "HBTEXTLINE_LOWER"} {
+              append s "<td><input type=\"text\" name=\"$param_id\" maxlength=\"10\" onblur=\"encodeStringStatusDisplay('$idval', true);\" value=\"$value\" $id $access /></td>"
+            }
+          } else {
           if {($parent_type == $hbRc12EpcIdentifier) || ($parent_type == $hbRc12EpBwIdentifier)} then {
             if {$param_id == "TEXTLINE_1"} {
               append s "<td><input type=\"text\" name=\"$param_id\" maxlength=\"10\" onblur=\"encodeStringStatusDisplay('$idval', true);\" value=\"$value\" $id $access /></td>"
@@ -1234,6 +1246,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
               append s "<td><img src=\"/ise/img/help.png\"/ size=\"24\" width=\"24\" onclick=\"MessageBox.show(translateKey('dialogHelpTitle'), '$helpText', '', 450, 375) ;\"></td>"
             }
           }
+        }
         }
           }
          }

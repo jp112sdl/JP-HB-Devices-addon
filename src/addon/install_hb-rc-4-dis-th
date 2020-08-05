@@ -29,8 +29,26 @@ if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($webuiSearchBe
 
 webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 
-webuiInsertParam="HB_DISPLAYTIMEOUT"
+webuiInsertParam="HB_DISPLAY_TIMEOUT"
 webuiInsertValue="stringTableHbDisplayTimeout"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
+
+webuiInsertParam="HB_DEFAULT_DISPLAY_MODE"
+webuiInsertValue="stringTableHbDefaultDisplayMode"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
+
+webuiInsertParam="HB_TEMP_AND_HUMIDITY"
+webuiInsertValue="stringTableHbTempAndHumidity"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
+
+webuiInsertParam="HB_TEMP_ONLY"
+webuiInsertValue="stringTableHbTempOnly"
 webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
@@ -71,6 +89,12 @@ translate_deSearch="\"dummy\" : \"\","
 
 translate_deInsert="\n    \"stringTableHbDisplayTimeout\" : \"Display Timeout\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbDisplayTimeout\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+translate_deInsert="\n    \"stringTableHbDefaultDisplayMode\" : \"Standard-Anzeige\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbDefaultDisplayMode\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+translate_deInsert="\n    \"stringTableHbTempAndHumidity\" : \"Temperatur und Luftfeuchte\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbTempAndHumidity\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+translate_deInsert="\n    \"stringTableHbTempOnly\" : \"Temperatur\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbTempOnly\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbTextLineUpper\" : \"obere Textzeile\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbTextLineUpper\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbTextLineLower\" : \"untere Textzeile\","

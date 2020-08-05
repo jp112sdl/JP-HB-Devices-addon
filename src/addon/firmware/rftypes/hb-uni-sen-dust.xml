@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<device version="2" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" cyclic_timeout="3600">
+  <supported_types>
+    <type name="HB-UNI-Sen-DUST" id="HB-UNI-Sen-DUST" updatable="true">
+      <parameter index="10.0" size="2.0" const_value="0xF314" />
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="hm_uni_sen_dev_master">
+    <parameter id="HBWEA_TRANSMIT_INTERVAL">                       
+      <logical type="integer" min="30" max="3000" unit="Sekunden" default="300" />
+      <physical type="integer" interface="config" list="0" index="32.0" size="2" />
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master"></paramset>
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UNREACH" />
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH" />
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="LOWBAT" />
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_PEER" />
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
+        </parameter>                                           
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="1" type="HB_GENERIC_DUST" count_from_sysinfo="23.0:0.3">
+      <paramset type="MASTER" id="hb_dust_master" />
+       <paramset type="VALUES" id="hb_dust_values">
+         <parameter id="HB_PM25" operations="read,event">
+            <logical type="float" min="0.0" max="10000.0" unit="µg/m³" />
+            <physical type="integer" interface="command" value_id="HB_PM25">
+            <event frame="MEASURE_EVENT"/>
+            </physical>
+            <conversion type="float_integer_scale" factor="10"/>
+         </parameter>    
+         <parameter id="HB_PM10" operations="read,event">
+            <logical type="float" min="0.0" max="10000.0" unit="µg/m³" />
+            <physical type="integer" interface="command" value_id="HB_PM10">
+            <event frame="MEASURE_EVENT"/>
+            </physical>
+            <conversion type="float_integer_scale" factor="10"/>
+         </parameter>
+         <parameter id="ERROR" operations="read,event" ui_flags="service" control="NONE">
+          <logical type="option">
+           <option id="NO_ERROR" default="true" index="0" />
+           <option id="ERR_SENSOR_NOT_AVAILABLE" index="1" />
+           <option id="ERR_INVALID_CHECKSUM" index="2" />
+           <option id="ERR_INVALID_RESPONSE_ID" index="3" />
+           <option id="ERR_INVALID_HEAD" index="4" />
+           <option id="ERR_INVALID_TAIL" index="5" />
+          </logical>
+          <physical type="integer" interface="command" value_id="ERROR" no_init="true">
+            <event frame="MEASURE_EVENT" />
+          </physical>
+         </parameter>
+       </paramset>
+       <paramset type="LINK" id="hb_dust_link" />
+      </channel>
+   </channels>
+   <frames>
+     <frame id="MEASURE_EVENT" direction="from_device" event="true" channel_field="9" type="0x53">
+      <parameter type="integer" index="10.0" size="2.0" param="HB_PM25" />
+      <parameter type="integer" index="12.0" size="2.0" param="HB_PM10" />
+      <parameter type="integer" index="14.0" size="1.0" param="ERROR" />
+     </frame>  
+   </frames>
+  <paramset_defs />
+</device>

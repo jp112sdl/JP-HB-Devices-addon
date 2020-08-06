@@ -11,11 +11,21 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
+webuiSearch="HB_READ_RETRY_COUNT"
+sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
-stringtable_deSearch="HB_GENERIC_DUST|HB_PM25"
+stringtable_deSearch="HB_GENERIC_DUST|HB_PM25_AVG"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-stringtable_deSearch="HB_GENERIC_DUST|HB_PM10"
+stringtable_deSearch="HB_GENERIC_DUST|HB_PM10_AVG"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_GENERIC_DUST|HB_PM25_MAX"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_GENERIC_DUST|HB_PM10_MAX"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_GENERIC_DUST|HB_PM25_MIN"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_GENERIC_DUST|HB_PM10_MIN"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_GENERIC_DUST|ERROR=ERR_SENSOR_NOT_AVAILABLE"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
@@ -29,9 +39,17 @@ stringtable_deSearch="HB_GENERIC_DUST|ERROR=ERR_INVALID_TAIL"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
-translate_deSearch="stringTableHbDustPm25"
+translate_deSearch="stringTableHbDustPm25Avg"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-translate_deSearch="stringTableHbDustPm10"
+translate_deSearch="stringTableHbDustPm10Avg"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbDustPm25Max"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbDustPm10Max"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbDustPm25Min"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbDustPm10Min"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHBSensorNotAvailable"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
@@ -42,6 +60,8 @@ sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHBInvalidHead"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHBInvalidTail"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbReadRetryCount"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 rm -f $FIRMWARE_FILE

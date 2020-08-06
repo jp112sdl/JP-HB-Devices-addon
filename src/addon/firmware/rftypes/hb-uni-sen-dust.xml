@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <device version="2" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" cyclic_timeout="3600">
   <supported_types>
-    <type name="HB-UNI-Sen-DUST" id="HB-UNI-Sen-DUST" updatable="true">
+    <type name="Nova Fitness SDS011 dust sensor" id="HB-UNI-Sen-DUST" updatable="true">
       <parameter index="10.0" size="2.0" const_value="0xF314" />
     </type>
   </supported_types>
   <paramset type="MASTER" id="hm_uni_sen_dev_master">
     <parameter id="HBWEA_TRANSMIT_INTERVAL">                       
       <logical type="integer" min="30" max="3000" unit="Sekunden" default="300" />
-      <physical type="integer" interface="config" list="0" index="32.0" size="2" />
+      <physical type="integer" interface="config" list="0" index="33.0" size="2" />
     </parameter>
   </paramset>
   <channels>
@@ -50,18 +50,55 @@
       </paramset>
     </channel>
     <channel autoregister="true" index="1" type="HB_GENERIC_DUST" count_from_sysinfo="23.0:0.3">
-      <paramset type="MASTER" id="hb_dust_master" />
+      <paramset type="MASTER" id="hb_dust_master">
+       <parameter id="HB_MEASURE_INTERVAL">                       
+        <logical type="integer" min="10" max="300" unit="s" default="30" />
+        <physical type="integer" interface="config" list="1" index="31.0" size="2" />
+       </parameter>
+       <parameter id="HB_READ_RETRY_COUNT">                       
+        <logical type="integer" min="0" max="6" unit="s" default="3" />
+        <physical type="integer" interface="config" list="1" index="30.0" size="1" />
+       </parameter>
+      </paramset>
        <paramset type="VALUES" id="hb_dust_values">
-         <parameter id="HB_PM25" operations="read,event">
+         <parameter id="HB_PM25_AVG" operations="read,event">
             <logical type="float" min="0.0" max="10000.0" unit="µg/m³" />
-            <physical type="integer" interface="command" value_id="HB_PM25">
+            <physical type="integer" interface="command" value_id="HB_PM25_AVG">
             <event frame="MEASURE_EVENT"/>
             </physical>
             <conversion type="float_integer_scale" factor="10"/>
          </parameter>    
-         <parameter id="HB_PM10" operations="read,event">
+         <parameter id="HB_PM10_AVG" operations="read,event">
             <logical type="float" min="0.0" max="10000.0" unit="µg/m³" />
-            <physical type="integer" interface="command" value_id="HB_PM10">
+            <physical type="integer" interface="command" value_id="HB_PM10_AVG">
+            <event frame="MEASURE_EVENT"/>
+            </physical>
+            <conversion type="float_integer_scale" factor="10"/>
+         </parameter>
+         <parameter id="HB_PM25_MAX" operations="read,event">
+            <logical type="float" min="0.0" max="10000.0" unit="µg/m³" />
+            <physical type="integer" interface="command" value_id="HB_PM25_MAX">
+            <event frame="MEASURE_EVENT"/>
+            </physical>
+            <conversion type="float_integer_scale" factor="10"/>
+         </parameter>    
+         <parameter id="HB_PM10_MAX" operations="read,event">
+            <logical type="float" min="0.0" max="10000.0" unit="µg/m³" />
+            <physical type="integer" interface="command" value_id="HB_PM10_MAX">
+            <event frame="MEASURE_EVENT"/>
+            </physical>
+            <conversion type="float_integer_scale" factor="10"/>
+         </parameter>
+         <parameter id="HB_PM25_MIN" operations="read,event">
+            <logical type="float" min="0.0" max="10000.0" unit="µg/m³" />
+            <physical type="integer" interface="command" value_id="HB_PM25_MIN">
+            <event frame="MEASURE_EVENT"/>
+            </physical>
+            <conversion type="float_integer_scale" factor="10"/>
+         </parameter>    
+         <parameter id="HB_PM10_MIN" operations="read,event">
+            <logical type="float" min="0.0" max="10000.0" unit="µg/m³" />
+            <physical type="integer" interface="command" value_id="HB_PM10_MIN">
             <event frame="MEASURE_EVENT"/>
             </physical>
             <conversion type="float_integer_scale" factor="10"/>
@@ -85,9 +122,13 @@
    </channels>
    <frames>
      <frame id="MEASURE_EVENT" direction="from_device" event="true" channel_field="9" type="0x53">
-      <parameter type="integer" index="10.0" size="2.0" param="HB_PM25" />
-      <parameter type="integer" index="12.0" size="2.0" param="HB_PM10" />
-      <parameter type="integer" index="14.0" size="1.0" param="ERROR" />
+      <parameter type="integer" index="10.0" size="1.0" param="ERROR" />
+      <parameter type="integer" index="11.0" size="2.0" param="HB_PM25_AVG" />
+      <parameter type="integer" index="13.0" size="2.0" param="HB_PM10_AVG" />
+      <parameter type="integer" index="15.0" size="2.0" param="HB_PM25_MAX" />
+      <parameter type="integer" index="17.0" size="2.0" param="HB_PM10_MAX" />
+      <parameter type="integer" index="19.0" size="2.0" param="HB_PM25_MIN" />
+      <parameter type="integer" index="21.0" size="2.0" param="HB_PM10_MIN" />
      </frame>  
    </frames>
   <paramset_defs />

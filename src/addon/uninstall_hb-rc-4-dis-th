@@ -11,6 +11,7 @@ devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/c
 webuiFile="/www/webui/webui.js"; sed -i "/\($DEVICE\)/d" $webuiFile
 
 webuiSearch="HB_DEFAULT_DISPLAY_MODE"; sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_DISPLAY_HALF_DEGREE"; sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_TEMP_AND_HUMIDITY"; sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_TEMP_ONLY"; sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_DISPLAY_TIMEOUT"; sed -i "/\($webuiSearch\)/d" $webuiFile
@@ -22,6 +23,7 @@ webuiSearch="HB_HUMIDITY_OFFSET"; sed -i "/\($webuiSearch\)/d" $webuiFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbDisplayTimeout"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbDisplayHalfDegree"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbTempAndHumidity"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbTempOnly"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbDefaultDisplayMode"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile

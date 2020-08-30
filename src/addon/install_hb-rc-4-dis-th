@@ -41,6 +41,12 @@ webuiInsert="\n"
 webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
 if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
 
+webuiInsertParam="HB_DISPLAY_HALF_DEGREE"
+webuiInsertValue="stringTableHbDisplayHalfDegree"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile; fi
+
 webuiInsertParam="HB_TEMP_AND_HUMIDITY"
 webuiInsertValue="stringTableHbTempAndHumidity"
 webuiInsert="\n"
@@ -91,6 +97,8 @@ translate_deInsert="\n    \"stringTableHbDisplayTimeout\" : \"Display Timeout\",
 if [ -z "`cat $translate_deFile | grep \"stringTableHbDisplayTimeout\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbDefaultDisplayMode\" : \"Standard-Anzeige\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbDefaultDisplayMode\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+translate_deInsert="\n    \"stringTableHbDisplayHalfDegree\" : \"Temperatur-Anzeige in 0.5%b0C Schritten\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbDisplayHalfDegree\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbTempAndHumidity\" : \"Temperatur und Luftfeuchte\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbTempAndHumidity\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbTempOnly\" : \"Temperatur\","

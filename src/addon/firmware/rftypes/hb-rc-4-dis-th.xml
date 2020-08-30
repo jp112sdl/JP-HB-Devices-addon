@@ -17,11 +17,15 @@
         <option id="HB_TEMP_AND_HUMIDITY" default="true"/>
         <option id="HB_TEMP_ONLY"/>
       </logical>
-      <physical type="integer" interface="config" list="0" index="3" size="1"/>
+      <physical type="integer" interface="config" list="0" index="3.0" size="0.3"/>
       <conversion type="integer_integer_map">
         <value_map device_value="0x00" parameter_value="0"/>
         <value_map device_value="0x01" parameter_value="1"/>
       </conversion>
+    </parameter>
+    <parameter id="HB_DISPLAY_HALF_DEGREE">
+      <logical type="boolean" default="false" />
+      <physical type="integer" interface="config" list="0" index="3.3" size="0.1" />
     </parameter>
     <parameter id="HB_DISPLAY_TIMEOUT">
       <logical type="integer" min="1" max="255" default="10" unit="s"/>

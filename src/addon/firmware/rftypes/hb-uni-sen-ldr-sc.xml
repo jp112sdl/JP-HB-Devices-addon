@@ -115,7 +115,6 @@
       </paramset>
       <paramset type="VALUES" id="sc_ch_values">
         <parameter id="STATE" operations="read,event" control="LDRSC.STATE">
-        
           <logical type="option">
             <option id="LDROFF" default="true"/>
             <option id="LDRON"/>

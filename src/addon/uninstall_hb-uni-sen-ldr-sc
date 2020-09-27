@@ -28,6 +28,8 @@ webuiSearch="HB_LDRSC|STATE=LDROFF"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_LDRSC|STATE=LDRON"
 sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_LDRSC|LDR_THRESHOLD"
+sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 
@@ -46,6 +48,8 @@ sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_LDRSC|STATE=LDRON"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_LDRSC|STATE=LDROFF"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_LDRSC|LDR_THRESHOLD"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"

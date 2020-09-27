@@ -21,7 +21,7 @@ function ::CreateLDRSC()
         WriteLine("</div>");
       WriteLine("</td>");
     WriteLine("</tr>");
-    WriteLine("<tr><td id='"#chnId#"txtClosed' class='j_translate' >${stringTableMsgPosLdrOn}</td></tr>");
+    WriteLine("<tr><td id='"#chnId#"txtClosed' class='j_translate' >${stringTableMsgPosLdrOff}</td></tr>");
     WriteLine("</table>");
   WriteLine("</td>");
   WriteLine("<td></td><td></td><td></td>");

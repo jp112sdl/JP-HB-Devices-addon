@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<device version="1" rx_modes="CONFIG,WAKEUP,LAZY_CONFIG" peering_sysinfo_expect_channel="false" supports_aes="true">
+  <supported_types>
+    <type name="HB RemoteControl with Display and Temperature measurement (LiPo)" id="HB-RC-4-Dis-TH-CRG" priority="2">
+      <parameter index="9.0" size="1.0" cond_op="E" const_value="0x10"/>
+      <parameter index="10.0" size="2.0" const_value="0xf32e"/>
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="remote_dev_master">
+    <parameter id="LOW_BAT_LIMIT">
+      <logical type="float" min="1.0" max="5.0" default="3.4" unit="V"/>
+      <physical type="integer" interface="config" list="0" index="18" size="1"/>
+      <conversion type="float_integer_scale" factor="10"/>
+    </parameter>
+    <parameter id="HB_DEFAULT_DISPLAY_MODE">
+      <logical type="option">
+        <option id="HB_TEMP_AND_HUMIDITY" default="true"/>
+        <option id="HB_TEMP_ONLY"/>
+      </logical>
+      <physical type="integer" interface="config" list="0" index="3.0" size="0.3"/>
+      <conversion type="integer_integer_map">
+        <value_map device_value="0x00" parameter_value="0"/>
+        <value_map device_value="0x01" parameter_value="1"/>
+      </conversion>
+    </parameter>
+    <parameter id="HB_DISPLAY_HALF_DEGREE">
+      <logical type="boolean" default="false" />
+      <physical type="integer" interface="config" list="0" index="3.3" size="0.1" />
+    </parameter>
+    <parameter id="HB_DISPLAY_TIMEOUT">
+      <logical type="integer" min="1" max="255" default="10" unit="s"/>
+      <physical type="integer" interface="config" list="0" index="14.0" size="1.0"/>
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master"/>
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="UNREACH"/>
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH"/>
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING"/>
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="LOWBAT"/>
+        </parameter>
+        <parameter id="AES_KEY" operations="read" ui_flags="invisible">
+          <logical type="integer" min="0" max="127"/>
+          <physical type="integer" interface="internal" value_id="AES_KEY"/>
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer"/>
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE"/>
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer"/>
+          <physical type="integer" interface="internal" value_id="RSSI_PEER"/>
+        </parameter>
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="1" type="KEY" count="4" pair_function="BA" function="A" paired="true" aes_default="false">
+      <link_roles>
+        <source name="SWITCH"/>
+        <source name="KEYMATIC"/>
+        <source name="WINMATIC"/>
+        <source name="REMOTECONTROL_RECEIVER"/>
+      </link_roles>
+      <paramset type="MASTER" id="remote_ch_master">
+        <subset ref="key_paramset"/>
+      </paramset>
+      <paramset type="VALUES" id="remote_ch_values">
+        <subset ref="key_valueset"/>
+      </paramset>
+      <paramset type="LINK" id="remote_ch_link">
+        <subset ref="key_linkset"/>
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="5" type="WEATHER" count="1">
+      <link_roles>
+        <source name="WEATHER_TH" />
+      </link_roles>
+      <paramset type="MASTER" id="ash550_ch_master" >
+       <parameter id="HBWEA_TRANSMIT_INTERVAL">
+        <logical type="integer" min="10" max="3600" default="60" unit="s" />
+        <physical type="integer" interface="config" list="1" index="32" size="2" />
+       </parameter>
+       <parameter id="TEMPERATURE_OFFSET">                                
+        <logical type="float" min="-5.0" max="5.0" unit="K" default="0"/>                      
+        <physical type="integer" signed="true" interface="config" list="1" index="1" size="1"/>
+        <conversion type="float_integer_scale" factor="10"/>                                
+       </parameter>    
+       <parameter id="HB_HUMIDITY_OFFSET">                                
+        <logical type="integer" min="-5" max="5" unit="%" default="0"/>                      
+        <physical type="integer" signed="true" interface="config" list="1" index="2" size="1"/>
+       </parameter>                                                                  
+      </paramset>
+      <paramset type="VALUES" id="ash550_ch_values">
+        <parameter id="TEMPERATURE" operations="read,event">
+          <logical type="float" min="-40.0" max="80.0" unit="°C" />
+          <physical type="integer" interface="command" value_id="TEMPERATURE">
+            <event frame="WEATHER_EVENT" />
+          </physical>
+          <conversion type="float_integer_scale" factor="10.0" />
+          <description>
+            <field id="AutoconfRoles" value="WEATHER" />
+          </description>
+        </parameter>
+        <parameter id="HUMIDITY" operations="read,event">
+          <logical type="integer" min="0" max="99" unit="%" />
+          <physical type="integer" interface="command" value_id="HUMIDITY">
+            <event frame="WEATHER_EVENT" />
+          </physical>
+          <description>
+            <field id="AutoconfRoles" value="WEATHER" />
+          </description>
+        </parameter>
+        <parameter id="BATTERY_VOLTAGE" operations="read,event" control="NONE">
+          <logical type="float" min="0.0" max="25.5" unit="V"/>
+          <physical type="integer" interface="command" value_id="BATTERY_VOLTAGE" no_init="true">
+             <event frame="WEATHER_EVENT"/>
+          </physical>
+          <conversion type="float_integer_scale" factor="10"/>
+        </parameter>        
+      </paramset>
+      <paramset type="LINK" id="ash550_ch_link" />
+    </channel>
+    <channel autoregister="true" index="6" type="HB_CRGSC" count="1" aes_default="false">
+      <link_roles>
+        <source name="SWITCH" />
+      </link_roles>
+      <paramset type="MASTER" id="sc_ch_master">
+        <parameter id="MSG_FOR_POS_A">
+          <logical type="option">
+            <option id="NO_MSG" />
+            <option id="CRGOFF" default="true" />
+            <option id="CRGON" />
+          </logical>
+          <physical type="integer" interface="config" list="1" index="32.6" size="0.2" />
+        </parameter>
+        <parameter id="MSG_FOR_POS_B">
+          <logical type="option">
+            <option id="NO_MSG" />
+            <option id="CRGOFF" />
+            <option id="CRGON" default="true" />
+          </logical>
+          <physical type="integer" interface="config" list="1" index="32.4" size="0.2" />
+        </parameter>
+        <parameter id="AES_ACTIVE" ui_flags="internal">
+          <logical type="boolean" default="false" />
+          <physical type="boolean" interface="internal" value_id="AES" />
+        </parameter>
+        <parameter id="EVENT_DELAYTIME">
+          <logical type="float" min="0.0" max="7620.0" unit="s" default="0.0" />
+          <physical type="integer" interface="config" list="1" index="33" size="1" />
+          <conversion type="float_configtime" factors="1,60" value_size="0.7" />
+        </parameter>
+        <parameter id="LED_ONTIME">
+          <logical type="float" min="0.0" max="1.275" unit="s" default="0.5" />
+          <physical type="integer" interface="config" list="1" index="34" size="1" />
+          <conversion type="float_integer_scale" factor="200" />
+        </parameter>
+        <parameter id="TRANSMIT_TRY_MAX">
+          <logical type="integer" min="1.0" max="10.0" default="6.0" />
+          <physical type="integer" interface="config" list="1" index="48" size="1" />
+        </parameter>
+      </paramset>
+      <paramset type="VALUES" id="sc_ch_values">
+        <parameter id="STATE" operations="read,event" control="CRGSC.STATE">
+          <logical type="option">
+            <option id="CRGOFF" default="true"/>
+            <option id="CRGON"/>
+          </logical>
+          <physical type="integer" interface="command" value_id="STATE">
+            <event frame="EVENT" auth_violate_policy="reject" />
+            <event frame="INFO_LEVEL" auth_violate_policy="reject" />
+            <event frame="ACK_STATUS" auth_violate_policy="reject" />
+          </physical>
+          <conversion type="option_integer">
+            <value_map device_value="0" parameter_value="0"/>
+            <value_map device_value="200" parameter_value="1"/>
+          </conversion>
+        </parameter>
+        <parameter id="ERROR" operations="read,event" ui_flags="service" control="NONE">
+          <logical type="option">
+            <option id="NO_ERROR" index="0" default="true" />
+          </logical>
+          <physical type="integer" interface="command" value_id="ERROR">
+            <event frame="INFO_LEVEL" />
+            <event frame="ACK_STATUS" />
+          </physical>
+        </parameter>
+        <parameter id="INSTALL_TEST" operations="event" ui_flags="internal">
+          <logical type="action" />
+          <physical type="integer" interface="command" value_id="INSTALL_TEST_VALUE">
+            <event frame="EVENT" />
+            <event frame="BROADCAST_EVEN" />
+          </physical>
+        </parameter>
+      </paramset>
+      <paramset type="LINK" id="sc_ch_link">
+        <parameter id="PEER_NEEDS_BURST">
+          <logical type="boolean" default="false" />
+          <physical type="integer" interface="config" list="4" index="1.0" size="0.1" />
+        </parameter>
+        <parameter id="EXPECT_AES">
+          <logical type="boolean" default="false" />
+          <physical type="integer" interface="config" list="4" index="1.7" size="0.1" />
+        </parameter>
+        <enforce id="EXPECT_AES" value="$PEER.AES" />
+      </paramset>
+      <enforce_link>
+        <value id="LONG_ACTION_TYPE" value="0" />
+        <value id="SHORT_CT_RAMPOFF" value="0" />
+        <value id="SHORT_CT_RAMPON" value="2" />
+        <value id="SHORT_CT_OFFDELAY" value="0" />
+        <value id="SHORT_CT_OFFDELAY_SIRARM" value="2" />
+        <value id="SHORT_CT_ONDELAY" value="2" />
+        <value id="SHORT_CT_ONDELAY_SIRARM" value="0" />
+        <value id="SHORT_CT_OFF" value="0" />
+        <value id="SHORT_CT_OFF_SIRARM" value="2" />
+        <value id="SHORT_CT_ON" value="2" />
+        <value id="SHORT_CT_ON_SIRARM" value="0" />
+        <value id="SHORT_COND_VALUE_LO" value="50" />
+        <value id="SHORT_COND_VALUE_HI" value="180" />
+        <value id="SHORT_ACTION_TYPE" value="1" />
+        <value id="SHORT_JT_OFF" value="1" />
+        <value id="SHORT_JT_ON" value="4" />
+        <value id="SHORT_JT_OFFDELAY" value="2" />
+        <value id="SHORT_JT_ONDELAY" value="4" />
+        <value id="SHORT_JT_RAMPOFF" value="2" />
+        <value id="SHORT_JT_RAMPON" value="4" />
+      </enforce_link>
+    </channel>
+  </channels>
+  <frames>
+    <frame id="WEATHER_EVENT" direction="from_device" event="true" fixed_channel="5" type="0x70">
+      <parameter type="integer" signed="true" index="9.0" size="1.7" param="TEMPERATURE" />
+      <parameter type="integer" index="11.0" size="1.0" param="HUMIDITY" />
+      <parameter type="integer" index="12.0" size="1.0" param="BATTERY_VOLTAGE"/>
+    </frame>
+    <frame id="KEY_EVENT_SHORT" direction="from_device" allowed_receivers="CENTRAL,BROADCAST,OTHER" event="true" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="0"/>
+      <parameter type="integer" index="10.0" size="1.0" param="COUNTER"/>
+      <parameter type="integer" index="10.0" size="1.0" param="TEST_COUNTER"/>
+    </frame>
+    <frame id="KEY_EVENT_LONG" direction="from_device" allowed_receivers="CENTRAL,BROADCAST,OTHER" event="true" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="1"/>
+      <parameter type="integer" index="10.0" size="1.0" param="COUNTER"/>
+      <parameter type="integer" index="10.0" size="1.0" param="TEST_COUNTER"/>
+    </frame>
+    <frame id="KEY_EVENT_LONG_BIDI" direction="from_device" allowed_receivers="CENTRAL,BROADCAST,OTHER" event="true" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="1.5" size="0.1" const_value="1"/>
+      <parameter type="integer" index="9.6" size="0.1" const_value="1"/>
+      <parameter type="integer" index="10.0" size="1.0" param="COUNTER"/>
+      <parameter type="integer" index="10.0" size="1.0" param="TEST_COUNTER"/>
+    </frame>
+    <frame id="KEY_SIM_SHORT" direction="from_device" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="0"/>
+      <parameter type="integer" index="9.7" size="0.1" const_value="0"/>
+      <parameter type="integer" index="10.0" size="1.0" param="SIM_COUNTER"/>
+    </frame>
+    <frame id="KEY_SIM_LONG" direction="from_device" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="1"/>
+      <parameter type="integer" index="9.7" size="0.1" const_value="0"/>
+      <parameter type="integer" index="10.0" size="1.0" param="SIM_COUNTER"/>
+    </frame>
+    <frame id="EVENT" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x41" channel_field="9:0.6">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
+      <parameter type="integer" index="9.7" size="0.1" param="LOWBAT"/>
+    </frame>
+    <frame id="INFO_LEVEL" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
+      <parameter type="integer" index="12.1" size="0.3" param="ERROR"/>
+      <parameter type="integer" index="12.7" size="0.1" param="LOWBAT"/>
+    </frame>
+    <frame id="ACK_STATUS" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x02" subtype="1" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
+      <parameter type="integer" index="12.1" size="0.3" param="ERROR"/>
+      <parameter type="integer" index="12.7" size="0.1" param="LOWBAT"/>
+    </frame>
+  </frames>
+  <paramset_defs>
+    <paramset id="key_valueset">
+      <parameter id="PRESS_SHORT" operations="write,event" loopback="true" control="BUTTON.SHORT" burst_suppression="0">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="COUNTER">
+          <event frame="KEY_EVENT_SHORT" auth_violate_policy="reject"/>
+          <set request="KEY_SIM_SHORT"/>
+        </physical>
+        <conversion type="action_key_counter" sim_counter="SIM_COUNTER"/>
+      </parameter>
+      <parameter id="PRESS_LONG" operations="write,event" loopback="true" control="BUTTON.LONG">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="COUNTER">
+          <event frame="KEY_EVENT_LONG" auth_violate_policy="reject"/>
+          <set request="KEY_SIM_LONG"/>
+        </physical>
+        <conversion type="action_key_counter" sim_counter="SIM_COUNTER"/>
+      </parameter>
+      <parameter id="PRESS_LONG_RELEASE" operations="event" ui_flags="internal" burst_suppression="0">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="COUNTER">
+          <event frame="KEY_EVENT_LONG_BIDI" auth_violate_policy="reject"/>
+        </physical>
+      </parameter>
+      <parameter id="PRESS_CONT" operations="event" ui_flags="internal" burst_suppression="0">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="COUNTER">
+          <event frame="KEY_EVENT_LONG" auth_violate_policy="reject"/>
+        </physical>
+        <conversion type="action_key_same_counter" sim_counter="SIM_CONT_COUNTER"/>
+      </parameter>
+      <parameter id="INSTALL_TEST" operations="event" ui_flags="internal">
+        <logical type="action"/>
+        <physical type="integer" interface="command" value_id="TEST_COUNTER">
+          <event frame="KEY_EVENT_SHORT"/>
+          <event frame="KEY_EVENT_LONG"/>
+        </physical>
+      </parameter>
+    </paramset>
+    <paramset id="key_paramset">
+      <parameter id="LONG_PRESS_TIME">
+        <logical type="float" min="0.3" max="1.8" default="0.4" unit="s"/>
+        <physical type="integer" interface="config" list="1" index="4.4" size="0.4"/>
+        <conversion type="float_integer_scale" factor="10" offset="-0.3"/>
+      </parameter>
+      <parameter id="DBL_PRESS_TIME">
+        <logical type="float" min="0.0" max="1.5" default="0.0" unit="s"/>
+        <physical type="integer" interface="config" list="1" index="9.0" size="0.4"/>
+        <conversion type="float_integer_scale" factor="10" offset="0.0"/>
+      </parameter>
+      <parameter id="AES_ACTIVE" ui_flags="internal">
+        <logical type="boolean" default="false"/>
+        <physical type="boolean" interface="internal" value_id="AES"/>
+      </parameter>      
+      <parameter id="HB_EP_SHOW_HEADER">
+        <logical type="boolean" default="false"/>
+        <physical type="integer" interface="config" list="1" index="144.0" size="0.1"/>
+      </parameter>
+      <parameter id="HB_HEADERLINE">
+        <logical type="string"/>
+        <physical type="string" interface="config_string" list="1" index="54" size="10"/>
+      </parameter>
+      <parameter id="HBTEXTLINE_UPPER">
+        <logical type="string"/>
+        <physical type="string" interface="config_string" list="1" index="70" size="10"/>
+      </parameter>
+      <parameter id="HBTEXTLINE_LOWER">
+        <logical type="string"/>
+        <physical type="string" interface="config_string" list="1" index="86" size="10"/>
+      </parameter>
+    </paramset>
+    <paramset id="key_linkset">
+      <parameter id="PEER_NEEDS_BURST">
+        <logical type="boolean" default="false"/>
+        <physical type="integer" interface="config" list="4" index="1.0" size="0.1"/>
+      </parameter>
+      <parameter id="EXPECT_AES">
+        <logical type="boolean" default="false"/>
+        <physical type="integer" interface="config" list="4" index="1.7" size="0.1"/>
+      </parameter>
+      <enforce id="EXPECT_AES" value="$PEER.AES"/>
+    </paramset>
+  </paramset_defs>
+</device>

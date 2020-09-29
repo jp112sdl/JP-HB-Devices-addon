@@ -212,9 +212,9 @@ translate_deInsert="\n    \"stringTableMsgPosCrgOn\" : \"Ger%E4t wird aufgeladen
 if [ -z "`cat $translate_deFile | grep \"stringTableMsgPosCrgOn\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableMsgPosCrgOff\" : \"Ger%E4t wird nicht aufgeladen\","
 if [ -z "`cat $translate_deFile | grep \"stringTableMsgPosCrgOff\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
-translate_deInsert="\n    \"stringTableHbCrgscMsgPosA\" : \"Meldung bei %B5Ger%E4t wird nicht aufgeladen%B5\","
+translate_deInsert="\n    \"stringTableHbCrgscMsgPosA\" : \"Meldung bei %22Ger%E4t wird nicht aufgeladen%22\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbCrgscMsgPosA\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
-translate_deInsert="\n    \"stringTableHbCrgscMsgPosB\" : \"Meldung bei %B5Ger%E4t wird aufgeladen%B5\","
+translate_deInsert="\n    \"stringTableHbCrgscMsgPosB\" : \"Meldung bei %22Ger%E4t wird aufgeladen%22\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbCrgscMsgPosB\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableStateCrgOn\" : \"Ger%E4t wird aufgeladen\","
 if [ -z "`cat $translate_deFile | grep \"stringTableStateCrgOn\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi

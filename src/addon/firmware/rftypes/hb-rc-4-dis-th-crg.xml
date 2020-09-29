@@ -8,9 +8,13 @@
   </supported_types>
   <paramset type="MASTER" id="remote_dev_master">
     <parameter id="LOW_BAT_LIMIT">
-      <logical type="float" min="1.0" max="5.0" default="3.4" unit="V"/>
+      <logical type="float" min="1.0" max="5.0" default="3.1" unit="V"/>
       <physical type="integer" interface="config" list="0" index="18" size="1"/>
       <conversion type="float_integer_scale" factor="10"/>
+    </parameter>
+    <parameter id="TRANSMIT_DEV_TRY_MAX">
+      <logical type="integer" min="1.0" max="10.0" default="6.0" />
+      <physical type="integer" interface="config" list="0" index="20" size="1" />
     </parameter>
     <parameter id="HB_DEFAULT_DISPLAY_MODE">
       <logical type="option">
@@ -166,10 +170,6 @@
           <logical type="float" min="0.0" max="1.275" unit="s" default="0.5" />
           <physical type="integer" interface="config" list="1" index="34" size="1" />
           <conversion type="float_integer_scale" factor="200" />
-        </parameter>
-        <parameter id="TRANSMIT_TRY_MAX">
-          <logical type="integer" min="1.0" max="10.0" default="6.0" />
-          <physical type="integer" interface="config" list="1" index="48" size="1" />
         </parameter>
       </paramset>
       <paramset type="VALUES" id="sc_ch_values">

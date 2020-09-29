@@ -12,6 +12,10 @@
       <physical type="integer" interface="config" list="0" index="18" size="1"/>
       <conversion type="float_integer_scale" factor="10"/>
     </parameter>
+    <parameter id="TRANSMIT_DEV_TRY_MAX">
+      <logical type="integer" min="1.0" max="10.0" default="6.0" />
+      <physical type="integer" interface="config" list="0" index="20" size="1" />
+    </parameter>
     <parameter id="HB_DEFAULT_DISPLAY_MODE">
       <logical type="option">
         <option id="HB_TEMP_AND_HUMIDITY" default="true"/>

@@ -1,6 +1,6 @@
 --- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig
 +++ ./patchsource/www/rega/esp/datapointconfigurator.fn
-@@ -99,6 +99,16 @@
+@@ -99,6 +99,14 @@
      var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
      var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
      var CN_BUTTON          = "BUTTON.";
@@ -12,12 +12,10 @@
 +    var CN_PFS             = "PFS.";
 +    var CN_LDRSC           = "LDRSC.";
 +    var CN_CRGSC           = "CRGSC.";
-+    var CN_PWRSC           = "PWRSC.";
-+    var CN_CONDSC          = "CONDSC.";
      var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
      var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
      var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
-@@ -369,7 +379,109 @@
+@@ -369,7 +377,89 @@
              sLastControlName = CN_BTN_SHORT_ONLY;
              Call("/esp/controls/button.fn::CreateKeyShortOnly()");
            }
@@ -102,26 +100,6 @@
 +            isKnownControl = true;
 +            sLastControlName = CN_CRGSC;
 +            Call("/esp/controls/crgsc.fn::CreateCRGSC()");
-+          }
-+          
-+          !# PWRSC
-+          bIsControl = ( sControlName.Find(CN_PWRSC) > -1 );
-+          if( bIsControl && (sLastControlName!=CN_PWRSC) )
-+          {
-+            WriteLine( "<script>conInfo('Control PWRSC found.');</script>" );
-+            isKnownControl = true;
-+            sLastControlName = CN_PWRSC;
-+            Call("/esp/controls/pwrsc.fn::CreatePWRSC()");
-+          }
-+          
-+          !# CONDSC
-+          bIsControl = ( sControlName.Find(CN_CONDSC) > -1 );
-+          if( bIsControl && (sLastControlName!=CN_CONDSC) )
-+          {
-+            WriteLine( "<script>conInfo('Control CONDSC found.');</script>" );
-+            isKnownControl = true;
-+            sLastControlName = CN_CONDSC;
-+            Call("/esp/controls/condsc.fn::CreateCONDSC()");
 +          }
 +          
            !# BUTTON

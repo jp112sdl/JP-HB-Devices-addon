@@ -69,6 +69,38 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="HB_POWEROFF_BEHAVIUOR"
+webuiInsertValue="stringTableHbPowerOffBehaviour"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_POWEROFF_BEHAVIUOR=POB_CONDABOVE"
+webuiInsertValue="stringTableHbPobCondAbove"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_POWEROFF_BEHAVIUOR=POB_CONDBELOW"
+webuiInsertValue="stringTableHbPobCondBelow"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_POWEROFF_BEHAVIUOR=POB_KEEP"
+webuiInsertValue="stringTableHbPobKeep"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deInsert="WEATHER|ERROR=HB_ERROR_TEMPSENSOR_FAILURE\t\${stringTableHBErrorTempSensorFailure}"
@@ -84,6 +116,14 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_CONDSC|STATE=CONDABOVE"`" ]; then 
 stringtable_deInsert="HB_CONDSC|STATE=CONDBELOW\t\${stringTableStateCondBelow}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_CONDSC|STATE=CONDBELOW"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 
+stringtable_deInsert="HB_POWEROFF_BEHAVIUOR\t\${stringTableHbPowerOffBehaviour}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_POWEROFF_BEHAVIUOR"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
+stringtable_deInsert="HB_POWEROFF_BEHAVIUOR=POB_CONDABOVE\t\${stringTableHbPobCondAbove}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_POWEROFF_BEHAVIUOR=POB_CONDABOVE"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
+stringtable_deInsert="HB_POWEROFF_BEHAVIUOR=POB_CONDBELOW\t\${stringTableHbPobCondBelow}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_POWEROFF_BEHAVIUOR=POB_CONDBELOW"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
+stringtable_deInsert="HB_POWEROFF_BEHAVIUOR=POB_KEEP\t\${stringTableHbPobKeep}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_POWEROFF_BEHAVIUOR=POB_KEEP"`" ]; then echo -e $stringtable_deInsert >> $stringtable_deFile; fi
 
 ### Edit translate.lang.stringtable.js ###
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
@@ -101,3 +141,11 @@ translate_deInsert="\n    \"stringTableStateCondAbove\" : \"Grenzwert %FCberschr
 if [ -z "`cat $translate_deFile | grep \"stringTableStateCondAbove\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableStateCondBelow\" : \"Grenzwert unterschritten\","
 if [ -z "`cat $translate_deFile | grep \"stringTableStateCondBelow\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+translate_deInsert="\n    \"stringTableHbPobKeep\" : \"unver%E4ndert\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbPobKeep\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+translate_deInsert="\n    \"stringTableHbPobCondAbove\" : \"sende Grenzwert %FCberschritten\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbPobCondAbove\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+translate_deInsert="\n    \"stringTableHbPobCondBelow\" : \"sende Grenzwert unterschritten\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbPobCondBelow\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
+translate_deInsert="\n    \"stringTableHbPowerOffBehaviour\" : \"Ausschaltverhalten\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbPowerOffBehaviour\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi

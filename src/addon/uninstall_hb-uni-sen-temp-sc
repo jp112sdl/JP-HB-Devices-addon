@@ -22,6 +22,15 @@ sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_CONDSC|STATE=CONDBELOW"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 
+webuiSearch="HB_POWEROFF_BEHAVIUOR"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_POWEROFF_BEHAVIUOR=POB_CONDABOVE"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_POWEROFF_BEHAVIUOR=POB_CONDBELOW"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_POWEROFF_BEHAVIUOR=POB_KEEP"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="WEATHER|ERROR=HB_ERROR_TEMPSENSOR_FAILURE"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
@@ -34,7 +43,14 @@ sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_CONDSC|STATE=CONDBELOW"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
-
+stringtable_deSearch="HB_POWEROFF_BEHAVIUOR"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_POWEROFF_BEHAVIUOR=POB_CONDABOVE"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_POWEROFF_BEHAVIUOR=POB_CONDBELOW"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_POWEROFF_BEHAVIUOR=POB_KEEP"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHBErrorTempSensorFailure"
@@ -47,6 +63,15 @@ translate_deSearch="stringTableStateCondAbove"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableStateCondBelow"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbPobKeep"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbPowerOffBehaviour"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbPobCondAbove"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbPobCondBelow"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

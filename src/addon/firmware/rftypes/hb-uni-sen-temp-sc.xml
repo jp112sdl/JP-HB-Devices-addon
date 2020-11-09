@@ -6,15 +6,28 @@
     </type>
   </supported_types>
   <paramset type="MASTER" id="hm_uni_sen_dev_master">
-  <parameter id="HBWEA_TRANSMIT_INTERVAL">
-    <logical type="integer" min="10" max="3600" default="60" unit="s" />
-    <physical type="integer" interface="config" list="0" index="32" size="2" />
-  </parameter>
-  <parameter id="LOW_BAT_LIMIT">
-    <logical type="float" min="1.9" max="6" default="2.2" unit="V" />
-    <physical type="integer" interface="config" list="0" index="18" size="1" />
-    <conversion type="float_integer_scale" factor="10" />
-  </parameter>
+    <parameter id="HBWEA_TRANSMIT_INTERVAL">
+      <logical type="integer" min="10" max="3600" default="60" unit="s" />
+      <physical type="integer" interface="config" list="0" index="32" size="2" />
+    </parameter>
+    <parameter id="LOW_BAT_LIMIT">
+      <logical type="float" min="1.9" max="6" default="2.2" unit="V" />
+      <physical type="integer" interface="config" list="0" index="18" size="1" />
+      <conversion type="float_integer_scale" factor="10" />
+    </parameter>
+    <parameter id="HB_POWEROFF_BEHAVIUOR">
+      <logical type="option">
+        <option id="POB_KEEP" default="true"/>
+        <option id="POB_CONDABOVE"/>
+        <option id="POB_CONDBELOW"/>
+      </logical>
+      <physical type="integer" interface="config" list="0" index="0x19" size="0.2"/>
+      <conversion type="integer_integer_map">
+        <value_map device_value="0x00" parameter_value="0"/>
+        <value_map device_value="0x01" parameter_value="1"/>
+        <value_map device_value="0x02" parameter_value="2"/>
+      </conversion>
+    </parameter>
   </paramset>
   <channels>
     <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">

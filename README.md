@@ -131,6 +131,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 51 | HB-OU-RGB-TEALIGHT |
 |F3 53 | HB-DIS-EP-42BW-MAINS |
 |F3 57 | HB-DIS-EP-75BW-MAINS |
+|F3 FE | HB-UNI-Sen-DUMMY-BEACON-V2 |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |_F5 01_ | _HB-LC-Sw2-FM_ |
 |_F5 11_ | _HB-LC-Dim5PWM-CV_ |

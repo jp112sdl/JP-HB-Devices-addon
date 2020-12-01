@@ -1,7 +1,7 @@
 # JP-HB-Devices-addon [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/JP-HB-Devices-addon/total.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/releases) [![GitHub issues](https://img.shields.io/github/issues/jp112sdl/JP-HB-Devices-addon.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/issues) <a href='https://ko-fi.com/N4N21R89O' target='_blank'><img height='20' style='border:0px;height:20px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
-**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.53.27 | 3.37.x - 3.53.30(.20200919) [inkl. x86] / 3.53.34**<br/>
-
+**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.53.27 | 3.37.x - 3.53.34(.20201121) [inkl. x86]**<br/>
+**:no_entry: nicht kompatibel zu FW 3.55.x**<br/>
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
 <hr/>
@@ -131,6 +131,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 51 | HB-OU-RGB-TEALIGHT |
 |F3 53 | HB-DIS-EP-42BW-MAINS |
 |F3 57 | HB-DIS-EP-75BW-MAINS |
+|F3 FE | HB-UNI-Sen-DUMMY-BEACON-V2 |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |_F5 01_ | _HB-LC-Sw2-FM_ |
 |_F5 11_ | _HB-LC-Dim5PWM-CV_ |

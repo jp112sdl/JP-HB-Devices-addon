@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<device version="1" rx_modes="CONFIG" peering_sysinfo_expect_channel="false" supports_aes="true">
+  <supported_types>
+    <type name="HB Coldelock" id="HB-CDL-6" updatable="true" priority="2">
+      <parameter index="10.0" size="2.0" const_value="0xF6A9" />
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="HB-CDL-6_dev_master">
+    <parameter id="HB_BUZZER_ENABLED">
+      <logical type="boolean" default="false" />
+      <physical type="integer" interface="config" list="0" index="51" size="0.1" />
+    </parameter>
+    <parameter id="TRANSMIT_DEV_TRY_MAX">
+      <logical type="integer" min="1.0" max="10.0" default="2.0" />
+      <physical type="integer" interface="config" list="0" index="20" size="1" />
+    </parameter>
+    <parameter id="HB_RINGER_CHANNEL">
+      <logical type="option">
+        <option id="na"/>
+        <option id="Ch.: 1"/>
+        <option id="Ch.: 2" />
+        <option id="Ch.: 3" />
+        <option id="Ch.: 4" />
+        <option id="Ch.: 5" />
+        <option id="Ch.: 6" default="true" />
+      </logical>
+      <physical type="integer" interface="config" list="0" index="0x32" size="0.3" />
+    </parameter>
+    <parameter id="HB_ACTIVE_HSV_COLOR">
+      <logical type="integer" min="0" max="255" default="0" />
+      <physical type="integer" interface="config" list="0" index="0x2E" size="1.0" />
+    </parameter>
+    <parameter id="HB_PRGOGRAM_HSV_COLOR">
+      <logical type="integer" min="0" max="255" default="0" />
+      <physical type="integer" interface="config" list="0" index="0x2F" size="1.0" />
+    </parameter>
+    <parameter id="HB_TOUCHED_BRIGHTNESS">
+      <logical type="float" min="0.0" max="1.0" default="0.0" unit="100%" />
+      <physical type="integer" interface="config" list="0" index="0x30" size="1.0" />
+      <conversion type="float_integer_scale" factor="200" />
+    </parameter>
+    <parameter id="HB_DIMMED_BRIGHTNESS">
+      <logical type="float" min="0.0" max="1.0" default="0.0" unit="100%" />
+      <physical type="integer" interface="config" list="0" index="0x31" size="1.0" />
+      <conversion type="float_integer_scale" factor="200" />
+    </parameter>
+    <enforce id="HB_BUZZER_ENABLED" value="true" />
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master" />
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UNREACH" />
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH" />
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
+        </parameter>
+        <parameter id="AES_KEY" operations="read" ui_flags="invisible">
+          <logical type="integer" min="0" max="127" />
+          <physical type="integer" interface="internal" value_id="AES_KEY" />
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_PEER" />
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
+        </parameter>
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="1" type="KEY" count="6" aes_default="false">
+      <link_roles>
+        <source name="SWITCH" />
+        <source name="KEYMATIC" />
+        <source name="WINMATIC" />
+        <source name="REMOTECONTROL_RECEIVER" />
+      </link_roles>
+      <paramset type="MASTER" id="HB-CDL-6_dev_channel">
+        <subset ref="cdl_paramset" />
+      </paramset>
+      <paramset type="VALUES" id="hb-cdl-6_ch_values">
+        <subset ref="cdl_valueset" />
+      </paramset>
+      <paramset type="LINK" id="hb-cdl-6_ch_link">
+        <subset ref="cdl_linkset" />
+      </paramset>
+    </channel>
+  </channels>
+  <frames>
+    <frame id="KEY_EVENT_SHORT" direction="from_device" allowed_receivers="CENTRAL,BROADCAST,OTHER" event="true" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="0" />
+      <parameter type="integer" index="10.0" size="1.0" param="COUNTER" />
+      <parameter type="integer" index="10.0" size="1.0" param="TEST_COUNTER" />
+    </frame>
+    <frame id="KEY_SIM_SHORT" direction="from_device" type="0x40" channel_field="9:0.6">
+      <parameter type="integer" index="9.6" size="0.1" const_value="0" />
+      <parameter type="integer" index="9.7" size="0.1" const_value="0" />
+      <parameter type="integer" index="10.0" size="1.0" param="SIM_COUNTER" />
+    </frame>
+  </frames>
+  <paramset_defs>
+    <paramset id="cdl_valueset">
+      <parameter id="PRESS_SHORT" operations="write,event" loopback="true" control="BUTTON.SHORT" burst_suppression="0">
+        <logical type="action" />
+        <physical type="integer" interface="command" value_id="COUNTER">
+          <event frame="KEY_EVENT_SHORT" auth_violate_policy="reject" />
+          <set request="KEY_SIM_SHORT" />
+        </physical>
+        <conversion type="action_key_counter" sim_counter="SIM_COUNTER" />
+      </parameter>
+      <parameter id="INSTALL_TEST" operations="event" ui_flags="internal">
+        <logical type="action" />
+        <physical type="integer" interface="command" value_id="TEST_COUNTER">
+          <event frame="KEY_EVENT_SHORT" />
+          <event frame="KEY_EVENT_LONG" />
+        </physical>
+      </parameter>
+    </paramset>
+    <paramset id="cdl_paramset">
+      <parameter id="AES_ACTIVE" ui_flags="internal">
+        <logical type="boolean" default="false" />
+        <physical type="boolean" interface="internal" value_id="AES" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_1_1">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="54.0" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_1_2">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="54.1" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_1_3">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="54.2" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_1_4">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="54.3" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_1_5">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="54.4" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_1_6">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="54.5" size="0.1" />
+      </parameter>
+      <parameter id="HB_PASSWORD_1">
+        <logical type="string" />
+        <physical type="string" interface="config_string" list="1" index="55" size="8" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_2_1">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="63.0" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_2_2">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="63.1" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_2_3">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="63.2" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_2_4">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="63.3" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_2_5">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="63.4" size="0.1" />
+      </parameter>
+      <parameter id="HB_LINK_CHANNEL_2_6">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="1" index="63.5" size="0.1" />
+      </parameter>
+      <parameter id="HB_PASSWORD_2">
+        <logical type="string" />
+        <physical type="string" interface="config_string" list="1" index="64" size="8" />
+      </parameter>
+    </paramset>
+    <paramset id="cdl_linkset">
+      <parameter id="PEER_NEEDS_BURST">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="4" index="1.0" size="0.1" />
+      </parameter>
+      <parameter id="EXPECT_AES">
+        <logical type="boolean" default="false" />
+        <physical type="integer" interface="config" list="4" index="1.7" size="0.1" />
+      </parameter>
+      <enforce id="EXPECT_AES" value="$PEER.AES" />
+    </paramset>
+  </paramset_defs>
+</device>

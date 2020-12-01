@@ -1,0 +1,61 @@
+#!/bin/sh
+
+DEVICE="HB-CDL-6"
+DEVICE_IMG=hb-cdl-6.png
+DEVICE_THUMB=hb-cdl-6_thumb.png
+FIRMWARE_FILE=/firmware/rftypes/hb-cdl-6.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+
+webuiFile="/www/webui/webui.js"
+sed -i "/\($DEVICE\)/d" $webuiFile
+
+
+webuiFile="/www/webui/webui.js"
+sed -i "/\($DEVICE\)/d" $webuiFile
+webuiSearch="HB_ACTIVE_HSV_COLOR"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_PRGOGRAM_HSV_COLOR"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_TOUCHED_BRIGHTNESS"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_DIMMED_BRIGHTNESS"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_RINGER_CHANNEL"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+
+
+stringtable_deFile="/www/config/stringtable_de.txt"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_ACTIVE_HSV_COLOR"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_PRGOGRAM_HSV_COLOR"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_TOUCHED_BRIGHTNESS"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_DIMMED_BRIGHTNESS"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_RINGER_CHANNEL"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="stringTableHbActiveHsvColor"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbProgramHsvColor"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbTouchedBrightness"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbDimmedBrightness"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbRingerChannel"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
+
+
+
+rm -f $FIRMWARE_FILE
+rm -f /www/config/img/devices/250/$DEVICE_IMG
+rm -f /www/config/img/devices/50/$DEVICE_THUMB

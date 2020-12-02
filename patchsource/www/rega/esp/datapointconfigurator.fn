@@ -99,16 +99,6 @@ function ::dcCreate()
     var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
     var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
     var CN_BUTTON          = "BUTTON.";
-    var CN_RFID_BUTTON     = "RFIDBTN.";
-    var CN_IRRC_BUTTON     = "IRRCBTN.";
-    var CN_IBTN_BUTTON     = "IBTN.";
-    var CN_SERVO           = "SERVO.";
-    var CN_FAN             = "FAN.";
-    var CN_PFS             = "PFS.";
-    var CN_LDRSC           = "LDRSC.";
-    var CN_CRGSC           = "CRGSC.";
-    var CN_PWRSC           = "PWRSC.";
-    var CN_CONDSC          = "CONDSC.";
     var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
     var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
     var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
@@ -158,6 +148,17 @@ function ::dcCreate()
     var CN_WIN_SC_SENSOR   = "WIN_SC_SENSOR.";
     var CN_WINDOW          = "WINDOW.";
 
+    var CN_RFID_BUTTON     = "RFIDBTN.";
+    var CN_IRRC_BUTTON     = "IRRCBTN.";
+    var CN_IBTN_BUTTON     = "IBTN.";
+    var CN_SERVO           = "SERVO.";
+    var CN_FAN             = "FAN.";
+    var CN_PFS             = "PFS.";
+    var CN_LDRSC           = "LDRSC.";
+    var CN_CRGSC           = "CRGSC.";
+    var CN_PWRSC           = "PWRSC.";
+    var CN_CONDSC          = "CONDSC.";
+    
     var CN_EVENT_INTERFACE = "EVENT_INTERFACE.";
     var CN_NOT_ACTIVE = "CHANNEL_NOT_ACTIVE";
 
@@ -389,7 +390,7 @@ function ::dcCreate()
             sLastControlName = CN_RFID_BUTTON;
             Call("/esp/controls/rfid_rc.fn::CreateRfidKey()");
           }
-
+                    
           !# IRRC
           bIsControl = ( sControlName.Find(CN_IRRC_BUTTON) > -1 );
           if( bIsControl && (sLastControlName!=CN_IRRC_BUTTON) )

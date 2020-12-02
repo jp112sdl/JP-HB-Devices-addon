@@ -1,9 +1,9 @@
 --- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig
 +++ ./patchsource/www/rega/esp/datapointconfigurator.fn
-@@ -148,6 +148,17 @@
-     var CN_WIN_SC_SENSOR   = "WIN_SC_SENSOR.";
-     var CN_WINDOW          = "WINDOW.";
- 
+@@ -99,6 +99,16 @@
+     var CN_BRIGHTNESS_TRANSMITTER = "BRIGHTNESS_TRANSMITTER.";
+     var CN_BTN_SHORT_ONLY  = "BTN_SHORT_ONLY.";
+     var CN_BUTTON          = "BUTTON.";
 +    var CN_RFID_BUTTON     = "RFIDBTN.";
 +    var CN_IRRC_BUTTON     = "IRRCBTN.";
 +    var CN_IBTN_BUTTON     = "IBTN.";
@@ -14,11 +14,10 @@
 +    var CN_CRGSC           = "CRGSC.";
 +    var CN_PWRSC           = "PWRSC.";
 +    var CN_CONDSC          = "CONDSC.";
-+    
-     var CN_EVENT_INTERFACE = "EVENT_INTERFACE.";
-     var CN_NOT_ACTIVE = "CHANNEL_NOT_ACTIVE";
- 
-@@ -369,7 +380,109 @@
+     var CN_CAPACITIVE_FILLING_SENSOR  = "CAPACITIVE_FILLING_LEVEL_SENSOR.";
+     var CN_CLIMATE_CONTROL_FLOOR_PUMP_TRANSCEIVER = "CLIMATECONTROL_FLOOR_PUMP_TRANSCEIVER.";
+     var CN_CLIMATE_CONTROL_FLOOR_TRANSCEIVER = "CLIMATECONTROL_FLOOR_TRANSCEIVER.";
+@@ -369,7 +379,109 @@
              sLastControlName = CN_BTN_SHORT_ONLY;
              Call("/esp/controls/button.fn::CreateKeyShortOnly()");
            }

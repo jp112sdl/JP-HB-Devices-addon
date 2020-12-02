@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<device version="2" supports_aes="true">
+  <supported_types>
+    <type name="HB-UNI-Sen-DUMMY-BEACON-V2" id="HB-UNI-Sen-DUMMY-BEACON-V2" updatable="true" priority="2">
+      <parameter index="10.0" size="2.0" const_value="0xF3FE" />
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="hm_uni_sen_dev_master">
+    <parameter id="BACKLIGHT_ON_TIME">
+      <logical type="integer" min="0" max="255" default="4" unit="s"/>
+      <physical type="integer" interface="config" list="0" index="14" size="1.0"/>
+    </parameter>
+    <parameter id="TRANSMIT_DEV_TRY_MAX">
+      <logical type="integer" min="1.0" max="10.0" default="2.0"/>
+      <physical type="integer" interface="config" list="0" index="20" size="1"/>
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master" />
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UNREACH" />
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH" />
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
+        </parameter>
+        <parameter id="LOWBAT" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="LOWBAT" />
+        </parameter>
+        <parameter id="DUTYCYCLE" operations="read,event" ui_flags="service">
+          <logical type="boolean"/>
+          <physical type="integer" interface="internal" value_id="DUTYCYCLE"/>
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_PEER" />
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
+        </parameter>   
+        <parameter id="AES_KEY" operations="read" ui_flags="invisible">
+          <logical type="integer" min="0" max="127"/>
+          <physical type="integer" interface="internal" value_id="AES_KEY"/>
+        </parameter>                                        
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="1" type="SWITCH" count_from_sysinfo="23.0">
+      <paramset type="MASTER" id="hb_dummybeacon_ch_master">
+        <parameter id="AES_ACTIVE" ui_flags="internal">
+          <logical type="boolean" default="false"/>
+          <physical type="boolean" interface="internal" value_id="AES"/>
+        </parameter>
+        <parameter id="ADDRESS_SENDER_HIGH_BYTE">
+          <logical type="integer" min="0" max="255" default="0"/>
+          <physical type="integer" interface="config" list="1" index="1.0" size="1"/>
+        </parameter>
+        <parameter id="ADDRESS_SENDER_MID_BYTE">
+          <logical type="integer" min="0" max="255" default="0"/>
+          <physical type="integer" interface="config" list="1" index="2.0" size="1"/>
+        </parameter>
+        <parameter id="ADDRESS_SENDER_LOW_BYTE">
+          <logical type="integer" min="0" max="255" default="0"/>
+          <physical type="integer" interface="config" list="1" index="3.0" size="1"/>
+        </parameter>
+         <parameter id="FD_CYCLIC_TIMEOUT">
+           <logical type="integer" min="30" max="1209600" default="600" unit="s" />
+           <physical type="integer" interface="config" list="1" index="4.0" size="3" />
+         </parameter> 
+        <parameter id="FD_BROADCAST">
+          <logical type="boolean" default="false"/>
+          <physical type="integer" interface="config" list="1" index="7.1" size="0.1"/>
+        </parameter>
+        <parameter id="FD_STATUS">
+           <logical type="integer" min="0" max="255" default="0" unit="" />
+           <physical type="integer" interface="config" list="1" index="8.0" size="1" />
+         </parameter> 
+      </paramset> 
+      <paramset type="VALUES" id="hb_dummydev_values">       
+        <parameter id="STATE" operations="read,write,event" control="SWITCH.STATE">
+          <logical type="boolean" default="false"/>
+          <physical type="integer" interface="command" value_id="STATE">
+            <set request="LEVEL_SET"/>
+            <get request="LEVEL_GET" response="INFO_LEVEL" process_as_event="true"/>
+            <event frame="INFO_LEVEL" auth_violate_policy="get"/>
+            <event frame="ACK_STATUS" auth_violate_policy="get"/>
+            <event frame="INFO_POWERON" auth_violate_policy="get"/>
+          </physical>
+          <conversion type="boolean_integer" threshold="1" false="0" true="200"/>
+        </parameter>
+      </paramset>
+    </channel>
+   </channels>
+   <frames>
+       <frame id="LEVEL_SET" direction="to_device" type="0x11" subtype="0x02" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
+      <parameter type="integer" index="12.0" size="2.0" const_value="0"/>
+    </frame>
+    <frame id="LEVEL_GET" direction="to_device" type="0x01" channel_field="9">
+      <parameter type="integer" index="10.0" size="1.0" const_value="14"/>
+    </frame>
+    <frame id="INFO_LEVEL" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
+      <parameter type="integer" index="12.4" size="0.3" param="STATE_FLAGS"/>
+    </frame>
+    <frame id="ACK_STATUS" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x02" subtype="1" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
+      <parameter type="integer" index="12.4" size="0.3" param="STATE_FLAGS"/>
+    </frame>
+    <frame id="INFO_POWERON" direction="from_device" allowed_receivers="CENTRAL" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="*">
+      <parameter type="integer" index="10.0" size="1.0" const_value="0"/>
+      <parameter type="integer" const_value="0" param="STATE"/>
+      <parameter type="integer" const_value="0" param="STATE_FLAGS"/>
+      <parameter type="integer" const_value="0" param="INHIBIT"/>
+    </frame>
+   </frames>
+  <paramset_defs />
+</device>

@@ -1,7 +1,6 @@
 # JP-HB-Devices-addon [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/JP-HB-Devices-addon/total.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/releases) [![GitHub issues](https://img.shields.io/github/issues/jp112sdl/JP-HB-Devices-addon.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/issues) <a href='https://ko-fi.com/N4N21R89O' target='_blank'><img height='20' style='border:0px;height:20px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
-**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.53.27 | 3.37.x - 3.53.34(.20201121) [inkl. x86]**<br/>
-**:no_entry: nicht kompatibel zu FW 3.55.x**<br/>
+**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.53.27 | 3.37.x - 3.55.x [inkl. x86]**<br/>
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 
 <hr/>
@@ -43,6 +42,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-uni-rgb-led-ctrl_thumb.png" width=25/> | [HB-UNI-RGB-LED-CTRL](https://github.com/jp112sdl/HB-UNI-RGB-LED-CTRL) | RGB Controller für WS28xx / Neopixel / etc. | ⚡️ / 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-ir_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-IR](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-IR) | MLX90614 Infrarot Temperatursensor | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-dummy-beacon_thumb.png" width=25/> | [HB-UNI-Sen-DUMMY-BEACON](https://github.com/jp112sdl/HB-UNI-Sen-DUMMY-BEACON) | Dummy-Device zum Simulieren<br/>zyklischer Statusmeldungen sowie Ack-Nachrichten | ⚡️ / 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-dummy-beacon-v2_thumb.png" width=25/> | [HB-UNI-Sen-DUMMY-BEACON-V2](https://github.com/jp112sdl/HB-UNI-Sen-DUMMY-BEACON-V2) | Dummy-Device zum Simulieren<br/>zyklischer Statusmeldungen sowie Ack-Nachrichten (V2) | ⚡️ / 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-volt_thumb.png" width=25/> | [HB-UNI-Sen-VOLT](https://github.com/jp112sdl/HB-UNI-Sen-VOLT) | universeller Spannungssensor (Template) | 🔋 |  
 |<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/PushButton-2ch-wm_thumb.png" width=25/> | [HB-LC-Sw1PBU-FM](https://github.com/jp112sdl/Beispiel_AskSinPP/tree/master/examples/HB-LC-Sw1PBU-FM) | alternative Firmware für den<br/>HM-LC-Sw1PBU-FM (getrennte Taster-/Relais-Kanäle) | ⚡️ | 
 |<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/PushButton-2ch-wm_thumb.png" width=25/> | [HB-LC-Sw2PBU-FM](https://github.com/jp112sdl/Beispiel_AskSinPP/tree/master/examples/HB-LC-Sw2PBU-FM) | alternative Firmware für den<br/>HM-LC-Sw2PBU-FM (getrennte Taster-/Relais-Kanäle) | ⚡️ | 
@@ -74,6 +74,8 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-rc-4-dis-th_thumb.png" width=25/> | [HB-RC-4-Dis-TH](https://github.com/jp112sdl/HB-RC-4-Dis-TH) | 4 Kanal Taster mit Display und Temperatur- / Luftfeuchtesensor | ⚡️ / 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-dust_thumb.png" width=25/> | [HB-UNI-Sen-DUST](https://github.com/jp112sdl/HB-UNI-Sen-DUST) | Feinstaubsensor (SDS011) | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-temp-sc_thumb.png" width=25/> | [HB-UNI-Sen-TEMP-SC](https://github.com/jp112sdl/HB-UNI-Sen-TEMP-SC) | (NTC) Temperatursensor mit Grenzwertschalter | 🔋 |
+|<img src="src/addon/www/config/img/devices/50/hb-cdl-6_thumb.png" width=25/> | [HB-CDL-6](https://github.com/trilu2000/HB-CDL-6) | 6fach Codeschloss _([trilu2000](https://github.com/triliu2000))_ | ⚡️ | 
+
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 
@@ -135,6 +137,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |_F5 01_ | _HB-LC-Sw2-FM_ |
 |_F5 11_ | _HB-LC-Dim5PWM-CV_ |
+|F6 A9 | [HB-CDL-6](https://github.com/trilu2000/HB-CDL-6) |
 |F9 D6 | HB-UNI-Sen-DIST-US |
 |F9 D7 | HB-UNI-Sen-DIST-TOF |
 |F9 D2 | HB-UNI-Sen-LEV-US |

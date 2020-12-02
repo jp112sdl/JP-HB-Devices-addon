@@ -1081,6 +1081,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
   set hbRc12EpcIdentifier "HB-RC-12-EP-C"
   set hbRc12EpBwIdentifier "HB-RC-12-EP-BW"
   set hbRc4DisThIdentifier "HB-RC-4-Dis-TH"
+  set hbRc4DisThCrgIdentifier "HB-RC-4-Dis-TH-CRG"
   
   if { ! [catch { array set ch_descr [xmlrpc $iface_url($iface) getDeviceDescription [list string $address]] } ] } then {
     set channel_type $ch_descr(TYPE)
@@ -1175,7 +1176,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
         } else {
           puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/KEY_4Dis.js');</script>"
           set helpText [getStatusDisplayHelp]
-          if {($parent_type == $hbRc4DisThIdentifier)} then {
+          if { ($parent_type == $hbRc4DisThIdentifier) || ($parent_type == $hbRc4DisThCrgIdentifier) } then {
             if {$param_id == "HB_HEADERLINE"} {
               append s "<td><input type=\"text\" name=\"$param_id\" maxlength=\"10\" onblur=\"encodeStringStatusDisplay('$idval', true);\" value=\"$value\" $id $access /></td>"
             }

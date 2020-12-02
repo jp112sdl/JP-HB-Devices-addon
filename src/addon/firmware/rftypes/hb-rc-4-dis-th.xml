@@ -96,15 +96,42 @@
         <logical type="integer" min="10" max="3600" default="60" unit="s" />
         <physical type="integer" interface="config" list="1" index="32" size="2" />
        </parameter>
-       <parameter id="TEMPERATURE_OFFSET">                                
-        <logical type="float" min="-5.0" max="5.0" unit="K" default="0"/>                      
-        <physical type="integer" signed="true" interface="config" list="1" index="1" size="1"/>
-        <conversion type="float_integer_scale" factor="10"/>                                
-       </parameter>    
+       <parameter id="TEMPERATURE_OFFSET">
+         <logical type="option">
+           <option id="-3.5K" />
+           <option id="-3.0K" />
+           <option id="-2.5K" />
+           <option id="-2.0K" />
+           <option id="-1.5K" />
+           <option id="-1.0K" />
+           <option id="-0.5K" />
+           <option id="0.0K" default="true" />
+           <option id="0.5K" />
+           <option id="1.0K" />
+           <option id="1.5K" />
+           <option id="2.0K" />
+           <option id="2.5K" />
+           <option id="3.0K" />
+           <option id="3.5K" />
+         </logical>
+         <physical type="integer" interface="config" list="1" index="1" size="1" />
+       </parameter>  
        <parameter id="HB_HUMIDITY_OFFSET">                                
-        <logical type="integer" min="-5" max="5" unit="%" default="0"/>                      
-        <physical type="integer" signed="true" interface="config" list="1" index="2" size="1"/>
-       </parameter>                                                                  
+         <logical type="option">
+           <option id="-5%" />
+           <option id="-4%" />
+           <option id="-3%" />
+           <option id="-2%" />
+           <option id="-1%" />
+           <option id="0%" default="true" />
+           <option id="1%" />
+           <option id="2%" />
+           <option id="3%" />
+           <option id="4%" />
+           <option id="5%" />
+         </logical>
+         <physical type="integer" interface="config" list="1" index="2" size="1" />
+       </parameter>                                                               
       </paramset>
       <paramset type="VALUES" id="ash550_ch_values">
         <parameter id="TEMPERATURE" operations="read,event">

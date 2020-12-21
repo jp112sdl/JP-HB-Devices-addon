@@ -62,6 +62,22 @@ if [ -z "`cat $stringtable_deFile | grep \"FD_BROADCAST"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
+stringtable_deInsert="FD_SIMULATE_DEVICETYPE\t\${stringTableFdSimulateDeviceType}"
+if [ -z "`cat $stringtable_deFile | grep \"FD_SIMULATE_DEVICETYPE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="FD_SIMULATE_DEVICETYPE_ACTUATOR\t\${stringTableFdSimulateDeviceTypeActuator}"
+if [ -z "`cat $stringtable_deFile | grep \"FD_SIMULATE_DEVICETYPE_ACTUATOR"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="FD_SIMULATE_DEVICETYPE_SENSOR\t\${stringTableFdSimulateDeviceTypeSensor}"
+if [ -z "`cat $stringtable_deFile | grep \"FD_SIMULATE_DEVICETYPE_SENSOR"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+
 ### Edit translate.lang.stringtable.js ###
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
@@ -79,5 +95,20 @@ fi
 
 translate_deInsert="\n    \"stringTableFdBroadcast\" : \"Broadcast\","
 if [ -z "`cat $translate_deFile | grep \"stringTableFdBroadcast\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableFdSimulateDeviceType\" : \"Ger%e4tetyp\","
+if [ -z "`cat $translate_deFile | grep \"stringTableFdSimulateDeviceType\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableFdSimulateDeviceTypeActuator\" : \"Aktor\","
+if [ -z "`cat $translate_deFile | grep \"stringTableFdSimulateDeviceTypeActuator\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableFdSimulateDeviceTypeSensor\" : \"Sensor\","
+if [ -z "`cat $translate_deFile | grep \"stringTableFdSimulateDeviceTypeSensor\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

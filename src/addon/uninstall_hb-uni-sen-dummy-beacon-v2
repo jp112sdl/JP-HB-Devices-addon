@@ -15,6 +15,12 @@ webuiSearch="FD_BROADCAST"
 
 
 stringtable_deFile="/www/config/stringtable_de.txt"
+stringtable_deSearch="FD_SIMULATE_DEVICETYPE"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="FD_SIMULATE_DEVICETYPE_ACTUATOR"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="FD_SIMULATE_DEVICETYPE_SENSOR"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_SIMULATE"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_SEND_EVERY"
@@ -23,6 +29,12 @@ stringtable_deSearch="FD_BROADCAST"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="stringTableFdSimulateDeviceTypeActuator"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableFdSimulateDeviceTypeSensor"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableFdSimulateDeviceType"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableFdSimulate"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableFdSendEvery"

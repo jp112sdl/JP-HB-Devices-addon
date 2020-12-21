@@ -86,15 +86,28 @@ self.init = function (chn) {
 
 
 self.setDevice = function (elm, chn) {
-  console.log("setDevice "+elm.value+" ch:"+chn);
+  //console.log("setDevice "+elm.value+" ch:"+chn);
+  
+  var devType = jQuery(".FD_CYCLIC_TIMEOUT_"+chn).val();
 
   if (elm.value === "0") {
     jQuery(".j_param_"+chn).hide();
+    jQuery(".j_sens_param_"+chn).hide();
     jQuery(".ADDRESS_SENDER_HIGH_BYTE_"+chn).val(0);
     jQuery(".ADDRESS_SENDER_MID_BYTE_"+chn).val(0); 
     jQuery(".ADDRESS_SENDER_LOW_BYTE_"+chn).val(0); 
+    document.getElementById("deviceTypeSelectionBox_"+chn).value = 0;
   } else {
     jQuery(".j_param_"+chn).show();
+    // 0 = Aktor, > 0 = Sensor
+    if (devType !== "0") { 
+      jQuery(".j_sens_param_"+chn).show();
+      document.getElementById("deviceTypeSelectionBox_"+chn).value = 1;
+    } else { 
+      jQuery(".j_sens_param_"+chn).hide(); 
+      jQuery(".FD_CYCLIC_TIMEOUT_"+chn).val(0); 
+      document.getElementById("deviceTypeSelectionBox_"+chn).value = 0;
+    }
     var senderBYTES = convertAddress(parseInt(elm.value));
     jQuery(".ADDRESS_SENDER_HIGH_BYTE_"+chn).val(senderBYTES.HIGH); 
     jQuery(".ADDRESS_SENDER_MID_BYTE_"+chn).val(senderBYTES.MID); 
@@ -105,4 +118,14 @@ self.setDevice = function (elm, chn) {
 
 };
 
+self.setDeviceType = function (elm, chn, min) {
+  //console.log("setDeviceType "+elm.value+" ch:"+chn);
+  if (elm.value === "0") {
+    jQuery(".j_sens_param_"+chn).hide();
+    jQuery(".FD_CYCLIC_TIMEOUT_"+chn).val(0); 
+  } else {
+    jQuery(".j_sens_param_"+chn).show();
+    jQuery(".FD_CYCLIC_TIMEOUT_"+chn).val(min); 
+  }
+};
 

@@ -96,6 +96,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 12 | HB-UNI-Sen-CAP-MOIST-T |
 |F3 13 | HB-UNI-Sen-LDR-SC |
 |F3 14 | HB-UNI-Sen-DUST |
+|F3 15 | HB-UNI-Sen-PC-WM |
 |F3 20 | HB-LC-SW12-FM |
 |F3 21 | HB-LC-Bl1-FM-BAT|
 |F3 2E | HB-RC-4-Dis-TH-CRG |

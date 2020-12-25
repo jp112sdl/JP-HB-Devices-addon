@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<device version="1" cyclic_timeout="600">
+<device version="1" cyclic_timeout="3600">
   <supported_types>
     <type name="universal pulsecounter watermeter" id="HB-UNI-Sen-PC-WM" updatable="true" priority="2">
       <parameter index="10.0" size="2.0" const_value="0xF315" />
@@ -7,8 +7,12 @@
   </supported_types>
   <paramset type="MASTER" id="hm_uni_sen_dev_master">
     <parameter id="HBWEA_TRANSMIT_INTERVAL">
-      <logical type="integer" min="10" max="3600" default="60" unit="s" />
+      <logical type="integer" min="10" max="600" default="60" unit="s" />
       <physical type="integer" interface="config" list="0" index="32" size="2" />
+    </parameter>
+    <parameter id="CYCLIC_INFO_MSG_DIS_UNCHANGED">
+      <logical type="integer" min="0" max="0xff" default="0"/>
+      <physical type="integer" interface="config" list="0" index="17" size="1.0"/>
     </parameter>
   </paramset>
   <channels>

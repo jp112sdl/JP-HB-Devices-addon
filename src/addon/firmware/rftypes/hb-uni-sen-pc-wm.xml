@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<device version="1" cyclic_timeout="600">
+  <supported_types>
+    <type name="universal pulsecounter watermeter" id="HB-UNI-Sen-PC-WM" updatable="true" priority="2">
+      <parameter index="10.0" size="2.0" const_value="0xF315" />
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="hm_uni_sen_dev_master">
+    <parameter id="HBWEA_TRANSMIT_INTERVAL">
+      <logical type="integer" min="10" max="3600" default="60" unit="s" />
+      <physical type="integer" interface="config" list="0" index="32" size="2" />
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master" />
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UNREACH" />
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH" />
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_PEER" />
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
+        </parameter>
+      </paramset>
+    </channel>
+    <channel index="1" type="HB_GENERIC" count="1">
+     <paramset type="MASTER" id="HB-UNI-Sen-PC-WM_ch_master">
+      <parameter id="HB_METER_CONSTANT_WATER">
+       <logical type="float" min="0.001" max="1.000" default="0.001" unit="m3/Imp." />
+       <physical type="integer" interface="config" list="1" index="9" size="2.0" />
+       <conversion type="float_integer_scale" factor="1000" />
+      </parameter>     
+      <parameter id="HB_COUNT_INITIAL_VALUE">
+       <logical type="float" min="0.000" max="4294967.295" default="0.000" unit="m3" />
+       <physical type="integer" interface="config" list="1" index="17" size="4.0" />
+       <conversion type="float_integer_scale" factor="1000" />
+      </parameter>
+      <parameter id="HB_ANALOG_LOW_THRESHOLD">
+        <logical type="integer" min="0" max="1023" default="300"/>
+        <physical type="integer" interface="config" list="1" index="11" size="2"/>
+      </parameter>
+      <parameter id="HB_ANALOG_HIGH_THRESHOLD">
+        <logical type="integer" min="0" max="1023" default="300"/>
+        <physical type="integer" interface="config" list="1" index="13" size="2""/>
+      </parameter>
+      <parameter id="HB_PULSE_DELAY_MS">
+        <logical type="integer" min="0" max="5000" default="500" unit="ms"/>
+        <physical type="integer" interface="config" list="1" index="15" size="2"/>
+      </parameter> 
+     </paramset>
+     <paramset type="VALUES" id="HB-UNI-Sen-PC-WM_values">
+      <parameter id="HB_METER_READING" operations="read,event" control="NONE">
+       <logical type="float" min="0.000" max="4294967.295" unit="m3" />
+       <physical type="integer" interface="command" value_id="HB_METER_READING" no_init="true">
+         <event frame="MEASURE_EVENT_CYCLIC" />
+       </physical>
+       <conversion type="float_integer_scale" factor="1000" />
+      </parameter>
+      <parameter id="ERROR" operations="read,event" ui_flags="service" control="NONE">
+        <logical type="option">
+          <option id="NO_ERROR" index="0" default="true"/>
+          <option id="OAPC_ERROR" index="1"/>
+          <option id="FRAM_ERROR" index="2"/>
+        </logical>
+        <physical type="integer" interface="command" value_id="ERROR">
+          <event frame="INFO_LEVEL"/>
+        </physical>
+      </parameter>
+     </paramset>
+    </channel>
+  </channels>
+  <frames>
+    <frame id="INFO_LEVEL" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" channel_field="10">
+      <parameter type="integer" index="11.0" size="1.0" param="STATE" />
+      <parameter type="integer" index="12.1" size="0.3" param="ERROR"/>
+    </frame>
+    <frame id="MEASURE_EVENT_CYCLIC" direction="from_device" event="true" fixed_channel="1" type="0x53">
+      <parameter type="integer" index="9.0" size="4.0" param="HB_METER_READING" />
+    </frame>
+  </frames>
+  <paramset_defs></paramset_defs>
+</device>

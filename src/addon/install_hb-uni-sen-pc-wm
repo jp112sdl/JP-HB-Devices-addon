@@ -73,6 +73,14 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="HB_CHANGE_MODE"
+webuiInsertValue="stringTableHbChangeMode"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
 webuiInsertParam="HB_COUNT_INITIAL_VALUE"
 webuiInsertValue="stringTableHbCountInitialValue"
 webuiInsert="\n"
@@ -118,6 +126,10 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_ANALOG_HIGH_THRESHOLD"`" ]; then
 fi
 stringtable_deInsert="HB_PULSE_DELAY_MS\t\${stringTableHbPulseDelayMS}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_PULSE_DELAY_MS"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="HB_CHANGE_MODE\t\${stringTableHbChangeMode}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_CHANGE_MODE"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 stringtable_deInsert="HB_COUNT_INITIAL_VALUE\t\${stringTableHbCountInitialValue}"
@@ -174,5 +186,10 @@ fi
 
 translate_deInsert="\n    \"stringTableHbFramError\" : \"FRAM Fehler\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbFramError\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableHbChangeMode\" : \"Impuls-Erfassungmodus\","
+if [ -z "`cat $translate_deFile | grep \"stringTableHbChangeMode\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi

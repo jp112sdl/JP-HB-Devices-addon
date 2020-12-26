@@ -126,6 +126,18 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
       append HTML_PARAMS(separate_1) "<td>[getUnit ps_descr $param] [getMinMaxValueDescr ps_descr $param] </td>"
     append HTML_PARAMS(separate_1) "</tr>"
     
+    incr prn
+    set param "HB_CHANGE_MODE"                                                            
+    append HTML_PARAMS(separate_1) "<tr>"
+      array_clear options
+      set options(0) "bei Wechsel von dunkel > hell"
+      set options(1) "bei Wechsel von hell > dunkel"
+      set options(2) "beide Wechsel"
+      append HTML_PARAMS(separate_1) "<td>\${stringTableHbChangeMode} </td>"
+      set cmb $chn                                                                                                                                
+      append cmb $prn  
+      append HTML_PARAMS(separate_1) "<td>[get_ComboBox options $param separate_CHANNEL_$chn\_$prn ps $param]</td>"
+    append HTML_PARAMS(separate_1) "</tr>"
    append HTML_PARAMS(separate_1) "</table>"
 
 }

@@ -21,6 +21,8 @@ webuiSearch="HB_TAHB_ANALOG_HIGH_THRESHOLDRA"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_PULSE_DELAY_MS"
 sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_CHANGE_MODE"
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_COUNT_INITIAL_VALUE"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 
@@ -34,6 +36,8 @@ sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_ANALOG_HIGH_THRESHOLD"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_PULSE_DELAY_MS"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_CHANGE_MODE"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_COUNT_INITIAL_VALUE"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
@@ -50,6 +54,8 @@ sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbAnalogHighThreshold"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbPulseDelayMS"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbChangeMode"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbCountInitialValue"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile

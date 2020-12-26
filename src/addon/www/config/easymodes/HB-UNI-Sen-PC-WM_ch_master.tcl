@@ -78,7 +78,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     set max [getMaxValue ps_descr $param]
     append HTML_PARAMS(separate_1) "<tr class=\"\">"
       append HTML_PARAMS(separate_1) "<td class=\"stringtable_value\">\${stringTableHbMeterConstantWater}</td>"
-      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_$chn\_$prn\" name=\"$param\" value=\"[format {%.3f} $ps($param)]\" onblur=\"ProofAndSetValue('separate_CHANNEL_$chn\_$prn','separate_CHANNEL_$chn\_$prn', parseInt($min), parseInt($max), parseFloat(1));\"> </td>"
+      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_$chn\_$prn\" name=\"$param\" value=\"[format {%.3f} $ps($param)]\" onblur=\"ProofAndSetValue('separate_CHANNEL_$chn\_$prn','separate_CHANNEL_$chn\_$prn', $min, $max, parseFloat(1));\"> </td>"
       append HTML_PARAMS(separate_1) "<td>[getUnit ps_descr $param] [getMinMaxValueDescr ps_descr $param] </td>"
     append HTML_PARAMS(separate_1) "</tr>"
     
@@ -90,7 +90,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     set max [getMaxValue ps_descr $param]
     append HTML_PARAMS(separate_1) "<tr class=\"\">"
       append HTML_PARAMS(separate_1) "<td class=\"stringtable_value\">\${stringTableHbCountInitialValue}</td>"
-      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_$chn\_$prn\" name=\"$param\" value=\"[format {%.3f} $ps($param)]\" onblur=\"ProofAndSetValue('separate_CHANNEL_$chn\_$prn','separate_CHANNEL_$chn\_$prn', parseInt($min), parseInt($max), parseFloat(1));\"> </td>"
+      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_$chn\_$prn\" name=\"$param\" value=\"[format {%.3f} $ps($param)]\" onblur=\"ProofAndSetValue('separate_CHANNEL_$chn\_$prn','separate_CHANNEL_$chn\_$prn', $min, $max, parseFloat(1));\"> </td>"
       append HTML_PARAMS(separate_1) "<td>[getUnit ps_descr $param] [getMinMaxValueDescr ps_descr $param] </td>"
     append HTML_PARAMS(separate_1) "</tr>"
     

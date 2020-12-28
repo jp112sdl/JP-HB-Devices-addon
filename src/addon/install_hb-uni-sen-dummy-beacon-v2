@@ -43,6 +43,38 @@ if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
 
+webuiInsertParam="RF_TX_POWER"
+webuiInsertValue="stringTableRfTxPower"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+
+webuiInsertParam="RF_TX_POWER=TX_LOW"
+webuiInsertValue="stringTableRfTxPowerLow"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="RF_TX_POWER=TX_MID"
+webuiInsertValue="stringTableRfTxPowerMid"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="RF_TX_POWER=TX_HIGH"
+webuiInsertValue="stringTableRfTxPowerHigh"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
 
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
@@ -74,6 +106,23 @@ fi
 
 stringtable_deInsert="FD_SIMULATE_DEVICETYPE_SENSOR\t\${stringTableFdSimulateDeviceTypeSensor}"
 if [ -z "`cat $stringtable_deFile | grep \"FD_SIMULATE_DEVICETYPE_SENSOR"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="RF_TX_POWER\t\${stringTableRfTxPower}"
+if [ -z "`cat $stringtable_deFile | grep \"RF_TX_POWER"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="RF_TX_POWER=TX_LOW\t\${stringTableRfTxPowerLow}"
+if [ -z "`cat $stringtable_deFile | grep \"RF_TX_POWER=TX_LOW"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="RF_TX_POWER=TX_MID\t\${stringTableRfTxPowerMid}"
+if [ -z "`cat $stringtable_deFile | grep \"RF_TX_POWER=TX_MID"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+stringtable_deInsert="RF_TX_POWER=TX_HIGH\t\${stringTableRfTxPowerHigh}"
+if [ -z "`cat $stringtable_deFile | grep \"RF_TX_POWER=TX_HIGH"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
 
@@ -112,3 +161,24 @@ translate_deInsert="\n    \"stringTableFdSimulateDeviceTypeSensor\" : \"Sensor\"
 if [ -z "`cat $translate_deFile | grep \"stringTableFdSimulateDeviceTypeSensor\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
+
+translate_deInsert="\n    \"stringTableRfTxPower\" : \"Sendeleistung\","
+if [ -z "`cat $translate_deFile | grep \"stringTableRfTxPower\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableRfTxPowerLow\" : \"gering (-30 dBm \/ 12.0 mA)\","
+if [ -z "`cat $translate_deFile | grep \"stringTableRfTxPowerLow\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableRfTxPowerMid\" : \"normal (0 dBm \/ 16.8 mA)\","
+if [ -z "`cat $translate_deFile | grep \"stringTableRfTxPowerMid\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+
+translate_deInsert="\n    \"stringTableRfTxPowerHigh\" : \"hoch (+12 dBm \/ 34.2 mA)\","
+if [ -z "`cat $translate_deFile | grep \"stringTableRfTxPowerHigh\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+

@@ -14,6 +14,19 @@
       <logical type="integer" min="1.0" max="10.0" default="2.0"/>
       <physical type="integer" interface="config" list="0" index="20" size="1"/>
     </parameter>
+    <parameter id="RF_TX_POWER">
+     <logical type="option">
+      <option id="TX_LOW" />
+      <option id="TX_MID" />
+      <option id="TX_HIGH" default="true"/>
+     </logical>
+     <physical type="integer" interface="config" list="0" index="52" size="1"/>
+     <conversion type="option_integer">
+       <value_map device_value="0x00" parameter_value="0"/>
+       <value_map device_value="0x01" parameter_value="1"/>
+       <value_map device_value="0x02" parameter_value="2"/>
+     </conversion>
+    </parameter> 
   </paramset>
   <channels>
     <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">

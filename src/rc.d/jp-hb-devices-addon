@@ -263,7 +263,7 @@ case "$1" in
 
     info)
       echo "Info: <center><b>JP HB Devices Support Addon</b></center><br />" 
-      echo "Info: <center><img src='../addons/${ADDON_NAME}/${ADDON_NAME}.png'></img></center><br/><a href='https://github.com/jp112sdl/${ADDON_NAME}'>https://github.com/jp112sdl/${ADDON_NAME}</a>" 
+      echo "Info: <center><img src='../addons/${ADDON_NAME}/${ADDON_NAME}.png'></img></center><br/><a target='_blank' href='https://github.com/jp112sdl/${ADDON_NAME}'>https://github.com/jp112sdl/${ADDON_NAME}</a>" 
       echo "Version: $(cat ${ADDON_DIR}/VERSION)"                                                                                                                                                                                       
       echo "Name: JP HB Devices"                                                                                                                                                                                                        
       echo "Operations: uninstall"                                                                                                                                                                                                      

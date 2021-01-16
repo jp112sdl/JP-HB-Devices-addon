@@ -66,6 +66,8 @@ check_rfd()
 
 case "$1" in
     ""|init|start)
+      check_ccu_fw_version
+
       if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
         echo "Starting complete installation within '$1' $(date +"%d.%m.%Y %H:%M:%S")" | tee $GLOBAL_LOGFILE
         cp /dev/null $GLOBAL_ERRFILE
@@ -100,7 +102,6 @@ case "$1" in
         chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
         
         ### Patch some files ###
-        check_ccu_fw_version
 
         cd /www
 
@@ -182,6 +183,19 @@ case "$1" in
         fi
         echo "Installation done." | tee -a $GLOBAL_LOGFILE
       else
+        echo "Checking for accidently restored unpatched programs.htm"
+        if [ "$(grep HBOUCFM /www/rega/pages/tabs/admin/views/programs.htm)" ]; then
+          echo "programs.htm is ok"        
+        else
+          mount -o remount,rw /
+          patchfile=${PATCH_DIR}/${PATCHSUBDIR_VERSION}/programs.htm.patch
+          echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
+          convert_lf $patchfile
+          patch -N -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$GLOBAL_ERRFILE
+          echo "- done" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE    
+          mount -o remount,ro /      
+        fi
+        
         echo "Checking for subsequent customized firmware files..."
         changed=0
 

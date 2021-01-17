@@ -99,6 +99,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 15 | HB-UNI-Sen-PC-WM |
 |F3 20 | HB-LC-SW12-FM |
 |F3 21 | HB-LC-Bl1-FM-BAT|
+|F3 2D | HB-RC-4-TOUCH |
 |F3 2E | HB-RC-4-Dis-TH-CRG |
 |F3 2F | HB-RC-4-Dis-TH |
 |F3 30 | HB-RC-2-PBU-LED|

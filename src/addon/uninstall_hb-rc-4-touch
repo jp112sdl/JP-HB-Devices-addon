@@ -1,0 +1,26 @@
+#!/bin/sh
+
+DEVICE="HB-RC-4-TOUCH"
+DEVICE_IMG=hb-rc-4-touch.png
+DEVICE_THUMB=hb-rc-4-touch_thumb.png
+FIRMWARE_FILE=/firmware/rftypes/hb-rc-4-touch.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "; sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+
+webuiFile="/www/webui/webui.js"; sed -i "/\($DEVICE\)/d" $webuiFile
+webuiSearch="HB_TOUCH_TOUCH_THRESHOLD"; sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_TOUCH_RELEASE_THRESHOLD"; sed -i "/\($webuiSearch\)/d" $webuiFile
+
+stringtable_deFile="/www/config/stringtable_de.txt"
+stringtable_deSearch="HB_TOUCH_TOUCH_THRESHOLD"; sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_TOUCH_RELEASE_THRESHOLD"; sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="stringTableHbTouchTouchThreshold"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHbTouchReleaseThreshold"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
+rm -f /www/config/img/devices/250/$DEVICE_IMG
+rm -f /www/config/img/devices/50/$DEVICE_THUMB
+
+rm -f $FIRMWARE_FILE

@@ -53,7 +53,7 @@ if [ -z "`cat $stringtable_deFile | grep \"HB_TOUCH_RELEASE_THRESHOLD"`" ]; then
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 
-translate_deInsert="\n    \"stringTableHbTouchTouchThreshold\" : \"Touchsensor: Touch Threshold\","
+translate_deInsert="\n    \"stringTableHbTouchTouchThreshold\" : \"MPR121: Touch Threshold\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbTouchTouchThreshold\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
-translate_deInsert="\n    \"stringTableHbTouchReleaseThreshold\" : \"Touchsensor: Release Threshold\","
+translate_deInsert="\n    \"stringTableHbTouchReleaseThreshold\" : \"MPR121: Release Threshold\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbTouchReleaseThreshold\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi

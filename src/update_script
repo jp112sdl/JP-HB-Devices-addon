@@ -35,6 +35,7 @@ ln -sf ${ADDON_DIR} ${WWW_DIR}
 
 # Installationsstatus entfernen, um Installation nach Reboot zu erzwingen
 rm -f ${ADDON_DIR}/installed
+rm -f ${ADDON_DIR}/infoPageVisited
 
 sync
 

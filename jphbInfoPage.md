@@ -1,4 +1,4 @@
-## Information / Known Bugs
+## Informationen / "Known Bugs"
 
 #### CCU FW Version 3.55.5
 - "Einstellungen"->"Geräte"

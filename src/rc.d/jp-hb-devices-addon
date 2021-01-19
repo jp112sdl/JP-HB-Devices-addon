@@ -169,6 +169,7 @@ case "$1" in
         sync
         mount -o remount,ro /
         touch ${ADDON_DIR}/installed
+        [[ -f ${ADDON_DIR}/infoPageVisited ]] && rm -f ${ADDON_DIR}/infoPageVisited
 
         if [ $RFD -ge 1 ]; then
           /etc/init.d/S61rfd start | tee -a $GLOBAL_LOGFILE

@@ -2,7 +2,7 @@
 
 **:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.53.27 | 3.37.x - 3.55.5 [inkl. x86]**<br/>
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
-
+Bitte auch die [CCU Firmware spezifischen Hinweise](https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage) lesen und beachten!
 <hr/>
 
 **Das Wichtigste vorweg:**<br/>

@@ -95,8 +95,34 @@
       jQuery("#btnLogOutGuest > div").text(translateKey("logout"));
       jQuery("#btnLogOutGuest").show();
   }
-  var fileJPHBInfo = "/usr/local/addons/jp-hb-devices-addon/infoPageVisited";
-  if (homematic('CCU.existsFile', {'file': fileJPHBInfo})) { jQuery("#jphbInfoPage").hide(); }
-  jphbInfoPageClick = function() { homematic("CCU.createFile",{'file': fileJPHBInfo}); jQuery("#jphbInfoPage").hide(); }
-
+  
+  var fileJPHBInfo = "/usr/local/addons/jp-hb-devices-addon/infoPageVisited";                                                              
+  jQuery("#jphbInfoPage").hide();        
+  var webInfoVersion = 0;                    
+  var localInfoVersion = homematic('jp.getInfoWebVersion', {'file': fileJPHBInfo});
+  
+  if (localInfoVersion === 0) { jQuery("#jphbInfoPage").show(); }   
+                                         
+  jphbInfoPageClick = function() { setInfoVersion(); jQuery("#jphbInfoPage").hide(); }   
+  
+  function setInfoVersion() {
+    if (localInfoVersion != webInfoVersion) {
+      homematic('jp.setInfoWebVersion', {'file': fileJPHBInfo, 'version': webInfoVersion});
+      jQuery("#jphbInfoPage").show();
+    }
+  }                   
+  
+  function httpGet(u) {                                  
+     return new Promise(function(resolve, reject) {        
+       var xhr = new XMLHttpRequest();                     
+       xhr.addEventListener("load", function() {           
+         resolve(this.responseText);                                                                                                         
+         webInfoVersion = parseInt(this.responseText);                                                          
+       });                                                 
+       xhr.open('GET', u);                        
+       xhr.send();                                                                                                  
+     });                                                                                                            
+   }                                                                                                                   
+                                                                                                                    
+  httpGet('https://raw.githubusercontent.com/jp112sdl/JP-HB-Devices-addon/gh-pages/version').then(setInfoVersion);
 </script>

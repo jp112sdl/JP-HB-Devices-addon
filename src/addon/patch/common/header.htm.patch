@@ -8,46 +8,10 @@
    </td>
  
    <!-- Alarm-/Service-Meldungen -->
-@@ -94,5 +95,41 @@
-       jQuery("#btnLogOutGuest > div").text(translateKey("logout"));
+@@ -95,4 +96,6 @@
        jQuery("#btnLogOutGuest").show();
    }
--
-+  
-+(function() {
-+  var fileJPHBInfo = "/usr/local/addons/jp-hb-devices-addon/infoPageVisited";                                                              
-+  jQuery("#jphbInfoPage").hide();        
-+  
-+  var localInfoVersion = homematic('jp.getInfoWebVersion', {'file': fileJPHBInfo});
-+  var webInfoVersion = 0;
-+  
-+  if (localInfoVersion === 0) { jQuery("#jphbInfoPage").show(); }   
-+                                         
-+  jphbInfoPageClick = function() { homematic('jp.setInfoWebVersion', {'file': fileJPHBInfo, 'version': webInfoVersion}); jQuery("#jphbInfoPage").hide(); }   
-+  
-+  function setInfoVersion(responseText) {
-+    webInfoVersion = parseInt(responseText, 10) || 0;
-+    if (localInfoVersion < webInfoVersion) {
-+      jQuery("#jphbInfoPage").show();
-+    }
-+  }
-+  
-+  function errorFunc(error) {
-+    consle.error(error); 
-+  }             
-+  
-+  function httpGet(u) {                                  
-+     return new Promise(function(resolve, reject) {        
-+       var xhr = new XMLHttpRequest();                     
-+       xhr.addEventListener("load", function() {           
-+         resolve(this.responseText);                                                                                                         
-+       });                                                 
-+       xhr.open('GET', u);                        
-+       xhr.send();                                                                                                  
-+     });                                                                                                            
-+   }                                                                                                                   
-+ 
-+  // httpGet Promise resolved mit "responseText"
-+  httpGet('https://raw.githubusercontent.com/jp112sdl/JP-HB-Devices-addon/gh-pages/version').then(setInfoVersion).catch(errorFunc);
-+})();
+ 
++  jphbInfoButton();  
++
  </script>

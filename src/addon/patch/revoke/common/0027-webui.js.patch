@@ -40,11 +40,11 @@
          case ID_SET_STATUS_DISPLAY:
          this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
          this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -24363,6 +24369,7 @@
- ID_AUTO_LOGIN_CONFIG     = 1018;
- ID_PROGRAM_CHOOSER       = 1019;
+@@ -24365,6 +24371,7 @@
  ID_EDIT_SYSVAR           = 1021;
-+ID_SET_HBOUCFM_MODE      = 1923;
  ID_CHOOSE_LED            = 1022;
  ID_SET_OUCFM_MODE        = 1023;
++ID_SET_HBOUCFM_MODE      = 1923;
  ID_SET_STATUS_DISPLAY    = 1024;
+ ID_BIDCOS_INTERFACE = 1025;
+ 

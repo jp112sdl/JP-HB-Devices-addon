@@ -4,16 +4,14 @@
            </td>
          </tr>
      </table>
-+    <a id="jphbInfoPage" target="_blank" title="JP-HB-Devices Infopage" onclick="jphbInfoPageClick();" href="https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage"><img id="jphbInfoPage" src="/ise/img/dialog-information.png" width="31px" height="31px"/></a>
++    <a id="jphbInfoPage" target="_blank" title="JP-HB-Devices Informations" onclick="jphbInfoPageClick();" href="https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage"><img id="jphbInfoPage" src="/ise/img/dialog-information.png" width="31px" height="31px"/></a>
    </td>
  
    <!-- Alarm-/Service-Meldungen -->
-@@ -94,5 +95,8 @@
-       jQuery("#btnLogOutGuest > div").text(translateKey("logout"));
+@@ -95,4 +96,6 @@
        jQuery("#btnLogOutGuest").show();
    }
-+  var fileJPHBInfo = "/usr/local/addons/jp-hb-devices-addon/infoPageVisited";
-+  if (homematic('CCU.existsFile', {'file': fileJPHBInfo})) { jQuery("#jphbInfoPage").hide(); }
-+  jphbInfoPageClick = function() { homematic("CCU.createFile",{'file': fileJPHBInfo}); jQuery("#jphbInfoPage").hide(); }
  
++  jphbInfoButton();  
++
  </script>

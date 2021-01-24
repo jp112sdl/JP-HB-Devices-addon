@@ -1,0 +1,20 @@
+--- ./patchsource/www/api/methods.conf.orig
++++ ./patchsource/www/api/methods.conf
+@@ -1,3 +1,17 @@
++jp.getInfoWebVersion {
++  LEVEL NONE
++  SCRIPT_FILE jp/getinfowebversion.tcl
++  INFO {Gibt die zuletzt betrachtete Info Versionsnummer zurueck}
++  ARGUMENTS {file}
++}
++
++jp.setInfoWebVersion {
++  LEVEL NONE
++  SCRIPT_FILE jp/setinfowebversion.tcl
++  INFO {Schreibt die zuletzte betrachtete Versionsnummer}
++  ARGUMENTS {file version}
++}
++
+ system.describe {
+   LEVEL NONE
+   SCRIPT_FILE system/describe.tcl

@@ -20,6 +20,8 @@ file=./patchsource/www/webui/js/extern/sliderControl.js
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 file=./patchsource/www/ise/htm/header.htm
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
+file=./patchsource/www/api/methods.conf
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 
 file=./patchsource/www/rega/pages/tabs/admin/views/programs.htm
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/le_343/`basename ${file}`.patch 

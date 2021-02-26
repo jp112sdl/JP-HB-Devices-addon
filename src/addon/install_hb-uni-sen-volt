@@ -36,7 +36,18 @@ webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
-stringtable_deInsert="HB_GENERIC_VOLT|HB_VOLTAGE\t\${stringTablePowerMeterVoltage}"
+stringtable_deInsert="HB_GENERIC_VOLT|HB_VOLTAGE\t\${stringTableVoltage}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC_VOLT|HB_VOLTAGE"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
+
+### Edit translate.lang.stringtable.js ###
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="\"dummy\" : \"\","
+
+### for compatibility with older versions
+translate_deInsert="\n    \"stringTablePowerMeterVoltage\" : \"Spannung\","
+if [ -z "`cat $translate_deFile | grep \"stringTablePowerMeterCurrent\"`" ]; then
+	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
+fi
+###

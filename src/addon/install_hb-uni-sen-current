@@ -93,7 +93,7 @@ fi
 ### Edit stringtable_de.txt ###
 stringtable_deFile="/www/config/stringtable_de.txt"
 
-stringtable_deInsert="HB_GENERIC|CURRENT\t\${stringTablePowerMeterCurrent}"
+stringtable_deInsert="HB_GENERIC|CURRENT\t\${stringTableCurrent}"
 if [ -z "`cat $stringtable_deFile | grep \"HB_GENERIC|CURRENT"`" ]; then
     echo -e $stringtable_deInsert >> $stringtable_deFile
 fi
@@ -132,10 +132,12 @@ fi
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="\"dummy\" : \"\","
 
+### for compatibility with older versions
 translate_deInsert="\n    \"stringTablePowerMeterCurrent\" : \"Strom\","
 if [ -z "`cat $translate_deFile | grep \"stringTablePowerMeterCurrent\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
+###
 
 translate_deInsert="\n    \"stringTableHBSampleTime\" : \"Messdauer (Sampletime)\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHBSampleTime\"`" ]; then

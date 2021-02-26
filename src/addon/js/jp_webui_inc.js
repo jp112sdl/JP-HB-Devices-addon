@@ -221,6 +221,148 @@ iseButtonsServo.prototype = {
 };
 
 /**
+ * ise/iseButtonsAirFlap.js
+ **/
+
+/**
+ * @fileOverview ?
+ * @author ise
+ **/
+
+/**
+ * @class
+ **/ 
+iseButtonsAirFlap = Class.create();
+
+iseButtonsAirFlap.prototype = {
+  /*
+   * id = DOM-ID of switch
+   * initState = Creation State 
+   */
+  initialize: function(id, initState, lvlDP, oldLvlDP, iViewOnly, bSliderPosFlag, label)
+  {
+    conInfo( "iseAirFlap: initialize()" );
+    this.id = id;
+    this.state = initState;
+    this.lvlDP = lvlDP;
+    this.oldLvlDP = oldLvlDP;
+
+    if(bSliderPosFlag)
+    {
+        this.bSliderPosFlag = bSliderPosFlag;
+    }
+    else
+    {
+        this.bSliderPosFlag = false;
+    }
+    this.slider = new sliderControl("AirFlap", this.id, initState, iViewOnly,this.bSliderPosFlag);
+
+    
+    this.hasRampClicked = false;
+    
+    this.txtPerc = $(this.id + "Perc");
+    
+    // Add event handlers
+    if (iViewOnly === 0)
+    {
+      this.mouseOut = this.onMouseOut.bindAsEventListener(this);
+      Event.observe($("slidCtrl" + this.id), 'mouseout', this.mouseOut);
+    
+      this.rampClick = this.onRampClick.bindAsEventListener(this);
+      Event.observe(this.slider.e_base, 'mousedown', this.rampClick);
+      
+      this.handleClick = this.onHandleClick.bindAsEventListener(this);
+      Event.observe($("slidCtrl" + this.id), 'mouseup', this.handleClick);
+
+      this.PercChange = this.onPercChange.bindAsEventListener(this);
+      Event.observe($(this.id + "Perc"), 'change', this.PercChange);
+    }
+    this.refresh(false);
+  },
+  
+  onMouseOut: function(event)
+  {
+    var e = event;
+    if (!e) { e = window.event; }
+    var relTarg = e.relatedTarget || e.fromElement;
+    if( relTarg )
+    {
+      var b1 = (relTarg.id.indexOf("slider")!=-1);
+      var b2 = (relTarg.id.indexOf("base")!=-1);
+      var b3 = (relTarg.id.indexOf("green")!=-1);
+      if( !b1 && !b2 && !b3 ) 
+      {
+        if( this.hasRampClicked )
+        {
+          conInfo( "iseAirflap: onMouseOut() ["+relTarg.id+"] "+this.slider.n_value  );
+          this.hasRampClicked = false;
+          this.state = this.slider.n_value;
+          //this.refresh();
+        }
+      }
+    }
+  },
+ 
+  onRampClick: function(ev)
+  {
+     conInfo( "iseAirFlap: onRampClick()" );
+     this.hasRampClicked = true;
+     var pos = Position.page(this.slider.e_base);
+     var offset = ev.clientX - pos[0];
+     var val = ( offset * 100 ) / this.slider.n_controlWidth;  
+     var oldstate = parseInt(this.state);
+     this.state = Math.floor(val);
+     if (this.state < (oldstate-3))
+     {
+       this.slider.f_setValue(val);     
+     }     
+     else if (this.state > (oldstate+3))
+     {
+       this.slider.f_setValue(val);     
+     } 
+     conInfo("setting AirFlap DP "+this.lvlDP+" State --> " + this.state + " -- old State --> "+oldstate);   
+     //window.setTimeout("ibd"+this.id+".refresh()",1000);
+  },
+  
+  onHandleClick: function()
+  {
+    conInfo( "iseAirFlap: onHandleClick()" );
+    //this.state = this.txtPerc.value;
+    this.refresh();
+  },
+  
+  onPercChange: function()
+  {
+    conInfo( "iseAirFlap: onPercChange()" );
+    if( isNaN(this.txtPerc.value) ) return;
+    if( parseInt(this.txtPerc.value) > 100 ) this.txtPerc.value = 100;
+    if( parseInt(this.txtPerc.value) < 0 ) this.txtPerc.value = 0;
+    this.state = this.txtPerc.value;
+    this.refresh();
+  },
+  
+  update: function(newVal)
+  {
+    conInfo( "iseAirFlap: update()" );
+    this.state = newVal;
+    this.refresh(newVal);
+  },
+  
+  refresh: function(setstate)
+  {
+    conInfo( "iseAirFlap: refresh() " + this.state );
+    this.slider.f_setValue(this.state, true);
+    this.txtPerc.value = this.state;
+
+    if(typeof setstate == "undefined")
+    {
+      conInfo("setting Servo DP "+this.lvlDP+" State -------> " + this.state);    
+      setDpState(this.lvlDP, (this.state / 100));
+    }
+  }
+};
+
+/**
  * @class
  **/
 iseRFIDKey = Class.create();

@@ -15,8 +15,8 @@
    this.n_pathLength = 190;
 -  this.s_imgControlGray = '/ise/img/slider/slider_grey.png';
 -  this.s_imgControlGreen = '/ise/img/slider/slider_yellow.png';
-+  this.s_imgControlGreen = (type == "Servo" || type == "AirFlap") ?'/ise/img/slider/servoslider_grey.png':'/ise/img/slider/slider_yellow.png';
-+  this.s_imgControlGray  = (type == "Servo" || type == "AirFlap") ?'/ise/img/slider/servoslider_grey.png':'/ise/img/slider/slider_grey.png';
++  this.s_imgControlGreen = (type == "Servo") ?'/ise/img/slider/servoslider_grey.png':'/ise/img/slider/slider_yellow.png';
++  this.s_imgControlGray = (type == "Servo") ?'/ise/img/slider/servoslider_grey.png':'/ise/img/slider/slider_grey.png';
    this.s_imgSlider = '/ise/img/slider/slider.gif';  
    
    // register in the global collection  

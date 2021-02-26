@@ -1,6 +1,6 @@
 --- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig
 +++ ./patchsource/www/rega/esp/datapointconfigurator.fn
-@@ -148,6 +148,18 @@
+@@ -148,6 +148,17 @@
      var CN_WIN_SC_SENSOR   = "WIN_SC_SENSOR.";
      var CN_WINDOW          = "WINDOW.";
  
@@ -8,7 +8,6 @@
 +    var CN_IRRC_BUTTON     = "IRRCBTN.";
 +    var CN_IBTN_BUTTON     = "IBTN.";
 +    var CN_SERVO           = "SERVO.";
-+    var CN_AIRFLAP         = "AIRFLAP.";
 +    var CN_FAN             = "FAN.";
 +    var CN_PFS             = "PFS.";
 +    var CN_LDRSC           = "LDRSC.";
@@ -19,7 +18,7 @@
      var CN_EVENT_INTERFACE = "EVENT_INTERFACE.";
      var CN_NOT_ACTIVE = "CHANNEL_NOT_ACTIVE";
  
-@@ -369,7 +381,120 @@
+@@ -369,7 +380,109 @@
              sLastControlName = CN_BTN_SHORT_ONLY;
              Call("/esp/controls/button.fn::CreateKeyShortOnly()");
            }
@@ -66,17 +65,6 @@
 +            Call("/esp/controls/servo.fn::CreateServoActuator()");
 +          } 
 +          
-+          !# AIRFLAP
-+          bIsControl = ( sControlName.Find(CN_AIRFLAP) > -1 );
-+          if( bIsControl && (sLastControlName!=CN_AIRFLAP) )
-+          {
-+            object ch = dom.GetObject(chnId);
-+            isKnownControl = true;
-+            sLastControlName = CN_AIRFLAP;
-+            WriteLine( "<script>conInfo('Control AIRFLAP found.');</script>" );
-+            Call("/esp/controls/airflap.fn::CreateAirflapActuator()");
-+          } 
-+                    
 +          !# FAN
 +          bIsControl = ( sControlName.Find(CN_FAN) > -1 );
 +          if( bIsControl && (sLastControlName!=CN_FAN) )

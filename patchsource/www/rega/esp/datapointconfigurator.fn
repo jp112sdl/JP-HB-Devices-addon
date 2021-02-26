@@ -152,6 +152,7 @@ function ::dcCreate()
     var CN_IRRC_BUTTON     = "IRRCBTN.";
     var CN_IBTN_BUTTON     = "IBTN.";
     var CN_SERVO           = "SERVO.";
+    var CN_AIRFLAP         = "AIRFLAP.";
     var CN_FAN             = "FAN.";
     var CN_PFS             = "PFS.";
     var CN_LDRSC           = "LDRSC.";
@@ -422,6 +423,17 @@ function ::dcCreate()
             Call("/esp/controls/servo.fn::CreateServoActuator()");
           } 
           
+          !# AIRFLAP
+          bIsControl = ( sControlName.Find(CN_AIRFLAP) > -1 );
+          if( bIsControl && (sLastControlName!=CN_AIRFLAP) )
+          {
+            object ch = dom.GetObject(chnId);
+            isKnownControl = true;
+            sLastControlName = CN_AIRFLAP;
+            WriteLine( "<script>conInfo('Control AIRFLAP found.');</script>" );
+            Call("/esp/controls/airflap.fn::CreateAirflapActuator()");
+          } 
+                    
           !# FAN
           bIsControl = ( sControlName.Find(CN_FAN) > -1 );
           if( bIsControl && (sLastControlName!=CN_FAN) )

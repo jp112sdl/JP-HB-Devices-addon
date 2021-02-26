@@ -793,6 +793,22 @@ function ::fanOldVal()
 }
 
 ! [chnId]
+function ::airflapOldVal()
+{
+  object chn = dom.GetObject( system.GetVar("chnId") );
+  if (chn)
+  {
+    object oOL = chn.DPByControl("AIRFLAP.OLD_LEVEL");
+    object oL = chn.DPByControl("AIRFLAP.LEVEL");
+    if( oL && oOL )
+    {
+      oOL.State(1);
+    }
+  }
+  return;
+}
+
+! [chnId]
 ! --> bhasReadDPs
 function ::chnHasReadDPs() {
   boolean bHasReadDPs = false;

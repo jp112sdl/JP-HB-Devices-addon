@@ -79,6 +79,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-cdl-6_thumb.png" width=25/> | [HB-CDL-6](https://github.com/trilu2000/HB-CDL-6) | 6fach Codeschloss _([trilu2000](https://github.com/triliu2000))_ | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-pc-wm_thumb.png" width=25/> | [HB-UNI-Sen-PC-WM](https://github.com/jp112sdl/HB-UNI-Sen-PC-WM) | Wasserzähler mit optischer analoger Impulserfassung (Zeiger) | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-4-touch_thumb.png" width=25/> | [HB-RC-4-TOUCH](https://github.com/jp112sdl/HB-RC-4-TOUCH) | 4-fach Sender mit Touchpads (MPR121) | 🔋 | 
+|<img src="src/addon/www/config/img/devices/50/hb-ou-af-sen-temp_thumb.png" width=25/> | [HB-OU-AF-SEN-TEMP](https://github.com/jp112sdl/HB-OU-AF-SEN-TEMP) | (Kamin) Luftklappensteuerung und Temperatursensor | ⚡️ |
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 

@@ -1,9 +1,9 @@
 #!/bin/sh
 
-DEVICE="HB-RC-10-POS"
-DEVICE_IMG=hb-rc-10-pos.png
-DEVICE_THUMB=hb-rc-10-pos_thumb.png
-DEVICE_DESC="10 channel RemoteControl"
+DEVICE="HB-RC-X-POS"
+DEVICE_IMG=hb-rc-x-pos.png
+DEVICE_THUMB=hb-rc-x-pos_thumb.png
+DEVICE_DESC="multi channel RemoteControl"
 
 ### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"

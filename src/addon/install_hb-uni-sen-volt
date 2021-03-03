@@ -47,7 +47,7 @@ translate_deSearch="\"dummy\" : \"\","
 
 ### for compatibility with older versions
 translate_deInsert="\n    \"stringTablePowerMeterVoltage\" : \"Spannung\","
-if [ -z "`cat $translate_deFile | grep \"stringTablePowerMeterCurrent\"`" ]; then
+if [ -z "`cat $translate_deFile | grep \"stringTablePowerMeterVoltage\"`" ]; then
 	sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile
 fi
 ###

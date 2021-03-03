@@ -1,7 +1,7 @@
 ## Informationen / "Known Bugs"
 #### 💡 CCU FW Version 3.57.4 
 
-- **neue Firmware für das RPI-RF-MOD**
+- **neue Firmware für das RPI-RF-MOD (4.2.14)**
   - durch Anpassung der Frequenz sind evtl. mit dem `FreqTest` abgeglichene Geräte nicht mehr (zuverlässig erreichbar)
     - siehe auch [Homematic Forum](https://homematic-forum.de/forum/viewtopic.php?f=76&t=63125&p=648643#p648640)
 

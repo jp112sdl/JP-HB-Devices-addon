@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<device version="2" cyclic_timeout="7200">
+  <supported_types>
+    <type name="HB-UNI-Sen-PH" id="HB-UNI-Sen-PH">
+      <parameter index="10.0" size="2.0" const_value="0xF316" />
+    </type>
+  </supported_types>
+  <paramset type="MASTER" id="hm_uni_sen_dev_master">
+    <parameter id="HBWEA_TRANSMIT_INTERVAL">
+      <logical type="integer" min="10" max="3600" default="60" unit="s" />
+      <physical type="integer" interface="config" list="0" index="32" size="2" />
+    </parameter>
+    <parameter id="BACKLIGHT_ON_TIME">
+      <logical type="integer" min="0" max="255" default="10" unit="s"/>
+      <physical type="integer" interface="config" list="0" index="14.0" size="1.0"/>
+    </parameter>
+  </paramset>
+  <channels>
+    <channel index="0" type="MAINTENANCE" ui_flags="internal" class="maintenance" count="1">
+      <paramset type="MASTER" id="maint_ch_master" />
+      <paramset type="VALUES" id="maint_ch_values">
+        <parameter id="UNREACH" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UNREACH" />
+        </parameter>
+        <parameter id="STICKY_UNREACH" operations="read,write,event" ui_flags="service,sticky">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="STICKY_UNREACH" />
+        </parameter>
+        <parameter id="CONFIG_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="CONFIG_PENDING" />
+        </parameter>
+        <parameter id="RSSI_DEVICE" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_DEVICE" />
+        </parameter>
+        <parameter id="RSSI_PEER" operations="read,event">
+          <logical type="integer" />
+          <physical type="integer" interface="internal" value_id="RSSI_PEER" />
+        </parameter>
+        <parameter id="DEVICE_IN_BOOTLOADER" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="DEVICE_IN_BOOTLOADER" />
+        </parameter>
+        <parameter id="UPDATE_PENDING" operations="read,event" ui_flags="service">
+          <logical type="boolean" />
+          <physical type="integer" interface="internal" value_id="UPDATE_PENDING" />
+        </parameter>
+      </paramset>
+    </channel>
+    <channel autoregister="true" index="1" type="HB_GENERIC" count="1">
+     <paramset type="MASTER" id="HB-UNI-Sen-PH_master">
+       <parameter id="TEMPERATURE_OFFSET">
+         <logical type="option">
+           <option id="-3.5K" />
+           <option id="-3.0K" />
+           <option id="-2.5K" />
+           <option id="-2.0K" />
+           <option id="-1.5K" />
+           <option id="-1.0K" />
+           <option id="-0.5K" />
+           <option id="0.0K" default="true" />
+           <option id="0.5K" />
+           <option id="1.0K" />
+           <option id="1.5K" />
+           <option id="2.0K" />
+           <option id="2.5K" />
+           <option id="3.0K" />
+           <option id="3.5K" />
+         </logical>
+         <physical type="integer" interface="config" list="1" index="1.0" size="1.0" />
+       </parameter>
+     </paramset>
+     <paramset type="VALUES" id="HB-UNI-Sen-PH_values">
+       <parameter id="HB_PH" operations="read,event" control="NONE">
+         <logical type="float" min="0.0" max="14.0" unit=""/>
+         <physical type="integer" interface="command" value_id="HB_PH" no_init="true">
+           <event frame="MEASURE_EVENT"/>
+         </physical>
+         <conversion type="float_integer_scale" factor="100"/>
+       </parameter>
+       <parameter id="TEMPERATURE" operations="read,event">
+         <logical type="float" min="-40.0" max="80.0" unit="°C" />
+         <physical type="integer" interface="command" value_id="TEMPERATURE">
+           <event frame="MEASURE_EVENT" />
+         </physical>
+         <conversion type="float_integer_scale" factor="10.0" />
+       </parameter>
+       <parameter id="INFO_MSG" operations="read,event" ui_flags="service" control="NONE">
+         <logical type="option">
+           <option id="HB_OPERATION_NORMAL" index="0" default="true"/>
+           <option id="HB_OPERATION_CALIBRATION" index="1"/>
+         </logical>
+         <physical type="integer" interface="command" value_id="INFO_MSG">
+           <event frame="INFO_MSG_EVENT"/>
+         </physical>
+       </parameter>     
+     </paramset>  
+     <paramset type="LINK" id="HB-UNI-Sen-PH_link" />
+    </channel>
+  </channels>
+  <frames>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" fixed_channel="1" type="0x53">
+         <parameter type="integer" signed="true" index="9.0" size="1.7" param="TEMPERATURE" />
+         <parameter type="integer" index="11.0" size="2.0" param="HB_PH" />
+    </frame>
+    <frame id="INFO_MSG_EVENT" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="1">
+      <parameter type="integer" index="12.1" size="0.3" param="INFO_MSG"/>
+    </frame>
+  </frames>
+  <paramset_defs></paramset_defs>
+</device>

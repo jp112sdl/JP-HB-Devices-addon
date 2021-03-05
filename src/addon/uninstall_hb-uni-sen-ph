@@ -1,0 +1,37 @@
+#!/bin/sh
+
+DEVICE="HB-UNI-Sen-PH"
+DEVICE_IMG=hb-uni-sen-ph.png
+DEVICE_THUMB=hb-uni-sen-ph_thumb.png
+FIRMWARE_FILE=/firmware/rftypes/hb-uni-sen-ph.xml
+
+devdescrFile="/www/config/devdescr/DEVDB.tcl"
+devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
+sed -i "s/\($devdescrSearch\)//g" $devdescrFile
+
+webuiFile="/www/webui/webui.js"
+sed -i "/\($DEVICE\)/d" $webuiFile
+webuiSearch="HB_GENERIC|INFO_MSG=HB_OPERATION_NORMAL"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+
+stringtable_deFile="/www/config/stringtable_de.txt"
+stringtable_deSearch="HB_GENERIC|INFO_MSG=HB_OPERATION_NORMAL"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="HB_GENERIC|HB_PH"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
+translate_deSearch="stringTableHbPh"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBOperationNormal"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableHBOperationCalibration"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
+rm -f $FIRMWARE_FILE
+rm -f /www/config/img/devices/250/$DEVICE_IMG
+rm -f /www/config/img/devices/50/$DEVICE_THUMB

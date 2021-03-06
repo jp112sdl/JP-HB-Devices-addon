@@ -1,5 +1,8 @@
 ## Informationen / "Known Bugs"
 #### 💡 CCU FW Version 3.57.4 
+- "Einstellungen"->"Geräte"
+  - das Setzen des Wertes `0` bei einer Geräteeinstellung führt dazu, dass der Minimalwert gesetzt wird
+    - siehe auch [Github](https://github.com/jens-maus/RaspberryMatic/issues/1058#issuecomment-791913360)
 
 - **neue Firmware für das RPI-RF-MOD (4.2.14)**
   - durch Anpassung der Frequenz sind evtl. mit dem `FreqTest` abgeglichene Geräte nicht mehr (zuverlässig) erreichbar

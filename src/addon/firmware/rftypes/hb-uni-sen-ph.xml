@@ -6,9 +6,13 @@
     </type>
   </supported_types>
   <paramset type="MASTER" id="hm_uni_sen_dev_master">
-    <parameter id="HBWEA_TRANSMIT_INTERVAL">
-      <logical type="integer" min="10" max="3600" default="60" unit="s" />
-      <physical type="integer" interface="config" list="0" index="32" size="2" />
+    <parameter id="HB_MEASURE_INTERVAL">                       
+      <logical type="integer" min="5" max="3600" unit="s" default="10" />
+      <physical type="integer" interface="config" list="0" index="31.0" size="2" />
+    </parameter>
+    <parameter id="HBWEA_TRANSMIT_INTERVAL">                       
+      <logical type="integer" min="1" max="255" unit="Messungen" default="18" />
+      <physical type="integer" interface="config" list="0" index="33.0" size="1" />
     </parameter>
     <parameter id="BACKLIGHT_ON_TIME">
       <logical type="integer" min="0" max="255" default="10" unit="s"/>

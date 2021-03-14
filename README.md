@@ -80,7 +80,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-pc-wm_thumb.png" width=25/> | [HB-UNI-Sen-PC-WM](https://github.com/jp112sdl/HB-UNI-Sen-PC-WM) | Wasserzähler mit optischer analoger Impulserfassung (Zeiger) | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-rc-4-touch_thumb.png" width=25/> | [HB-RC-4-TOUCH](https://github.com/jp112sdl/HB-RC-4-TOUCH) | 4-fach Sender mit Touchpads (MPR121) | 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-ou-af-sen-temp_thumb.png" width=25/> | [HB-OU-AF-SEN-TEMP](https://github.com/jp112sdl/HB-OU-AF-SEN-TEMP) | (Kamin) Luftklappensteuerung und Temperatursensor | ⚡️ |
-|<img src="src/addon/www/config/img/devices/50/hb-rc-x-pos_thumb.png" width=25/> | [HB-RC-X-POS](https://github.com/jp112sdl/HB-RC-X-POS) | Mehrkanalsender mit linearer Poti-Auswertung | ⚡️ |
+|<img src="src/addon/www/config/img/devices/50/hb-rc-x-pos_thumb.png" width=25/> | [HB-RC-X-POS](https://github.com/jp112sdl/HB-RC-X-POS) | Mehrkanalsender mit linearer Poti-Auswertung | 🔋 |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-ph_thumb.png" width=25/> | [HB-UNI-Sen-PH](https://github.com/jp112sdl/HB-UNI-Sen-PH) | PH-Sensor | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-es-pmsw1-usb_thumb.png" width=25/> | [HB-ES-PMSw1-USB](https://github.com/jp112sdl/HB-ES-PMSw1-USB) | Schaltaktor mit Strom-/Spannungsmessung für USB | ⚡️ |
 

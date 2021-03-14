@@ -30,3 +30,75 @@ webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['250'] = '\/config\/img\/devices
 if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
 	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
 fi
+
+webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
+
+webuiInsertParam="HB_PW_METER|AVERAGING"
+webuiInsertValue="stringTablePowerMeterAveraging"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PW_METER|CURRENT"
+webuiInsertValue="stringTableHbGenericDistDistanceOffset"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+webuiInsertParam="HB_PW_METER|TX_MINDELAY"
+webuiInsertValue="stringTablePowerMeterTxMinDelay"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+
+webuiInsertParam="HB_PW_METER|TX_THRESHOLD_CURRENT"
+webuiInsertValue="stringTablePowerMeterTxThresholdCurrent"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+
+webuiInsertParam="HB_PW_METER|TX_THRESHOLD_VOLTAGE"
+webuiInsertValue="stringTablePowerMeterTxThresholdVoltage"
+webuiInsert="\n"
+webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
+if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
+	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
+fi
+
+### Edit stringtable_de.txt ###
+stringtable_deFile="/www/config/stringtable_de.txt"
+
+stringtable_deInsert="HB_PW_METER|AVERAGING\t\${stringTablePowerMeterAveraging}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PW_METER|AVERAGING"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PW_METER|CURRENT\t\${stringTableCurrent}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PW_METER|CURRENT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PW_METER|TX_MINDELAY\t\${stringTablePowerMeterTxMinDelay}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PW_METER|TX_MINDELAY"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PW_METER|TX_THRESHOLD_CURRENT\t\${stringTablePowerMeterTxThresholdCurrent}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PW_METER|TX_THRESHOLD_CURRENT"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi
+
+stringtable_deInsert="HB_PW_METER|TX_THRESHOLD_VOLTAGE\t\${stringTablePowerMeterTxThresholdVoltage}"
+if [ -z "`cat $stringtable_deFile | grep \"HB_PW_METER|TX_THRESHOLD_VOLTAGE"`" ]; then
+    echo -e $stringtable_deInsert >> $stringtable_deFile
+fi

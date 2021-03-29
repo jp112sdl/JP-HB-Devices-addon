@@ -125,6 +125,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 3B | HB-UNI-SenAct-8-8-SC-BAT|
 |F3 3C | HB-UNI-Sen-RFID-RC|
 |F3 3D | HB-IR-Rcv-RC |
+|F3 3E | HB-RC-6-PBU-LED|
 |F3 40 | HB-OU-AF-SEN-TEMP |
 |F3 41 | HB-UNI-RGB-LED-CTRL |
 |F3 42 | HB-UNI-DMX-MASTER |

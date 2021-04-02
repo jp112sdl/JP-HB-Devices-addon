@@ -68,7 +68,7 @@ check_rfd()
   echo "Found $RFD rfd process(es)" | tee -a $TMP_LOGFILE
 }
 
-unpatch()
+revoke_patches()
 {
   check_ccu_fw_version
 
@@ -124,7 +124,7 @@ case "$1" in
         mount -o remount,rw /
         if [ -d ${PATCH_DIR} ]; then
           echo "Revoking current addon patch files."
-          unpatch
+          revoke_patches
         fi
         
         ### afterwards, delete the old (current) addon directory and rename the newly uploaded 
@@ -285,7 +285,7 @@ case "$1" in
       echo "Running scripts..."    
       for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $TMP_LOGFILE 2>$TMP_ERRFILE; done
       
-      unpatch
+      revoke_patches
 
       cd /
       rm -rf ${ADDON_DIR}

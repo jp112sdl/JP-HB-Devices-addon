@@ -5,7 +5,6 @@ ADDON_NAME=`basename "$0"`
 
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
 PATCH_DIR=${ADDON_DIR}/patch
-WWW_DIR=/etc/config/addons/www/${ADDON_NAME}
 LOG_DIR=${ADDON_DIR}/log
 GLOBAL_LOGFILE=${LOG_DIR}/inst.log
 GLOBAL_ERRFILE=${LOG_DIR}/inst.err
@@ -68,7 +67,7 @@ case "$1" in
     ""|init|start)
       check_ccu_fw_version
 
-      if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
+      if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then
         echo "Starting complete installation within '$1' $(date +"%d.%m.%Y %H:%M:%S")" | tee $GLOBAL_LOGFILE
         cp /dev/null $GLOBAL_ERRFILE
         cp /dev/null $PATCH_REVOKE_ERRFILE
@@ -105,26 +104,7 @@ case "$1" in
 
         cd /www
 
-        if [ ! -f ${CK_FIRMWARE_FILE} ]; then
-          echo "Fresh installation - revoking patches not needed." | tee -a $GLOBAL_LOGFILE
-        else
-          ########################	REVOKE  	######################
-          echo "######## REVOKE COMMON APPLIED PATCHES ########" | tee -a $GLOBAL_LOGFILE
-          for patchfile in `ls ${PATCH_DIR}/revoke/${PATCHSUBDIR_COMMON}/* | sort`; do 
-            echo "### Rejecting ${PATCHSUBDIR_COMMON} patch file $patchfile" | tee -a $GLOBAL_LOGFILE | tee -a $PATCH_REVOKE_ERRFILE
-            convert_lf $patchfile
-            patch -R -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$PATCH_REVOKE_ERRFILE
-          done
-        
-          echo "######## REVOKE VERSION DEPENDEND PATCHES ########" | tee -a $GLOBAL_LOGFILE
-          for patchfile in `ls ${PATCH_DIR}/revoke/${PATCHSUBDIR_VERSION}/* | sort`; do 
-            echo "### Rejecting ${PATCHSUBDIR_VERSION} patch file $patchfile" | tee -a $GLOBAL_LOGFILE | tee -a $PATCH_REVOKE_ERRFILE
-            convert_lf $patchfile
-            patch -R -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$PATCH_REVOKE_ERRFILE
-          done
-        fi
-        
-        ########################	APPLY   	######################
+       ########################	APPLY   	######################
         echo "######## APPLY COMMON PATCHES ########" | tee -a $GLOBAL_LOGFILE
         for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
           echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
@@ -246,13 +226,13 @@ case "$1" in
       
       echo "######## REVOKE COMMON PATCHES ########"
       for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
-        echo "Rejecting ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE
+        echo "Revoking ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE
         patch -R -p3 -i $patchfile
       done
       
       echo "######## REVOKE VERSION DEPENDEND PATCHES ########"
       for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
-        echo "Rejecting ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE
+        echo "Revoking ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE
         patch -R -p3 -i $patchfile
       done
 
@@ -266,7 +246,6 @@ case "$1" in
 
       cd /
       rm -rf ${ADDON_DIR}
-      rm -rf ${WWW_DIR}
       rm -f ${RC_DIR}/${ADDON_NAME}
       sync
       mount -o remount,ro /

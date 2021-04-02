@@ -14,11 +14,12 @@ fi
 
 ADDON_NAME=jp-hb-devices-addon
 RC_DIR=/usr/local/etc/config/rc.d
-WWW_DIR=/usr/local/etc/config/addons/www/$ADDON_NAME
 ADDON_DIR=/usr/local/addons/$ADDON_NAME
 
-# Alte Firmware Files löschen
-rm -f ${ADDON_DIR}/firmware/rftypes/*
+# Deinstallieren einer bestehenden Addon-Installation
+if [ -f ${RC_DIR}/${ADDON_NAME} ]; then
+  ${RC_DIR}/${ADDON_NAME} uninstall
+fi
 
 # Startscript anlegen
 cp -af rc.d/$ADDON_NAME ${RC_DIR}/
@@ -28,14 +29,6 @@ chmod +x ${RC_DIR}/$ADDON_NAME
 mkdir -p ${ADDON_DIR}
 cp -af addon/* ${ADDON_DIR}
 chmod 755 ${ADDON_DIR}
-
-# Symbolic Links
-rm -rf ${WWW_DIR}
-ln -sf ${ADDON_DIR} ${WWW_DIR}
-
-# Installationsstatus entfernen, um Installation nach Reboot zu erzwingen
-rm -f ${ADDON_DIR}/installed
-rm -f ${ADDON_DIR}/infoPageVisited
 
 sync
 

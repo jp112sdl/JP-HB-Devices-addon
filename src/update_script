@@ -14,12 +14,7 @@ fi
 
 ADDON_NAME=jp-hb-devices-addon
 RC_DIR=/usr/local/etc/config/rc.d
-ADDON_DIR=/usr/local/addons/$ADDON_NAME
-
-# Deinstallieren einer bestehenden Addon-Installation
-if [ -f ${RC_DIR}/${ADDON_NAME} ]; then
-  ${RC_DIR}/${ADDON_NAME} uninstall
-fi
+ADDON_DIR=/usr/local/addons/${ADDON_NAME}-new
 
 # Startscript anlegen
 cp -af rc.d/$ADDON_NAME ${RC_DIR}/

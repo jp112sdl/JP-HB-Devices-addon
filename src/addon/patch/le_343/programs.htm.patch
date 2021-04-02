@@ -1,9 +1,21 @@
 --- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig
 +++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm
-@@ -95,6 +95,19 @@
+@@ -95,6 +95,31 @@
      };
    };  
  
++  // HB-RC-6-PBU-LED
++  ChangeHBRC6LEDValue = function(sdid)
++  {
++    iseSingleDestination.reload = false;
++    dlgResult = "";
++    CreatePopup(ID_SET_HBRC6LED_MODE, "X:"+sdid);
++    PopupClose = function()
++    {
++      dlgPopup.hide();
++      ReloadSingleDestination(sdid);
++    };
++  };
 +  // MP3 HB Funkgong
 +  ChangeHBOUCFMValue = function(sdid)
 +  {
@@ -20,7 +32,7 @@
    // Heating thermostate
    SetPartyMode = function(elm) {
      var url = "/pages/msg/setPartyMode.htm";
-@@ -141,7 +154,10 @@
+@@ -141,7 +166,10 @@
    };
  
    SetStatusDisplay = function(regaDialogID, mode) {
@@ -32,7 +44,7 @@
  
      jQuery(elm).prop("disabled", true);
  
-@@ -179,6 +195,19 @@
+@@ -179,6 +207,19 @@
              inputElm.change();
            }
          }, "html");

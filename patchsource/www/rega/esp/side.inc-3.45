@@ -11,6 +11,7 @@
   integer iVPT = oSD.DestinationValueParamType();
 
   string hb_oump3led = "HB-OU-MP3-LED";
+  string hb_rc6led = "HB-RC-6-PBU-LED";
   string hb_statusDisplayEPaper = "HB-DIS-EP-42BW";
   string hb_statusDisplayEPaperMains = "HB-DIS-EP-42BW-MAINS";
   string hb_statusDisplayEPaper75 = "HB-DIS-EP-75BW";
@@ -467,6 +468,7 @@
             string chLabel = oCH.Label();
 
             integer oump3led = chLabel.Find(hb_oump3led);
+            integer rc6led = chLabel.Find(hb_rc6led);
             integer statusHbDisplayEPaperDevice = hb_statusDisplayEPaper.Find(chLabel);
             integer statusHbDisplayEPaperDeviceMains = hb_statusDisplayEPaperMains.Find(chLabel);
             integer statusHbDisplayEPaperDevice75 = hb_statusDisplayEPaper75.Find(chLabel);
@@ -581,6 +583,7 @@
 
             if((ouled16 == -1)
               && (oump3led == -1)
+              && (rc6led == -1)
               && (statusHbDisplayEPaperDevice == -1)
               && (statusHbDisplayEPaperDeviceMains == -1)
               && (statusHbDisplayEPaperDevice75 == -1)
@@ -609,6 +612,9 @@
               if(oump3led != -1) {
                 Write( '<span class="CLASS02401" onclick="ChangeHBOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
               }
+              if(rc6led != -1) {
+                Write( '<span class="CLASS02401" onclick="ChangeHBRC6LEDValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
+              }  
               if (partyDialogDevice != -1) {
                 Write( '<span id="setPartyMode" class="CLASS02401" onclick="SetPartyMode(this);"><img src="/ise/img/notepad.png" /></span>' );
               }

@@ -1,22 +1,9 @@
 --- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig
 +++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm
-@@ -94,6 +94,31 @@
-       ReloadSingleDestination(sdid);
+@@ -95,6 +95,19 @@
      };
    };  
-+  
-+  // HB-RC-6-PBU-LED
-+  ChangeHBRC6LEDValue = function(sdid)
-+  {
-+    iseSingleDestination.reload = false;
-+    dlgResult = "";
-+    CreatePopup(ID_SET_HBRC6LED_MODE, "X:"+sdid);
-+    PopupClose = function()
-+    {
-+      dlgPopup.hide();
-+      ReloadSingleDestination(sdid);
-+    };
-+  };
+ 
 +  // MP3 HB Funkgong
 +  ChangeHBOUCFMValue = function(sdid)
 +  {
@@ -28,21 +15,24 @@
 +      dlgPopup.hide();
 +      ReloadSingleDestination(sdid);
 +    };
-+  };
- 
++  }; 
++  
    // Heating thermostate
    SetPartyMode = function(elm) {
-@@ -154,6 +179,9 @@
-       case "ACOUSTIC_DIS-EP":
-         elm = jQuery("#ePaperAcousticDisplay" + regaDialogID);
-         break;
-+      case "DIS-EP42BW":
-+        elm = jQuery("#setHbStatusDisplayEPaper" + regaDialogID);
-+        break;
-     }
+     var url = "/pages/msg/setPartyMode.htm";
+@@ -141,7 +154,10 @@
+   };
+ 
+   SetStatusDisplay = function(regaDialogID, mode) {
+-    var elm = (mode == "DIS") ? jQuery("#setStatusDisplay" + regaDialogID) : jQuery("#setStatusDisplayEPaper" + regaDialogID) ;
++   var elm;
++   if (mode == "DIS") elm = jQuery("#setStatusDisplay" + regaDialogID);
++   if (mode == "DIS-EP") elm = jQuery("#setStatusDisplayEPaper" + regaDialogID) ;
++   if (mode == "DIS-EP42BW") elm = jQuery("#setHbStatusDisplayEPaper" + regaDialogID) ;
  
      jQuery(elm).prop("disabled", true);
-@@ -192,6 +220,19 @@
+ 
+@@ -179,6 +195,19 @@
              inputElm.change();
            }
          }, "html");
@@ -59,6 +49,6 @@
 +            inputElm.change();
 +          }
 +        }, "html");
-       } else if (mode == "ACOUSTIC_DIS-EP") {
-         statusDisplayDialog = new StatusDisplayDialogAcousticEPaper(translateKey("statusDisplayDialogTitle"), htmlContent, jQuery(inputElm).val(), function (result) {
-           if (result == this.RESULT_YES) {
+       }
+ 
+ 

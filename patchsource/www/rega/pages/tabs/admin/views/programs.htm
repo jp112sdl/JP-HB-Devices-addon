@@ -95,6 +95,18 @@
     };
   };  
 
+  // HB-RC-6-PBU-LED
+  ChangeHBRC6LEDValue = function(sdid)
+  {
+    iseSingleDestination.reload = false;
+    dlgResult = "";
+    CreatePopup(ID_SET_HBRC6LED_MODE, "X:"+sdid);
+    PopupClose = function()
+    {
+      dlgPopup.hide();
+      ReloadSingleDestination(sdid);
+    };
+  };
   // MP3 HB Funkgong
   ChangeHBOUCFMValue = function(sdid)
   {

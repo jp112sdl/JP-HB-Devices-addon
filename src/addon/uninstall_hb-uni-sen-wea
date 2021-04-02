@@ -197,6 +197,12 @@ translate_enSearch="stringTableWeatherRdSensorTypeGeneric"
 sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
 translate_enSearch="stringTableWeatherRdSensorTypeStallBiz"
 sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
+translate_enSearch="stringTableWeatherRdHeatingFalse"
+sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
+translate_enSearch="stringTableWeatherRdHeatingTrue"
+sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
+translate_enSearch="stringTableWeatherRdHeating"
+sed -i "/\(${translate_enSearch}\)/d" $translate_enFile
 
 rm -f $FIRMWARE_FILES
 rm -f /www/config/img/devices/250/$DEVICE_IMG

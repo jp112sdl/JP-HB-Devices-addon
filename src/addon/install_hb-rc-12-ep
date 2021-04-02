@@ -307,8 +307,6 @@ translate_deInsert="\n    \"stringTableHbEpTextColored\" : \"Text farbig\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpTextColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 translate_deInsert="\n    \"stringTableHbEpIconColored\" : \"Icon farbig\","
 if [ -z "`cat $translate_deFile | grep \"stringTableHbEpIconColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
-translate_deInsert="\n    \"stringTableHbEpIconColored\" : \"Icon farbig\","
-if [ -z "`cat $translate_deFile | grep \"stringTableHbEpIconColored\"`" ]; then sed -i "s/\($translate_deSearch\)/\1$translate_deInsert/g" $translate_deFile; fi
 
 ### Edit translate.lang.extension.js
 translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"

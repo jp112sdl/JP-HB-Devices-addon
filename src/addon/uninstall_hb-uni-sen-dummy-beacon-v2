@@ -12,7 +12,15 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
 webuiSearch="FD_BROADCAST"
-
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="RF_TX_POWER=TX_HIGH"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="RF_TX_POWER=TX_MID"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="RF_TX_POWER=TX_LOW"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="RF_TX_POWER"
+sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"
 stringtable_deSearch="FD_SIMULATE_DEVICETYPE"
@@ -26,6 +34,8 @@ sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_SEND_EVERY"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="FD_BROADCAST"
+sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
+stringtable_deSearch="RF_TX_POWER"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
@@ -41,6 +51,15 @@ translate_deSearch="stringTableFdSendEvery"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableFdBroadcast"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableRfTxPowerHigh"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableRfTxPowerMid"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableRfTxPowerLow"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+translate_deSearch="stringTableRfTxPower"
+sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

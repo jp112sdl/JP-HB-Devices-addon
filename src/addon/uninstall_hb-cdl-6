@@ -28,7 +28,6 @@ sed -i "/\($webuiSearch\)/d" $webuiFile
 
 
 stringtable_deFile="/www/config/stringtable_de.txt"
-sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_ACTIVE_HSV_COLOR"
 sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 stringtable_deSearch="HB_PRGOGRAM_HSV_COLOR"

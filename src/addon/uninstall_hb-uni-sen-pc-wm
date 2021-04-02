@@ -17,6 +17,8 @@ webuiSearch="HB_METER_CONSTANT_WATER"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_ANALOG_LOW_THRESHOLD"
 sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_ANALOG_HIGH_THRESHOLD"
+sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_TAHB_ANALOG_HIGH_THRESHOLDRA"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_PULSE_DELAY_MS"
@@ -24,6 +26,10 @@ sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_CHANGE_MODE"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_COUNT_INITIAL_VALUE"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_GENERIC|ERROR=OAPC_ERROR"
+sed -i "/\($webuiSearch\)/d" $webuiFile
+webuiSearch="HB_GENERIC|ERROR=FRAM_ERROR"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 
 stringtable_deFile="/www/config/stringtable_de.txt"

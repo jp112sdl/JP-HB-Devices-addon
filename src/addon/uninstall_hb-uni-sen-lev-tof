@@ -12,6 +12,8 @@ sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 webuiFile="/www/webui/webui.js"
 sed -i "/\($DEVICE\)/d" $webuiFile
 webuiSearch="HB_GENERIC_DIST|TOF_DISTANCE_OFFSET"
+sed -i "/\($DEVICE\)/d" $webuiFile
+webuiSearch="CAPACITIVE_FILLING_LEVEL_SENSOR|TOF_DISTANCE_OFFSET"
 sed -i "/\($webuiSearch\)/d" $webuiFile
 webuiSearch="HB_GENERIC_DIST|SENSOR_TYPE"
 sed -i "/\($webuiSearch\)/d" $webuiFile

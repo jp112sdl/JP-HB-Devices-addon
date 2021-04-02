@@ -26,7 +26,7 @@ sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
 translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbHbAirFlapLevel"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-translate_deSearch="stringTableHbHbAirFlapOldLevel"
+translate_deSearch="stringTableHbAirFlapOldLevel"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbReleaseAfterMove"
 sed -i "/\(${translate_deSearch}\)/d" $translate_deFile

@@ -91,6 +91,9 @@ translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
 translate_deSearch="stringTableHbEpTextColored"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpTextBold"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="stringTableHbEpIconColored"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
+
+translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
+translate_deSearch="iconChDirArrow"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbCustom01"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbCustom02"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbCustom03"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
@@ -101,9 +104,6 @@ translate_deSearch="iconHbCustom07"; sed -i "/\(${translate_deSearch}\)/d" $tran
 translate_deSearch="iconHbCustom08"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbCustom09"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 translate_deSearch="iconHbCustom10"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-
-translate_deFile="/www/webui/js/lang/de/translate.lang.extension.js"
-translate_deSearch="iconChDirArrow"; sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
 
 rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG

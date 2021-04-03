@@ -3,40 +3,10 @@
 DEVICE="HB-UNI-Sen-WEIGHT"
 DEVICE_IMG=hb-uni-sen-weight.png
 DEVICE_THUMB=hb-uni-sen-weight_thumb.png
-FIRMWARE_FILE=/firmware/rftypes/hb-uni-sen-weight.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
-webuiFile="/www/webui/webui.js"
-sed -i "/\($DEVICE\)/d" $webuiFile
-
-webuiSearch="HB_TARA"
-sed -i "/\($webuiSearch\)/d" $webuiFile
-webuiSearch="HB_AVERAGING"
-sed -i "/\($webuiSearch\)/d" $webuiFile
-webuiSearch="HB_TARAONRESTART"
-sed -i "/\($webuiSearch\)/d" $webuiFile
-
-stringtable_deFile="/www/config/stringtable_de.txt"
-stringtable_deSearch="HB_GENERIC_WEIGHT|HB_WEIGHT"
-sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-stringtable_deSearch="HB_TARA"
-sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-stringtable_deSearch="HB_AVERAGING"
-sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-stringtable_deSearch="HB_TARAONRESTART"
-sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-
-translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
-translate_deSearch="stringTableHbWeight"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-translate_deSearch="stringTableHbGenericWeightTara"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-translate_deSearch="stringTableHbGenericWeightTaraOnRestart"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-
-rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB

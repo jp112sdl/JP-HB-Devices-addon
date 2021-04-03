@@ -2,16 +2,11 @@ Mit 'sed' veränderte Dateien:
 /www/rega/esp/channels.htm
 /www/config/devdescr/DEVDB.tcl
 /www/rega/pages/index.htm
-/www/config/stringtable_de.txt
-/www/webui/js/lang/de/translate.lang.js
-/www/webui/js/lang/de/translate.lang.extension.js
-/www/webui/js/lang/de/translate.lang.stringtable.js
-/www/webui/js/lang/en/translate.lang.stringtable.js
-/www/webui/webui.js
 
 Mit 'patch' veränderte Dateien:
   /www/api/methods.conf
   /www/config/ic_common.tcl
+  /www/config/stringtable_de.txt
   /www/ise/htm/header.htm
   /www/pda/eq3/controls/rhs.tcl
   /www/rega/esp/channels.fn
@@ -21,6 +16,10 @@ V /www/rega/esp/side.inc
   /www/rega/esp/controls/rhs.fn
 V /www/rega/pages/tabs/admin/views/programs.htm
   /www/webui/js/extern/sliderControl.js
+  /www/webui/js/lang/de/translate.lang.js
+  /www/webui/js/lang/de/translate.lang.extension.js
+  /www/webui/js/lang/de/translate.lang.stringtable.js
+  /www/webui/js/lang/en/translate.lang.stringtable.js
   /www/webui/webui.js
 
 V = versionsabhängig

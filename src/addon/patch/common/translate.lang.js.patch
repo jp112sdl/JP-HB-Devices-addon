@@ -1,0 +1,13 @@
+--- ./patchsource/www/webui/js/lang/de/translate.lang.js.orig
++++ ./patchsource/www/webui/js/lang/de/translate.lang.js
+@@ -791,6 +791,10 @@
+     "actionStatusControlLblOff" : "Aus",
+     "actionStatusControlLblShortKeyPress" : "Kurzer<br/>Tastendruck",
+     "actionStatusControlLblLongKeyPress" : "Langer<br/>Tastendruck",
++    "actionStatusControlLblLongRfidHold" : "langer<br/>Scan",
++    "actionStatusControlLblShortRfidHold" : "kurzer<br/>Scan",
++    "actionStatusControlLblLongIrReceive" : "langer<br/>IR Empfang",
++    "actionStatusControlLblShortIrReceive" : "kurzer<br/>IR Empfang",
+     "commentActionStatusControlEnd" : "***********************************************",
+     "commentPrgRules" : "***********************************************",
+     "programsCreateProgram" : "Programmerstellung",

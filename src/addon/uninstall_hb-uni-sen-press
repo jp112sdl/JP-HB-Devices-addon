@@ -4,51 +4,21 @@
 DEVICE="HB-UNI-Sen-PRESS"
 DEVICE_IMG=hb-uni-sen-press.png
 DEVICE_THUMB=hb-uni-sen-press_thumb.png
-FIRMWARE_FILE=/firmware/rftypes/hb-uni-sen-press.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
-webuiFile="/www/webui/webui.js"
-sed -i "/\($DEVICE\)/d" $webuiFile
-webuiSearch="GENERIC|Sensortyp"
-sed -i "/\($webuiSearch\)/d" $webuiFile
-
-rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB
 
 DEVICE="HB-UNI-Sen-PRESS-SC"
 DEVICE_IMG=hb-uni-sen-press.png
 DEVICE_THUMB=hb-uni-sen-press_thumb.png
-FIRMWARE_FILE=/firmware/rftypes/hb-uni-sen-press-sc.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
-webuiFile="/www/webui/webui.js"
-sed -i "/\($DEVICE\)/d" $webuiFile
-webuiSearch="GENERIC|Schaltschwelle"
-sed -i "/\($webuiSearch\)/d" $webuiFile
-webuiSearch="GENERIC|Hysterese"
-sed -i "/\($webuiSearch\)/d" $webuiFile
-
-stringtable_deFile="/www/config/stringtable_de.txt"
-stringtable_deSearch="UNI_PRESSURE"
-sed -i "/\($stringtable_deSearch\)/d" $stringtable_deFile
-
-translate_deFile="/www/webui/js/lang/de/translate.lang.stringtable.js"
-translate_deSearch="stringTableUniPressure"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-translate_deSearch="stringTableHbGenericHysterese"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-translate_deSearch="stringTableHbGenericSchaltschwelle"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-translate_deSearch="stringTableHbGenericSensortyp"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-
-rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB

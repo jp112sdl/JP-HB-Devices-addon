@@ -22,6 +22,16 @@ file=./patchsource/www/ise/htm/header.htm
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 file=./patchsource/www/api/methods.conf
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
+file=./patchsource/www/config/stringtable_de.txt
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
+file=./patchsource/www/webui/js/lang/en/translate.lang.stringtable.js
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
+file=./patchsource/www/webui/js/lang/de/translate.lang.js
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
+file=./patchsource/www/webui/js/lang/de/translate.lang.extension.js
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
+file=./patchsource/www/webui/js/lang/de/translate.lang.stringtable.js
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 
 file=./patchsource/www/rega/pages/tabs/admin/views/programs.htm
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/le_343/`basename ${file}`.patch 

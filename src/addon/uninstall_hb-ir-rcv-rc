@@ -3,23 +3,10 @@
 DEVICE="HB-IR-Rcv-RC"
 DEVICE_IMG=hb-ir-rcv-rc.png
 DEVICE_THUMB=hb-ir-rcv-rc_thumb.png
-FIRMWARE_FILE=/firmware/rftypes/hb-ir-rcv-rc.xml
 
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
-webuiFile="/www/webui/webui.js"
-sed -i "/\($DEVICE\)/d" $webuiFile
-
-translate_deFile="/www/webui/js/lang/de/translate.lang.js"
-translate_deSearch="actionStatusControlLblShortIrReceive"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-
-translate_deFile="/www/webui/js/lang/de/translate.lang.js"
-translate_deSearch="actionStatusControlLblLongIrReceive"
-sed -i "/\(${translate_deSearch}\)/d" $translate_deFile
-
-rm -f $FIRMWARE_FILE
 rm -f /www/config/img/devices/250/$DEVICE_IMG
 rm -f /www/config/img/devices/50/$DEVICE_THUMB

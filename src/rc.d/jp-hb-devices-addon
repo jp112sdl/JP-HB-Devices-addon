@@ -37,13 +37,16 @@ check_ccu_fw_version()
 convert_lf() 
 {
   filename=`sed -n '2p' $1 | sed 's/+++ .\/patchsource//g' | awk {'print $1'}`
+  # we have to convert the original file to UNIX format; patch cannot patch files in DOS format :(
+  dos2unix $filename
+  
   cmpresult=`unix2dos < $filename | cmp - $filename`
   if [ "$cmpresult" ]; then
     cmpresult=`dos2unix < $1 | cmp - $1`
     if [ "$cmpresult" ]; then
-      echo "dos2unix conversion needed for $1" | tee -a $TMP_LOGFILE
-      dos2unix $1 | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
-    fi  
+      echo "dos2unix conversion needed for $1" | tee -a $GLOBAL_LOGFILE
+      dos2unix $1 | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
+    fi
   fi
 }
 
@@ -68,6 +71,39 @@ check_rfd()
   echo "Found $RFD rfd process(es)" | tee -a $TMP_LOGFILE
 }
 
+cleanup_orig_files() 
+{
+  [[ -f /www/webui/webui.js.orig ]] && rm /www/webui/webui.js.orig
+  [[ -f /www/rega/esp/datapointconfigurator.fn.orig ]] && rm /www/rega/esp/datapointconfigurator.fn.orig
+  [[ -f /www/rega/esp/functions.fn.orig ]] && rm /www/rega/esp/functions.fn.orig
+  [[ -f /www/rega/esp/side.inc.orig ]] && rm /www/rega/esp/side.inc.orig
+  [[ -f /www/rega/pages/tabs/admin/views/programs.htm.orig ]] && rm /www/rega/pages/tabs/admin/views/programs.htm.orig
+  [[ -f /www/config/ic_common.tcl.orig ]] && rm /www/config/ic_common.tcl.orig
+}
+
+apply_patches()
+{
+  check_ccu_fw_version
+
+  cd /www
+
+  echo "######## APPLY COMMON PATCHES ########" | tee -a $TMP_LOGFILE
+  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
+    echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+    convert_lf $patchfile
+    patch -p3 -i $patchfile >> $TMP_LOGFILE 2>>$TMP_ERRFILE
+    echo "- done" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+  done
+  
+  echo "######## APPLY VERSION DEPENDEND PATCHES ########" | tee -a $TMP_LOGFILE
+  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
+    echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+    convert_lf $patchfile
+    patch -p3 -i $patchfile >> $TMP_LOGFILE 2>>$TMP_ERRFILE
+    echo "- done" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+  done
+}
+
 revoke_patches()
 {
   check_ccu_fw_version
@@ -77,30 +113,27 @@ revoke_patches()
   echo "######## REVOKE COMMON PATCHES ########"
   for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
     echo "Revoking ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE
+    convert_lf $patchfile
     patch -R -p3 -i $patchfile
   done
   
   echo "######## REVOKE VERSION DEPENDEND PATCHES ########"
   for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
     echo "Revoking ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE
+    convert_lf $patchfile
     patch -R -p3 -i $patchfile
   done
 
-  [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
-  [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
-  [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
-  [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
-  [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-  [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
-  [[ -f ./webui/js/extern/jp_webui_inc.js ]] && rm ./webui/js/extern/jp_webui_inc.js
+  cleanup_orig_files
 }
+
+
 
 case "$1" in
     ""|init|start)
-      check_ccu_fw_version
 
-      ### Check if there was a new addon installation uploaded
-      if [ -d ${NEW_ADDON_DIR} ]; then
+      ### Check if the ccu firmware was updated or there was a new addon installation uploaded
+      if [ ! -f ${CK_FIRMWARE_FILE} ] || [ -d ${NEW_ADDON_DIR} ]; then
         echo "New installation found."
         
         #### Check if monit process exists
@@ -119,21 +152,24 @@ case "$1" in
         if [ $RFD -ge 1 ]; then
           /etc/init.d/S61rfd stop | tee -a $TMP_LOGFILE
         fi
-        
-        ### yes - then revoke patches from currently installed addon version
-        mount -o remount,rw /
-        if [ -d ${PATCH_DIR} ]; then
-          echo "Revoking current addon patch files."
-          revoke_patches
-        fi
-        
-        ### afterwards, delete the old (current) addon directory and rename the newly uploaded 
-        if [ -d ${ADDON_DIR} ]; then
-          echo "Deleting current addon directory and make the new one usable" 
-          rm -rf ${ADDON_DIR}
-        fi
 
-        mv ${NEW_ADDON_DIR} ${ADDON_DIR}
+        mount -o remount,rw /
+        
+        ### revoke patches from currently installed addon version
+        if [ -f ${CK_FIRMWARE_FILE} ] && [ -d ${PATCH_DIR} ]; then
+            echo "Revoking current addon patch files."
+            revoke_patches
+        fi
+        
+        ### delete the old (current) addon directory and rename the newly uploaded 
+        if [ -d ${NEW_ADDON_DIR} ]; then
+          if [ -d ${ADDON_DIR} ]; then
+            echo "Deleting current addon directory " 
+            rm -rf ${ADDON_DIR}
+          fi
+          echo "Renaming ${NEW_ADDON_DIR} to ${ADDON_DIR}" 
+          mv ${NEW_ADDON_DIR} ${ADDON_DIR}  
+        fi
         
         echo "Starting complete installation within '$1' $(date +"%d.%m.%Y %H:%M:%S")" | tee $TMP_LOGFILE
         cp /dev/null $TMP_ERRFILE
@@ -148,48 +184,9 @@ case "$1" in
         chown root:root /www/ise/img/icons_hm_dis_ep_wm55/24/*
         chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
         
-        ### Backup some original files (only for debug)
-        
-        #[[ ! -d ${BACKUP_DIR} ]] && mkdir ${BACKUP_DIR}
-        #mkdir ${BACKUP_DIR}/patched
-        #mkdir -p ${BACKUP_DIR}/www/rega/esp/        ; cp /www/rega/esp/channels.htm ${BACKUP_DIR}/www/rega/esp/channels.htm
-        #mkdir -p ${BACKUP_DIR}/www/rega/pages/      ; cp /www/rega/pages/index.htm  ${BACKUP_DIR}/www/rega/pages/index.htm
-        #mkdir -p ${BACKUP_DIR}/www/config/          ; cp /www/config/stringtable_de.txt ${BACKUP_DIR}/www/config/stringtable_de.txt
-        #mkdir -p ${BACKUP_DIR}/www/webui/js/lang/de/; cp /www/webui/js/lang/de/translate.lang.extension.js ${BACKUP_DIR}/www/webui/js/lang/de/translate.lang.extension.js
-        #                                              cp /www/webui/js/lang/de/translate.lang.js ${BACKUP_DIR}/www/webui/js/lang/de/translate.lang.js
-        #                                              cp /www/webui/js/lang/de/translate.lang.stringtable.js ${BACKUP_DIR}/www/webui/js/lang/de/translate.lang.stringtable.js
-        
-        ### Patch some files ###
-
-        cd /www
-
-       ########################	APPLY   	######################
-        echo "######## APPLY COMMON PATCHES ########" | tee -a $TMP_LOGFILE
-        for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
-          echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
-          #orig_filename=`sed -n '2p' $patchfile | sed 's/+++ .\/patchsource//g' | awk {'print $patchfile'}`
-          #cp ${orig_filename} ${BACKUP_DIR}/patched/$(basename $orig_filename)
-          convert_lf $patchfile
-          patch -N -p3 -i $patchfile >> $TMP_LOGFILE 2>>$TMP_ERRFILE
-          echo "- done" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
-        done
-        
-        echo "######## APPLY VERSION DEPENDEND PATCHES ########" | tee -a $TMP_LOGFILE
-        for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
-          echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
-          #orig_filename=`sed -n '2p' $patchfile | sed 's/+++ .\/patchsource//g' | awk {'print $patchfile'}`
-          #cp ${orig_filename} ${BACKUP_DIR}/patched/$(basename $orig_filename)
-          convert_lf $patchfile
-          patch -N -p3 -i $patchfile >> $TMP_LOGFILE 2>>$TMP_ERRFILE
-          echo "- done" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
-        done
+        apply_patches
          
-        [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
-        [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
-        [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
-        [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-        [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
-        [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
+        cleanup_orig_files
 
         ### Create Symlink to include own js file
         echo "(Re-)Creating symlinks for jp_webui_inc.js..." | tee -a $TMP_LOGFILE
@@ -286,6 +283,8 @@ case "$1" in
       for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $TMP_LOGFILE 2>$TMP_ERRFILE; done
       
       revoke_patches
+      
+      [[ -f /www/webui/js/extern/jp_webui_inc.js ]] && rm /www/webui/js/extern/jp_webui_inc.js
 
       cd /
       rm -rf ${ADDON_DIR}

@@ -1,6 +1,6 @@
 --- ./patchsource/www/webui/webui.js.orig
 +++ ./patchsource/www/webui/webui.js
-@@ -88,6 +88,472 @@
+@@ -88,6 +88,466 @@
  DEV_PATHS["HM-RC-4-3"] = new Object();
  DEV_PATHS["HM-RC-4-3"]["50"] = "/config/img/devices/50/84_hm-rc-4-x_thumb.png";
  DEV_PATHS["HM-RC-4-3"]["250"] = "/config/img/devices/250/84_hm-rc-4-3.png";
@@ -258,18 +258,12 @@
 +DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['Light_beam_6'] = [6, 0.8, 0.772, 0.784, 0.792, 0.016];
 +DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['Light_beam_7'] = [6, 0.86, 0.796, 0.86, 0.8240000000000001, 0.016];
 +DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['Light_beam_8'] = [6, 0.92, 0.772, 0.94, 0.792, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['1'] = [5, 'Light_circle', 'Light_beam_1', 'Light_beam_2', 'Light_beam_3', 'Light_beam_4', 'Light_beam_5', 'Light_beam_6', 'Light_beam_7', 'Light_beam_8'];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_1'] = [6, 0.764, 0.12, 0.792, 0.12, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_2'] = [6, 0.792, 0.12, 0.792, 0.2599999999999999, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_3'] = [6, 0.764, 0.2599999999999999, 0.792, 0.2599999999999999, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_4'] = [6, 0.764, 0.12, 0.764, 0.2599999999999999, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_5'] = [6, 0.792, 0.12, 0.836, 0.07599999999999996, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_6'] = [6, 0.836, 0.07599999999999996, 0.836, 0.30399999999999994, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_7'] = [6, 0.792, 0.2599999999999999, 0.836, 0.30399999999999994, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_beam_1'] = [6, 0.87, 0.1439999999999999, 0.952, 0.07599999999999996, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_beam_2'] = [6, 0.87, 0.19199999999999995, 0.952, 0.19199999999999995, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['SP_beam_3'] = [6, 0.87, 0.24, 0.952, 0.30399999999999994, 0.016];
-+DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['2'] = [5, 'SP_1', 'SP_2', 'SP_3', 'SP_4', 'SP_5', 'SP_6', 'SP_7', 'SP_beam_1', 'SP_beam_2', 'SP_beam_3'];
++DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['7'] = [5, 'Light_circle', 'Light_beam_1', 'Light_beam_2', 'Light_beam_3', 'Light_beam_4', 'Light_beam_5', 'Light_beam_6', 'Light_beam_7', 'Light_beam_8'];
++DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['8'] = [5, 'Light_circle', 'Light_beam_1', 'Light_beam_2', 'Light_beam_3', 'Light_beam_4', 'Light_beam_5', 'Light_beam_6', 'Light_beam_7', 'Light_beam_8'];
++DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['9'] = [5, 'Light_circle', 'Light_beam_1', 'Light_beam_2', 'Light_beam_3', 'Light_beam_4', 'Light_beam_5', 'Light_beam_6', 'Light_beam_7', 'Light_beam_8'];
++DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['10'] = [5, 'Light_circle', 'Light_beam_1', 'Light_beam_2', 'Light_beam_3', 'Light_beam_4', 'Light_beam_5', 'Light_beam_6', 'Light_beam_7', 'Light_beam_8'];
++DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['11'] = [5, 'Light_circle', 'Light_beam_1', 'Light_beam_2', 'Light_beam_3', 'Light_beam_4', 'Light_beam_5', 'Light_beam_6', 'Light_beam_7', 'Light_beam_8'];
++DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['12'] = [5, 'Light_circle', 'Light_beam_1', 'Light_beam_2', 'Light_beam_3', 'Light_beam_4', 'Light_beam_5', 'Light_beam_6', 'Light_beam_7', 'Light_beam_8'];
 +DEV_HIGHLIGHT['HB-RC-4-TOUCH'] = new Object();
 +DEV_LIST.push('HB-RC-4-TOUCH');
 +DEV_DESCRIPTION['HB-RC-4-TOUCH']='HB Remote Control 4 Touch';
@@ -473,7 +467,7 @@
  DEV_HIGHLIGHT["HM-RC-4-3"] = new Object();
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part1"] = [6, 0.312, 0.288, 0.416, 0.288, 0.012];
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part2"] = [6, 0.312, 0.288, 0.352, 0.248, 0.012];
-@@ -3843,6 +4309,211 @@
+@@ -3843,6 +4303,211 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_HIGH'] = '${stringTableCapacitiveFillingSensorCaseHeight}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_LENGTH'] = '${stringTableCapacitiveFillingSensorCaseLength}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_WIDTH'] = '${stringTableCapacitiveFillingSensorCaseWidth}';
@@ -685,7 +679,7 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextCalcFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL'] = '${stringTableCapacitiveFillingSensorFillingLevel}';
-@@ -13664,7 +14335,7 @@
+@@ -13664,7 +14329,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
    // and set the variable freeTextActive to true
@@ -694,7 +688,7 @@
      var jLine = jQuery("#textSelect_" + line),
      jCellFreeText = jQuery("#cellFreeText_"+line);
  
-@@ -13680,7 +14351,7 @@
+@@ -13680,7 +14345,7 @@
    // If at least one line has an active free text mode
    // we have to activate the placeholder for the other lines and the header (color and icon are moving up)
    if (freeTextActive) {
@@ -703,7 +697,7 @@
        var jLine = jQuery("#textSelect_" + line),
        jPlaceHolder = jQuery("#placeHolder_"+line);
  
-@@ -13692,7 +14363,7 @@
+@@ -13692,7 +14357,7 @@
      }
    } else {
      jHeadFreeText.hide().css("display", "none");
@@ -712,7 +706,7 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
-@@ -23560,6 +24231,18 @@
+@@ -23560,6 +24225,18 @@
          this.setWidth(400);
          this.setFile( "/pages/msg/setOUCFMMode.htm" );
          break;
@@ -731,7 +725,7 @@
          case ID_SET_STATUS_DISPLAY:
          this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
          this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -24363,6 +25046,8 @@
+@@ -24363,6 +25040,8 @@
  ID_AUTO_LOGIN_CONFIG     = 1018;
  ID_PROGRAM_CHOOSER       = 1019;
  ID_EDIT_SYSVAR           = 1021;

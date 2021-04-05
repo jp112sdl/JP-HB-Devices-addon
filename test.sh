@@ -2,7 +2,7 @@
 DIR_PREFIX=/tmp
 MOUNT_DIR=$DIR_PREFIX/ccu-fw-tmp
 WORK_DIR=$DIR_PREFIX/www
-EXT4_SRC_PATH=~/Desktop/Homematic/Software/images
+IMG_SRC_PATH=~/Desktop/Homematic/Software/images
 ADDON_FILE=~/Desktop/Homematic/jp-hb-devices-addon/jp-hb-devices-addon.tgz
 
 ADDON_DIR=${DIR_PREFIX}/addon
@@ -38,7 +38,7 @@ convert_lf()
   fi
 }
 
-for filename in ${EXT4_SRC_PATH}/ccu*.*
+for filename in ${IMG_SRC_PATH}/[R,c]*.*
 do 
   
   echo "Mounting $(basename $filename)"
@@ -102,7 +102,7 @@ echo " "
 echo "***********************************************"
 echo " "
 
-for filename in ${EXT4_SRC_PATH}/ccu*.*
+for filename in ${IMG_SRC_PATH}/[R,c]*.*
 do
   echo "Checking Logs for Errors in $(basename $filename):"
   

@@ -44,8 +44,8 @@ convert_lf()
   if [ "$cmpresult" ]; then
     cmpresult=`dos2unix < $1 | cmp - $1`
     if [ "$cmpresult" ]; then
-      echo "dos2unix conversion needed for $1" | tee -a $GLOBAL_LOGFILE
-      dos2unix $1 | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
+      echo "dos2unix conversion needed for $1" | tee -a $TMP_LOGFILE
+      dos2unix $1 | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
     fi
   fi
 }

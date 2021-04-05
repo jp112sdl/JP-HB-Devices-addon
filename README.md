@@ -2,8 +2,8 @@
 
 **:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.53.27 | 3.37.x - 3.57.4 [inkl. x86]**<br/>
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.<br/><br/>
-❗❗❗ **Vor dem Update auf Version 5 unbedingt lesen:**<br>
-Die Update Prozedur wurde grundlegend verändert. Ist bereits eine frühere Version des Addons (V4.x oder kleiner) installiert, ist eine der beiden folgenden Methoden anzuwenden:<br/>
+❗❗❗ **Vor dem Update auf Version 5 unbedingt lesen:** ❗❗❗<br>
+Die Update Prozedur wurde grundlegend verändert. Ist bereits eine frühere Version des Addons (V4.x oder kleiner) installiert, ist eine der beiden folgenden Methoden einmalig beim Wechsel auf die Version 5 anzuwenden:<br/>
 - Variante 1: 
   - altes Addon deinstallieren
   - Version 5 installieren

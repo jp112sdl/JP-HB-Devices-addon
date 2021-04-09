@@ -17,9 +17,10 @@ Die **sicherste** Methode ist **Variante 2**. <br/>_Aufgrund der CCU Firmware-Ne
 Bei Variante 1 ist (aufgrund von Bugs in den Uninstall-Routinen) nicht auszuschließen, dass Reste in den Systemdateien verbleiben und das Patchen somit nicht möglich ist.
 
 <hr/>
-
-
-<br/><br/>
+<br/>
+Treten Fehler während der Addon-Installation auf, erscheint nach dem Reboot ein Warndreieck in der WebUI Oberfläche!<br/>
+<img src="additional/img/header_err.png" width="600">
+<br/><hr/><br/>
 Bitte auch die [CCU Firmware spezifischen Hinweise](https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage) lesen und beachten!<br/>
 Dazu bitte die "Glühlampe" in der WebUI anklicken. Sie wird nach jeder Addon- aber auch CCU-Firmware-Installation eingeblendet, bis sie 1x angeklickt wurde. Zukünftig möchte ich dort auf generelle CCU-Fehler hinweisen, die unabhängig der HomeBrew Geräte existieren.<br/>
 <img src="additional/img/header_info.png" width="600">

@@ -41,10 +41,6 @@ devdescrFile="/www/config/devdescr/DEVDB.tcl"
 devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 sed -i "s/\($devdescrSearch\)//g" $devdescrFile
 
-indexFile="/www/rega/pages/index.htm"
-indexFileSearch="jp_webui_inc.js"
-sed -i "/${indexFileSearch}/d" $indexFile
-
 rm -rf /www/ise/img/icons_hb_dis_ep_75bw
 rm -f /www/config/easymodes/HB-DIS-EP-42BW_dev_master.tcl
 rm -f /www/config/easymodes/HB-DIS-EP-75BW_dev_master.tcl

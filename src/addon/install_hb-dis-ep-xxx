@@ -15,15 +15,6 @@ if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
 	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
 fi
 
-indexFile="/www/rega/pages/index.htm"
-indexFileSearch="<script type=\"text/javascript\" src=\"/webui/webui.js"
-indexFileInsert="<script type=\"text/javascript\" src=\"/webui/js/extern/jp_webui_inc.js\"></script>"
-
-if [ -z "`cat $indexFile | grep \"${indexFileInsert}\"`" ]; then
-    sed -i "\~</body>~i\  $indexFileInsert" $indexFile
-fi
-
-
 ######################################################################
 
 DEVICE="HB-DIS-EP-42BW-MAINS"

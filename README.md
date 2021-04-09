@@ -20,9 +20,9 @@ Bei Variante 1 ist (aufgrund von Bugs in den Uninstall-Routinen) nicht auszuschl
 <br/>
 Treten Fehler während der Addon-Installation auf, erscheint nach dem Reboot ein Warndreieck in der WebUI Oberfläche!<br/>
 <img src="additional/img/header_err.png" width="600">
-Zur Fehleranalyse kann ein Ticket hier bei den [Issues](https://github.com/jp112sdl/JP-HB-Devices-addon/issues) erstellt werden.<br/>
-Es muss jedoch zwingend das Fehlerlog mit angehängt werden.<br/>
-Zu finden ist es unter `/usr/local/addons/jp-hb-devices-addon/log/jp-hb-devices-addon-inst.err`
+Mit einem Klick auf das Warndreieck-Symbol kann die Logdatei heruntergeladen werden.
+Zur Fehleranalyse ist sinnvoll z.B. ein Ticket hier bei den [Issues](https://github.com/jp112sdl/JP-HB-Devices-addon/issues) zu erstellen.<br/>
+Bitte unbedingt das Fehlerlog mit angehängen!<br/>
 <br/><hr/><br/>
 Bitte auch die [CCU Firmware spezifischen Hinweise](https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage) lesen und beachten!<br/>
 Dazu bitte die "Glühlampe" in der WebUI anklicken. Sie wird nach jeder Addon- aber auch CCU-Firmware-Installation eingeblendet, bis sie 1x angeklickt wurde. Zukünftig möchte ich dort auf generelle CCU-Fehler hinweisen, die unabhängig der HomeBrew Geräte existieren.<br/>

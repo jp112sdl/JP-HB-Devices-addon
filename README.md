@@ -20,8 +20,8 @@ Bei Variante 1 ist (aufgrund von Bugs in den Uninstall-Routinen) nicht auszuschl
 <br/>
 Treten Fehler während der Addon-Installation auf, erscheint nach dem Reboot ein Warndreieck in der WebUI Oberfläche!<br/>
 <img src="additional/img/header_err.png" width="600">
-Mit einem Klick auf das Warndreieck-Symbol kann die Logdatei heruntergeladen werden.
-Zur Fehleranalyse ist sinnvoll z.B. ein Ticket hier bei den [Issues](https://github.com/jp112sdl/JP-HB-Devices-addon/issues) zu erstellen.<br/>
+Mit einem Klick auf das Warndreieck-Symbol kann die Logdatei heruntergeladen werden.<br/>
+Zur Fehleranalyse ist es sinnvoll, ein Ticket hier bei den [Issues](https://github.com/jp112sdl/JP-HB-Devices-addon/issues) zu erstellen.<br/>
 Bitte unbedingt das Fehlerlog mit angehängen!<br/>
 <br/><hr/><br/>
 Bitte auch die [CCU Firmware spezifischen Hinweise](https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage) lesen und beachten!<br/>

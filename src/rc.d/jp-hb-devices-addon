@@ -3,7 +3,6 @@
 
 ADDON_NAME=`basename "$0"`
 
-BACKUP_DIR=/usr/local/addons/${ADDON_NAME}-backup-files
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
 PATCH_DIR=${ADDON_DIR}/patch
 NEW_ADDON_DIR=${ADDON_DIR}-new
@@ -273,6 +272,16 @@ case "$1" in
         fi
       fi
       
+      errors=`grep -i -E 'fail|err' ${TMP_ERRFILE}`
+      if [ -z $errors ]; then
+        echo "No errors found during installation"
+        [[ -f ${ADDON_DIR}/install_error ]] && rm ${ADDON_DIR}/install_error
+      else
+        echo "Errors found during installation:"
+        cat ${TMP_ERRFILE}
+        touch ${ADDON_DIR}/install_error
+      fi  
+     
       cp ${TMP_LOGDIR}/${ADDON_NAME}-* ${LOG_DIR}/
     ;;
 

@@ -20,9 +20,7 @@ Bei Variante 1 ist (aufgrund von Bugs in den Uninstall-Routinen) nicht auszuschl
 
 Treten Fehler während der Addon-Installation auf, erscheint nach dem Reboot ein Warndreieck in der WebUI Oberfläche!<br/>
 <img src="additional/img/header_err.png" width="600"><br/>
-Mit einem Klick auf das Warndreieck-Symbol kann die Logdatei heruntergeladen werden.<br/>
-Zur Fehleranalyse ist es sinnvoll, ein Issue zu erstellen.<br/>
-Bitte unbedingt das Fehlerlog mit angehängen!
+Mit einem Klick auf das Warndreieck-Symbol kann die Logdatei heruntergeladen werden.
 
 <hr/>
 

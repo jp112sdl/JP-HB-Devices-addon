@@ -11,7 +11,6 @@ LOG_DIR=${ADDON_DIR}/log
 TMP_LOGDIR=/tmp
 TMP_LOGFILE=${TMP_LOGDIR}/${ADDON_NAME}-inst.log
 TMP_ERRFILE=${TMP_LOGDIR}/${ADDON_NAME}-inst.err
-TMP_PATCH_REVOKE_ERRFILE=${TMP_LOGDIR}/${ADDON_NAME}-revoke.err
 
 FIRMWARE_DIR=/firmware/rftypes
 CUSTOMIZED_FIRMWARE_DIR=${ADDON_DIR}/customized_firmware
@@ -30,7 +29,7 @@ check_ccu_fw_version()
   PATCHSUBDIR_VERSION=ge_345
  fi
  
- echo "Found firmware version $model.$version.$build - using patch subdirectory version ${PATCHSUBDIR_VERSION}" | tee -a $TMP_LOGFILE
+ echo "Found firmware version $model.$version.$build - using patch subdirectory version ${PATCHSUBDIR_VERSION}" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
 }
 
 convert_lf() 
@@ -80,61 +79,52 @@ cleanup_orig_files()
   [[ -f /www/config/ic_common.tcl.orig ]] && rm /www/config/ic_common.tcl.orig
 }
 
-apply_patches()
+do_patch()
 {
-  check_ccu_fw_version
-
-  cd /www
-
-  echo "######## APPLY COMMON PATCHES ########" | tee -a $TMP_LOGFILE
-  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
-    echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
-    convert_lf $patchfile
-    patch -p3 -i $patchfile >> $TMP_LOGFILE 2>>$TMP_ERRFILE
+    echo "### $3 patch file $1" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+    convert_lf $1
+    patch $2 -p3 -i $1 >> $TMP_LOGFILE 2>>$TMP_ERRFILE
     echo "- done" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
-  done
-  
-  echo "######## APPLY VERSION DEPENDEND PATCHES ########" | tee -a $TMP_LOGFILE
-  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
-    echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
-    convert_lf $patchfile
-    patch -p3 -i $patchfile >> $TMP_LOGFILE 2>>$TMP_ERRFILE
-    echo "- done" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
-  done
 }
 
-revoke_patches()
+patcher()
 {
+  if [[ "$1" == "APPLY" ]]; then
+    PATCH_METHOD_HINT="APPLY"
+    PATCH_METHOD_PARAM="-N"
+  elif [[ "$1" == "REVOKE" ]]; then
+    PATCH_METHOD_HINT="REVOKE"
+    PATCH_METHOD_PARAM="-R"
+  else
+    echo "Invalid patcher() param $1" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+    return
+  fi     
+
   check_ccu_fw_version
 
   cd /www
-  
-  echo "######## REVOKE COMMON PATCHES ########"
-  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
-    echo "Revoking ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE
-    convert_lf $patchfile
-    patch -R -p3 -i $patchfile
-  done
-  
-  echo "######## REVOKE VERSION DEPENDEND PATCHES ########"
-  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
-    echo "Revoking ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE
-    convert_lf $patchfile
-    patch -R -p3 -i $patchfile
-  done
 
+  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
+    do_patch $patchfile $PATCH_METHOD_PARAM $PATCH_METHOD_HINT
+  done
+  
+  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
+    do_patch $patchfile $PATCH_METHOD_PARAM $PATCH_METHOD_HINT
+  done
+  
   cleanup_orig_files
 }
 
-
-
 case "$1" in
     ""|init|start)
+      [[ -f $TMP_ERRFILE ]] && rm $TMP_ERRFILE
+      [[ -f $TMP_LOGFILE ]] && rm $TMP_LOGFILE
 
       ### Check if the ccu firmware was updated or there was a new addon installation uploaded
       if [ ! -f ${CK_FIRMWARE_FILE} ] || [ -d ${NEW_ADDON_DIR} ]; then
-        echo "New installation found."
         
+        echo "Starting complete installation within '$1' $(date +"%d.%m.%Y %H:%M:%S")" | tee $TMP_LOGFILE
+                       
         #### Check if monit process exists
         check_monit       
         if [ $MONIT -ge 1 ]; then
@@ -156,23 +146,20 @@ case "$1" in
         
         ### revoke patches from currently installed addon version
         if [ -f ${CK_FIRMWARE_FILE} ] && [ -d ${PATCH_DIR} ]; then
-            echo "Revoking current addon patch files."
-            revoke_patches
+            currentversion=`cat ${ADDON_DIR}/VERSION`
+            echo "Revoking current addon V $currentversion patch files." | tee $TMP_LOGFILE | tee $TMP_ERRFILE
+            patcher "REVOKE"
         fi
         
         ### delete the old (current) addon directory and rename the newly uploaded 
         if [ -d ${NEW_ADDON_DIR} ]; then
           if [ -d ${ADDON_DIR} ]; then
-            echo "Deleting current addon directory " 
+            echo "Deleting current addon directory " | tee $TMP_LOGFILE
             rm -rf ${ADDON_DIR}
           fi
-          echo "Renaming ${NEW_ADDON_DIR} to ${ADDON_DIR}" 
+          echo "Renaming ${NEW_ADDON_DIR} to ${ADDON_DIR}" | tee $TMP_LOGFILE
           mv ${NEW_ADDON_DIR} ${ADDON_DIR}  
         fi
-        
-        echo "Starting complete installation within '$1' $(date +"%d.%m.%Y %H:%M:%S")" | tee $TMP_LOGFILE
-        cp /dev/null $TMP_ERRFILE
-        cp /dev/null $TMP_PATCH_REVOKE_ERRFILE
         
         cd ${ADDON_DIR}
         cp -ar www/* /www/
@@ -183,10 +170,8 @@ case "$1" in
         chown root:root /www/ise/img/icons_hm_dis_ep_wm55/24/*
         chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
         
-        apply_patches
-         
-        cleanup_orig_files
-        
+        patcher "APPLY"
+                 
         ### Modify index.htm
         indexFile="/www/rega/pages/index.htm"
         indexFileInsert="<script type=\"text/javascript\" src=\"/webui/js/extern/jp_webui_inc.js\"></script>"
@@ -298,7 +283,7 @@ case "$1" in
       echo "Running scripts..."    
       for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $TMP_LOGFILE 2>$TMP_ERRFILE; done
       
-      revoke_patches
+      patcher "REVOKE"
       
       # Undo changes in index.htm
       indexFile="/www/rega/pages/index.htm"

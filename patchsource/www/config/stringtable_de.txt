@@ -356,6 +356,7 @@ HB_GENERIC|ERROR=CURRENTSENSOR_FAIL	${stringTableHBCurrentSensorFailure}
 HB_GENERIC|ERROR=FRAM_ERROR	${stringTableHbFramError}
 HB_GENERIC|ERROR=OAPC_ERROR	${stringTableHbOapcError}
 HB_GENERIC|HB_PH	${stringTableHbPh}
+HB_GENERIC|HB_ORP	${stringTableHbOrp}
 HB_GENERIC|HB_RPM	${stringTableHbGenericRpm}
 HB_GENERIC|HB_RPM_ERRMIN	${stringTableHBRpmErrorMin}
 HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION	${stringTableHBOperationCalibration}

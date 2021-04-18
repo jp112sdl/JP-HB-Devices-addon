@@ -184,7 +184,7 @@ case "$1" in
         ### Running install_* scripts for each device installation
         cd ${ADDON_DIR}
         echo "Running scripts..." | tee -a $TMP_LOGFILE
-        for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; ./$(basename $f) >> $TMP_LOGFILE 2>>$TMP_ERRFILE; done
+        for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; ./$(basename $f) install >> $TMP_LOGFILE 2>>$TMP_ERRFILE; done
 
         if [ "$(find ${CUSTOMIZED_FIRMWARE_DIR} -type f -iname '*.xml')" ]; then
           echo "Copying customized firmware files..." | tee -a $TMP_LOGFILE
@@ -281,7 +281,7 @@ case "$1" in
 
       cd ${ADDON_DIR}
       echo "Running scripts..."    
-      for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $TMP_LOGFILE 2>$TMP_ERRFILE; done
+      for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; ./$(basename $f) uninstall > $TMP_LOGFILE 2>$TMP_ERRFILE; done
       
       patcher "REVOKE"
       

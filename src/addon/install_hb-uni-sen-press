@@ -6,53 +6,43 @@ DEVICE_IMG=hb-uni-sen-press.png
 DEVICE_THUMB=hb-uni-sen-press_thumb.png
 DEVICE_DESC="universeller 1..x Drucksensor"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
+    ;;
 
-### Edit webui.js ###
-webuiFile="/www/webui/webui.js"
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
 
-webuiSearchBegin="DEV_HIGHLIGHT[[:space:]]*=[[:space:]]*new Array();"
-webuiInsert="\n"
-webuiInsert="${webuiInsert}DEV_HIGHLIGHT['$DEVICE'] = new Object();\n"
-webuiInsert="${webuiInsert}DEV_LIST.push('$DEVICE');\n"
-webuiInsert="${webuiInsert}DEV_DESCRIPTION['$DEVICE']='${DEVICE_DESC}';\n"
-webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE'] = new Object();\n"
-webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['50'] = '\/config\/img\/devices\/50\/$DEVICE_THUMB';\n"
-webuiInsert="${webuiInsert}DEV_PATHS['$DEVICE']['250'] = '\/config\/img\/devices\/250\/$DEVICE_IMG';"
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac
 
-if [ -z "`cat $webuiFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
-fi
-
-webuiSearchBegin="elvST[[:space:]]*=[[:space:]]*new Array();"
-
-webuiInsertParam="GENERIC|Sensortyp"
-webuiInsertValue="stringTableHbGenericSensortyp"
-webuiInsert="\n"
-webuiInsert="${webuiInsert}elvST['$webuiInsertParam'] = '\${$webuiInsertValue}';"
-if [ -z "`cat $webuiFile | grep \"$webuiInsertParam\"`" ]; then
-	sed -i "s/\($webuiSearchBegin\)/\1$webuiInsert/g" $webuiFile
-fi
+#########################################################################################
 
 DEVICE="HB-UNI-Sen-PRESS-SC"
 DEVICE_IMG=hb-uni-sen-press.png
 DEVICE_THUMB=hb-uni-sen-press_thumb.png
 DEVICE_DESC="universeller Drucksensor mit Trigger- \/ Schaltausgang"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
+    ;;
+
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
+
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac

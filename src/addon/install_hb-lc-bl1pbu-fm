@@ -5,42 +5,52 @@ DEVICE_IMG=PushButton-2ch-wm.png
 DEVICE_THUMB=PushButton-2ch-wm_thumb.png
 DEVICE_DESC="HM-LC-Bl1PBU-FM mit alternativer FW"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
 
-mkdir -p /www/config/easymodes/KEY/localization/de
-mkdir -p /www/config/easymodes/KEY/localization/en
-mkdir -p /www/config/easymodes/KEY/localization/tr
+     mkdir -p /www/config/easymodes/KEY/localization/de
+     mkdir -p /www/config/easymodes/KEY/localization/en
+     mkdir -p /www/config/easymodes/KEY/localization/tr
+     
+     if [ ! -e /www/config/easymodes/KEY/localization/de/GENERIC.txt ]; then
+      cp /www/config/easymodes/BLIND/localization/de/GENERIC.txt /www/config/easymodes/KEY/localization/de/
+     fi                                                                                                    
+                                                                                                           
+     if [ ! -e /www/config/easymodes/KEY/localization/de/KEY.txt ]; then                                   
+      cp /www/config/easymodes/BLIND/localization/de/KEY.txt /www/config/easymodes/KEY/localization/de/    
+     fi                                                                                                    
+                                                                                                           
+     if [ ! -e /www/config/easymodes/KEY/localization/en/GENERIC.txt ]; then                               
+      cp /www/config/easymodes/BLIND/localization/en/GENERIC.txt /www/config/easymodes/KEY/localization/en/
+     fi                                                                                                    
+                                                                                                           
+     if [ ! -e /www/config/easymodes/KEY/localization/en/KEY.txt ]; then                                   
+      cp /www/config/easymodes/BLIND/localization/en/KEY.txt /www/config/easymodes/KEY/localization/en/    
+     fi                                                                                                    
+                                                                                                           
+     #if [ ! -e /www/config/easymodes/KEY/localization/tr/GENERIC.txt ]; then                               
+     # cp /www/config/easymodes/BLIND/localization/tr/GENERIC.txt /www/config/easymodes/KEY/localization/tr/
+     #fi                                                                                                    
+                                                                                                           
+     #if [ ! -e /www/config/easymodes/KEY/localization/tr/KEY.txt ]; then                                   
+     # cp /www/config/easymodes/BLIND/localization/tr/KEY.txt /www/config/easymodes/KEY/localization/tr/    
+     #fi 
+     
+     chmod -R 755 /www/config/easymodes/KEY/localization/ 
 
-if [ ! -e /www/config/easymodes/KEY/localization/de/GENERIC.txt ]; then
- cp /www/config/easymodes/BLIND/localization/de/GENERIC.txt /www/config/easymodes/KEY/localization/de/
-fi                                                                                                    
-                                                                                                      
-if [ ! -e /www/config/easymodes/KEY/localization/de/KEY.txt ]; then                                   
- cp /www/config/easymodes/BLIND/localization/de/KEY.txt /www/config/easymodes/KEY/localization/de/    
-fi                                                                                                    
-                                                                                                      
-if [ ! -e /www/config/easymodes/KEY/localization/en/GENERIC.txt ]; then                               
- cp /www/config/easymodes/BLIND/localization/en/GENERIC.txt /www/config/easymodes/KEY/localization/en/
-fi                                                                                                    
-                                                                                                      
-if [ ! -e /www/config/easymodes/KEY/localization/en/KEY.txt ]; then                                   
- cp /www/config/easymodes/BLIND/localization/en/KEY.txt /www/config/easymodes/KEY/localization/en/    
-fi                                                                                                    
-                                                                                                      
-#if [ ! -e /www/config/easymodes/KEY/localization/tr/GENERIC.txt ]; then                               
-# cp /www/config/easymodes/BLIND/localization/tr/GENERIC.txt /www/config/easymodes/KEY/localization/tr/
-#fi                                                                                                    
-                                                                                                      
-#if [ ! -e /www/config/easymodes/KEY/localization/tr/KEY.txt ]; then                                   
-# cp /www/config/easymodes/BLIND/localization/tr/KEY.txt /www/config/easymodes/KEY/localization/tr/    
-#fi 
+    ;;
 
-chmod -R 755 /www/config/easymodes/KEY/localization/ 
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
+
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac
+
+

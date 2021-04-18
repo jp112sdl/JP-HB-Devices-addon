@@ -5,20 +5,31 @@ DEVICE_IMG=hb-ou-af-sen-temp.png
 DEVICE_THUMB=hb-ou-af-sen-temp_thumb.png
 DEVICE_DESC="AirFlap control with Temperature sensor"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
 
+     ### Edit channels.html ###
+     channelsFile="/www/rega/esp/channels.htm"
+     channelsInsert="\n<%  if (action == \"airflapOldVal\")     { Call(\"channels.fn::airflapOldVal()\"); } %>"
+     if [ -z "`cat $channelsFile | grep \"airflapOldVal"`" ]; then
+         echo -e $channelsInsert >> $channelsFile
+     fi
 
-### Edit channels.html ###
-channelsFile="/www/rega/esp/channels.htm"
-channelsInsert="\n<%  if (action == \"airflapOldVal\")     { Call(\"channels.fn::airflapOldVal()\"); } %>"
-if [ -z "`cat $channelsFile | grep \"airflapOldVal"`" ]; then
-    echo -e $channelsInsert >> $channelsFile
-fi
+    ;;
+
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
+
+     channelsFile="/www/rega/esp/channels.htm"
+     channelsSearch="airflapOldVal"
+     sed -i "/\(${channelsSearch}\)/d" $channelsFile
+
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac

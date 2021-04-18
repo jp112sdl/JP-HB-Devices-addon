@@ -1,9 +1,0 @@
-#!/bin/sh
-
-DEVICE="HB-LC-Bl2-RD"
-DEVICE_IMG=hb-lc-bl2-rd.png
-DEVICE_THUMB=hb-lc-bl2-rd_thumb.png
-
-devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
-sed -i "s/\($devdescrSearch\)//g" $devdescrFile

@@ -5,15 +5,22 @@ DEVICE_IMG=hb-ou-rgb-tealight.png
 DEVICE_THUMB=hb-ou-rgb-tealight_thumb.png
 DEVICE_DESC="mains powered tealight with WS2812B RGB LED"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
+    ;;
+
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
+
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac
 
 ##########################################################################################################################
 
@@ -22,12 +29,19 @@ DEVICE_IMG=hb-ou-rgb-tealight-bat.png
 DEVICE_THUMB=hb-ou-rgb-tealight-bat_thumb.png
 DEVICE_DESC="battery powered tealight with WS2812B RGB LED"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
+    ;;
+
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
+
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac

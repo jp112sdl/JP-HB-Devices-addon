@@ -6,15 +6,22 @@ DEVICE_IMG=hb-uni-senact-8-8.png
 DEVICE_THUMB=hb-uni-senact-8-8_thumb.png
 DEVICE_DESC="8x Aktor u. 8x Kontakt"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
+    ;;
+
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
+
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac
 
 ############################################################################################################################
 
@@ -23,15 +30,22 @@ DEVICE_IMG=hb-uni-senact-8-8.png
 DEVICE_THUMB=hb-uni-senact-8-8_thumb.png
 DEVICE_DESC="8x Aktor u. 8x Taster"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
+    ;;
+
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
+
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac
 
 ############################################################################################################################
 
@@ -40,15 +54,22 @@ DEVICE_IMG=hb-uni-senact-8-8-bat.png
 DEVICE_THUMB=hb-uni-senact-8-8-bat_thumb.png
 DEVICE_DESC="8x Aktor u. 8x Kontakt (Batteriebetrieb)"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
+    ;;
+
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
+
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac
 
 ############################################################################################################################
 
@@ -57,14 +78,21 @@ DEVICE_IMG=hb-uni-senact-8-8-bat.png
 DEVICE_THUMB=hb-uni-senact-8-8-bat_thumb.png
 DEVICE_DESC="8x Aktor u. 8x Taster (Batteriebetrieb)"
 
-### Edit DEVDB.tcl ###
 devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-
 devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
 
-if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then
-	sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile
-fi
+case "$1" in
+    ""|install)
+     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
+     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
+    ;;
+
+    uninstall)
+     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
+
+     rm -f /www/config/img/devices/250/$DEVICE_IMG
+     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+    ;;     
+esac
 
 ############################################################################################################################

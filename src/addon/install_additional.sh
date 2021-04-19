@@ -1,18 +1,8 @@
 #!/bin/sh
 
-DEVICE="HB-LC-Bl1PBU-FM"
-DEVICE_IMG=PushButton-2ch-wm.png
-DEVICE_THUMB=PushButton-2ch-wm_thumb.png
-DEVICE_DESC="HM-LC-Bl1PBU-FM mit alternativer FW"
-
-devdescrFile="/www/config/devdescr/DEVDB.tcl"
-devdescrInsert="$DEVICE {{50 \/config\/img\/devices\/50\/$DEVICE_THUMB} {250 \/config\/img\/devices\/250\/$DEVICE_IMG}} "
-
 case "$1" in
     ""|install)
-     devdescrSearch="array[[:space:]]*set[[:space:]]*DEV_PATHS[[:space:]]*{"
-     if [ -z "`cat $devdescrFile | grep \"$DEVICE\"`" ]; then sed -i "s/\($devdescrSearch\)/\1$devdescrInsert/g" $devdescrFile; fi
-
+    
      mkdir -p /www/config/easymodes/KEY/localization/de
      mkdir -p /www/config/easymodes/KEY/localization/en
      mkdir -p /www/config/easymodes/KEY/localization/tr
@@ -43,14 +33,30 @@ case "$1" in
      
      chmod -R 755 /www/config/easymodes/KEY/localization/ 
 
+     ### Edit channels.html ###
+     channelsFile="/www/rega/esp/channels.htm"
+
+     channelsInsert="\n<%  if (action == \"servoOldVal\")     { Call(\"channels.fn::servoOldVal()\"); } %>"
+     if [ -z "`cat $channelsFile | grep \"servoOldVal"`" ]; then echo -e $channelsInsert >> $channelsFile; fi
+
+     channelsInsert="\n<%  if (action == \"fanOldVal\")     { Call(\"channels.fn::fanOldVal()\"); } %>"
+     if [ -z "`cat $channelsFile | grep \"fanOldVal"`" ]; then echo -e $channelsInsert >> $channelsFile; fi
+
+     channelsInsert="\n<%  if (action == \"airflapOldVal\")     { Call(\"channels.fn::airflapOldVal()\"); } %>"
+     if [ -z "`cat $channelsFile | grep \"airflapOldVal"`" ]; then echo -e $channelsInsert >> $channelsFile; fi
+
     ;;
 
     uninstall)
-     sed -i "s/\($devdescrInsert\)//g" $devdescrFile
 
-     rm -f /www/config/img/devices/250/$DEVICE_IMG
-     rm -f /www/config/img/devices/50/$DEVICE_THUMB
+     channelsFile="/www/rega/esp/channels.htm"
+     
+     channelsSearch="servoOldVal"
+     sed -i "/\(${channelsSearch}\)/d" $channelsFile
+     channelsSearch="fanOldVal"
+     sed -i "/\(${channelsSearch}\)/d" $channelsFile
+     channelsSearch="airflapOldVal"
+     sed -i "/\(${channelsSearch}\)/d" $channelsFile
+     
     ;;     
 esac
-
-

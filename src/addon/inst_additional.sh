@@ -3,6 +3,8 @@
 case "$1" in
     ""|install)
     
+     echo "Additional stuff - install"
+    
      mkdir -p /www/config/easymodes/KEY/localization/de
      mkdir -p /www/config/easymodes/KEY/localization/en
      mkdir -p /www/config/easymodes/KEY/localization/tr
@@ -48,6 +50,8 @@ case "$1" in
     ;;
 
     uninstall)
+
+     echo "Additional stuff - uninstall"
 
      channelsFile="/www/rega/esp/channels.htm"
      

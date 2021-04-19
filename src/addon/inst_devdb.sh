@@ -1,5 +1,5 @@
 #!/bin/sh
-DEVLISTFILE="/usr/local/addons/jp-hb-devices-addon/hb-devlist.csv"
+DEVLISTFILE="/usr/local/addons/jp-hb-devices-addon/devdb.csv"
 DEVDBFILE="/www/config/devdescr/DEVDB.tcl"
 
 while IFS=";" read -r DEVICE IMG; do

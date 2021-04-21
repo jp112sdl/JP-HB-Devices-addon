@@ -192,7 +192,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     set max [getMaxValue ps_descr $param]
     append HTML_PARAMS(separate_1) "<tr class=\"j_custom j_distanceOffset\">"
       append HTML_PARAMS(separate_1) "<td class=\"stringtable_value\">$devType|$param</td>"
-      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_1_$paramNr\" name=\"$param\" value=\"$ps($param)\" onblur=\"ProofAndSetValue('separate_CHANNEL_1_$paramNr','separate_CHANNEL_1_$paramNr', parseInt($min), parseInt($max), parseFloat(1));\"> </td>"
+      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_1_$paramNr\" name=\"$param\" value=\"$ps($param)\" onblur=\"ProofAndSetValue('separate_CHANNEL_1_$paramNr','separate_CHANNEL_1_$paramNr', '$min', '$max', 1);\"> </td>"
       append HTML_PARAMS(separate_1) "<td>[getUnit ps_descr $param] [getMinMaxValueDescr ps_descr $param] </td>"
     append HTML_PARAMS(separate_1) "</tr>"
     
@@ -202,7 +202,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     set max [getMaxValue ps_descr $param]
     append HTML_PARAMS(separate_1) "<tr class=\"j_custom j_caseHeight\">"
       append HTML_PARAMS(separate_1) "<td class=\"stringtable_value\" id=\"caseHeight\">$devType|$param</td>"
-      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_1_$paramNr\" name=\"$param\" value=\"$ps($param)\" onblur=\"ProofValue('separate_CHANNEL_1_$paramNr',parseInt($min), $caseSelectorID, [getMaxValue ps_descr $param]);\"> </td>"
+      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_1_$paramNr\" name=\"$param\" value=\"$ps($param)\" onblur=\"ProofValue('separate_CHANNEL_1_$paramNr','$min', $caseSelectorID, [getMaxValue ps_descr $param]);\"> </td>"
       append HTML_PARAMS(separate_1) "<td>"
         append HTML_PARAMS(separate_1) "<span id=\"caseHeightMinMaxA\" style=\"display:none;\">[getUnit ps_descr $param] [getMinMaxValueDescr ps_descr $param]</span>"
         append HTML_PARAMS(separate_1) "<span id=\"caseHeightMinMaxB\" style=\"display:none;\">[getUnit ps_descr $param] (30 - $max)</span>"
@@ -215,7 +215,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     set max [getMaxValue ps_descr $param]
     append HTML_PARAMS(separate_1) "<tr class=\"j_custom j_caseWidth\">"
       append HTML_PARAMS(separate_1) "<td class=\"stringtable_value\">$devType|$param</td>"
-      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_1_$paramNr\" name=\"$param\" value=\"$ps($param)\" onblur=\"ProofAndSetValue('separate_CHANNEL_1_$paramNr','separate_CHANNEL_1_$paramNr', parseInt($min), parseInt($max), parseFloat(1));\"> </td>"
+      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_1_$paramNr\" name=\"$param\" value=\"$ps($param)\" onblur=\"ProofAndSetValue('separate_CHANNEL_1_$paramNr','separate_CHANNEL_1_$paramNr', '$min', '$max', 1);\"> </td>"
       append HTML_PARAMS(separate_1) "<td>[getUnit ps_descr $param] [getMinMaxValueDescr ps_descr $param] </td>"
     append HTML_PARAMS(separate_1) "</tr>"
 
@@ -225,7 +225,7 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     set max [getMaxValue ps_descr $param]
     append HTML_PARAMS(separate_1) "<tr class=\"j_custom j_caseLength\">"
       append HTML_PARAMS(separate_1) "<td class=\"stringtable_value\">$devType|$param</td>"
-      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_1_$paramNr\" name=\"$param\" value=\"$ps($param)\" onblur=\"ProofAndSetValue('separate_CHANNEL_1_$paramNr', 'separate_CHANNEL_1_$paramNr', parseInt($min), parseInt($max), parseFloat(1));\"> </td>"
+      append HTML_PARAMS(separate_1) "<td> <input type=\"text\" id=\"separate_CHANNEL_1_$paramNr\" name=\"$param\" value=\"$ps($param)\" onblur=\"ProofAndSetValue('separate_CHANNEL_1_$paramNr', 'separate_CHANNEL_1_$paramNr', '$min', '$max', 1);\"> </td>"
       append HTML_PARAMS(separate_1) "<td>[getUnit ps_descr $param] [getMinMaxValueDescr ps_descr $param] </td>"
     append HTML_PARAMS(separate_1) "</tr>"
 

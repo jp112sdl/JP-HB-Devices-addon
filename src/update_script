@@ -4,7 +4,7 @@ target="UNDEFINED"
 if [ "$1" != "" ]; then
   target=$1
 fi
-echo $target
+echo "TARGET="$target
 
 if [ "$1" = "CCU2" ]; then
   mount -t ubifs ubi1:user /usr/local

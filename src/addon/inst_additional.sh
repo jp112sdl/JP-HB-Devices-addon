@@ -2,9 +2,13 @@
 
 case "$1" in
     ""|install)
-    
      echo "Additional stuff - install"
-    
+
+     ### Modify index.htm
+     indexFile="/www/rega/pages/index.htm"
+     indexFileInsert="<script type=\"text/javascript\" src=\"/webui/js/extern/jp_webui_inc.js\"></script>"
+     if [ -z "`cat $indexFile | grep \"${indexFileInsert}\"`" ]; then sed -i "\~</body>~i\    $indexFileInsert" $indexFile; fi
+        
      mkdir -p /www/config/easymodes/KEY/localization/de
      mkdir -p /www/config/easymodes/KEY/localization/en
      mkdir -p /www/config/easymodes/KEY/localization/tr
@@ -50,9 +54,14 @@ case "$1" in
     ;;
 
     uninstall)
-
      echo "Additional stuff - uninstall"
 
+     # Undo changes in index.htm
+     indexFile="/www/rega/pages/index.htm"
+     indexFileSearch="jp_webui_inc.js"
+     sed -i "/${indexFileSearch}/d" $indexFile
+      
+     # Undo changes in channels.htm 
      channelsFile="/www/rega/esp/channels.htm"
      
      channelsSearch="servoOldVal"

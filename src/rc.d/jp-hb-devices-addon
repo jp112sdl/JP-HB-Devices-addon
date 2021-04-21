@@ -171,20 +171,15 @@ case "$1" in
         chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
         
         patcher "APPLY"
-                 
-        ### Modify index.htm
-        indexFile="/www/rega/pages/index.htm"
-        indexFileInsert="<script type=\"text/javascript\" src=\"/webui/js/extern/jp_webui_inc.js\"></script>"
-        if [ -z "`cat $indexFile | grep \"${indexFileInsert}\"`" ]; then sed -i "\~</body>~i\    $indexFileInsert" $indexFile; fi
-
-        ### Create Symlink to include own js file
-        echo "(Re-)Creating symlinks for jp_webui_inc.js..." | tee -a $TMP_LOGFILE
-        [[ ! -f /www/webui/js/extern/jp_webui_inc.js ]] && ln -s ${ADDON_DIR}/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 
         ### Running inst_* scripts for each device installation
         cd ${ADDON_DIR}
         echo "Running scripts..." | tee -a $TMP_LOGFILE
         for f in ${ADDON_DIR}/inst_* ; do echo "  - $(basename $f)"; ./$(basename $f) install >> $TMP_LOGFILE 2>>$TMP_ERRFILE; done
+
+        ### Create Symlink to include own js file
+        echo "(Re-)Creating symlinks for jp_webui_inc.js..." | tee -a $TMP_LOGFILE
+        [[ ! -f /www/webui/js/extern/jp_webui_inc.js ]] && ln -s ${ADDON_DIR}/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 
         if [ "$(find ${CUSTOMIZED_FIRMWARE_DIR} -type f -iname '*.xml')" ]; then
           echo "Copying customized firmware files..." | tee -a $TMP_LOGFILE
@@ -285,19 +280,16 @@ case "$1" in
       
       patcher "REVOKE"
       
-      # Undo changes in index.htm
-      indexFile="/www/rega/pages/index.htm"
-      indexFileSearch="jp_webui_inc.js"
-      sed -i "/${indexFileSearch}/d" $indexFile
-      
       [[ -f /www/webui/js/extern/jp_webui_inc.js ]] && rm /www/webui/js/extern/jp_webui_inc.js
       [[ -f /www/rega/${ADDON_NAME}-error.log ]] && rm /www/rega/${ADDON_NAME}-error.log
 
       cd /
       rm -rf ${ADDON_DIR}
-      rm -f ${RC_DIR}/${ADDON_NAME}
       sync
       mount -o remount,ro /
+      
+      # the last thing: we delete ourselves
+      rm -f ${RC_DIR}/${ADDON_NAME}
     ;;
   
     restart|reload)

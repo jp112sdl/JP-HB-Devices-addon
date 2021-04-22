@@ -707,7 +707,13 @@ YesNoDialog.RESULT_NO = 0;
 YesNoDialog.RESULT_YES = 1;
 
 function jphbInfoButton() {
-  var fileJPHBInfo = "/usr/local/addons/jp-hb-devices-addon/infoPageVisited";                                                              
+  jQuery("#jphbError").hide();        
+  if (homematic('CCU.existsFile', {'file': "/usr/local/addons/jp-hb-devices-addon/install_error"})) {
+    jQuery("#jphbError").show();        
+  }
+
+  var fileJPHBInfo = "/usr/local/addons/jp-hb-devices-addon/infoPageVisited";
+
   jQuery("#jphbInfoPage").hide();        
   
   var localInfoVersion = homematic('jp.getInfoWebVersion', {'file': fileJPHBInfo});

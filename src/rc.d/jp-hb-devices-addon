@@ -5,11 +5,13 @@ ADDON_NAME=`basename "$0"`
 
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
 PATCH_DIR=${ADDON_DIR}/patch
-WWW_DIR=/etc/config/addons/www/${ADDON_NAME}
+NEW_ADDON_DIR=${ADDON_DIR}-new
+
 LOG_DIR=${ADDON_DIR}/log
-GLOBAL_LOGFILE=${LOG_DIR}/inst.log
-GLOBAL_ERRFILE=${LOG_DIR}/inst.err
-PATCH_REVOKE_ERRFILE=${ADDON_DIR}/log/revoke.err
+TMP_LOGDIR=/tmp
+TMP_LOGFILE=${TMP_LOGDIR}/${ADDON_NAME}-inst.log
+TMP_ERRFILE=${TMP_LOGDIR}/${ADDON_NAME}-inst.err
+
 FIRMWARE_DIR=/firmware/rftypes
 CUSTOMIZED_FIRMWARE_DIR=${ADDON_DIR}/customized_firmware
 RC_DIR=/usr/local/etc/config/rc.d
@@ -27,19 +29,22 @@ check_ccu_fw_version()
   PATCHSUBDIR_VERSION=ge_345
  fi
  
- echo "Found firmware version $model.$version.$build - using patch subdirectory version ${PATCHSUBDIR_VERSION}" | tee -a $GLOBAL_LOGFILE
+ echo "Found firmware version $model.$version.$build - using patch subdirectory version ${PATCHSUBDIR_VERSION}" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
 }
 
 convert_lf() 
 {
   filename=`sed -n '2p' $1 | sed 's/+++ .\/patchsource//g' | awk {'print $1'}`
+  # we have to convert the original file to UNIX format; patch cannot patch files in DOS format :(
+  dos2unix $filename
+  
   cmpresult=`unix2dos < $filename | cmp - $filename`
   if [ "$cmpresult" ]; then
     cmpresult=`dos2unix < $1 | cmp - $1`
     if [ "$cmpresult" ]; then
-      echo "dos2unix conversion needed for $1" | tee -a $GLOBAL_LOGFILE
-      dos2unix $1 | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
-    fi  
+      echo "dos2unix conversion needed for $1" | tee -a $TMP_LOGFILE
+      dos2unix $1 | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+    fi
   fi
 }
 
@@ -47,51 +52,115 @@ MONIT=0
 check_monit()
 {
   MONIT=`ps -ef|grep \/usr\/bin\/monit|grep -v grep|wc -l`
-  echo "Found $MONIT monit process(es)" | tee -a $GLOBAL_LOGFILE
+  echo "Found $MONIT monit process(es)" | tee -a $TMP_LOGFILE
 }
 
 REGA=0
 check_rega()
 {
   REGA=`ps -ef|grep \/bin\/ReGaHss|grep -v grep|wc -l`
-  echo "Found $REGA ReGaHss process(es)" | tee -a $GLOBAL_LOGFILE
+  echo "Found $REGA ReGaHss process(es)" | tee -a $TMP_LOGFILE
 }
 
 RFD=0
 check_rfd()
 {
   RFD=`ps -ef|grep \/bin\/rfd|grep -v grep|wc -l`
-  echo "Found $RFD rfd process(es)" | tee -a $GLOBAL_LOGFILE
+  echo "Found $RFD rfd process(es)" | tee -a $TMP_LOGFILE
+}
+
+cleanup_orig_files() 
+{
+  [[ -f /www/webui/webui.js.orig ]] && rm /www/webui/webui.js.orig
+  [[ -f /www/rega/esp/datapointconfigurator.fn.orig ]] && rm /www/rega/esp/datapointconfigurator.fn.orig
+  [[ -f /www/rega/esp/functions.fn.orig ]] && rm /www/rega/esp/functions.fn.orig
+  [[ -f /www/rega/esp/side.inc.orig ]] && rm /www/rega/esp/side.inc.orig
+  [[ -f /www/rega/pages/tabs/admin/views/programs.htm.orig ]] && rm /www/rega/pages/tabs/admin/views/programs.htm.orig
+  [[ -f /www/config/ic_common.tcl.orig ]] && rm /www/config/ic_common.tcl.orig
+}
+
+do_patch()
+{
+    echo "### $3 patch file $1" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+    convert_lf $1
+    patch $2 -p3 -i $1 >> $TMP_LOGFILE 2>>$TMP_ERRFILE
+    echo "- done" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+}
+
+patcher()
+{
+  if [[ "$1" == "APPLY" ]]; then
+    PATCH_METHOD_HINT="APPLY"
+    PATCH_METHOD_PARAM="-N"
+  elif [[ "$1" == "REVOKE" ]]; then
+    PATCH_METHOD_HINT="REVOKE"
+    PATCH_METHOD_PARAM="-R"
+  else
+    echo "Invalid patcher() param $1" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+    return
+  fi     
+
+  check_ccu_fw_version
+
+  cd /www
+
+  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
+    do_patch $patchfile $PATCH_METHOD_PARAM $PATCH_METHOD_HINT
+  done
+  
+  for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
+    do_patch $patchfile $PATCH_METHOD_PARAM $PATCH_METHOD_HINT
+  done
+  
+  cleanup_orig_files
 }
 
 case "$1" in
     ""|init|start)
-      check_ccu_fw_version
+      [[ -f $TMP_ERRFILE ]] && rm $TMP_ERRFILE
+      [[ -f $TMP_LOGFILE ]] && rm $TMP_LOGFILE
 
-      if [ ! -f ${ADDON_DIR}/installed ] || [ ! -f ${CK_FIRMWARE_FILE} ]; then       
-        echo "Starting complete installation within '$1' $(date +"%d.%m.%Y %H:%M:%S")" | tee $GLOBAL_LOGFILE
-        cp /dev/null $GLOBAL_ERRFILE
-        cp /dev/null $PATCH_REVOKE_ERRFILE
-
-        mount -o remount,rw /
+      ### Check if the ccu firmware was updated or there was a new addon installation uploaded
+      if [ ! -f ${CK_FIRMWARE_FILE} ] || [ -d ${NEW_ADDON_DIR} ]; then
         
+        echo "Starting complete installation within '$1' $(date +"%d.%m.%Y %H:%M:%S")" | tee $TMP_LOGFILE
+                       
         #### Check if monit process exists
         check_monit       
         if [ $MONIT -ge 1 ]; then
-          echo "Stopping monitoring service for ReGaHss and RFD" | tee -a $GLOBAL_LOGFILE
+          echo "Stopping monitoring service for ReGaHss and RFD" | tee -a $TMP_LOGFILE
           /usr/bin/monit unmonitor ReGaHss
           /usr/bin/monit unmonitor rfd
         fi
       
         check_rega
         if [ $REGA -ge 1 ]; then
-          /etc/init.d/S70ReGaHss stop | tee -a $GLOBAL_LOGFILE
+          /etc/init.d/S70ReGaHss stop | tee -a $TMP_LOGFILE
         fi
         check_rfd
         if [ $RFD -ge 1 ]; then
-          /etc/init.d/S61rfd stop | tee -a $GLOBAL_LOGFILE
+          /etc/init.d/S61rfd stop | tee -a $TMP_LOGFILE
         fi
 
+        mount -o remount,rw /
+        
+        ### revoke patches from currently installed addon version
+        if [ -f ${CK_FIRMWARE_FILE} ] && [ -d ${PATCH_DIR} ]; then
+            currentversion=`cat ${ADDON_DIR}/VERSION`
+            echo "Revoking current addon V $currentversion patch files." | tee $TMP_LOGFILE | tee $TMP_ERRFILE
+            patcher "REVOKE"
+        fi
+        
+        ### delete the old (current) addon directory and rename the newly uploaded 
+        if [ -d ${NEW_ADDON_DIR} ]; then
+          if [ -d ${ADDON_DIR} ]; then
+            echo "Deleting current addon directory " | tee $TMP_LOGFILE
+            rm -rf ${ADDON_DIR}
+          fi
+          echo "Renaming ${NEW_ADDON_DIR} to ${ADDON_DIR}" | tee $TMP_LOGFILE
+          mv ${NEW_ADDON_DIR} ${ADDON_DIR}  
+        fi
+        
         cd ${ADDON_DIR}
         cp -ar www/* /www/
         chown root:root /www/config/img/devices/250/hb-*
@@ -101,88 +170,43 @@ case "$1" in
         chown root:root /www/ise/img/icons_hm_dis_ep_wm55/24/*
         chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
         
-        ### Patch some files ###
+        patcher "APPLY"
 
-        cd /www
-
-        if [ ! -f ${CK_FIRMWARE_FILE} ]; then
-          echo "Fresh installation - revoking patches not needed." | tee -a $GLOBAL_LOGFILE
-        else
-          ########################	REVOKE  	######################
-          echo "######## REVOKE COMMON APPLIED PATCHES ########" | tee -a $GLOBAL_LOGFILE
-          for patchfile in `ls ${PATCH_DIR}/revoke/${PATCHSUBDIR_COMMON}/* | sort`; do 
-            echo "### Rejecting ${PATCHSUBDIR_COMMON} patch file $patchfile" | tee -a $GLOBAL_LOGFILE | tee -a $PATCH_REVOKE_ERRFILE
-            convert_lf $patchfile
-            patch -R -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$PATCH_REVOKE_ERRFILE
-          done
-        
-          echo "######## REVOKE VERSION DEPENDEND PATCHES ########" | tee -a $GLOBAL_LOGFILE
-          for patchfile in `ls ${PATCH_DIR}/revoke/${PATCHSUBDIR_VERSION}/* | sort`; do 
-            echo "### Rejecting ${PATCHSUBDIR_VERSION} patch file $patchfile" | tee -a $GLOBAL_LOGFILE | tee -a $PATCH_REVOKE_ERRFILE
-            convert_lf $patchfile
-            patch -R -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$PATCH_REVOKE_ERRFILE
-          done
-        fi
-        
-        ########################	APPLY   	######################
-        echo "######## APPLY COMMON PATCHES ########" | tee -a $GLOBAL_LOGFILE
-        for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
-          echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
-          convert_lf $patchfile
-          patch -N -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$GLOBAL_ERRFILE
-          echo "- done" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
-        done
-        
-        echo "######## APPLY VERSION DEPENDEND PATCHES ########" | tee -a $GLOBAL_LOGFILE
-        for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
-          echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
-          convert_lf $patchfile
-          patch -N -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$GLOBAL_ERRFILE
-          echo "- done" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
-        done
-         
-        [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
-        [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
-        [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
-        [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-        [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
-        [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
+        ### Running inst_* scripts for each device installation
+        cd ${ADDON_DIR}
+        echo "Running scripts..." | tee -a $TMP_LOGFILE
+        for f in ${ADDON_DIR}/inst_* ; do echo "  - $(basename $f)"; ./$(basename $f) install >> $TMP_LOGFILE 2>>$TMP_ERRFILE; done
 
         ### Create Symlink to include own js file
-        echo "(Re-)Creating symlinks for jp_webui_inc.js..." | tee -a $GLOBAL_LOGFILE
+        echo "(Re-)Creating symlinks for jp_webui_inc.js..." | tee -a $TMP_LOGFILE
         [[ ! -f /www/webui/js/extern/jp_webui_inc.js ]] && ln -s ${ADDON_DIR}/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
 
-        cd ${ADDON_DIR}
-        echo "Running scripts..." | tee -a $GLOBAL_LOGFILE
-        for f in ${ADDON_DIR}/install_* ; do echo "  - $(basename $f)"; ./$(basename $f) >> $GLOBAL_LOGFILE 2>>$GLOBAL_ERRFILE; done
-
         if [ "$(find ${CUSTOMIZED_FIRMWARE_DIR} -type f -iname '*.xml')" ]; then
-          echo "Copying customized firmware files..." | tee -a $GLOBAL_LOGFILE
+          echo "Copying customized firmware files..." | tee -a $TMP_LOGFILE
           cp ${CUSTOMIZED_FIRMWARE_DIR}/*.xml ${ADDON_DIR}${FIRMWARE_DIR}/
         else
-          echo "No customized firmware files found in ${CUSTOMIZED_FIRMWARE_DIR}." | tee -a $GLOBAL_LOGFILE
+          echo "No customized firmware files found in ${CUSTOMIZED_FIRMWARE_DIR}." | tee -a $TMP_LOGFILE
         fi
 
-        echo "(Re-)Creating symlinks for firmware files..." | tee -a $GLOBAL_LOGFILE
+        echo "(Re-)Creating symlinks for firmware files..." | tee -a $TMP_LOGFILE
         for f in ${ADDON_DIR}${FIRMWARE_DIR}/* ; do rm -f ${FIRMWARE_DIR}/$(basename $f); ln -s $f ${FIRMWARE_DIR}/$(basename $f); echo "  - $(basename $f)"; done
 
         sync
         mount -o remount,ro /
-        touch ${ADDON_DIR}/installed
-        [[ -f ${ADDON_DIR}/infoPageVisited ]] && rm -f ${ADDON_DIR}/infoPageVisited
 
         if [ $RFD -ge 1 ]; then
-          /etc/init.d/S61rfd start | tee -a $GLOBAL_LOGFILE
+          /etc/init.d/S61rfd start | tee -a $TMP_LOGFILE
         fi
         if [ $REGA -ge 1 ]; then
-          /etc/init.d/S70ReGaHss start | tee -a $GLOBAL_LOGFILE
+          /etc/init.d/S70ReGaHss start | tee -a $TMP_LOGFILE
         fi
         if [ $MONIT -ge 1 ]; then
-          echo "Starting monitoring service for ReGaHss and RFD" | tee -a $GLOBAL_LOGFILE
+          echo "Starting monitoring service for ReGaHss and RFD" | tee -a $TMP_LOGFILE
           /usr/bin/monit monitor ReGaHss
           /usr/bin/monit monitor rfd
         fi
-        echo "Installation done." | tee -a $GLOBAL_LOGFILE
+                        
+        echo "Installation done." | tee -a $TMP_LOGFILE
       else
         echo "Checking for accidently restored unpatched programs.htm"
         if [ "$(grep HBOUCFM /www/rega/pages/tabs/admin/views/programs.htm)" ]; then
@@ -190,10 +214,10 @@ case "$1" in
         else
           mount -o remount,rw /
           patchfile=${PATCH_DIR}/${PATCHSUBDIR_VERSION}/programs.htm.patch
-          echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE
+          echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
           convert_lf $patchfile
-          patch -N -p3 -i $patchfile >> $GLOBAL_LOGFILE 2>>$GLOBAL_ERRFILE
-          echo "- done" | tee -a $GLOBAL_LOGFILE | tee -a $GLOBAL_ERRFILE    
+          patch -N -p3 -i $patchfile >> $TMP_LOGFILE 2>>$TMP_ERRFILE
+          echo "- done" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE    
           mount -o remount,ro /      
         fi
         
@@ -211,15 +235,15 @@ case "$1" in
         done
 
         if [ $changed -gt 0 ]; then
-          echo "$changed Firmware file(s) changed" | tee -a $GLOBAL_LOGFILE
+          echo "$changed Firmware file(s) changed" | tee -a $TMP_LOGFILE
           check_rfd
           if [ $RFD -ge 1 ]; then
             check_monit       
             if [ $MONIT -ge 1 ]; then
-              echo " - restarting RFD [monit]" | tee -a $GLOBAL_LOGFILE
+              echo " - restarting RFD [monit]" | tee -a $TMP_LOGFILE
               /usr/bin/monit restart rfd
             else
-              echo " - restarting RFD [init.d]" | tee -a $GLOBAL_LOGFILE
+              echo " - restarting RFD [init.d]" | tee -a $TMP_LOGFILE
               /etc/init.d/S61rfd restart
             fi
           fi
@@ -227,6 +251,23 @@ case "$1" in
           echo "Nothing changed - nothing to do"
         fi
       fi
+      
+      
+      if [ -f ${TMP_ERRFILE} ]; then
+       errors=`grep -i -E 'fail|err' ${TMP_ERRFILE}`
+       if [ -z $errors ]; then
+         echo "No errors found during installation"
+         [[ -f ${ADDON_DIR}/install_error ]] && rm ${ADDON_DIR}/install_error
+       else
+         echo "Errors found during installation:"
+         cat ${TMP_ERRFILE}
+         touch ${ADDON_DIR}/install_error
+       fi
+      fi 
+     
+      cp ${TMP_LOGDIR}/${ADDON_NAME}-* ${LOG_DIR}/
+      
+      if [ ! -f /www/rega/${ADDON_NAME}-error.log ]; then mount -o remount,rw /; ln -s ${LOG_DIR}/${ADDON_NAME}-inst.err /www/rega/${ADDON_NAME}-error.log; mount -o remount,ro /; fi
     ;;
 
     stop)
@@ -238,38 +279,20 @@ case "$1" in
 
       cd ${ADDON_DIR}
       echo "Running scripts..."    
-      for f in ${ADDON_DIR}/uninstall_* ; do echo "  - $(basename $f)"; ./$(basename $f) > $GLOBAL_LOGFILE 2>$GLOBAL_ERRFILE; done
+      for f in ${ADDON_DIR}/inst_* ; do echo "  - $(basename $f)"; ./$(basename $f) uninstall > $TMP_LOGFILE 2>$TMP_ERRFILE; done
       
-      check_ccu_fw_version
-
-      cd /www
+      patcher "REVOKE"
       
-      echo "######## REVOKE COMMON PATCHES ########"
-      for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
-        echo "Rejecting ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE
-        patch -R -p3 -i $patchfile
-      done
-      
-      echo "######## REVOKE VERSION DEPENDEND PATCHES ########"
-      for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
-        echo "Rejecting ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)" | tee -a $GLOBAL_LOGFILE
-        patch -R -p3 -i $patchfile
-      done
-
-      [[ -f ./webui/webui.js.orig ]] && rm ./webui/webui.js.orig
-      [[ -f ./rega/esp/datapointconfigurator.fn.orig ]] && rm ./rega/esp/datapointconfigurator.fn.orig
-      [[ -f ./rega/esp/functions.fn.orig ]] && rm ./rega/esp/functions.fn.orig
-      [[ -f ./rega/esp/side.inc.orig ]] && rm ./rega/esp/side.inc.orig
-      [[ -f ./rega/pages/tabs/admin/views/programs.htm.orig ]] && rm ./rega/pages/tabs/admin/views/programs.htm.orig
-      [[ -f ./config/ic_common.tcl.orig ]] && rm ./config/ic_common.tcl.orig
-      [[ -f ./webui/js/extern/jp_webui_inc.js ]] && rm ./webui/js/extern/jp_webui_inc.js
+      [[ -f /www/webui/js/extern/jp_webui_inc.js ]] && rm /www/webui/js/extern/jp_webui_inc.js
+      [[ -f /www/rega/${ADDON_NAME}-error.log ]] && rm /www/rega/${ADDON_NAME}-error.log
 
       cd /
       rm -rf ${ADDON_DIR}
-      rm -rf ${WWW_DIR}
-      rm -f ${RC_DIR}/${ADDON_NAME}
       sync
       mount -o remount,ro /
+      
+      # the last thing: we delete ourselves
+      rm -f ${RC_DIR}/${ADDON_NAME}
     ;;
   
     restart|reload)

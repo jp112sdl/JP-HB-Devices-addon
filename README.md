@@ -1,8 +1,31 @@
 # JP-HB-Devices-addon [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/JP-HB-Devices-addon/total.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/releases) [![GitHub issues](https://img.shields.io/github/issues/jp112sdl/JP-HB-Devices-addon.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/issues) <a href='https://ko-fi.com/N4N21R89O' target='_blank'><img height='20' style='border:0px;height:20px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
-**:heavy_check_mark: lauffähig unter CCU / RaspberryMatic Firmware 2.31.x - 2.53.27 | 3.37.x - 3.57.4 [inkl. x86]**<br/>
+**✅ lauffähig unter CCU / RaspberryMatic Firmware 3.47.10 - 3.57.5 [inkl. x86]**<br/>
+**❓ CCU2 Firmware 2.53.27 - 2.57.4 nur experimentell unterstützt (nicht real getestet; nur gegen ubi-Image)**<br/>
 Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.<br/><br/>
-Bitte auch die [CCU Firmware spezifischen Hinweise](https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage) lesen und beachten!<br/>
+❗❗❗ **Vor dem Update auf Version 5 unbedingt lesen:** ❗❗❗<br>
+Die Update Prozedur wurde grundlegend verändert. Ist bereits eine frühere Version des Addons (V4.x oder kleiner) installiert, ist eine der beiden folgenden Methoden einmalig beim Wechsel auf die Version 5 anzuwenden:<br/>
+- Variante 1: 
+  - altes Addon deinstallieren
+  - Version 5 installieren
+  - **wichtig: zwischen der Deinstallation des alten und der Installation des neuen Addons darf kein Neustart erfolgen**
+- Variante 2: 
+  - Version 5 installieren
+  - anschließend die CCU Firmware erneut installieren
+<br/><br/>
+
+Die **sicherste** Methode ist **Variante 2**. <br/>_Aufgrund der CCU Firmware-Neuinstallation ist garantiert, dass alle Systemdateien im Ursprungszustand vorhanden sind und gepatcht werden können._<br>
+Bei Variante 1 ist (aufgrund von Bugs in den Uninstall-Routinen) nicht auszuschließen, dass Reste in den Systemdateien verbleiben und das Patchen somit nicht möglich ist.
+
+<hr/>
+
+Treten Fehler während der Addon-Installation auf, erscheint nach dem Reboot ein Warndreieck in der WebUI Oberfläche!<br/>
+<img src="additional/img/header_err.png" width="600"><br/>
+Mit einem Klick auf das Warndreieck-Symbol kann die Logdatei heruntergeladen werden.
+
+<hr/>
+
+Bitte auch die CCU Firmware spezifischen [Hinweise](https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage) lesen und beachten!<br/>
 Dazu bitte die "Glühlampe" in der WebUI anklicken. Sie wird nach jeder Addon- aber auch CCU-Firmware-Installation eingeblendet, bis sie 1x angeklickt wurde. Zukünftig möchte ich dort auf generelle CCU-Fehler hinweisen, die unabhängig der HomeBrew Geräte existieren.<br/>
 <img src="additional/img/header_info.png" width="600">
 <hr/>
@@ -83,6 +106,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-rc-x-pos_thumb.png" width=25/> | [HB-RC-X-POS](https://github.com/jp112sdl/HB-RC-X-POS) | Mehrkanalsender mit linearer Poti-Auswertung | 🔋 |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-ph_thumb.png" width=25/> | [HB-UNI-Sen-PH](https://github.com/jp112sdl/HB-UNI-Sen-PH) | PH-Sensor | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-es-pmsw1-usb_thumb.png" width=25/> | [HB-ES-PMSw1-USB](https://github.com/jp112sdl/HB-ES-PMSw1-USB) | Schaltaktor mit Strom-/Spannungsmessung für USB | ⚡️ |
+|<img src="src/addon/www/config/img/devices/50/hb-rc-6-pbu-led_thumb.png" width=25/> | [HB-RC-6-PBU-LED](https://github.com/jp112sdl/HB-RC-6-PBU-LED) | 6fach (Wand)Taster mit RGB Status-LEDs | ⚡️ |
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 

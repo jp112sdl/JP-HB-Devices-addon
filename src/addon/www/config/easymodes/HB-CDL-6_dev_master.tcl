@@ -45,7 +45,7 @@ proc getDeviceTextField {param val prn} {
     set val [format {%1.2f} $val]
   }
 
-  set s "<input id=$elemId type=\"text\" size=\"5\" value=$val name=$param onblur=\"ProofAndSetValue(this.id, this.id, $minValue, $maxValue, 1)\" />"
+  set s "<input id=$elemId type=\"text\" size=\"5\" value=$val name=$param onblur=\"ProofAndSetValue(this.id, this.id, '$minValue', '$maxValue', 1)\">"
   return $s
 }
 

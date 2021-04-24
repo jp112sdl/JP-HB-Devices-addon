@@ -158,6 +158,7 @@ jQuery.extend(true,langJSON, {
     "stringTableHBOperationNormal" : "Normalbetrieb",
     "stringTableHbPh" : "PH-Wert",
     "stringTableHbOrp" : "ORP-Wert",
+    "stringTableHbOrpOffset" : "ORP-Offset",
     "stringTableHBPFSAngleSensorFailure4" : "Fehler Magnetwinkelsensor<br/>Error-Code: 0x30",
     "stringTableHBPFSAngleSensorFailure3" : "Fehler Magnetwinkelsensor<br/>Error-Code: 0x28",
     "stringTableHBPFSAngleSensorFailure2" : "Fehler Magnetwinkelsensor<br/>Error-Code: 0x10",

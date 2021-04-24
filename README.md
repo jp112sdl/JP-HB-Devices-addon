@@ -107,6 +107,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-ph_thumb.png" width=25/> | [HB-UNI-Sen-PH](https://github.com/jp112sdl/HB-UNI-Sen-PH) | PH-Sensor | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-es-pmsw1-usb_thumb.png" width=25/> | [HB-ES-PMSw1-USB](https://github.com/jp112sdl/HB-ES-PMSw1-USB) | Schaltaktor mit Strom-/Spannungsmessung für USB | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-rc-6-pbu-led_thumb.png" width=25/> | [HB-RC-6-PBU-LED](https://github.com/jp112sdl/HB-RC-6-PBU-LED) | 6fach (Wand)Taster mit RGB Status-LEDs | ⚡️ |
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-ph-orp_thumb.png" width=25/> | [HB-UNI-Sen-PH-ORP](https://github.com/jp112sdl/HB-UNI-Sen-PH-ORP) | PH-+ORP-Sensor | ⚡️ |
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 

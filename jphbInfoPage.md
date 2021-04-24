@@ -2,6 +2,7 @@
 
 #### 💡 Addon Version 5.0
 - Unter "Einstellungen->Systemsteuerung->Zusatzsoftware" fehlen das Icon sowie die verfügbare Version
+  - https://homematic-forum.de/forum/viewtopic.php?f=76&t=66890#p659185
   - ist mit der nächsten Version 5.1 gefixt
 
 

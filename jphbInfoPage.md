@@ -1,4 +1,10 @@
 ## Informationen / "Known Bugs"
+
+#### 💡 Addon Version 5.0
+- Unter "Einstellungen->Systemsteuerung->Zusatzsoftware" fehlen das Icon sowie die verfügbare Version
+  - ist mit der nächsten Version 5.1 gefixt
+
+
 #### 💡 CCU FW Version 3.57.4 
 - "Einstellungen"->"Geräte"
   - das Setzen des Wertes `0` bei einer Geräteeinstellung führt dazu, dass der Minimalwert gesetzt wird

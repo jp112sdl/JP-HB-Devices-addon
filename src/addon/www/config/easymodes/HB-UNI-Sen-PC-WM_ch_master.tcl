@@ -8,14 +8,26 @@ proc getMinValue {ps_descr param} {
   upvar ps_descr descr
   array_clear param_descr
   array set param_descr $descr($param)
-  return $param_descr(MIN)
+  set min $param_descr(MIN)
+
+  if {($param == "HB_METER_CONSTANT_WATER")  || ($param == "HB_COUNT_INITIAL_VALUE") } {
+    set min [format {%.3f} $min]
+  }  
+  
+  return $min
 }
 
 proc getMaxValue {ps_descr param} {
   upvar ps_descr descr
   array_clear param_descr
   array set param_descr $descr($param)
-  return $param_descr(MAX)
+  set max $param_descr(MAX)
+
+  if {($param == "HB_METER_CONSTANT_WATER")  || ($param == "HB_COUNT_INITIAL_VALUE") } {
+    set max [format {%.3f} $max]
+  }  
+  
+  return $max
 }
 
 proc getMinMaxValueDescr {ps_descr param} {

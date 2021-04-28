@@ -60,8 +60,14 @@ proc getTextField {prn param val} {
   upvar psDescr descr
   array_clear param_descr
   array set param_descr $descr($param)
-  set minValue [format {%1.1f} $param_descr(MIN)]
-  set maxValue [format {%1.1f} $param_descr(MAX)]
+  
+  if {[llength [split $param_descr(MIN) "."]] == 2} {
+    set minValue [format {%1.1f} $param_descr(MIN)]
+    set maxValue [format {%1.1f} $param_descr(MAX)]
+  } else {
+    set minValue $param_descr(MIN)
+    set maxValue $param_descr(MAX)
+  }
 
   set elemId 'separate_DEVICE\_$prn'
   # Limit float to 1 decimal places

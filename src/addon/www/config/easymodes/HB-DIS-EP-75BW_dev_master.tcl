@@ -44,8 +44,8 @@ proc getMinMaxValueDescr {param} {
 
   # Limit float to 2 decimal places
   if {[llength [split $min "."]] == 2} {
-    set min [format {%1.2f} $min]
-    set max [format {%1.2f} $max]
+    set min [format {%1.1f} $min]
+    set max [format {%1.1f} $max]
   }
   return "($min - $max)"
 }
@@ -61,7 +61,7 @@ proc getTextField {prn param val} {
   set elemId 'separate_DEVICE\_$prn'
   # Limit float to 2 decimal places
   if {[llength [split $val "."]] == 2} {
-    set val [format {%1.2f} $val]
+    set val [format {%1.1f} $val]
   }
 
   set s "<input id=$elemId type=\"text\" size=\"5\" value=$val name=$param onblur=\"ProofAndSetValue(this.id, this.id, '$minValue', '$maxValue', 1)\">"

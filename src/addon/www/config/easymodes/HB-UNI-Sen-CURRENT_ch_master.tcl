@@ -8,14 +8,27 @@ proc getMinValue {ps_descr param} {
   upvar ps_descr descr
   array_clear param_descr
   array set param_descr $descr($param)
-  return $param_descr(MIN)
+
+  set min $param_descr(MIN)
+
+  if {($param == "COND_TX_THRESHOLD_HI")  || ($param == "COND_TX_THRESHOLD_LO") } {
+    set min [format {%.2f} $min]
+  }  
+  
+  return $min
 }
 
 proc getMaxValue {ps_descr param} {
   upvar ps_descr descr
   array_clear param_descr
   array set param_descr $descr($param)
-  return $param_descr(MAX)
+  set max $param_descr(MAX)
+
+  if {($param == "COND_TX_THRESHOLD_HI")  || ($param == "COND_TX_THRESHOLD_LO") } {
+    set max [format {%.2f} $max]
+  }  
+  
+  return $max
 }
 
 proc getMinMaxValueDescr {ps_descr param} {

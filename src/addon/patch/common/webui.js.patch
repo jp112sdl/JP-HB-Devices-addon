@@ -1,6 +1,6 @@
 --- ./patchsource/www/webui/webui.js.orig
 +++ ./patchsource/www/webui/webui.js
-@@ -88,6 +88,472 @@
+@@ -88,6 +88,484 @@
  DEV_PATHS["HM-RC-4-3"] = new Object();
  DEV_PATHS["HM-RC-4-3"]["50"] = "/config/img/devices/50/84_hm-rc-4-x_thumb.png";
  DEV_PATHS["HM-RC-4-3"]["250"] = "/config/img/devices/250/84_hm-rc-4-3.png";
@@ -142,6 +142,12 @@
 +DEV_PATHS['HB-UNI-Sen-PH-ORP'] = new Object();
 +DEV_PATHS['HB-UNI-Sen-PH-ORP']['50'] = '/config/img/devices/50/hb-uni-sen-ph-orp_thumb.png';
 +DEV_PATHS['HB-UNI-Sen-PH-ORP']['250'] = '/config/img/devices/250/hb-uni-sen-ph-orp.png';
++DEV_HIGHLIGHT['HB-UNI-Sen-POOL'] = new Object();
++DEV_LIST.push('HB-UNI-Sen-POOL');
++DEV_DESCRIPTION['HB-UNI-Sen-POOL']='Pool Multidevice';
++DEV_PATHS['HB-UNI-Sen-POOL'] = new Object();
++DEV_PATHS['HB-UNI-Sen-POOL']['50'] = '/config/img/devices/50/hb-uni-sen-pool_thumb.png';
++DEV_PATHS['HB-UNI-Sen-POOL']['250'] = '/config/img/devices/250/hb-uni-sen-pool.png';
 +DEV_HIGHLIGHT['HB-UNI-Sen-PF-SC'] = new Object();
 +DEV_LIST.push('HB-UNI-Sen-PF-SC');
 +DEV_DESCRIPTION['HB-UNI-Sen-PF-SC']='Tierklappensensor';
@@ -479,7 +485,7 @@
  DEV_HIGHLIGHT["HM-RC-4-3"] = new Object();
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part1"] = [6, 0.312, 0.288, 0.416, 0.288, 0.012];
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part2"] = [6, 0.312, 0.288, 0.352, 0.248, 0.012];
-@@ -3843,6 +4309,211 @@
+@@ -3843,6 +4321,215 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_HIGH'] = '${stringTableCapacitiveFillingSensorCaseHeight}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_LENGTH'] = '${stringTableCapacitiveFillingSensorCaseLength}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_WIDTH'] = '${stringTableCapacitiveFillingSensorCaseWidth}';
@@ -542,6 +548,8 @@
 +elvST['HB_EP_SHOW_LINE'] = '${stringTableHbEpShowLine}';
 +elvST['HB_EP_TEXT_BOLD'] = '${stringTableHbEpTextBold}';
 +elvST['HB_EP_TEXT_COLORED'] = '${stringTableHbEpTextColored}';
++elvST['HB_FLOWRATE'] = '${stringTableHbFlowrate}';
++elvST['HB_FLOWRATE_QFACTOR'] = '${stringTableHbFlowrateQFactor}';
 +elvST['HB_GENERIC_DIST|DISTANCE_OFFSET'] = '${stringTableHbGenericDistDistanceOffset}';
 +elvST['HB_GENERIC_DIST|SENSOR_TYPE'] = '${stringTableHbGenericDistSensorType}';
 +elvST['HB_GENERIC_DIST|TOF_DISTANCE_OFFSET'] = '${stringTableHbGenericDistTofDistanceOffset}';
@@ -664,6 +672,8 @@
 +elvST['SERVO_MOVE0'] = '${stringTableHbServoMove0}';
 +elvST['SERVO_STAY'] = '${stringTableHbServoStay}';
 +elvST['SIGNAL_LED|HB_LED_COUNT'] = '${stringTableHbLedCount}';
++elvST['TEMPERATURE_OFFSET_1'] = '${stringTableHbTemperatureOffset1}';
++elvST['TEMPERATURE_OFFSET_2'] = '${stringTableHbTemperatureOffset2}';
 +elvST['WEATHER|ANEMOMETER_CALIBRATION_FACTOR'] = '${stringTableWeatherAnemometerCalibrationFactor}';
 +elvST['WEATHER|ANEMOMETER_RADIUS'] = '${stringTableWeatherAnemometerRadius}';
 +elvST['WEATHER|CAP_MOIST_HIGH_VALUE'] = '${stringTableHbCapMoistHighValue}';
@@ -691,7 +701,7 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextCalcFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL'] = '${stringTableCapacitiveFillingSensorFillingLevel}';
-@@ -13664,7 +14335,7 @@
+@@ -13664,7 +14351,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
    // and set the variable freeTextActive to true
@@ -700,7 +710,7 @@
      var jLine = jQuery("#textSelect_" + line),
      jCellFreeText = jQuery("#cellFreeText_"+line);
  
-@@ -13680,7 +14351,7 @@
+@@ -13680,7 +14367,7 @@
    // If at least one line has an active free text mode
    // we have to activate the placeholder for the other lines and the header (color and icon are moving up)
    if (freeTextActive) {
@@ -709,7 +719,7 @@
        var jLine = jQuery("#textSelect_" + line),
        jPlaceHolder = jQuery("#placeHolder_"+line);
  
-@@ -13692,7 +14363,7 @@
+@@ -13692,7 +14379,7 @@
      }
    } else {
      jHeadFreeText.hide().css("display", "none");
@@ -718,7 +728,7 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
-@@ -23560,6 +24231,18 @@
+@@ -23560,6 +24247,18 @@
          this.setWidth(400);
          this.setFile( "/pages/msg/setOUCFMMode.htm" );
          break;
@@ -737,7 +747,7 @@
          case ID_SET_STATUS_DISPLAY:
          this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
          this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -24363,6 +25046,8 @@
+@@ -24363,6 +25062,8 @@
  ID_AUTO_LOGIN_CONFIG     = 1018;
  ID_PROGRAM_CHOOSER       = 1019;
  ID_EDIT_SYSVAR           = 1021;

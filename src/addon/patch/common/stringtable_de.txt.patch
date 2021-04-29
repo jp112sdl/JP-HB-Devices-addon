@@ -1,6 +1,6 @@
 --- ./patchsource/www/config/stringtable_de.txt.orig
 +++ ./patchsource/www/config/stringtable_de.txt
-@@ -275,6 +275,236 @@
+@@ -275,6 +275,240 @@
  CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL	${stringTableCapacitiveFillingSensorTextCalcFillingLevel}
  CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL	${stringTableCapacitiveFillingSensorTextFillingLevel}
  CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL	${stringTableCapacitiveFillingSensorFillingLevel}
@@ -62,6 +62,8 @@
 +HB_EP_SHOW_LINE	${stringTableHbEpShowLine}
 +HB_EP_TEXT_BOLD	${stringTableHbEpTextBold}
 +HB_EP_TEXT_COLORED	${stringTableHbEpTextColored}
++HB_FLOW_RATE	${stringTableHbFlowrate}
++HB_FLOWRATE_QFACTOR	${stringTableHbFlowrateQFactor}
 +HB_GENERIC_DIST|BATTERY_VOLTAGE	${stringTableHbGenericDistBatteryVoltage}
 +HB_GENERIC_DIST|DISTANCE	${stringTableHbGenericDistDistance}
 +HB_GENERIC_DIST|DISTANCE_OFFSET	${stringTableHbGenericDistDistanceOffset}
@@ -197,6 +199,8 @@
 +SERVO|OLD_LEVEL	${stringTableHbServoOldLevel}
 +SERVO|RAMP_TIME	${stringTableHbServoRampTime}
 +SIGNAL_LED|HB_LED_COUNT	${stringTableHbLedCount}
++TEMPERATURE_OFFSET_1	${stringTableHbTemperatureOffset1}
++TEMPERATURE_OFFSET_2	${stringTableHbTemperatureOffset2}
 +UNI_PRESSURE	${stringTableUniPressure}
 +WEATHER|ANEMOMETER_CALIBRATION_FACTOR	${stringTableWeatherAnemometerCalibrationFactor}
 +WEATHER|ANEMOMETER_RADIUS	${stringTableWeatherAnemometerRadius}

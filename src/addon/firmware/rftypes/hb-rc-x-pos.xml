@@ -2,6 +2,9 @@
 <device version="11" rx_modes="CONFIG" peering_sysinfo_expect_channel="false" supports_aes="true">
   <supported_types>
     <type name="HB Remote with multiple channels" id="HB-RC-X-POS" priority="2">
+      <parameter index="10.0" size="2.0" const_value="0xf32b"/>
+    </type>
+    <type name="HB Remote with 10 channels" id="HB-RC-10-POS" priority="2">
       <parameter index="10.0" size="2.0" const_value="0xf32c"/>
     </type>
   </supported_types>

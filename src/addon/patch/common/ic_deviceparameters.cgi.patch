@@ -1,0 +1,12 @@
+--- ./patchsource/www/config/ic_deviceparameters.cgi.orig
++++ ./patchsource/www/config/ic_deviceparameters.cgi
+@@ -909,7 +909,8 @@
+         global receiver_address sender_address dev_descr_sender 
+         set sender_address $ch_address
+         set receiver_address $ch_address
+-        incr counter
++        #incr counter
++        set counter [lindex [split $ch_descr(ADDRESS) ":"] 1]
+         
+         # internal key unlocked in xml-file?
+         if {![catch {array set intKey [xmlrpc $iface_url($iface) getParamset [list string $dev_descr(ADDRESS)] [list string MASTER]]}]} {

@@ -165,7 +165,7 @@ jQuery.extend(true,langJSON, {
     "stringTableHBPFSAngleSensorFailure2" : "Fehler Magnetwinkelsensor<br/>Error-Code: 0x10",
     "stringTableHBPFSAngleSensorFailure1" : "Fehler Magnetwinkelsensor<br/>Error-Code: 0x08",
     "stringTableHBPFSAngleSensorFailure" : "Fehler Magnetwinkelsensor<br/>Sensor nicht erkannt",
-    "stringTableHBPFSAngleHysteresis" : "Mindest-Winkeländerung bei Durchgang",
+    "stringTableHBPFSAngleHysteresis" : "Mindest-Winkel%E4nderung bei Durchgang",
     "stringTableHBPFSAngleDefault" : "Winkel bei 'Klappe geschlossen'",
     "stringTableHBPFSAngleMeasureInterval" : "Winkelerfassung Intervall",
     "stringTableHBPFSTitle" : "Tierklappenzustand",

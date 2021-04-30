@@ -362,6 +362,7 @@ HB_GENERIC|HB_ORP	${stringTableHbOrp}
 HB_GENERIC|HB_ORPOFFSET	${stringTableHbOrpOffset}
 HB_GENERIC|HB_RPM	${stringTableHbGenericRpm}
 HB_GENERIC|HB_RPM_ERRMIN	${stringTableHBRpmErrorMin}
+HB_GENERIC|INFO_MSG=HB_CALIBRATION_INVALID	${stringTableHBCalibrationInvalid}
 HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION	${stringTableHBOperationCalibration}
 HB_GENERIC|INFO_MSG=HB_OPERATION_NORMAL	${stringTableHBOperationNormal}
 HB_ICON_NUM	${lblIcon}

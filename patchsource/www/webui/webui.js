@@ -4390,6 +4390,7 @@ elvST['HB_GENERIC|ERROR=FRAM_ERROR'] = '${stringTableHbFramError}';
 elvST['HB_GENERIC|ERROR=OAPC_ERROR'] = '${stringTableHbOapcError}';
 elvST['HB_GENERIC|HB_ORPOFFSET'] = '${stringTableHbOrpOffset}';
 elvST['HB_GENERIC|HB_RPM_ERRMIN'] = '${stringTableHBRpmErrorMin}';
+elvST['HB_GENERIC|INFO_MSG=HB_CALIBRATION_INVALID'] = '${stringTableHBCalibrationInvalid}';
 elvST['HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION'] = '${stringTableHBOperationCalibration}';
 elvST['HB_GENERIC|INFO_MSG=HB_OPERATION_NORMAL'] = '${stringTableHBOperationNormal}';
 elvST['HB_HEADERLINE'] = '${stringTableHbHeaderLine}';

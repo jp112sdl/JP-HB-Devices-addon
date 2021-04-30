@@ -485,7 +485,7 @@
  DEV_HIGHLIGHT["HM-RC-4-3"] = new Object();
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part1"] = [6, 0.312, 0.288, 0.416, 0.288, 0.012];
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part2"] = [6, 0.312, 0.288, 0.352, 0.248, 0.012];
-@@ -3843,6 +4321,215 @@
+@@ -3843,6 +4321,216 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_HIGH'] = '${stringTableCapacitiveFillingSensorCaseHeight}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_LENGTH'] = '${stringTableCapacitiveFillingSensorCaseLength}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_WIDTH'] = '${stringTableCapacitiveFillingSensorCaseWidth}';
@@ -558,6 +558,7 @@
 +elvST['HB_GENERIC|ERROR=OAPC_ERROR'] = '${stringTableHbOapcError}';
 +elvST['HB_GENERIC|HB_ORPOFFSET'] = '${stringTableHbOrpOffset}';
 +elvST['HB_GENERIC|HB_RPM_ERRMIN'] = '${stringTableHBRpmErrorMin}';
++elvST['HB_GENERIC|INFO_MSG=HB_CALIBRATION_INVALID'] = '${stringTableHBCalibrationInvalid}';
 +elvST['HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION'] = '${stringTableHBOperationCalibration}';
 +elvST['HB_GENERIC|INFO_MSG=HB_OPERATION_NORMAL'] = '${stringTableHBOperationNormal}';
 +elvST['HB_HEADERLINE'] = '${stringTableHbHeaderLine}';
@@ -701,7 +702,7 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextCalcFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL'] = '${stringTableCapacitiveFillingSensorFillingLevel}';
-@@ -13664,7 +14351,7 @@
+@@ -13664,7 +14352,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
    // and set the variable freeTextActive to true
@@ -710,7 +711,7 @@
      var jLine = jQuery("#textSelect_" + line),
      jCellFreeText = jQuery("#cellFreeText_"+line);
  
-@@ -13680,7 +14367,7 @@
+@@ -13680,7 +14368,7 @@
    // If at least one line has an active free text mode
    // we have to activate the placeholder for the other lines and the header (color and icon are moving up)
    if (freeTextActive) {
@@ -719,7 +720,7 @@
        var jLine = jQuery("#textSelect_" + line),
        jPlaceHolder = jQuery("#placeHolder_"+line);
  
-@@ -13692,7 +14379,7 @@
+@@ -13692,7 +14380,7 @@
      }
    } else {
      jHeadFreeText.hide().css("display", "none");
@@ -728,7 +729,7 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
-@@ -23560,6 +24247,18 @@
+@@ -23560,6 +24248,18 @@
          this.setWidth(400);
          this.setFile( "/pages/msg/setOUCFMMode.htm" );
          break;
@@ -747,7 +748,7 @@
          case ID_SET_STATUS_DISPLAY:
          this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
          this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -24363,6 +25062,8 @@
+@@ -24363,6 +25063,8 @@
  ID_AUTO_LOGIN_CONFIG     = 1018;
  ID_PROGRAM_CHOOSER       = 1019;
  ID_EDIT_SYSVAR           = 1021;

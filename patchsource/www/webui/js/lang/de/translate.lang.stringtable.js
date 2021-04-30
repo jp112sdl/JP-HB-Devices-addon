@@ -154,6 +154,7 @@ jQuery.extend(true,langJSON, {
     "stringTableHbGenericSchaltschwelle" : "Schaltschwelle",
     "stringTableHbGenericSensortyp" : "Sensortyp",
     "stringTableUniPressure" : "Druck",
+    "stringTableHBCalibrationInvalid" : "Kalibrierdaten ung%FCltig",
     "stringTableHBOperationCalibration" : "Kalibriermodus",
     "stringTableHBOperationNormal" : "Normalbetrieb",
     "stringTableHbPh" : "PH-Wert",

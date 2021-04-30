@@ -1,6 +1,6 @@
 --- ./patchsource/www/config/stringtable_de.txt.orig
 +++ ./patchsource/www/config/stringtable_de.txt
-@@ -275,6 +275,240 @@
+@@ -275,6 +275,241 @@
  CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL	${stringTableCapacitiveFillingSensorTextCalcFillingLevel}
  CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL	${stringTableCapacitiveFillingSensorTextFillingLevel}
  CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL	${stringTableCapacitiveFillingSensorFillingLevel}
@@ -91,6 +91,7 @@
 +HB_GENERIC|HB_ORPOFFSET	${stringTableHbOrpOffset}
 +HB_GENERIC|HB_RPM	${stringTableHbGenericRpm}
 +HB_GENERIC|HB_RPM_ERRMIN	${stringTableHBRpmErrorMin}
++HB_GENERIC|INFO_MSG=HB_CALIBRATION_INVALID	${stringTableHBCalibrationInvalid}
 +HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION	${stringTableHBOperationCalibration}
 +HB_GENERIC|INFO_MSG=HB_OPERATION_NORMAL	${stringTableHBOperationNormal}
 +HB_ICON_NUM	${lblIcon}

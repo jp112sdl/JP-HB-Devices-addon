@@ -274,6 +274,7 @@
          <logical type="option">
            <option id="HB_OPERATION_NORMAL" index="0" default="true"/>
            <option id="HB_OPERATION_CALIBRATION" index="1"/>
+           <option id="HB_CALIBRATION_INVALID" index="2"/>
          </logical>
          <physical type="integer" interface="command" value_id="INFO_MSG">
            <event frame="INFO_MSG_EVENT"/>
@@ -309,7 +310,7 @@
     <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="20.0:0.6">
       <parameter type="integer" signed="true" index="21.0" size="2.0" param="TEMPERATURE"/>
     </frame>
-    <frame id="INFO_MSG_EVENT" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="5">
+    <frame id="INFO_MSG_EVENT" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="1">
       <parameter type="integer" index="12.1" size="0.3" param="INFO_MSG"/>
     </frame>
     <frame id="LEVEL_SET" direction="to_device" type="0x11" subtype="0x02" subtype_index="9" channel_field="10">

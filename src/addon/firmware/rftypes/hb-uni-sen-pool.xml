@@ -231,7 +231,7 @@
         <physical type="integer" signed="true" interface="config" list="1" index="1" size="4"/>
        </parameter>
        <parameter id="HB_FLOWRATE_QFACTOR">
-        <logical type="float" min="0.0" max="100.0" unit="l/Imp." default="1.0" /> 
+        <logical type="float" min="0.0" max="100.0" unit="" default="1.0" /> 
         <physical type="integer" interface="config" list="1" index="7.0" size="2" />
         <conversion type="float_integer_scale" factor="10.0" />
       </parameter>       

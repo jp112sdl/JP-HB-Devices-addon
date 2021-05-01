@@ -7,10 +7,10 @@ Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sd
 Die Update Prozedur wurde grundlegend verändert. Ist bereits eine frühere Version des Addons (V4.x oder kleiner) installiert, ist eine der beiden folgenden Methoden einmalig beim Wechsel auf die Version 5 anzuwenden:<br/>
 - Variante 1: 
   - altes Addon deinstallieren
-  - Version 5 installieren
+  - Version 5.x installieren
   - **wichtig: zwischen der Deinstallation des alten und der Installation des neuen Addons darf kein Neustart erfolgen**
 - Variante 2: 
-  - Version 5 installieren
+  - Version 5.x installieren
   - anschließend die CCU Firmware erneut installieren
 <br/><br/>
 

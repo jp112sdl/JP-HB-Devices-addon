@@ -73,8 +73,12 @@
            <option id="3.0K" />
            <option id="3.5K" />
          </logical>
-         <physical type="integer" interface="config" list="1" index="1.0" size="1.0" />
+         <physical type="integer" interface="config" list="1" index="5.0" size="1.0" />
        </parameter>
+       <parameter id="HB_ORPOFFSET">                                
+        <logical type="integer" min="-1000" max="1000" unit="mV" default="0"/>                      
+        <physical type="integer" signed="true" interface="config" list="1" index="1" size="4"/>
+       </parameter>  
      </paramset>
      <paramset type="VALUES" id="HB-UNI-Sen-PH_values">
        <parameter id="HB_PH" operations="read,event" control="NONE">
@@ -85,11 +89,10 @@
          <conversion type="float_integer_scale" factor="100"/>
        </parameter>
        <parameter id="HB_ORP" operations="read,event" control="NONE">
-         <logical type="integer" min="0" max="2000" unit="mV"/>
+         <logical type="integer" min="-2000" max="2000" unit="mV"/>
          <physical type="integer" interface="command" value_id="HB_ORP" no_init="true">
            <event frame="MEASURE_EVENT"/>
          </physical>
-         <conversion type="float_integer_scale" factor="1.0"/>
        </parameter>
        <parameter id="TEMPERATURE" operations="read,event">
          <logical type="float" min="-40.0" max="80.0" unit="°C" />
@@ -115,7 +118,7 @@
     <frame id="MEASURE_EVENT" direction="from_device" event="true" fixed_channel="1" type="0x53">
        <parameter type="integer" signed="true" index="9.0" size="1.7" param="TEMPERATURE" />
        <parameter type="integer" index="11.0" size="2.0" param="HB_PH" />
-       <parameter type="integer" index="13.0" size="2.0" param="HB_ORP" />
+       <parameter type="integer" signed="true" index="13.0" size="2.0" param="HB_ORP" />
     </frame>
     <frame id="INFO_MSG_EVENT" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="1">
       <parameter type="integer" index="12.1" size="0.3" param="INFO_MSG"/>

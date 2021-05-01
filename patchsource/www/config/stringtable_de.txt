@@ -333,6 +333,8 @@ HB_EP_SHOW_GRID	${stringTableHbEpShowGrid}
 HB_EP_SHOW_LINE	${stringTableHbEpShowLine}
 HB_EP_TEXT_BOLD	${stringTableHbEpTextBold}
 HB_EP_TEXT_COLORED	${stringTableHbEpTextColored}
+HB_FLOW_RATE	${stringTableHbFlowrate}
+HB_FLOWRATE_QFACTOR	${stringTableHbFlowrateQFactor}
 HB_GENERIC_DIST|BATTERY_VOLTAGE	${stringTableHbGenericDistBatteryVoltage}
 HB_GENERIC_DIST|DISTANCE	${stringTableHbGenericDistDistance}
 HB_GENERIC_DIST|DISTANCE_OFFSET	${stringTableHbGenericDistDistanceOffset}
@@ -357,8 +359,10 @@ HB_GENERIC|ERROR=FRAM_ERROR	${stringTableHbFramError}
 HB_GENERIC|ERROR=OAPC_ERROR	${stringTableHbOapcError}
 HB_GENERIC|HB_PH	${stringTableHbPh}
 HB_GENERIC|HB_ORP	${stringTableHbOrp}
+HB_GENERIC|HB_ORPOFFSET	${stringTableHbOrpOffset}
 HB_GENERIC|HB_RPM	${stringTableHbGenericRpm}
 HB_GENERIC|HB_RPM_ERRMIN	${stringTableHBRpmErrorMin}
+HB_GENERIC|INFO_MSG=HB_CALIBRATION_INVALID	${stringTableHBCalibrationInvalid}
 HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION	${stringTableHBOperationCalibration}
 HB_GENERIC|INFO_MSG=HB_OPERATION_NORMAL	${stringTableHBOperationNormal}
 HB_ICON_NUM	${lblIcon}
@@ -467,6 +471,8 @@ SERVO|LEVEL	${stringTableHbServoLevel}
 SERVO|OLD_LEVEL	${stringTableHbServoOldLevel}
 SERVO|RAMP_TIME	${stringTableHbServoRampTime}
 SIGNAL_LED|HB_LED_COUNT	${stringTableHbLedCount}
+TEMPERATURE_OFFSET_1	${stringTableHbTemperatureOffset1}
+TEMPERATURE_OFFSET_2	${stringTableHbTemperatureOffset2}
 UNI_PRESSURE	${stringTableUniPressure}
 WEATHER|ANEMOMETER_CALIBRATION_FACTOR	${stringTableWeatherAnemometerCalibrationFactor}
 WEATHER|ANEMOMETER_RADIUS	${stringTableWeatherAnemometerRadius}

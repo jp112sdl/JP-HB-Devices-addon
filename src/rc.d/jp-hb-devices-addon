@@ -6,6 +6,7 @@ ADDON_NAME=`basename "$0"`
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
 PATCH_DIR=${ADDON_DIR}/patch
 NEW_ADDON_DIR=${ADDON_DIR}-new
+WWW_DIR=/usr/local/etc/config/addons/www/$ADDON_NAME
 
 LOG_DIR=${ADDON_DIR}/log
 TMP_LOGDIR=/tmp
@@ -170,6 +171,10 @@ case "$1" in
         chown root:root /www/ise/img/icons_hm_dis_ep_wm55/24/*
         chmod 755 /www/ise/img/icons_hm_dis_ep_wm55/24/*
         
+        # Symbolic Links
+        rm -rf ${WWW_DIR}
+        ln -sf ${ADDON_DIR} ${WWW_DIR}
+        
         patcher "APPLY"
 
         ### Running inst_* scripts for each device installation
@@ -287,6 +292,8 @@ case "$1" in
       [[ -f /www/rega/${ADDON_NAME}-error.log ]] && rm /www/rega/${ADDON_NAME}-error.log
 
       cd /
+
+      rm -f ${WWW_DIR}
       rm -rf ${ADDON_DIR}
       sync
       mount -o remount,ro /

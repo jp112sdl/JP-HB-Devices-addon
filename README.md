@@ -173,6 +173,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 4F | HB-OU-MOT-FAN-RPM |
 |F3 50 | HB-OU-RGB-TEALIGHT-BAT |
 |F3 51 | HB-OU-RGB-TEALIGHT |
+|F3 52 | HB-OU-RGBW-LED-FX |
 |F3 53 | HB-DIS-EP-42BW-MAINS |
 |F3 57 | HB-DIS-EP-75BW-MAINS |
 |F3 5A | HB-ES-PMSw1-USB |

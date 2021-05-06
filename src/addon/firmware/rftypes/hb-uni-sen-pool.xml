@@ -226,6 +226,10 @@
          </logical>
          <physical type="integer" interface="config" list="1" index="6.0" size="1.0" />
        </parameter>
+       <parameter id="HB_TOGGLEWAITTIME">                                
+        <logical type="integer" min="0" max="2000" unit="ms" default="200"/>                      
+        <physical type="integer" interface="config" list="1" index="9" size="2"/>
+       </parameter>
        <parameter id="HB_ORPOFFSET">                                
         <logical type="integer" min="-1000" max="1000" unit="mV" default="0"/>                      
         <physical type="integer" signed="true" interface="config" list="1" index="1" size="4"/>

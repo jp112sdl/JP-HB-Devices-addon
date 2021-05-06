@@ -307,12 +307,12 @@
     <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="9.0:0.6">
        <parameter type="integer" signed="true" index="10.0" size="2.0" param="TEMPERATURE" />
        <parameter type="integer" index="12.0" size="2.0" param="HB_PH" />
-       <parameter type="integer" signed="true" index="15.0" size="2.0" param="HB_ORP" />
-       <parameter type="integer" index="17.0" size="2.0" param="UNI_PRESSURE" />
-       <parameter type="integer" index="19.0" size="1.0" param="HB_FLOW_RATE" />
+       <parameter type="integer" signed="true" index="14.0" size="2.0" param="HB_ORP" />
+       <parameter type="integer" index="16.0" size="2.0" param="UNI_PRESSURE" />
+       <parameter type="integer" index="18.0" size="1.0" param="HB_FLOW_RATE" />
     </frame>
-    <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="20.0:0.6">
-      <parameter type="integer" signed="true" index="21.0" size="2.0" param="TEMPERATURE"/>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="19.0:0.6">
+      <parameter type="integer" signed="true" index="20.0" size="2.0" param="TEMPERATURE"/>
     </frame>
     <frame id="INFO_MSG_EVENT" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="1">
       <parameter type="integer" index="12.1" size="0.3" param="INFO_MSG"/>

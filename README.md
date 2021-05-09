@@ -108,7 +108,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-es-pmsw1-usb_thumb.png" width=25/> | [HB-ES-PMSw1-USB](https://github.com/jp112sdl/HB-ES-PMSw1-USB) | Schaltaktor mit Strom-/Spannungsmessung für USB | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-rc-6-pbu-led_thumb.png" width=25/> | [HB-RC-6-PBU-LED](https://github.com/jp112sdl/HB-RC-6-PBU-LED) | 6fach (Wand)Taster mit RGB Status-LEDs | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-ph-orp_thumb.png" width=25/> | [HB-UNI-Sen-PH-ORP](https://github.com/jp112sdl/HB-UNI-Sen-PH-ORP) | PH-+ORP-Sensor | ⚡️ |
-|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-pool_thumb.png" width=25/> | [HB-UNI-Sen-POOL](https://github.com/jp112sdl/HB-UNI-Sen-POOL) | Pool Multidevice (4x Aktor-, 2x Schließerkontakt- und 1 Messkanal (PH, ORP, 2x Temperatur, Druck, Durchflussrate)| ⚡️ |
+|<img src="src/addon/www/config/img/devices/50/hb-uni-sen-pool_thumb.png" width=25/> | [HB-UNI-Sen-POOL](https://github.com/jp112sdl/HB-UNI-Sen-POOL) | Pool Multidevice (4x Aktor-, 2x Schließerkontakt- <br/>und 1 Messkanal (PH, ORP, 2x Temperatur, Druck, Durchflussrate)| ⚡️ |
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 

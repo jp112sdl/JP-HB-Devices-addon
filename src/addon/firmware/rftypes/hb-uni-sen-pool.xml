@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<device version="2">
+<device version="2" cyclic_timeout="3600" supports_aes="false">
   <supported_types>
     <type name="HB-UNI-Sen-POOL" id="HB-UNI-Sen-POOL">
       <parameter index="10.0" size="2.0" const_value="0xF318" />

@@ -101,8 +101,6 @@ patcher()
     return
   fi     
 
-  check_ccu_fw_version
-
   cd /www
 
   for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
@@ -118,6 +116,8 @@ patcher()
 
 case "$1" in
     ""|init|start)
+      check_ccu_fw_version
+
       [[ -f $TMP_ERRFILE ]] && rm $TMP_ERRFILE
       [[ -f $TMP_LOGFILE ]] && rm $TMP_LOGFILE
 
@@ -280,6 +280,8 @@ case "$1" in
     ;;
 
     uninstall)
+      check_ccu_fw_version
+
       mount -o remount,rw /
 
       cd ${ADDON_DIR}

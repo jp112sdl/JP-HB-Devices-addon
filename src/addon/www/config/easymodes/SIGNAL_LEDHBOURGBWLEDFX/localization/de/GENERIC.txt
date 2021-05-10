@@ -1,0 +1,9 @@
+"signal_intens" : "Helligkeit",
+"signal_speed" : "Geschwindigkeit",
+"signal_led_chime_active" : "Segment aktiv",
+"signal_led_chime_non_active" : "Segment nicht aktiv",
+"signal_led_chime_on" : "Segment ein",
+"signal_led_chime_off" : "Segment aus",
+"signal_effect" : "Effekt",
+"button_inactive" : "Taste deaktiviert",
+

@@ -107,6 +107,18 @@
       ReloadSingleDestination(sdid);
     };
   };
+  // HB-OU-RGBW-LED-FX
+  ChangeHBOURGBWLEDFXValue = function(sdid)
+  {
+    iseSingleDestination.reload = false;
+    dlgResult = "";
+    CreatePopup(ID_SET_HBOURGBWLEDFX_MODE, "X:"+sdid);
+    PopupClose = function()
+    {
+      dlgPopup.hide();
+      ReloadSingleDestination(sdid);
+    };
+  };
   // MP3 HB Funkgong
   ChangeHBOUCFMValue = function(sdid)
   {

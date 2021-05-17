@@ -167,7 +167,7 @@
         <physical type="boolean" interface="internal" value_id="AES"/>
       </parameter>
       <parameter id="HB_LED_COUNT">
-        <logical type="integer" min="1" max="1024" default="150" unit="" />
+        <logical type="integer" min="1" max="1024" default="60" unit="" />
         <physical type="integer" interface="config" list="1" index="1" size="2" />
       </parameter>
     </paramset>

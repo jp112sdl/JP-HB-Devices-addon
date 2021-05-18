@@ -1,6 +1,6 @@
 --- ./patchsource/www/rega/pages/tabs/admin/views/programs.htm.orig
 +++ ./patchsource/www/rega/pages/tabs/admin/views/programs.htm
-@@ -95,6 +95,31 @@
+@@ -95,6 +95,43 @@
      };
    };  
  
@@ -10,6 +10,18 @@
 +    iseSingleDestination.reload = false;
 +    dlgResult = "";
 +    CreatePopup(ID_SET_HBRC6LED_MODE, "X:"+sdid);
++    PopupClose = function()
++    {
++      dlgPopup.hide();
++      ReloadSingleDestination(sdid);
++    };
++  };
++  // HB-OU-RGBW-LED-FX
++  ChangeHBOURGBWLEDFXValue = function(sdid)
++  {
++    iseSingleDestination.reload = false;
++    dlgResult = "";
++    CreatePopup(ID_SET_HBOURGBWLEDFX_MODE, "X:"+sdid);
 +    PopupClose = function()
 +    {
 +      dlgPopup.hide();
@@ -32,7 +44,7 @@
    // Heating thermostate
    SetPartyMode = function(elm) {
      var url = "/pages/msg/setPartyMode.htm";
-@@ -141,7 +166,10 @@
+@@ -141,7 +178,10 @@
    };
  
    SetStatusDisplay = function(regaDialogID, mode) {
@@ -44,7 +56,7 @@
  
      jQuery(elm).prop("disabled", true);
  
-@@ -179,6 +207,19 @@
+@@ -179,6 +219,19 @@
              inputElm.change();
            }
          }, "html");

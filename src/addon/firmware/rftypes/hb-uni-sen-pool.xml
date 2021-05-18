@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<device version="2">
+<device version="2" cyclic_timeout="3600" supports_aes="false">
   <supported_types>
     <type name="HB-UNI-Sen-POOL" id="HB-UNI-Sen-POOL">
       <parameter index="10.0" size="2.0" const_value="0xF318" />
@@ -226,6 +226,10 @@
          </logical>
          <physical type="integer" interface="config" list="1" index="6.0" size="1.0" />
        </parameter>
+       <parameter id="HB_TOGGLEWAITTIME">                                
+        <logical type="integer" min="0" max="2000" unit="ms" default="200"/>                      
+        <physical type="integer" interface="config" list="1" index="9" size="2"/>
+       </parameter>
        <parameter id="HB_ORPOFFSET">                                
         <logical type="integer" min="-1000" max="1000" unit="mV" default="0"/>                      
         <physical type="integer" signed="true" interface="config" list="1" index="1" size="4"/>
@@ -303,12 +307,12 @@
     <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="9.0:0.6">
        <parameter type="integer" signed="true" index="10.0" size="2.0" param="TEMPERATURE" />
        <parameter type="integer" index="12.0" size="2.0" param="HB_PH" />
-       <parameter type="integer" signed="true" index="15.0" size="2.0" param="HB_ORP" />
-       <parameter type="integer" index="17.0" size="2.0" param="UNI_PRESSURE" />
-       <parameter type="integer" index="19.0" size="1.0" param="HB_FLOW_RATE" />
+       <parameter type="integer" signed="true" index="14.0" size="2.0" param="HB_ORP" />
+       <parameter type="integer" index="16.0" size="2.0" param="UNI_PRESSURE" />
+       <parameter type="integer" index="18.0" size="1.0" param="HB_FLOW_RATE" />
     </frame>
-    <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="20.0:0.6">
-      <parameter type="integer" signed="true" index="21.0" size="2.0" param="TEMPERATURE"/>
+    <frame id="MEASURE_EVENT" direction="from_device" event="true" type="0x53" channel_field="19.0:0.6">
+      <parameter type="integer" signed="true" index="20.0" size="2.0" param="TEMPERATURE"/>
     </frame>
     <frame id="INFO_MSG_EVENT" direction="from_device" allowed_receivers="BROADCAST,CENTRAL,OTHER" event="true" type="0x10" subtype="6" subtype_index="9" fixed_channel="1">
       <parameter type="integer" index="12.1" size="0.3" param="INFO_MSG"/>

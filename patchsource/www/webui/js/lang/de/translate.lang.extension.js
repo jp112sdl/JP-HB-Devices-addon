@@ -649,6 +649,8 @@ jQuery.extend(true,langJSON, {
     "iconHbCustom01":"Benutzerdefiniert 1",
     "iconChDirArrow":"Pfeil zum Taster",
     "lblHbIterations":"Anzahl der Durchl%E4ufe",
+    "lblEffectNr":"Effekt",
+    "lblEffectSpeed":"Effektgeschwindigkeit",
     "iconHbSprinkler":"Sprinkler",
     "iconHbValve":"Wasserhahn",
     "iconHbBathtub":"Badewanne",

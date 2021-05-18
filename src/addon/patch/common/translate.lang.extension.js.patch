@@ -1,6 +1,6 @@
 --- ./patchsource/www/webui/js/lang/de/translate.lang.extension.js.orig
 +++ ./patchsource/www/webui/js/lang/de/translate.lang.extension.js
-@@ -634,6 +634,39 @@
+@@ -634,6 +634,41 @@
      "iconOK":"Alles okay",
      "iconNewMessage":"Neue Nachricht",
      "iconServiceMessage":"Servicemeldung",
@@ -19,6 +19,8 @@
 +    "iconHbCustom01":"Benutzerdefiniert 1",
 +    "iconChDirArrow":"Pfeil zum Taster",
 +    "lblHbIterations":"Anzahl der Durchl%E4ufe",
++    "lblEffectNr":"Effekt",
++    "lblEffectSpeed":"Effektgeschwindigkeit",
 +    "iconHbSprinkler":"Sprinkler",
 +    "iconHbValve":"Wasserhahn",
 +    "iconHbBathtub":"Badewanne",

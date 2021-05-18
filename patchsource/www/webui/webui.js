@@ -414,6 +414,12 @@ DEV_DESCRIPTION['HB-OU-RGB-TEALIGHT']='mains powered tealight with WS2812B RGB L
 DEV_PATHS['HB-OU-RGB-TEALIGHT'] = new Object();
 DEV_PATHS['HB-OU-RGB-TEALIGHT']['50'] = '/config/img/devices/50/hb-ou-rgb-tealight_thumb.png';
 DEV_PATHS['HB-OU-RGB-TEALIGHT']['250'] = '/config/img/devices/250/hb-ou-rgb-tealight.png';
+DEV_HIGHLIGHT['HB-OU-RGBW-LED-FX'] = new Object();
+DEV_LIST.push('HB-OU-RGBW-LED-FX');
+DEV_DESCRIPTION['HB-OU-RGBW-LED-FX']='adressable LED FX Controller';
+DEV_PATHS['HB-OU-RGBW-LED-FX'] = new Object();
+DEV_PATHS['HB-OU-RGBW-LED-FX']['50'] = '/config/img/devices/50/hb-ou-rgbw-led-fx_thumb.png';
+DEV_PATHS['HB-OU-RGBW-LED-FX']['250'] = '/config/img/devices/250/hb-ou-rgbw-led-fx.png';
 DEV_LIST.push('HB-OU-MP3-LED');
 DEV_DESCRIPTION['HB-OU-MP3-LED']='MP3 Player with adressable LED';
 DEV_PATHS['HB-OU-MP3-LED'] = new Object();
@@ -4389,6 +4395,7 @@ elvST['HB_GENERIC|CURRENT'] = '${stringTablePowerMeterCurrent}';
 elvST['HB_GENERIC|ERROR=FRAM_ERROR'] = '${stringTableHbFramError}';
 elvST['HB_GENERIC|ERROR=OAPC_ERROR'] = '${stringTableHbOapcError}';
 elvST['HB_GENERIC|HB_ORPOFFSET'] = '${stringTableHbOrpOffset}';
+elvST['HB_GENERIC|HB_TOGGLEWAITTIME'] = '${stringTableHbToggleWaitTime}';
 elvST['HB_GENERIC|HB_RPM_ERRMIN'] = '${stringTableHBRpmErrorMin}';
 elvST['HB_GENERIC|INFO_MSG=HB_CALIBRATION_INVALID'] = '${stringTableHBCalibrationInvalid}';
 elvST['HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION'] = '${stringTableHBOperationCalibration}';
@@ -24260,6 +24267,12 @@ iseMessageBox.prototype =
         this.setWidth(400);
         this.setFile( "/pages/msg/setHBRC6LEDMode.htm" );
         break;
+        case ID_SET_HBOURGBWLEDFX_MODE:
+        this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
+        this.addToPostBody( 'string type = "'+this.type+'";' );
+        this.setWidth(400);
+        this.setFile( "/pages/msg/setHBOURGBWLEDFXMode.htm" );
+        break;
         case ID_SET_STATUS_DISPLAY:
         this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
         this.addToPostBody( 'string type = "'+this.type+'";' );
@@ -25065,6 +25078,7 @@ ID_PROGRAM_CHOOSER       = 1019;
 ID_EDIT_SYSVAR           = 1021;
 ID_SET_HBOUCFM_MODE      = 1923;
 ID_SET_HBRC6LED_MODE     = 1924;
+ID_SET_HBOURGBWLEDFX_MODE = 1925;
 ID_CHOOSE_LED            = 1022;
 ID_SET_OUCFM_MODE        = 1023;
 ID_SET_STATUS_DISPLAY    = 1024;

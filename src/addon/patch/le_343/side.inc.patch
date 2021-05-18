@@ -1,11 +1,12 @@
 --- ./patchsource/www/rega/esp/side.inc.orig
 +++ ./patchsource/www/rega/esp/side.inc
-@@ -12,9 +12,15 @@
+@@ -12,9 +12,16 @@
    string hm_oucfm = "HM-OU-CFM-Pl";
    string hm_oucfmTW = "HM-OU-CFM-TW";
    string hm_oucmpcb = "HM-OU-CM-PCB";
 +  string hb_oump3led = "HB-OU-MP3-LED";
 +  string hb_rc6led = "HB-RC-6-PBU-LED";
++  string hb_fxled = "HB-OU-RGBW-LED-FX";
    string hm_partyDialog = "HM-CC-RT-DN HM-TC-IT-WM-W-EU HM-CC-VG-1";
    string hm_statusDisplay = "HM-Dis-WM55";
    string hm_statusDisplayEPaper = "HM-Dis-EP-WM55";
@@ -16,12 +17,13 @@
    string hm_rgbw_controller = "HM-LC-RGBW-WM";
    string hm_jalousieActor = "HM-LC-Ja1PBU";
    string heatingClimateControlTransceiver =  "HEATING_CLIMATECONTROL_TRANSCEIVER";
-@@ -451,9 +457,15 @@
+@@ -451,9 +458,16 @@
              integer oucfm = chLabel.Find(hm_oucfm);
              integer oucfmTW = chLabel.Find(hm_oucfmTW);
              integer oucmpcb = chLabel.Find(hm_oucmpcb);
 +            integer oump3led = chLabel.Find(hb_oump3led);
 +            integer rc6led = chLabel.Find(hb_rc6led);
++            integer fxled = chLabel.Find(hb_fxled);
              integer partyDialogDevice = hm_partyDialog.Find(chLabel);
              integer statusDisplayDevice = hm_statusDisplay.Find(chLabel);
              integer statusDisplayEPaperDevice = hm_statusDisplayEPaper.Find(chLabel);
@@ -32,7 +34,7 @@
              integer rgbw_controller = chLabel.Find(hm_rgbw_controller);
              integer i_vir_lg_rgb_dim = chLabel.Find(s_vir_lg_rgb_dim);
              integer i_vir_lg_rgbw_dim = chLabel.Find(s_vir_lg_rgbw_dim);
-@@ -462,6 +474,10 @@
+@@ -462,6 +476,10 @@
  
              if ((statusDisplayDevice != -1)
                || (statusDisplayEPaperDevice != -1)
@@ -43,7 +45,7 @@
                || (rgbw_controller != -1)
                || ((jalousieActor != - 1) && (oDP.HSSID().Find("LEVEL_COMBINED") != -1))
                || (((i_vir_lg_rgb_dim != - 1) && (oDP.HSSID().Find("RGB") != -1)) || ((i_vir_lg_rgbw_dim != - 1) && (oDP.HSSID().Find("RGBW") != -1)) || (( i_vir_lg_group != - 1) && (oDP.HSSID().Find("RGBW") != -1)))
-@@ -482,6 +498,21 @@
+@@ -482,6 +500,21 @@
                  Write( '<input id="prgStringOptionValue'#oSD.ID()#'" onfocus="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');" type="text" class="SelectBox" size="10" value="'#iV#'" onchange="iseSingleDestination.SetValue('#oSD.ID()#',this.value,\'STRING\');" /> ' );
                }
  
@@ -65,12 +67,13 @@
                if (rgbw_controller != -1) {
  
                  if (iV == "0") {
-@@ -529,9 +560,15 @@
+@@ -529,9 +562,16 @@
                && (oucfm == -1)
                && (oucfmTW == -1)
                && (oucmpcb == -1)
 +              && (oump3led == -1)
 +              && (rc6led == -1)
++              && (fxled == -1)
                && (partyDialogDevice == -1)
                && (statusDisplayDevice == -1)
                && (statusDisplayEPaperDevice == -1)
@@ -81,7 +84,7 @@
                && (rgbw_controller == -1)
                && (jalousieActor == -1)
                && (i_vir_lg_rgb_dim == -1)
-@@ -546,6 +583,12 @@
+@@ -546,6 +586,15 @@
                if((oucfm != -1) || (oucfmTW != -1) || (oucmpcb != -1)) {
                  Write( '<span class="CLASS02401" onclick="ChangeOUCFMValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
                }
@@ -91,10 +94,13 @@
 +              if(rc6led != -1) {
 +                Write( '<span class="CLASS02401" onclick="ChangeHBRC6LEDValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
 +              }   
++              if(fxled != -1) {
++                Write( '<span class="CLASS02401" onclick="ChangeHBOURGBWLEDFXValue('#oSD.ID()#');"><img src="/ise/img/notepad.png" /></span>' );
++              }   
                if (partyDialogDevice != -1) {
                  Write( '<span id="setPartyMode" class="CLASS02401" onclick="SetPartyMode(this);"><img src="/ise/img/notepad.png" /></span>' );
                }
-@@ -555,6 +598,9 @@
+@@ -555,6 +604,9 @@
                if (statusDisplayEPaperDevice != -1) {
                  Write( '<span id="setStatusDisplayEPaper'#oSD.ID()#'" class="CLASS02401" onclick="SetStatusDisplay('#oSD.ID()#',\'DIS-EP\');"><img src="/ise/img/notepad.png" /></span>' );
                }

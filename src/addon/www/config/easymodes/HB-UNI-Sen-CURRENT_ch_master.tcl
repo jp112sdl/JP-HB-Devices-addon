@@ -119,8 +119,8 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
       set options(2) "SCT-013-030"
       set options(3) "SCT-013-050"
       set options(4) "SCT-013-100"
-      set options(4) "INA219"
-      set options(4) "ACS712 or other"
+      set options(5) "INA219"
+      set options(6) "ACS712 or other"
       append HTML_PARAMS(separate_1) "<td>\${stringTableHbGenericDistSensorType} </td>"
       set cmb $chn                                                                                                                                
       append cmb $prn  

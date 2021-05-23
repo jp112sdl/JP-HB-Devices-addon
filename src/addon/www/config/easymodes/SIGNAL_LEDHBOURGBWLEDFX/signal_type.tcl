@@ -84,6 +84,12 @@ append HTML_PARAMS(separate_$prn) "</td></tr>"
 
 incr pref
 set id "separate_${special_input_id}_$prn\_$pref"
+append HTML_PARAMS(separate_$prn) "<tr><td>\${signal_effectoptions} ($min - $max)</td><td>"
+append HTML_PARAMS(separate_$prn) "<input type=\"text\" id=\"$id\" name=\"SHORT_ACT_OPTIONS|LONG_ACT_OPTIONS\" value=\"$ps(SHORT_ACT_OPTIONS)\" size=5 onchange=\"ProofFreeValue(\'$id\', $min, $max);\">"
+append HTML_PARAMS(separate_$prn) "</td></tr>"
+
+incr pref
+set id "separate_${special_input_id}_$prn\_$pref"
 append HTML_PARAMS(separate_$prn) "<tr><td>\${signal_speed} ($min - $max)</td><td>"
 append HTML_PARAMS(separate_$prn) "<input type=\"text\" id=\"$id\" name=\"SHORT_ACT_NUM|LONG_ACT_NUM\" value=\"$ps(SHORT_ACT_NUM)\" size=5 onchange=\"ProofFreeValue(\'$id\', $min, $max);\">"
 append HTML_PARAMS(separate_$prn) "</td></tr>"
@@ -105,7 +111,6 @@ set id "separate_${special_input_id}_$prn\_$pref"
 append HTML_PARAMS(separate_$prn) "<tr><td>G ($min - $max)</td><td>"
 append HTML_PARAMS(separate_$prn) "<input type=\"text\" id=\"$id\" name=\"SHORT_ACT_COLOR_G|LONG_ACT_COLOR_G\" value=\"$ps(SHORT_ACT_COLOR_G)\" size=5 onchange=\"ProofFreeValue(\'$id\', $min, $max);\">"
 append HTML_PARAMS(separate_$prn) "</td></tr>"
-
 
 incr pref
 set id "separate_${special_input_id}_$prn\_$pref"

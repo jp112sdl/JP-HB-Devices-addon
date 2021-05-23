@@ -24270,7 +24270,7 @@ iseMessageBox.prototype =
         case ID_SET_HBOURGBWLEDFX_MODE:
         this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
         this.addToPostBody( 'string type = "'+this.type+'";' );
-        this.setWidth(400);
+        this.setWidth(480);
         this.setFile( "/pages/msg/setHBOURGBWLEDFXMode.htm" );
         break;
         case ID_SET_STATUS_DISPLAY:

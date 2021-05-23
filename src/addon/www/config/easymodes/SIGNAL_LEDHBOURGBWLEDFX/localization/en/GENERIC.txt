@@ -5,6 +5,7 @@
 "signal_led_chime_off" : "Segment off",
 "signal_kind" : "Signal type",
 "signal_effect" : "Effect",
+"signal_effectoptions" : "Effect options",
 "signal_speed" : "Speed",
 "signal_intens" : "Brightness",
 "button_inactive" : "Button deactivated",

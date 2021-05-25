@@ -110,6 +110,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-ph-orp_thumb.png" width=25/> | [HB-UNI-Sen-PH-ORP](https://github.com/jp112sdl/HB-UNI-Sen-PH-ORP) | PH-+ORP-Sensor | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-pool_thumb.png" width=25/> | [HB-UNI-Sen-POOL](https://github.com/jp112sdl/HB-UNI-Sen-POOL) | Pool Multidevice (4x Aktor-, 2x Schließerkontakt- <br/>und 1 Messkanal (PH, ORP, 2x Temperatur, Druck, Durchflussrate)| ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-ou-rgbw-led-fx_thumb.png" width=25/> | [HB-OU-RGBW-LED-FX](https://github.com/jp112sdl/HB-OU-RGBW-LED-FX) | [WS2812FX](https://github.com/kitesurfer1404/WS2812FX) Implementierung für SK6812 LED Stripes| ⚡️ |
+|<img src="src/addon/www/config/img/devices/50/hb-lc-sw4-tp_thumb.png" width=25/> | [HB-LC-SwX-TP](https://github.com/jp112sdl/HB-LC-SwX-TP) | 1-/2-/4-fach Aktor mit Zeitprofil| ⚡️ |
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 
@@ -137,6 +138,9 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 20 | HB-LC-SW12-FM |
 |F3 21 | HB-LC-Bl1-FM-BAT|
 |F3 22 | HB-LC-SwX-TP |
+|F3 23 | HB-LC-Sw1-TP |
+|F3 24 | HB-LC-Sw2-TP |
+|F3 25 | HB-LC-Sw4-TP |
 |F3 2B | HB-RC-X-POS |
 |F3 2C | HB-RC-10-POS |
 |F3 2D | HB-RC-4-TOUCH |

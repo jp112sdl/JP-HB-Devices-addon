@@ -1,6 +1,8 @@
 <div class="popupTitle" id="pTitle"><% Write( system.GetVar("title") ); %></div>
 
 <script type="text/javascript">
+
+  
   bOkAllowed = true;
   <%
   string sType = system.GetVar("type");
@@ -68,24 +70,18 @@
             
 <div class="CLASS01200">
   <!-- LED --> 
-  <table id="tblLED" cellpadding="0" cellspacing="0" rules="rows" class="popupTableScript CLASS01201" border="1" style="display:none">
+  <table id="tblLED" cellpadding="0" cellspacing="0" rules="rows" class="popupTableScript CLASS01201" border="1" style="display:table">
       <%
         Write('<tbody style="text-align:left">');    
          Write('<tr>');
-          Write('</tr>');
+         Write('</tr>');
+         Write('<tr>');
             ! Helligkeit
             Write('<td colspan="6" class="OUCFMprop"><span>${lblBrightnessLevel} <span class="hintMinMaxCount"></span></span></td>');
-            Write('<td colspan="5"><input id="ouBrightnessLED" type="text" style="text-align:center;" size="3"></td>');
+            Write('<td colspan="5"><input id="ouBrightnessLED" type="text" style="text-align:center;" size="3">&nbsp;<img src="/ise/img/help.png" style="cursor: pointer; width:18px; height:18px; position:relative; top:2px" onclick="showParamHelp(\'SHORT_ACT_INTENS\', \'450\', \'60\')"></td>');
           Write('</tr>');
-
-            ! Speed
-            Write('<td colspan="6" class="OUCFMprop"><span>${lblEffectSpeed} <span class="hintMinMaxCount"></span></span></td>');
-            Write('<td colspan="5"><input id="ouSpeedLED" type="text" style="text-align:center;" size="3"></td>');
-          Write('</tr>');
-
-
-        
-          Write('</tr>');
+      
+          Write('<tr>');
             ! Effekt
             Write('<td colspan="6" class="OUCFMprop"><span>${lblEffectNr} </span></td>');
             Write('<td colspan="5">');
@@ -158,26 +154,38 @@
              Write('</select>');
             Write('</td>');
           Write('</tr>');
-          
+
+          Write('<tr>');
+            ! Optionen
+            Write('<td colspan="6" class="OUCFMprop"><span>${lblEffectOptions} <span class="hintMinMaxCount"></span></span></td>');
+            Write('<td colspan="5"><input id="ouEffectOptionsLED" type="text" style="text-align:center;" size="3">&nbsp;<img src="/ise/img/help.png" style="cursor: pointer; width:18px; height:18px; position:relative; top:2px" onclick="showParamHelp(\'SHORT_ACT_OPTIONS\', \'450\', \'60\')"></td>');
           Write('</tr>');
+
+         Write('<tr>');
+            ! Speed
+            Write('<td colspan="6" class="OUCFMprop"><span>${lblEffectSpeed} <span class="hintMinMaxCount"></span></span></td>');
+            Write('<td colspan="5"><input id="ouSpeedLED" type="text" style="text-align:center;" size="3"></td>');
+          Write('</tr>');
+          
+          Write('<tr>');
             ! Rot
             Write('<td colspan="6" class="OUCFMprop"><span>${colorRED} <span class="hintMinMaxCount"></span></span></td>');
             Write('<td colspan="5"><input id="ouRedLED" type="text" style="text-align:center;" size="3"></td>');
           Write('</tr>');
 
-          Write('</tr>');
+          Write('<tr>');
             ! Gruen
             Write('<td colspan="6" class="OUCFMprop"><span>${colorGREEN} <span class="hintMinMaxCount"></span></span></td>');
             Write('<td colspan="5"><input id="ouGreenLED" type="text" style="text-align:center;" size="3"></td>');
           Write('</tr>');
           
-          Write('</tr>');
+          Write('<tr>');
             ! Blau
             Write('<td colspan="6" class="OUCFMprop"><span>${colorBLUE} <span class="hintMinMaxCount"></span></span></td>');
             Write('<td colspan="5"><input id="ouBlueLED" type="text" style="text-align:center;" size="3"></td>');
           Write('</tr>');
           
-          Write('</tr>');
+          Write('<tr>');
             ! Weiss
             Write('<td colspan="6" class="OUCFMprop"><span>${colorWHITE} <span class="hintMinMaxCount"></span></span></td>');
             Write('<td colspan="5"><input id="ouWhiteLED" type="text" style="text-align:center;" size="3"></td>');
@@ -234,9 +242,8 @@
     }
   %>
 function init()  {
-  var channelType = getChannelType();
+  load_JSFunc('config/easymodes/MASTER_LANG/HB-OU-RGBW-LED-FX_HELP.js');
 
-  showRelevantTbl(channelType); 
   setChannel1();
 
   dlgPopup.readaptSize();
@@ -259,11 +266,13 @@ function setChannel1() {
   var green = parseInt(origValues[6]); // 0 - 255
   var blue = parseInt(origValues[7]); // 0 - 255
   var white = parseInt(origValues[8]); // 0 - 255
+  var fxoptions = parseInt(origValues[9]); // 0 - 255
   var oTime = convertSeconds2HHMMSS(duration, minMaxValues.max.duration); 
 
   document.getElementById("ouSpeedLED").value = speed;
   document.getElementById("ouBrightnessLED").value = brightness;
   document.getElementById("ouEffectLED").value = effect;
+  document.getElementById("ouEffectOptionsLED").value = fxoptions;
   document.getElementById("ouRedLED").value = red;
   document.getElementById("ouGreenLED").value = green;
   document.getElementById("ouBlueLED").value = blue;
@@ -278,7 +287,7 @@ function setChannel1() {
 };
 
 function getDefaultValue(ch) {
-  return "0,128,0,128,1,255,0,0,0,0";
+  return "0,128,0,128,1,255,0,0,0,0,0";
 };
 
 function setHintMinMax(minMax) {
@@ -344,25 +353,6 @@ function convertSeconds2HHMMSS(seconds, maxValue) {
 };
 
 
-// Returns the channel type, currently either 'SIGNAL_LED' or 'SIGNAL_CHIME'
-function getChannelType() {
-  return '<% Write( dom.GetObject(oCH).HssType()); %>'; 
-};
-
-function getChannelLabel() {
-  return '<% Write( dom.GetObject(oCH).Label()); %>';
-}
-
-function showRelevantTbl(chType) {
-  var tblID = {};
-
-  tblID.SIGNAL_LED = "tblLED";
-  tblID.SIGNAL_CHIME = "tblCHIME";
-
-  var tbl = document.getElementById(tblID[chType]);
-  tbl.style.display = "table";
-};
-
 function showManualDurationElem(mode, name) {
   var manualDurationElm = document.getElementById("manual" + name);
 
@@ -386,6 +376,7 @@ function getMaxValues() {
   minMax.min.red = 0;
   minMax.min.green = 0;
   minMax.min.blue = 0;
+  minMax.min.fxoptions = 0;
 
   minMax.max.brightness = 255;
   minMax.max.duration = 108000;
@@ -395,6 +386,7 @@ function getMaxValues() {
   minMax.max.green = 255;
   minMax.max.blue = 255;
   minMax.max.white = 255;
+  minMax.max.fxoptions = 255;
 
   return minMax;
 };
@@ -422,6 +414,7 @@ function checkMinMax(oVal) {
   oVal["green"] = setMinMax("green", oVal.green);
   oVal["blue"] = setMinMax("blue", oVal.blue);
   oVal["white"] = setMinMax("white", oVal.white);
+  oVal["fxoptions"] = setMinMax("fxoptions", oVal.fxoptions);
   oVal["duration"] = setMinMax("duration", oVal.duration);
   
   return oVal;
@@ -468,6 +461,7 @@ function getLEDSettings() {
   oValues.green = document.getElementById("ouGreenLED").value;
   oValues.blue = document.getElementById("ouBlueLED").value;
   oValues.white = document.getElementById("ouWhiteLED").value;
+  oValues.fxoptions = document.getElementById("ouEffectOptionsLED").value;
   oValues.duration = getUserTime(1); 
 
     
@@ -480,7 +474,8 @@ function getLEDSettings() {
   settings += oValues.red +",";
   settings += oValues.green +",";
   settings += oValues.blue +",";
-  settings += oValues.white;
+  settings += oValues.white +",";
+  settings += oValues.fxoptions;
   console.log("settings: " + settings);
   
   return settings;

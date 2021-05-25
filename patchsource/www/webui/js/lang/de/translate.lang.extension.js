@@ -650,6 +650,7 @@ jQuery.extend(true,langJSON, {
     "iconChDirArrow":"Pfeil zum Taster",
     "lblHbIterations":"Anzahl der Durchl%E4ufe",
     "lblEffectNr":"Effekt",
+    "lblEffectOptions":"Effekt-Optionen",
     "lblEffectSpeed":"Effektgeschwindigkeit",
     "iconHbSprinkler":"Sprinkler",
     "iconHbValve":"Wasserhahn",

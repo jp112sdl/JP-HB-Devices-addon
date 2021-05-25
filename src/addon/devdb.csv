@@ -16,6 +16,10 @@ HB-LC-Sw1PBU-FM;PushButton-2ch-wm
 HB-LC-Sw2-FM;5_hm-lc-sw2-fm
 HB-LC-Sw2PBU-FM;PushButton-2ch-wm
 HB-LC-Sw12-FM;hb-lc-sw12-fm
+HB-LC-SwX-TP;hb-lc-swx-tp
+HB-LC-Sw1-TP;hb-lc-sw1-tp
+HB-LC-Sw2-TP;hb-lc-sw2-tp
+HB-LC-Sw4-TP;hb-lc-sw4-tp
 HB-OU-AF-SEN-TEMP;hb-ou-af-sen-temp
 HB-OU-MOT-FAN;hb-ou-mot-fan
 HB-OU-MOT-FAN-RPM;hb-ou-mot-fan

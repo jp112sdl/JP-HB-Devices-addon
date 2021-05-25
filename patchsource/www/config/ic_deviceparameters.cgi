@@ -891,6 +891,7 @@ proc put_channel_parameters {} {
         || ([string equal $ch_paramid "dw_controller_color_virt_ch_master"] == 1)
         || ([string equal $ch_paramid "dw_controller_brightness_ch_master"] == 1)
         || ([string equal $ch_paramid "dw_controller_brightness_virt_ch_master"] == 1)
+        || ([string equal $ch_paramid "hb_sw_tp_ch_master"] == 1)
         } {
          setInternalDeviceKey $ch_paramid
         }

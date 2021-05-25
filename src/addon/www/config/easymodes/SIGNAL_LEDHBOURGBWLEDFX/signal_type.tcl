@@ -10,6 +10,20 @@ if {$dev_descr_sender(TYPE) != "SMOKE_DETECTOR_TEAM"} {
 	append HTML_PARAMS(separate_$prn) "<tr><td colspan=\"2\"><hr></td></tr>"
 }
 
+set hlpBoxWidth 450
+set hlpBoxHeight 60
+proc getHelpIcon {topic x y} {
+  set ret "<img src=\"/ise/img/help.png\" style=\"cursor: pointer; width:18px; height:18px; position:relative; top:2px\" onclick=\"showParamHelp('$topic', '$x', '$y')\">"
+  return $ret
+}
+puts "<script type=\"text/javascript\">load_JSFunc('/config/easymodes/MASTER_LANG/HB-OU-RGBW-LED-FX_HELP.js')</script>"
+
+incr pref
+set id "separate_${special_input_id}_$prn\_$pref"
+append HTML_PARAMS(separate_$prn) "<tr><td>\${signal_intens} ($min - $max)</td><td>"
+append HTML_PARAMS(separate_$prn) "<input type=\"text\" id=\"$id\" name=\"SHORT_ACT_INTENS|LONG_ACT_INTENS\" value=\"$ps(SHORT_ACT_INTENS)\" size=5 onchange=\"ProofFreeValue(\'$id\', $min, $max);\">&nbsp;[getHelpIcon SHORT_ACT_INTENS $hlpBoxWidth $hlpBoxHeight]"
+append HTML_PARAMS(separate_$prn) "</td></tr>"
+
 incr pref
 append HTML_PARAMS(separate_$prn) "<tr><td>\${signal_effect}</td><td>"
 array_clear options
@@ -84,14 +98,14 @@ append HTML_PARAMS(separate_$prn) "</td></tr>"
 
 incr pref
 set id "separate_${special_input_id}_$prn\_$pref"
-append HTML_PARAMS(separate_$prn) "<tr><td>\${signal_speed} ($min - $max)</td><td>"
-append HTML_PARAMS(separate_$prn) "<input type=\"text\" id=\"$id\" name=\"SHORT_ACT_NUM|LONG_ACT_NUM\" value=\"$ps(SHORT_ACT_NUM)\" size=5 onchange=\"ProofFreeValue(\'$id\', $min, $max);\">"
-append HTML_PARAMS(separate_$prn) "</td></tr>"
+append HTML_PARAMS(separate_$prn) "<tr><td>\${signal_effectoptions} ($min - $max)</td>"
+append HTML_PARAMS(separate_$prn) "<td><input type=\"text\" id=\"$id\" name=\"SHORT_ACT_OPTIONS|LONG_ACT_OPTIONS\" value=\"$ps(SHORT_ACT_OPTIONS)\" size=5 onchange=\"ProofFreeValue(\'$id\', $min, $max);\">&nbsp;[getHelpIcon SHORT_ACT_OPTIONS $hlpBoxWidth $hlpBoxHeight]</td>"
+append HTML_PARAMS(separate_$prn) "</tr>"
 
 incr pref
 set id "separate_${special_input_id}_$prn\_$pref"
-append HTML_PARAMS(separate_$prn) "<tr><td>\${signal_intens} ($min - $max)</td><td>"
-append HTML_PARAMS(separate_$prn) "<input type=\"text\" id=\"$id\" name=\"SHORT_ACT_INTENS|LONG_ACT_INTENS\" value=\"$ps(SHORT_ACT_INTENS)\" size=5 onchange=\"ProofFreeValue(\'$id\', $min, $max);\">"
+append HTML_PARAMS(separate_$prn) "<tr><td>\${signal_speed} ($min - $max)</td><td>"
+append HTML_PARAMS(separate_$prn) "<input type=\"text\" id=\"$id\" name=\"SHORT_ACT_NUM|LONG_ACT_NUM\" value=\"$ps(SHORT_ACT_NUM)\" size=5 onchange=\"ProofFreeValue(\'$id\', $min, $max);\">"
 append HTML_PARAMS(separate_$prn) "</td></tr>"
 
 incr pref
@@ -105,7 +119,6 @@ set id "separate_${special_input_id}_$prn\_$pref"
 append HTML_PARAMS(separate_$prn) "<tr><td>G ($min - $max)</td><td>"
 append HTML_PARAMS(separate_$prn) "<input type=\"text\" id=\"$id\" name=\"SHORT_ACT_COLOR_G|LONG_ACT_COLOR_G\" value=\"$ps(SHORT_ACT_COLOR_G)\" size=5 onchange=\"ProofFreeValue(\'$id\', $min, $max);\">"
 append HTML_PARAMS(separate_$prn) "</td></tr>"
-
 
 incr pref
 set id "separate_${special_input_id}_$prn\_$pref"

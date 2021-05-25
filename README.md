@@ -137,6 +137,9 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 20 | HB-LC-SW12-FM |
 |F3 21 | HB-LC-Bl1-FM-BAT|
 |F3 22 | HB-LC-SwX-TP |
+|F3 23 | HB-LC-Sw1-TP |
+|F3 24 | HB-LC-Sw2-TP |
+|F3 25 | HB-LC-Sw4-TP |
 |F3 2B | HB-RC-X-POS |
 |F3 2C | HB-RC-10-POS |
 |F3 2D | HB-RC-4-TOUCH |

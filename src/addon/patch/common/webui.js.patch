@@ -1,6 +1,6 @@
 --- ./patchsource/www/webui/webui.js.orig
 +++ ./patchsource/www/webui/webui.js
-@@ -88,6 +88,490 @@
+@@ -88,6 +88,516 @@
  DEV_PATHS["HM-RC-4-3"] = new Object();
  DEV_PATHS["HM-RC-4-3"]["50"] = "/config/img/devices/50/84_hm-rc-4-x_thumb.png";
  DEV_PATHS["HM-RC-4-3"]["250"] = "/config/img/devices/250/84_hm-rc-4-3.png";
@@ -244,6 +244,30 @@
 +DEV_PATHS['HB-UNI-DMX-Master'] = new Object();
 +DEV_PATHS['HB-UNI-DMX-Master']['50'] = '/config/img/devices/50/hb-uni-dmx-master_thumb.png';
 +DEV_PATHS['HB-UNI-DMX-Master']['250'] = '/config/img/devices/250/hb-uni-dmx-master.png';
++DEV_HIGHLIGHT['HB-LC-SwX-TP'] = new Object();
++DEV_LIST.push('HB-LC-SwX-TP');
++DEV_DESCRIPTION['HB-LC-SwX-TP']='radio-controlled switch actuator X-channel, with time profile';
++DEV_PATHS['HB-LC-SwX-TP'] = new Object();
++DEV_PATHS['HB-LC-SwX-TP']['50'] = '/config/img/devices/50/hb-lc-swx-tp_thumb.png';
++DEV_PATHS['HB-LC-SwX-TP']['250'] = '/config/img/devices/250/hb-lc-swx-tp.png';
++DEV_HIGHLIGHT['HB-LC-Sw1-TP'] = new Object();
++DEV_LIST.push('HB-LC-Sw1-TP');
++DEV_DESCRIPTION['HB-LC-Sw1-TP']='radio-controlled switch actuator 1-channel, with time profile';
++DEV_PATHS['HB-LC-Sw1-TP'] = new Object();
++DEV_PATHS['HB-LC-Sw1-TP']['50'] = '/config/img/devices/50/hb-lc-sw1-tp_thumb.png';
++DEV_PATHS['HB-LC-Sw1-TP']['250'] = '/config/img/devices/250/hb-lc-sw1-tp.png';
++DEV_HIGHLIGHT['HB-LC-Sw2-TP'] = new Object();
++DEV_LIST.push('HB-LC-Sw2-TP');
++DEV_DESCRIPTION['HB-LC-Sw2-TP']='radio-controlled switch actuator 2-channel, with time profile';
++DEV_PATHS['HB-LC-Sw2-TP'] = new Object();
++DEV_PATHS['HB-LC-Sw2-TP']['50'] = '/config/img/devices/50/hb-lc-sw2-tp_thumb.png';
++DEV_PATHS['HB-LC-Sw2-TP']['250'] = '/config/img/devices/250/hb-lc-sw2-tp.png';
++DEV_HIGHLIGHT['HB-LC-Sw4-TP'] = new Object();
++DEV_LIST.push('HB-LC-Sw4-TP');
++DEV_DESCRIPTION['HB-LC-Sw4-TP']='radio-controlled switch actuator 4-channel, with time profile';
++DEV_PATHS['HB-LC-Sw4-TP'] = new Object();
++DEV_PATHS['HB-LC-Sw4-TP']['50'] = '/config/img/devices/50/hb-lc-sw4-tp_thumb.png';
++DEV_PATHS['HB-LC-Sw4-TP']['250'] = '/config/img/devices/250/hb-lc-sw4-tp.png';
 +DEV_HIGHLIGHT['HB-Sec-RHS-3'] = new Object();
 +DEV_LIST.push('HB-Sec-RHS-3');
 +DEV_DESCRIPTION['HB-Sec-RHS-3']='HB Rotary Handle Sensor with battery state';
@@ -266,7 +290,8 @@
 +DEV_DESCRIPTION['HB-RC-6-PBU-LED']='6 remote channel push button with led';
 +DEV_PATHS['HB-RC-6-PBU-LED'] = new Object();
 +DEV_PATHS['HB-RC-6-PBU-LED']['50'] = '/config/img/devices/50/hb-rc-6-pbu-led_thumb.png';
-+DEV_PATHS['HB-RC-6-PBU-LED']['250'] = '/config/img/devices/250/hb-rc-6-pbu-led.png';DEV_HIGHLIGHT['HB-RC-6-PBU-LED'] = new Object();
++DEV_PATHS['HB-RC-6-PBU-LED']['250'] = '/config/img/devices/250/hb-rc-6-pbu-led.png';
++DEV_HIGHLIGHT['HB-RC-6-PBU-LED'] = new Object();
 +DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['Light_circle'] = [4, 0.8079999999999999, 0.656, 0.118, 0.112];
 +DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['Light_beam_1'] = [6, 0.748, 0.712, 0.776, 0.712, 0.016];
 +DEV_HIGHLIGHT['HB-RC-6-PBU-LED']['Light_beam_2'] = [6, 0.776, 0.632, 0.8, 0.652, 0.016];
@@ -340,7 +365,8 @@
 +DEV_DESCRIPTION['HB-OU-MP3-LED']='MP3 Player with adressable LED';
 +DEV_PATHS['HB-OU-MP3-LED'] = new Object();
 +DEV_PATHS['HB-OU-MP3-LED']['50'] = '/config/img/devices/50/hb-ou-mp3-led_thumb.png';
-+DEV_PATHS['HB-OU-MP3-LED']['250'] = '/config/img/devices/250/hb-ou-mp3-led.png';DEV_HIGHLIGHT['HB-OU-MP3-LED'] = new Object();
++DEV_PATHS['HB-OU-MP3-LED']['250'] = '/config/img/devices/250/hb-ou-mp3-led.png';
++DEV_HIGHLIGHT['HB-OU-MP3-LED'] = new Object();
 +DEV_HIGHLIGHT['HB-OU-MP3-LED']['Light_circle'] = [4, 0.8079999999999999, 0.656, 0.118, 0.112];
 +DEV_HIGHLIGHT['HB-OU-MP3-LED']['Light_beam_1'] = [6, 0.748, 0.712, 0.776, 0.712, 0.016];
 +DEV_HIGHLIGHT['HB-OU-MP3-LED']['Light_beam_2'] = [6, 0.776, 0.632, 0.8, 0.652, 0.016];
@@ -491,7 +517,7 @@
  DEV_HIGHLIGHT["HM-RC-4-3"] = new Object();
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part1"] = [6, 0.312, 0.288, 0.416, 0.288, 0.012];
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part2"] = [6, 0.312, 0.288, 0.352, 0.248, 0.012];
-@@ -3843,6 +4327,217 @@
+@@ -3843,6 +4353,217 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_HIGH'] = '${stringTableCapacitiveFillingSensorCaseHeight}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_LENGTH'] = '${stringTableCapacitiveFillingSensorCaseLength}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_WIDTH'] = '${stringTableCapacitiveFillingSensorCaseWidth}';
@@ -709,7 +735,7 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextCalcFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL'] = '${stringTableCapacitiveFillingSensorFillingLevel}';
-@@ -13664,7 +14359,7 @@
+@@ -13664,7 +14385,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
    // and set the variable freeTextActive to true
@@ -718,7 +744,7 @@
      var jLine = jQuery("#textSelect_" + line),
      jCellFreeText = jQuery("#cellFreeText_"+line);
  
-@@ -13680,7 +14375,7 @@
+@@ -13680,7 +14401,7 @@
    // If at least one line has an active free text mode
    // we have to activate the placeholder for the other lines and the header (color and icon are moving up)
    if (freeTextActive) {
@@ -727,7 +753,7 @@
        var jLine = jQuery("#textSelect_" + line),
        jPlaceHolder = jQuery("#placeHolder_"+line);
  
-@@ -13692,7 +14387,7 @@
+@@ -13692,7 +14413,7 @@
      }
    } else {
      jHeadFreeText.hide().css("display", "none");
@@ -736,7 +762,7 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
-@@ -23560,6 +24255,24 @@
+@@ -23560,6 +24281,24 @@
          this.setWidth(400);
          this.setFile( "/pages/msg/setOUCFMMode.htm" );
          break;
@@ -755,13 +781,13 @@
 +        case ID_SET_HBOURGBWLEDFX_MODE:
 +        this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
 +        this.addToPostBody( 'string type = "'+this.type+'";' );
-+        this.setWidth(400);
++        this.setWidth(480);
 +        this.setFile( "/pages/msg/setHBOURGBWLEDFXMode.htm" );
 +        break;
          case ID_SET_STATUS_DISPLAY:
          this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
          this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -24363,6 +25076,9 @@
+@@ -24363,6 +25102,9 @@
  ID_AUTO_LOGIN_CONFIG     = 1018;
  ID_PROGRAM_CHOOSER       = 1019;
  ID_EDIT_SYSVAR           = 1021;

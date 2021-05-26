@@ -35,7 +35,7 @@ HBTimeoutManager = Class.create();
 
 HBTimeoutManager.prototype = Object.extend(new MsgBox(), {
 
-  initialize: function (iface, address, isOldDevGeneration, prgName) {
+  initialize: function (iface, address, prgName) {
 
     this.TOM_DAY  = new Array (
       translateKey('timeModuleLblSelSerialPatternSaturday') ,
@@ -47,9 +47,9 @@ HBTimeoutManager.prototype = Object.extend(new MsgBox(), {
       translateKey('timeModuleLblSelSerialPatternFriday')
     );
 
-    this.isOldDevGeneration = isOldDevGeneration;
     this.iface = iface;
     this.address = address;
+    this.jphb = true;
 
     this.prg = (prgName != undefined && prgName != null) ? prgName : "";
 
@@ -143,21 +143,16 @@ HBTimeoutManager.prototype = Object.extend(new MsgBox(), {
       } else {
         inputelem = this.prg + elem[1] + "_" + elem[2] + "_" + loop;
       }
-      if (this.isOldDevGeneration) {
-        // Minuten der Zeit auf volle 10 pruefen und ggf. anpassen
-        $(inputelem).value = time = $(inputelem).value.replace(/[1-9]$/, "0");
-      } else {
-        // Minuten der Zeit auf volle 5 pruefen und ggf. anpassen
-        var arTime = $(inputelem).value.split(":"),
-        hour = parseInt(arTime[0]),
-        min =Math.round(arTime[1] / 5) * 5 ;
-        if (min <= 9) {min = "0" + min;}
-        if (min == 60) {min = "00"; hour++;}
-        if (hour <= 9) {hour = "0" + hour;}
-        if (hour == 24) {hour = "23"; min = "55";}
+      // Minuten der Zeit auf volle 5 pruefen und ggf. anpassen
+      var arTime = $(inputelem).value.split(":"),
+      hour = parseInt(arTime[0]),
+      min =Math.round(arTime[1] / 5) * 5 ;
+      if (min <= 9) {min = "0" + min;}
+      if (min == 60) {min = "00"; hour++;}
+      if (hour <= 9) {hour = "0" + hour;}
+      if (hour == 24) {hour = "23"; min = "55";}
 
-        $(inputelem).value = time = hour + ":" + min;
-      }
+      $(inputelem).value = time = hour + ":" + min;
       endtime = this.tom_toTimeout(time);
       prev_endtime = -1;
       next_endtime = -1;
@@ -238,13 +233,8 @@ HBTimeoutManager.prototype = Object.extend(new MsgBox(), {
 
         if (timeouts && timeouts.length > 0) {
           for (var i = 0; i < timeouts.length; i++) {
-            if (this.isOldDevGeneration) {
-              postStr += "&LEVEL" + TOM_DAY_ENG[dayidx] +"_" + (i+1) + "=" + timeouts[i][tom_level];
-              postStr += "&TIMEOUT_"    + TOM_DAY_ENG[dayidx] +"_" + (i+1) + "=" + timeouts[i][tom_endtime];
-            } else {
-              postStr += "&" + this.prg + "LEVEL_" + TOM_DAY_ENG[dayidx] + "_" + (i + 1) + "=" + timeouts[i][tom_level];
-              postStr += "&" + this.prg + "ENDTIME_" + TOM_DAY_ENG[dayidx] + "_" + (i + 1) + "=" + timeouts[i][tom_endtime];
-            }
+            postStr += "&" + "LEVEL_" + TOM_DAY_ENG[dayidx] + "_" + (i + 1) + "=" + timeouts[i][tom_level];
+            postStr += "&" + "ENDTIME_" + TOM_DAY_ENG[dayidx] + "_" + (i + 1) + "=" + timeouts[i][tom_endtime];
           }
         }
       }

@@ -6,10 +6,6 @@
     </type>
   </supported_types>
   <paramset type="MASTER" id="switch_dev_master">
-    <parameter id="INTERNAL_KEYS_VISIBLE" ui_flags="internal">
-      <logical type="boolean" default="true"/>
-      <physical type="integer" interface="config" list="0" index="2.7" size="0.1"/>
-    </parameter>
     <parameter id="SABOTAGE_MSG">
       <logical type="boolean" default="true"/>
       <physical type="integer" interface="config" list="0" index="16" size="1"/>

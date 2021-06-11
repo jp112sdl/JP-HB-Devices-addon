@@ -420,7 +420,7 @@ function ::dcCreate()
             isKnownControl = true;
             sLastControlName = CN_SERVO;
             WriteLine( "<script>conInfo('Control SERVO found.');</script>" );
-            Call("/esp/controls/servo.fn::CreateServoActuator()");
+            Call("/esp/controls/jpservo.fn::CreateServoActuator()");
           } 
           
           !# AIRFLAP

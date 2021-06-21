@@ -1,5 +1,10 @@
 ## Informationen / "Known Bugs"
 
+#### ❗ Addon Versionen < 5.4 sind aufgrund von Dateikonflikten nicht kompatibel zur bald erscheinenden CCU Firmware 3.59.x ❗
+- **Vor** dem Update der CCU- bzw. RaspberryMatic Version muss das in Kürze erscheinende Addon Version 5.4 (oder höher) installiert werden
+- erst anschließend ist das Upgrade der CCU Firmware durchzuführen
+
+
 #### 💡 Addon Version 5.0
 - Unter "Einstellungen->Systemsteuerung->Zusatzsoftware" fehlen das Icon sowie die verfügbare Version
   - https://homematic-forum.de/forum/viewtopic.php?f=76&t=66890#p659185

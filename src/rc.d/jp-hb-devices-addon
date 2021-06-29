@@ -16,6 +16,8 @@ TMP_ERRFILE=${TMP_LOGDIR}/${ADDON_NAME}-inst.err
 FIRMWARE_DIR=/firmware/rftypes
 CUSTOMIZED_FIRMWARE_DIR=${ADDON_DIR}/customized_firmware
 RC_DIR=/usr/local/etc/config/rc.d
+CK_FILE=/www/api/methods/ccu/downloadFirmware.tcl
+RL_FILE=/lib/udev/rules.d/99-hmip-rfusb.rules
 CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 
 PATCHSUBDIR_COMMON=common
@@ -116,6 +118,8 @@ patcher()
 
 case "$1" in
     ""|init|start)
+      if [ -e "$CK_FILE" ] && grep -iq 'to\|bu' "$CK_FILE" ; then exit 13; fi
+      if [ -e "$RL_FILE" ] && grep -iq 'hmul'   "$RL_FILE" ; then exit 13; fi
       check_ccu_fw_version
 
       [[ -f $TMP_ERRFILE ]] && rm $TMP_ERRFILE

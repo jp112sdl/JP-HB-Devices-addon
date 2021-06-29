@@ -1,5 +1,11 @@
 #!/bin/sh
 # WebUI icon used from http://icons8.com 
+
+RL_FILE=/lib/udev/rules.d/99-hmip-rfusb.rules
+CK_FILE=/www/api/methods/ccu/downloadFirmware.tcl
+if [ -e "$CK_FILE" ] && grep -iq 'to\|bu' "$CK_FILE" ; then exit 13; fi
+if [ -e "$RL_FILE" ] && grep -iq 'hmul'   "$RL_FILE" ; then exit 13; fi
+
 target="UNDEFINED"
 if [ "$1" != "" ]; then
   target=$1
@@ -10,7 +16,11 @@ if [ "$1" = "CCU2" ]; then
   mount -t ubifs ubi1:user /usr/local
 elif [ "$1" = "HM-RASPBERRYMATIC" ] || [ "$1" = "CCU3" ]; then
   mount /usr/local
-fi  
+elif [ "$1" = "" ]; then
+  echo "NOTHING TO MOUNT"
+else
+  exit 14
+fi
 
 ADDON_NAME=jp-hb-devices-addon
 RC_DIR=/usr/local/etc/config/rc.d

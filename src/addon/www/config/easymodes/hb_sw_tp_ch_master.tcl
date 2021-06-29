@@ -103,9 +103,9 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
 
   set CHANNEL "CHANNEL"
 
-  set ch [lindex [split $special_input_id _] 1]                                                                                              
+  set ch [lindex [split $special_input_id _] 1]  
+  set pNr "P$ch";
 
-	
   set hlpBoxWidth 450
   set hlpBoxHeight 160
 
@@ -123,38 +123,34 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
 
  
 
-    ## Wochenprogramm ##
+   ## Wochenprogramm ##
 
-    append HTML_PARAMS(separate_1) "<div id=\"Timeouts_Area\" style=\"display:none\">"
-
+   append HTML_PARAMS(separate_1) "<div id=\"$pNr\_Timeouts_Area\">"
     foreach day {SATURDAY SUNDAY MONDAY TUESDAY WEDNESDAY THURSDAY FRIDAY} {
-      append HTML_PARAMS(separate_1) "<div id=\"level_prof_$day\"></div>"
+      append HTML_PARAMS(separate_1) "<div id=\"$pNr\_level_prof_$day\"></div>"
     }
     append HTML_PARAMS(separate_1) "</div>"
 
     append HTML_PARAMS(separate_1) "<script type=\"text/javascript\">"
-    append HTML_PARAMS(separate_1) "tom = new HBTimeoutManager('$iface', '$address');"
-
+    
+    append HTML_PARAMS(separate_1) "$pNr\_tom = new HBTimeoutManager('$iface', '$address', '$pNr\_');"
     foreach day {SATURDAY SUNDAY MONDAY TUESDAY WEDNESDAY THURSDAY FRIDAY} {
 
       for {set i 1} {$i <= 13} {incr i} {
 
         set timeout     $ps(ENDTIME_${day}_$i)
         set level       $ps(LEVEL_${day}_$i)
-        append HTML_PARAMS(separate_1) "tom.setLevel('$day', $timeout, $level);"
+        append HTML_PARAMS(separate_1) "$pNr\_tom.setLevel('$day', $timeout, $level);"
 
         if {$timeout == 1440} then {
           break;
         }
       }
 
-      append HTML_PARAMS(separate_1) "tom.setDivname('$day', 'level_prof_$day');"
-      append HTML_PARAMS(separate_1) "tom.writeDay('$day');"
+      append HTML_PARAMS(separate_1) "$pNr\_tom.setDivname('$day', '$pNr\_level_prof_$day');"
+      append HTML_PARAMS(separate_1) "$pNr\_tom.writeDay('$day');"
     }
 
-    # TODO - Set the weekly program only visible while certain modes are active.
-    # This has to be clarified with the developer of the device
-    append HTML_PARAMS(separate_1)  "jQuery('#Timeouts_Area').show();"
 
     append HTML_PARAMS(separate_1) "</script>"
 

@@ -183,6 +183,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 53 | HB-DIS-EP-42BW-MAINS |
 |F3 57 | HB-DIS-EP-75BW-MAINS |
 |F3 5A | HB-ES-PMSw1-USB |
+|F3 5B | HB-OU-MOT-WIN |
 |F3 FE | HB-UNI-Sen-DUMMY-BEACON-V2 |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |_F5 01_ | _HB-LC-Sw2-FM_ |

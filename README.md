@@ -2,7 +2,9 @@
 
 **✅ lauffähig unter CCU / RaspberryMatic Firmware 3.47.10 - 3.59.6 [inkl. x86]**<br/>
 **❓ CCU2 Firmware 2.53.27 - 2.59.7 nur experimentell unterstützt (nicht real getestet; nur gegen ubi-Image)**<br/>
-Die jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.<br/><br/>
+Die für o.g. CCU-Firmware-Versionen jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.<br/>
+#### ℹ️ Die künftige Wartung/Anpassung des Addons für das OCCU-Derivat "BusMatic" erfolgt direkt vom "BusMatic"-Maintainer. Downloads sind auch von dort zu beziehen.
+<br/>
 ❗❗❗ **Vor dem Update auf Version 5 unbedingt lesen:** ❗❗❗<br>
 Die Update Prozedur wurde grundlegend verändert. Ist bereits eine frühere Version des Addons (V4.x oder kleiner) installiert, ist eine der beiden folgenden Methoden einmalig beim Wechsel auf die Version 5 anzuwenden:<br/>
 - Variante 1: 

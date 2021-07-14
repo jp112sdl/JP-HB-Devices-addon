@@ -1,7 +1,10 @@
 ## Informationen / "Known Bugs"
 
-#### ❗ Addon Versionen < 5.4 sind aufgrund von Dateikonflikten nicht kompatibel zur bald erscheinenden CCU Firmware 3.59.x ❗
-- **Vor** dem Update der CCU- bzw. RaspberryMatic Version muss das in Kürze erscheinende Addon Version 5.4 (oder höher) installiert werden
+#### ℹ️ Die künftige Wartung des Addons für das OCCU-Derivat "BusMatic" erfolgt direkt vom "BusMatic"-Maintainer. Downloads sind auch von dort zu beziehen.
+Das unter der Quelle https://github.com/jp112sdl/JP-HB-Devices-addon in den Releases bereitgestellte Addon wird in BusMatic nicht unterstützt.
+
+#### ❗ Addon Versionen < 5.4 sind aufgrund von Dateikonflikten nicht kompatibel zur CCU Firmware 3.59.x ❗
+- **Vor** dem Update der CCU- bzw. RaspberryMatic Version muss Addon Version 5.4 (oder höher) installiert werden
 - erst anschließend ist das Upgrade der CCU Firmware durchzuführen
 
 

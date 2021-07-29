@@ -1,0 +1,15 @@
+--- ./patchsource/www/config/easymodes/etc/localization/de/PNAME.txt.orig
++++ ./patchsource/www/config/easymodes/etc/localization/de/PNAME.txt
+@@ -2,6 +2,12 @@
+ "ACTION" : "<span class=\"translated\">Aktion</span>",
+ "ACT_NUM" : "<span class=\"translated\">Anzahl der Signale</span>",
+ "ACT_TYPE" : "<span class=\"translated\">Signalart</span>",
++"JP_WND_OPEN_DELAY_TIME" : "<span class=\"translated\">Kippstellungverz&ouml;gerungszeit</span>",
++"JP_WND_OPEN_LEVEL" : "<span class=\"translated\">Kipp-Position</span>",
++"JP_WND_OPEN_TIME" : "<span class=\"translated\">Verweildauer in Kippstellung</span>",
++"JP_WND_CLOSE_DELAY_TIME" : "<span class=\"translated\">Schlie&szlig;verz&ouml;gerungszeit</span>",
++"JP_WND_CLOSE_LEVEL" : "<span class=\"translated\">Geschlossen-Position</span>",
++"JP_WND_CLOSE_TIME" : "<span class=\"translated\">Verweildauer im Zustand &quot;Geschlossen&quot;</span>",
+ "AUTO_LOCK_TIME" : "<span class=\"translated\">Automatisch wieder verriegeln</span>",
+ "AUTO_UNLOCK_TIME" : "<span class=\"translated\">Automatisch wieder entriegeln</span>",
+ "BRIGHTNESS_CONTROL" : "<span class=\"translated\">Helligkeitsschwelle</span>",

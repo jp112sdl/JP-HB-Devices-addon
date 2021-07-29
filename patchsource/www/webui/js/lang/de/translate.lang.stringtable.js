@@ -310,6 +310,8 @@ jQuery.extend(true,langJSON, {
     "stringTableHbTemperatureOffset2" : "Temperatur-Offset Sensor 2",
     "stringTableHbFlowrate" : "Durchflussrate",
     "stringTableHbFlowrateQFactor" : "Flow-Sensor Q-Faktor",
+    "stringTableJPWNDCTRLRunningTimeBottomTop" : "Fahrzeit von vollst%E4ndiger Kippstellung nach geschlossen",
+    "stringTableJPWNDCTRLRunningTimeTopBottom" : "Fahrzeit von geschlossen nach vollst%E4ndiger Kippstellung",
     "stringTableCharacteristicHalfConstant" : "halbe/konstante Leistung",
     "stringTableCharacteristicLevelLimit" : "Pegelbegrenzung",
     "stringTableCharacteristicLinSquareType" : "Ausgangskennlinie",

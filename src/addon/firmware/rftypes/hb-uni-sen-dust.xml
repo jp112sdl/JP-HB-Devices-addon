@@ -56,7 +56,7 @@
         <physical type="integer" interface="config" list="1" index="31.0" size="2" />
        </parameter>
        <parameter id="HB_READ_RETRY_COUNT">                       
-        <logical type="integer" min="0" max="6" unit="s" default="3" />
+        <logical type="integer" min="0" max="6" unit="" default="3" />
         <physical type="integer" interface="config" list="1" index="30.0" size="1" />
        </parameter>
       </paramset>

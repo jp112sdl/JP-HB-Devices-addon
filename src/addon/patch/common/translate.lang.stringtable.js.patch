@@ -1,6 +1,6 @@
 --- ./patchsource/www/webui/js/lang/de/translate.lang.stringtable.js.orig
 +++ ./patchsource/www/webui/js/lang/de/translate.lang.stringtable.js
-@@ -109,6 +109,207 @@
+@@ -109,6 +109,209 @@
      "stringTableCharacteristicCrossfade" : "Crossfade",
      "stringTableCharacteristicDim2Hot" : "Dim2Hot",
      "stringTableCharacteristicDim2Warm" : "Dim2Warm",
@@ -205,6 +205,8 @@
 +    "stringTableHbTemperatureOffset2" : "Temperatur-Offset Sensor 2",
 +    "stringTableHbFlowrate" : "Durchflussrate",
 +    "stringTableHbFlowrateQFactor" : "Flow-Sensor Q-Faktor",
++    "stringTableJPWNDCTRLRunningTimeBottomTop" : "Fahrzeit von vollst%E4ndiger Kippstellung nach geschlossen",
++    "stringTableJPWNDCTRLRunningTimeTopBottom" : "Fahrzeit von geschlossen nach vollst%E4ndiger Kippstellung",
      "stringTableCharacteristicHalfConstant" : "halbe/konstante Leistung",
      "stringTableCharacteristicLevelLimit" : "Pegelbegrenzung",
      "stringTableCharacteristicLinSquareType" : "Ausgangskennlinie",

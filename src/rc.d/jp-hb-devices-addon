@@ -186,10 +186,6 @@ case "$1" in
         echo "Running scripts..." | tee -a $TMP_LOGFILE
         for f in ${ADDON_DIR}/inst_* ; do echo "  - $(basename $f)"; ./$(basename $f) install >> $TMP_LOGFILE 2>>$TMP_ERRFILE; done
 
-        ### Create Symlink to include own js file
-        echo "(Re-)Creating symlinks for jp_webui_inc.js..." | tee -a $TMP_LOGFILE
-        [[ ! -f /www/webui/js/extern/jp_webui_inc.js ]] && ln -s ${ADDON_DIR}/js/jp_webui_inc.js /www/webui/js/extern/jp_webui_inc.js
-
         if [ "$(find ${CUSTOMIZED_FIRMWARE_DIR} -type f -iname '*.xml')" ]; then
           echo "Copying customized firmware files..." | tee -a $TMP_LOGFILE
           cp ${CUSTOMIZED_FIRMWARE_DIR}/*.xml ${ADDON_DIR}${FIRMWARE_DIR}/
@@ -294,8 +290,11 @@ case "$1" in
       
       patcher "REVOKE"
       
-      [[ -f /www/webui/js/extern/jp_webui_inc.js ]] && rm /www/webui/js/extern/jp_webui_inc.js
       [[ -f /www/rega/${ADDON_NAME}-error.log ]] && rm /www/rega/${ADDON_NAME}-error.log
+
+      #delete copied files 
+      cd ${ADDON_DIR}/www
+      find . -type f | sed 's/^./\/www/' | xargs rm
 
       cd /
 

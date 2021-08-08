@@ -1,0 +1,15 @@
+--- ./patchsource/www/config/easymodes/etc/localization/en/PNAME.txt.orig
++++ ./patchsource/www/config/easymodes/etc/localization/en/PNAME.txt
+@@ -2,6 +2,12 @@
+ "ACTION" : "<span class=\"translated\">Activity</span>",
+ "ACT_NUM" : "<span class=\"translated\">Number of signals</span>",
+ "ACT_TYPE" : "<span class=\"translated\">Signal type</span>",
++"JP_WND_OPEN_DELAY_TIME" : "<span class=\"translated\">window open delay time</span>",
++"JP_WND_OPEN_LEVEL" : "<span class=\"translated\">window open position</span>",
++"JP_WND_OPEN_TIME" : "<span class=\"translated\">window open time</span>",
++"JP_WND_CLOSE_DELAY_TIME" : "<span class=\"translated\">window close delay</span>",
++"JP_WND_CLOSE_LEVEL" : "<span class=\"translated\">window close position</span>",
++"JP_WND_CLOSE_TIME" : "<span class=\"translated\">window close time</span>",
+ "AUTO_LOCK_TIME" : "<span class=\"translated\">Lock automatically</span>",
+ "AUTO_UNLOCK_TIME" : "<span class=\"translated\">Unlock automatically</span>",
+ "BRIGHTNESS_CONTROL" : "<span class=\"translated\">Brightness threshold</span>",

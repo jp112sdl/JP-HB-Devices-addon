@@ -1,0 +1,8 @@
+"description_1" : "<span class=\"translated\">Mit einem kurzen Tastendruck f&auml;hrt das Fenster f&uuml;r die festgelegte Zeit in Kippstellung. Ist eine Verz&ouml;gerungszeit eingestellt, wird der Kippwinkel erst nach Ablauf dieser Zeit angefahren. Mit einem langen Tastendruck wird nur so lange in Kippstellung gefahren, wie die Taste gedr&uuml;ckt bleibt.</span><br/><br/>",
+"description_2" : "<span class=\"translated\">Mit einem kurzen Tastendruck wird das Fenster f&ouml;r die festgelegte Zeit geschlossen. Ist eine Verz&ouml;gerungszeit eingestellt, wird die Geschlossen-Stellung erst nach Ablauf dieser Zeit angefahren. Mit einem langen Tastendruck wird nur so lange in Geschlossen-Stellung gefahren, wie die Taste gedr&uuml;ckt bleibt.</span><br/><br/>",
+"description_3" : "<span class=\"translated\">Mit einem kurzen Tastendruck wird das Fenster im Wechsel gekippt / geschlossen. Ist eine Verz&ouml;gerungszeit eingestellt, wird die Kippstellung erst nach Ablauf dieser Zeit angefahren. Mit einem langen Tastendruck wird die Kippstellung ver&auml;ndert so lange wie die Taste gedr&uuml;ckt bleibt.</span><br/><br/>",
+"description_4" : "<span class=\"translated\">Mit einem kurzen Tastendruck wird das Fenster f&uuml;r die festgelegte Zeit zur gew&uuml;nschten Position gefahren. Ist eine entsprechende Verz&ouml;gerungszeit eingestellt, wird die Position erst nach Ablauf dieser Zeit gefahren. Mit einem langen Tastendruck wird die Kippstellung ver&auml;ndert so lange wie die Taste gedr&uuml;ckt bleibt.</span><br/><br/>",
+
+"subset_1" : "gekippt",
+"subset_2" : "zu",
+"subset_3" : "gekippt / zu - im Wechsel",

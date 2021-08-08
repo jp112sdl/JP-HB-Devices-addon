@@ -153,6 +153,7 @@ function ::dcCreate()
     var CN_IBTN_BUTTON     = "IBTN.";
     var CN_SERVO           = "SERVO.";
     var CN_AIRFLAP         = "AIRFLAP.";
+    var CN_JPWINDOW        = "JPWND.";
     var CN_FAN             = "FAN.";
     var CN_PFS             = "PFS.";
     var CN_LDRSC           = "LDRSC.";
@@ -422,6 +423,16 @@ function ::dcCreate()
             WriteLine( "<script>conInfo('Control SERVO found.');</script>" );
             Call("/esp/controls/jpservo.fn::CreateServoActuator()");
           } 
+ 
+          !# JPWINDOW
+          bIsControl = ( sControlName.Find(CN_JPWINDOW) > -1 );
+          if( bIsControl && (sLastControlName!=CN_JPWINDOW) )
+          {
+            WriteLine( "<script>conInfo('Control JPWINDOW found.');</script>" );
+            isKnownControl = true;
+            sLastControlName = CN_JPWINDOW;
+            Call("/esp/controls/jpwindow.fn::CreateJPWindowControls()");
+          }
           
           !# AIRFLAP
           bIsControl = ( sControlName.Find(CN_AIRFLAP) > -1 );

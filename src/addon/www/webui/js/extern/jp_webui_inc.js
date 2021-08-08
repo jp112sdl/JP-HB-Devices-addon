@@ -1,27 +1,3 @@
-//Defines
-/*
-TOM_DAYIDX = new Array();
-TOM_DAYIDX['SATURDAY'] = 0;
-TOM_DAYIDX['SUNDAY'] = 1;
-TOM_DAYIDX['MONDAY'] = 2;
-TOM_DAYIDX['TUESDAY'] = 3;
-TOM_DAYIDX['WEDNESDAY'] = 4;
-TOM_DAYIDX['THURSDAY'] = 5;
-TOM_DAYIDX['FRIDAY'] = 6;
-
-TOM_DAY_ENG = new Array('SATURDAY', 'SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY');
-
-tom_endtime = 0;
-tom_level = 1;
-
-tom_maxtimeout = 1440;
-tom_mintimeout = 0;
-
-*/
-
-//-----
-
-
 CC_save_Level = function(prgName)
 {
   var prg = (typeof prgName != "undefined" && prgName != null) ? prgName : "";
@@ -451,7 +427,7 @@ HBTimeoutManager.prototype = Object.extend(new MsgBox(), {
 
 /**
  * @fileOverview ?
- * @author ise
+ * @author ise, mod by jp112sdl
  **/
 
 /* * * * * * * * * * * * * * * * * * * * * * * *
@@ -503,7 +479,7 @@ iseButtonsWindowHB.prototype = {
 
 /**
  * @fileOverview ?
- * @author ise
+ * @author ise, mod by jp112sdl
  **/
 
 /**
@@ -673,7 +649,7 @@ iseButtonsServo.prototype = {
 
 /**
  * @fileOverview ?
- * @author ise
+ * @author ise, mod by jp112sdl
  **/
 
 /**
@@ -1153,15 +1129,223 @@ HbStatusDisplayDialogEPaper = Class.create(StatusDisplayDialog, {
 YesNoDialog.RESULT_NO = 0;
 YesNoDialog.RESULT_YES = 1;
 
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * iseButtonsJPWindowControl                   *
+ * * * * * * * * * * * * * * * * * * * * * * * */
+
+/**
+ * @class
+ **/ 
+iseButtonsJPWindowControls= Class.create();
+
+iseButtonsJPWindowControls.prototype = {
+  /*
+   * id = datapoint-ID of switch
+   * initState = Creation State (0 or 1)
+   */
+  initialize: function(id, opts, iViewOnly)
+  {
+    this.Window = "JPWindowControls";
+    conInfo(this.Window);
+    this.id = id;
+    this.opts = opts;
+    this.Circle = $(this.id + "Circle");
+    this.Perc = $(this.id + "Perc");
+    this.divPercUp = $(this.id + "PercUp");
+    this.divPercDown = $(this.id + "PercDown");
+    this.divStop = $(this.id + "Stop");
+    this.divOpen = $(this.id + "Open");
+    this.divClose = $(this.id + "Close");
+    this.state = this.opts.stLevel * 100;
+    Released = false;
+    // Draw WinMatic Control
+    var s = "<div id='spec"+this.id+"'><div id='"+this.id+"Ctrl' style='position:relative;top:0px;left:0px;line-height:0;background-color: White; width:100px;height:100px;'>" +
+            "<img src='/ise/img/window/circle.png' /></div></div>";
+    this.Circle.innerHTML = s;
+    this.graphics = new jsGraphics(this.id+"Ctrl");
+    this.graphics.setColor(WebUI.getColor("active")); // gr¸n
+    
+    // Add event handlers
+    if (iViewOnly === 0) {
+      this.bindEvents();
+      this.initSpecialDevice();
+    }
+    this.refresh(false);
+  },
+
+  onClickCtrl: function(ev) {
+    var pos = Position.page(this.Circle);
+    var offsetX = ev.clientX - pos[0];
+    var offsetY = ev.clientY - pos[1];
+    if (offsetX < 60)
+      this.state = 0;
+    else {
+      if (this.isInZone50(offsetX, offsetY) ) 
+        this.state = 50;
+      else
+        this.state = 100;
+    }
+    this.refresh();    
+  },
+  
+  isInZone50: function(x, y)
+  {
+    var px = x;
+    var py = y;
+    var x1 = 57;
+    var y1 = 0;
+    var x2 = 57;
+    var y2 = 100;
+    var x3 = 120;
+    var y3 = 0;
+
+    var fAB = (py-y1)*(x2-x1) - (px-x1)*(y2-y1);
+    var fCA = (py-y3)*(x1-x3) - (px-x3)*(y1-y3);
+    var fBC = (py-y2)*(x3-x2) - (px-x2)*(y3-y2);
+
+    var bRet = false;
+    if ( (fAB*fBC > 0) && (fBC*fCA > 0) )
+    {
+      bRet = true;
+    }
+    return bRet;
+  },
+  
+  onClickPercUp: function()
+  {
+    this.state += 10; 
+    if( this.state > 100 ) this.state = 100;
+    this.Perc.value = this.state;
+    this.refresh();
+  },
+  
+  onClickPercDown: function()
+  {
+    this.state -= 10; 
+    if( this.state < 0 ) this.state = 0;
+    this.refresh();
+  },
+  
+  onChangePerc: function()
+  {
+    if( !isNaN( this.Perc.value ) )
+    {
+      var iTmp = parseInt(this.Perc.value);
+      if (iTmp < 0)
+        iTmp = 0;
+      this.state = iTmp;
+      this.refresh();
+    }
+  },
+  
+  onClickOpen: function() {
+    this.state = 100;
+    ControlBtn.pushed(this.divOpen);
+    var t = this;
+    new PeriodicalExecuter(function(pe) {
+      ControlBtn.off(t.divOpen);
+      t.refresh();
+      pe.stop();
+    }, 1);
+  },
+  
+  onClickClose: function() {
+    this.state = 0;
+    this.Perc.value = this.state;
+    ControlBtn.pushed(this.divClose);
+    var t = this;
+    new PeriodicalExecuter(function(pe) {
+      ControlBtn.off(t.divClose);
+      t.refresh();
+      pe.stop();
+    }, 1);
+  },
+  
+  onClickStop: function()
+  {
+    var t = this;
+    conInfo( this.Window + " OnClickStop [ID:"+this.opts.idStop+"]" );
+    setDpState(this.opts.idStop, 1);
+    ControlBtn.pushed(this.divStop);
+    new PeriodicalExecuter(function(pe)
+    {
+      ControlBtn.off(t.divStop);
+      pe.stop();
+    }, 1);
+  },
+  
+
+  bindEvents: function() {
+    this.clickCtrl = this.onClickCtrl.bindAsEventListener(this);
+    Event.observe(this.Circle, 'mousedown', this.clickCtrl);
+
+    this.clickPercUp = this.onClickPercUp.bindAsEventListener(this);
+    Event.observe($(this.id + "PercUp"), 'click', this.clickPercUp);
+    this.clickPercDown = this.onClickPercDown.bindAsEventListener(this);
+    Event.observe($(this.id + "PercDown"), 'click', this.clickPercDown);
+    this.changePerc = this.onChangePerc.bindAsEventListener(this);
+    Event.observe(this.Perc, 'change', this.changePerc);
+
+    this.clickOpen = this.onClickOpen.bindAsEventListener(this);
+    Event.observe($(this.id + "Open"), 'mousedown', this.clickOpen);
+
+    this.clickClose = this.onClickClose.bindAsEventListener(this);
+    Event.observe($(this.id + "Close"), 'mousedown', this.clickClose);
+
+    this.clickStop = this.onClickStop.bindAsEventListener(this);
+    Event.observe($(this.id + "Stop"), 'mousedown', this.clickStop);
+  },
+
+
+  initSpecialDevice: function() {},
+
+  refresh: function(bRefresh)
+  {
+    this.Perc.value = this.state;
+    if (isNaN(this.state)) {
+      this.Perc.value = "0";
+    }
+
+
+    this.graphics.clear();
+    var startAngle = 90 - (this.state * 0.45);
+    if( (startAngle > 0) && (startAngle < 90))
+    {
+      // verhindern dass ein voller Kreis gezeichnet wird
+      this.graphics.fillArc(-65, 5, 188, 179 , startAngle, 90);
+    }
+    this.graphics.paint();
+
+    if( typeof( bRefresh ) == "undefined" )
+    {
+      setDpState(this.opts.idLevel, (this.state / 100));
+    }
+
+    if (this.state > 0)
+    {
+      ControlBtn.on(this.divOpen);
+      ControlBtn.off(this.divClose);
+    }
+    else
+    {
+      ControlBtn.off(this.divOpen);
+      ControlBtn.on(this.divClose);
+    }
+  }
+};
+
 function jphbInfoButton() {
-  jQuery("#jphbError").hide();        
-  if (homematic('CCU.existsFile', {'file': "/usr/local/addons/jp-hb-devices-addon/install_error"})) {
+  jQuery("#jphbError").hide();    
+  var insterr = homematic('jp.existsFile', {'file': "/usr/local/addons/jp-hb-devices-addon/install_error"});    
+  if ( insterr > 4 ) {
     jQuery("#jphbError").show();        
   }
 
   var fileJPHBInfo = "/usr/local/addons/jp-hb-devices-addon/infoPageVisited";
 
-  jQuery("#jphbInfoPage").hide();        
+  if ( insterr < 8 ) { jQuery("#jphbInfoPage").hide(); }
+  
+  jQuery("#jphbInfoPage").attr("href", "https://jp112sdl.github.io/JP-HB-Devices-addon/"  + (( insterr > 8 ) ? "jphbInfoNotSupported" : "jphbInfoPage"))  ;    
   
   var localInfoVersion = homematic('jp.getInfoWebVersion', {'file': fileJPHBInfo});
   var  webInfoVersion  = 0;

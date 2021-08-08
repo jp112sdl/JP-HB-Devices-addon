@@ -1,6 +1,6 @@
 --- ./patchsource/www/config/stringtable_de.txt.orig
 +++ ./patchsource/www/config/stringtable_de.txt
-@@ -275,6 +275,242 @@
+@@ -275,6 +275,248 @@
  CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL	${stringTableCapacitiveFillingSensorTextCalcFillingLevel}
  CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL	${stringTableCapacitiveFillingSensorTextFillingLevel}
  CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL	${stringTableCapacitiveFillingSensorFillingLevel}
@@ -200,6 +200,12 @@
 +SERVO|LEVEL	${stringTableHbServoLevel}
 +SERVO|OLD_LEVEL	${stringTableHbServoOldLevel}
 +SERVO|RAMP_TIME	${stringTableHbServoRampTime}
++JPWNDCTRL|LEVEL	${stringTableWinMaticLevel}
++JPWNDCTRL|STOP	${stringTableWinMaticStop}
++JPWNDCTRL|CHANGE_OVER_DELAY	${stringTableBlindChangeOverDelay}
++JPWNDCTRL|REFERENCE_RUNNING_TIME_BOTTOM_TOP	${stringTableJPWNDCTRLRunningTimeBottomTop}
++JPWNDCTRL|REFERENCE_RUNNING_TIME_TOP_BOTTOM	${stringTableJPWNDCTRLRunningTimeTopBottom}
++JPWNDCTRL|REFERENCE_RUN_COUNTER	${stringTableBlindRefRunCounter}
 +SIGNAL_LED|HB_LED_COUNT	${stringTableHbLedCount}
 +TEMPERATURE_OFFSET_1	${stringTableHbTemperatureOffset1}
 +TEMPERATURE_OFFSET_2	${stringTableHbTemperatureOffset2}

@@ -12,6 +12,10 @@ file=./patchsource/www/webui/webui.js
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 file=./patchsource/www/config/ic_common.tcl
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
+file=./patchsource/www/config/easymodes/etc/localization/de/PNAME.txt
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`-de.patch
+file=./patchsource/www/config/easymodes/etc/localization/en/PNAME.txt
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`-en.patch
 file=./patchsource/www/config/ic_deviceparameters.cgi
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 file=./patchsource/www/rega/esp/datapointconfigurator.fn

@@ -471,6 +471,12 @@ SERVO_STAY	${stringTableHbServoStay}
 SERVO|LEVEL	${stringTableHbServoLevel}
 SERVO|OLD_LEVEL	${stringTableHbServoOldLevel}
 SERVO|RAMP_TIME	${stringTableHbServoRampTime}
+JPWNDCTRL|LEVEL	${stringTableWinMaticLevel}
+JPWNDCTRL|STOP	${stringTableWinMaticStop}
+JPWNDCTRL|CHANGE_OVER_DELAY	${stringTableBlindChangeOverDelay}
+JPWNDCTRL|REFERENCE_RUNNING_TIME_BOTTOM_TOP	${stringTableJPWNDCTRLRunningTimeBottomTop}
+JPWNDCTRL|REFERENCE_RUNNING_TIME_TOP_BOTTOM	${stringTableJPWNDCTRLRunningTimeTopBottom}
+JPWNDCTRL|REFERENCE_RUN_COUNTER	${stringTableBlindRefRunCounter}
 SIGNAL_LED|HB_LED_COUNT	${stringTableHbLedCount}
 TEMPERATURE_OFFSET_1	${stringTableHbTemperatureOffset1}
 TEMPERATURE_OFFSET_2	${stringTableHbTemperatureOffset2}

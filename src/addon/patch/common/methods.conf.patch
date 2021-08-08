@@ -1,6 +1,13 @@
 --- ./patchsource/www/api/methods.conf.orig
 +++ ./patchsource/www/api/methods.conf
-@@ -1,3 +1,17 @@
+@@ -1,3 +1,24 @@
++jp.existsFile {
++  LEVEL GUEST
++  SCRIPT_FILE jp/existsfile.tcl
++  INFO {Prueft, ob eine Datei oder ein Verzeichnis vorhanden ist}
++  ARGUMENTS {_session_id_ file}
++}
++
 +jp.getInfoWebVersion {
 +  LEVEL NONE
 +  SCRIPT_FILE jp/getinfowebversion.tcl

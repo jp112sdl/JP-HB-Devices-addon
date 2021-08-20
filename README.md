@@ -114,6 +114,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-ou-rgbw-led-fx_thumb.png" width=25/> | [HB-OU-RGBW-LED-FX](https://github.com/jp112sdl/HB-OU-RGBW-LED-FX) | [WS2812FX](https://github.com/kitesurfer1404/WS2812FX) Implementierung für SK6812 LED Stripes| ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-lc-sw4-tp_thumb.png" width=25/> | [HB-LC-SwX-TP](https://github.com/jp112sdl/HB-LC-SwX-TP) | 1-/2-/4-fach Aktor mit Zeitprofil| ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-ou-mot-win_thumb.png" width=25/> | HB-OU-MOT-WIN | Fensteröffner | ⚡️ |
+|<img src="src/addon/www/config/img/devices/50/hb-gd-sw1-thp-ts_thumb.png" width=25/> | [HB-GD-Sw1-THP-TS](https://github.com/jp112sdl/HB-GD-Sw1-THP-TS) | Garagentor-Aktor, Kontaktschnittstelle und T/H/P-Daten | ⚡️ |
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 

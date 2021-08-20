@@ -481,6 +481,7 @@ SIGNAL_LED|HB_LED_COUNT	${stringTableHbLedCount}
 TEMPERATURE_OFFSET_1	${stringTableHbTemperatureOffset1}
 TEMPERATURE_OFFSET_2	${stringTableHbTemperatureOffset2}
 UNI_PRESSURE	${stringTableUniPressure}
+WEATHER|HUMIDITY_OFFSET	${stringTableHbHumidityOffset}
 WEATHER|ANEMOMETER_CALIBRATION_FACTOR	${stringTableWeatherAnemometerCalibrationFactor}
 WEATHER|ANEMOMETER_RADIUS	${stringTableWeatherAnemometerRadius}
 WEATHER|BATTERY_VOLTAGE	${stringTableWeatherBatteryVoltage}

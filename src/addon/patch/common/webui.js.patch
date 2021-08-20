@@ -1,6 +1,6 @@
 --- ./patchsource/www/webui/webui.js.orig
 +++ ./patchsource/www/webui/webui.js
-@@ -88,6 +88,522 @@
+@@ -88,6 +88,528 @@
  DEV_PATHS["HM-RC-4-3"] = new Object();
  DEV_PATHS["HM-RC-4-3"]["50"] = "/config/img/devices/50/84_hm-rc-4-x_thumb.png";
  DEV_PATHS["HM-RC-4-3"]["250"] = "/config/img/devices/250/84_hm-rc-4-3.png";
@@ -76,6 +76,12 @@
 +DEV_PATHS['HB-UNI-Sen-WEA'] = new Object();
 +DEV_PATHS['HB-UNI-Sen-WEA']['50'] = '/config/img/devices/50/hb-uni-sen-wea_thumb.png';
 +DEV_PATHS['HB-UNI-Sen-WEA']['250'] = '/config/img/devices/250/hb-uni-sen-wea.png';
++DEV_HIGHLIGHT['HB-GD-Sw1-THP-TS'] = new Object();
++DEV_LIST.push('HB-GD-Sw1-THP-TS');
++DEV_DESCRIPTION['HB-GD-Sw1-THP-TS']='Garagentor-Aktor, Kontaktschnittstelle und T/H/P-Daten';
++DEV_PATHS['HB-GD-Sw1-THP-TS'] = new Object();
++DEV_PATHS['HB-GD-Sw1-THP-TS']['50'] = '/config/img/devices/50/hb-gd-sw1-thp-ts_thumb.png';
++DEV_PATHS['HB-GD-Sw1-THP-TS']['250'] = '/config/img/devices/250/hb-gd-sw1-thp-ts.png';
 +DEV_HIGHLIGHT['HB-UNI-Sen-VOLT'] = new Object();
 +DEV_LIST.push('HB-UNI-Sen-VOLT');
 +DEV_DESCRIPTION['HB-UNI-Sen-VOLT']='universeller Spannungsmesser';
@@ -523,7 +529,7 @@
  DEV_HIGHLIGHT["HM-RC-4-3"] = new Object();
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part1"] = [6, 0.312, 0.288, 0.416, 0.288, 0.012];
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part2"] = [6, 0.312, 0.288, 0.352, 0.248, 0.012];
-@@ -3843,6 +4359,223 @@
+@@ -3843,6 +4365,224 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_HIGH'] = '${stringTableCapacitiveFillingSensorCaseHeight}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_LENGTH'] = '${stringTableCapacitiveFillingSensorCaseLength}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_WIDTH'] = '${stringTableCapacitiveFillingSensorCaseWidth}';
@@ -720,6 +726,7 @@
 +elvST['SIGNAL_LED|HB_LED_COUNT'] = '${stringTableHbLedCount}';
 +elvST['TEMPERATURE_OFFSET_1'] = '${stringTableHbTemperatureOffset1}';
 +elvST['TEMPERATURE_OFFSET_2'] = '${stringTableHbTemperatureOffset2}';
++elvST['WEATHER|HUMIDITY_OFFSET'] = '${stringTableHbHumidityOffset}';
 +elvST['WEATHER|ANEMOMETER_CALIBRATION_FACTOR'] = '${stringTableWeatherAnemometerCalibrationFactor}';
 +elvST['WEATHER|ANEMOMETER_RADIUS'] = '${stringTableWeatherAnemometerRadius}';
 +elvST['WEATHER|CAP_MOIST_HIGH_VALUE'] = '${stringTableHbCapMoistHighValue}';
@@ -747,7 +754,7 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextCalcFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL'] = '${stringTableCapacitiveFillingSensorFillingLevel}';
-@@ -13664,7 +14397,7 @@
+@@ -13664,7 +14404,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
    // and set the variable freeTextActive to true
@@ -756,7 +763,7 @@
      var jLine = jQuery("#textSelect_" + line),
      jCellFreeText = jQuery("#cellFreeText_"+line);
  
-@@ -13680,7 +14413,7 @@
+@@ -13680,7 +14420,7 @@
    // If at least one line has an active free text mode
    // we have to activate the placeholder for the other lines and the header (color and icon are moving up)
    if (freeTextActive) {
@@ -765,7 +772,7 @@
        var jLine = jQuery("#textSelect_" + line),
        jPlaceHolder = jQuery("#placeHolder_"+line);
  
-@@ -13692,7 +14425,7 @@
+@@ -13692,7 +14432,7 @@
      }
    } else {
      jHeadFreeText.hide().css("display", "none");
@@ -774,7 +781,7 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
-@@ -23560,6 +24293,24 @@
+@@ -23560,6 +24300,24 @@
          this.setWidth(400);
          this.setFile( "/pages/msg/setOUCFMMode.htm" );
          break;
@@ -799,7 +806,7 @@
          case ID_SET_STATUS_DISPLAY:
          this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
          this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -24363,6 +25114,9 @@
+@@ -24363,6 +25121,9 @@
  ID_AUTO_LOGIN_CONFIG     = 1018;
  ID_PROGRAM_CHOOSER       = 1019;
  ID_EDIT_SYSVAR           = 1021;
@@ -809,7 +816,7 @@
  ID_CHOOSE_LED            = 1022;
  ID_SET_OUCFM_MODE        = 1023;
  ID_SET_STATUS_DISPLAY    = 1024;
-@@ -36863,7 +37617,15 @@
+@@ -36863,7 +37624,15 @@
        SetParameters ($F('global_iface'), channel_address, 'CHANNEL_'+i);
        actions++;
      }

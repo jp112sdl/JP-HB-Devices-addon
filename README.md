@@ -188,6 +188,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 5A | HB-ES-PMSw1-USB |
 |F3 5B | HB-OU-MOT-WIN |
 |F3 5C | HB-GD-Sw1-TH-TS |
+|F3 5D | HB-Sw1-TH-TS |
 |F3 FE | HB-UNI-Sen-DUMMY-BEACON-V2 |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |_F5 01_ | _HB-LC-Sw2-FM_ |

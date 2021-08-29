@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <device version="4" supports_aes="true">
   <supported_types>
-    <type name="HB-OU-MP3-LED" id="HB-OU-MP3-LED" priority="2" updatable="false">
+    <type name="HB-OU-MP3-LED" id="HB-OU-MP3-LED" priority="2" updatable="true">
       <parameter index="9.0" size="1.0" cond_op="GE" const_value="0x10"/>
       <parameter index="10.0" size="2.0" const_value="0xf344"/>
     </type>

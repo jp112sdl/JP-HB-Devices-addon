@@ -166,6 +166,12 @@ DEV_DESCRIPTION['HB-GD-Sw1-TH-TS']='Garagentor-Aktor, Kontaktschnittstelle und T
 DEV_PATHS['HB-GD-Sw1-TH-TS'] = new Object();
 DEV_PATHS['HB-GD-Sw1-TH-TS']['50'] = '/config/img/devices/50/hb-gd-sw1-th-ts_thumb.png';
 DEV_PATHS['HB-GD-Sw1-TH-TS']['250'] = '/config/img/devices/250/hb-gd-sw1-th-ts.png';
+DEV_HIGHLIGHT['HB-Sw1-TH-SC'] = new Object();
+DEV_LIST.push('HB-Sw1-TH-SC');
+DEV_DESCRIPTION['HB-Sw1-TH-SC']='Schalt-Aktor, Kontaktschnittstelle und Temperatur-/Luftfeuchtemessung';
+DEV_PATHS['HB-Sw1-TH-SC'] = new Object();
+DEV_PATHS['HB-Sw1-TH-SC']['50'] = '/config/img/devices/50/hb-sw1-th-sc_thumb.png';
+DEV_PATHS['HB-Sw1-TH-SC']['250'] = '/config/img/devices/250/hb-sw1-th-sc.png';
 DEV_HIGHLIGHT['HB-UNI-Sen-VOLT'] = new Object();
 DEV_LIST.push('HB-UNI-Sen-VOLT');
 DEV_DESCRIPTION['HB-UNI-Sen-VOLT']='universeller Spannungsmesser';

@@ -1334,6 +1334,47 @@ iseButtonsJPWindowControls.prototype = {
   }
 };
 
+GDSWindow = Class.create();
+
+GDSWindow.prototype = {
+
+  initialize: function(id, initState) {
+    this.id = id;
+    this.state = initState;
+    this.divOpenH = $(this.id + "OpenH-td");
+    this.divOpenV = $(this.id + "OpenV-td");
+    this.divClosed = $(this.id + "Closed-td");
+
+      
+    switch (initState) {
+      case 0:     
+        $(this.divClosed).style.display = "block";
+        break;
+      case 1:
+        $(this.divOpenV).style.display = "block";
+        break;
+      case 2:
+        $(this.divOpenH).style.display = "block";
+        break;
+      default:
+        break;
+    }    
+  }
+};
+
+SendInternalKeyPressNoPopup = function(iface, sender, receiver, longKeyPress)
+{
+  var simLongKeyPress = (longKeyPress) ? 1 : 0;
+  ResetPostString();
+  AddParam($('global_sid'));
+  poststr += "&iface=" + iface;
+  poststr += "&sender=" + sender;
+  poststr += "&receiver=" + receiver;
+  poststr += "&longKeyPress=" + simLongKeyPress;
+  poststr += "&cmd=SendInternalKeyPressNoPopup";
+  SendRequest('ic_ifacecmd_jp.cgi');
+};
+
 function jphbInfoButton() {
   jQuery("#jphbError").hide();    
   var insterr = homematic('jp.existsFile', {'file': "/usr/local/addons/jp-hb-devices-addon/install_error"});    

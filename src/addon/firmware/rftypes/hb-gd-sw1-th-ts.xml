@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<device version="2" cyclic_timeout="3600" supports_aes="false">
+<device version="2" cyclic_timeout="3600" supports_aes="true">
   <supported_types>
-    <type name="HB-GD-Sw1-THP-TS" id="HB-GD-Sw1-THP-TS" priority="2">
+    <type name="HB-GD-Sw1-TH-TS" id="HB-GD-Sw1-TH-TS" priority="2" updatable="true">
       <parameter index="10.0" size="2.0" const_value="0xF35C" />
     </type>
   </supported_types>
@@ -9,6 +9,10 @@
     <parameter id="INTERNAL_KEYS_VISIBLE" ui_flags="internal">
       <logical type="boolean" default="true"/>
       <physical type="integer" interface="config" list="0" index="2.7" size="0.1"/>
+    </parameter>
+    <parameter id="TRANSMIT_DEV_TRY_MAX">
+      <logical type="integer" min="1.0" max="10.0" default="6.0"/>
+      <physical type="integer" interface="config" list="0" index="20" size="1"/>
     </parameter>
   </paramset>
   <channels>
@@ -45,25 +49,44 @@
         </parameter>
       </paramset>
     </channel>
-    <channel index="1" type="SWITCH" count="1">
+    <channel autoregister="true" index="1" type="WEATHER" count="1">
       <link_roles>
-        <target name="SWITCH"/>
-        <target name="WEATHER_CS"/>
-        <target name="WCS_TIPTRONIC_SENSOR"/>
+        <source name="WEATHER_TH" />
       </link_roles>
-      <paramset type="MASTER" id="switch_ch_master">
-        <subset ref="switch_paramset"/>
+      <paramset type="MASTER" id="ash550_ch_master">
+        <parameter id="TEMPERATURE_OFFSET">                                
+         <logical type="float" min="-5.0" max="5.0" unit="K" default="0"/>                      
+         <physical type="integer" signed="true" interface="config" list="1" index="1" size="4"/>
+         <conversion type="float_integer_scale" factor="10"/>                                
+        </parameter>  
+        <parameter id="HUMIDITY_OFFSET">
+          <logical type="integer" min="-10" max="10" default="0" unit="%"/>
+          <physical type="integer" interface="config" list="1" index="5" size="1"/>
+          <conversion type="sint4_sintx" physical_bytes="1"/>
+        </parameter>
       </paramset>
-      <paramset type="VALUES" id="switch_ch_values">
-        <subset ref="switch_valueset"/>
+      <paramset type="VALUES" id="ash550_ch_values">
+        <parameter id="TEMPERATURE" operations="read,event" control="GDS.TEMPERATURE">
+          <logical type="float" min="-40.0" max="80.0" unit="°C" />
+          <physical type="integer" interface="command" value_id="TEMPERATURE">
+            <event frame="WEATHER_EVENT" />
+          </physical>
+          <conversion type="float_integer_scale" factor="10.0" />
+          <description>
+            <field id="AutoconfRoles" value="WEATHER" />
+          </description>
+        </parameter>
+        <parameter id="HUMIDITY" operations="read,event" control="GDS.HUMIDITY">
+          <logical type="integer" min="0" max="99" unit="%" />
+          <physical type="integer" interface="command" value_id="HUMIDITY">
+            <event frame="WEATHER_EVENT" />
+          </physical>
+          <description>
+            <field id="AutoconfRoles" value="WEATHER" />
+          </description>
+        </parameter>
       </paramset>
-      <paramset type="LINK" id="switch_ch_link">
-        <subset ref="switch_linkset"/>
-      </paramset>
-      <enforce_link>
-        <value id="LCD_SYMBOL" value="2"/>
-        <value id="LCD_LEVEL_INTERP" value="1"/>
-      </enforce_link>
+      <paramset type="LINK" id="ash550_ch_link" />
     </channel>
     <channel autoregister="true" index="2" type="ROTARY_HANDLE_SENSOR" count="1" aes_default="false">
       <link_roles>
@@ -114,13 +137,9 @@
           <physical type="integer" interface="config" list="1" index="34" size="1" />
           <conversion type="float_integer_scale" factor="200" />
         </parameter>
-        <parameter id="TRANSMIT_TRY_MAX">
-          <logical type="integer" min="1.0" max="10.0" default="6.0" />
-          <physical type="integer" interface="config" list="1" index="48" size="1" />
-        </parameter>
       </paramset>
       <paramset type="VALUES" id="rhs_ch_values">
-        <parameter id="STATE" operations="read,event" control="RHS.STATE">
+        <parameter id="STATE" operations="read,event" control="GDS.STATE">
           <logical type="option">
             <option id="CLOSED" default="true" />
             <option id="TILTED" />
@@ -178,58 +197,25 @@
         <value id="SHORT_JT_RAMPON" value="4" />
       </enforce_link>
     </channel>
-    <channel autoregister="true" index="3" type="WEATHER" count="1">
+    <channel index="3" type="SWITCH" count="1">
       <link_roles>
-        <source name="WEATHER_TH" />
+        <target name="SWITCH"/>
+        <target name="WEATHER_CS"/>
+        <target name="WCS_TIPTRONIC_SENSOR"/>
       </link_roles>
-      <paramset type="MASTER" id="ash550_ch_master">
-        <parameter id="HBWEA_ALTITUDE">
-         <logical type="integer" min="0" max="10000" default="0" unit="m" />
-         <physical type="integer" interface="config" list="1" index="6" size="2" />
-        </parameter>
-        <parameter id="TEMPERATURE_OFFSET">                                
-         <logical type="float" min="-5.0" max="5.0" unit="K" default="0"/>                      
-         <physical type="integer" signed="true" interface="config" list="1" index="1" size="4"/>
-         <conversion type="float_integer_scale" factor="10"/>                                
-        </parameter>  
-        <parameter id="HUMIDITY_OFFSET">
-          <logical type="integer" min="-10" max="10" default="0" unit="%"/>
-          <physical type="integer" interface="config" list="1" index="5" size="1"/>
-          <conversion type="sint4_sintx" physical_bytes="1"/>
-        </parameter>
+      <paramset type="MASTER" id="switch_ch_master">
+        <subset ref="switch_paramset"/>
       </paramset>
-      <paramset type="VALUES" id="ash550_ch_values">
-        <parameter id="TEMPERATURE" operations="read,event">
-          <logical type="float" min="-40.0" max="80.0" unit="°C" />
-          <physical type="integer" interface="command" value_id="TEMPERATURE">
-            <event frame="WEATHER_EVENT" />
-          </physical>
-          <conversion type="float_integer_scale" factor="10.0" />
-          <description>
-            <field id="AutoconfRoles" value="WEATHER" />
-          </description>
-        </parameter>
-        <parameter id="HUMIDITY" operations="read,event">
-          <logical type="integer" min="0" max="99" unit="%" />
-          <physical type="integer" interface="command" value_id="HUMIDITY">
-            <event frame="WEATHER_EVENT" />
-          </physical>
-          <description>
-            <field id="AutoconfRoles" value="WEATHER" />
-          </description>
-        </parameter>
-        <parameter id="AIR_PRESSURE" operations="read,event">
-          <logical type="float" min="500.0" max="1100.0" unit="hPa" />
-          <physical type="integer" interface="command" value_id="AIR_PRESSURE">
-            <event frame="WEATHER_EVENT" />
-          </physical>
-          <conversion type="float_integer_scale" factor="10.0" />
-          <description>
-            <field id="AutoconfRoles" value="WEATHER" />
-          </description>
-        </parameter>
+      <paramset type="VALUES" id="switch_ch_values">
+        <subset ref="switch_valueset"/>
       </paramset>
-      <paramset type="LINK" id="ash550_ch_link" />
+      <paramset type="LINK" id="switch_ch_link">
+        <subset ref="switch_linkset"/>
+      </paramset>
+      <enforce_link>
+        <value id="LCD_SYMBOL" value="2"/>
+        <value id="LCD_LEVEL_INTERP" value="1"/>
+      </enforce_link>
     </channel>
   </channels>
   <frames>
@@ -266,10 +252,14 @@
       <parameter type="integer" index="11.0" size="1.0" param="STATE"/>
       <parameter type="integer" index="9.7" size="0.1" param="LOWBAT"/>
     </frame>
+    <frame id="WEATHER_EVENT" direction="from_device" event="true" fixed_channel="1" type="0x70">
+      <parameter type="integer" signed="true" index="9.0" size="1.7" param="TEMPERATURE" />
+      <parameter type="integer" index="11.0" size="1.0" param="HUMIDITY" />
+    </frame>
   </frames>
   <paramset_defs>
     <paramset id="switch_valueset">
-      <parameter id="STATE" operations="read,write,event" control="SWITCH.STATE">
+      <parameter id="STATE" operations="read,write,event" control="GDS.OPENER">
         <logical type="boolean" default="false"/>
         <physical type="integer" interface="command" value_id="STATE">
           <set request="LEVEL_SET"/>
@@ -315,10 +305,6 @@
       <parameter id="AES_ACTIVE" ui_flags="internal">
         <logical type="boolean" default="false"/>
         <physical type="boolean" interface="internal" value_id="AES"/>
-      </parameter>
-      <parameter id="TRANSMIT_TRY_MAX" operations="read,write">
-        <logical type="integer" min="0" max="10" default="6"/>
-        <physical type="integer" interface="config" list="1" index="48" size="1"/>
       </parameter>
       <parameter id="POWERUP_ACTION" operations="read,write">
         <logical type="option">

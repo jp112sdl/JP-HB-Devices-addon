@@ -154,6 +154,7 @@ function ::dcCreate()
     var CN_SERVO           = "SERVO.";
     var CN_AIRFLAP         = "AIRFLAP.";
     var CN_JPWINDOW        = "JPWND.";
+    var CN_GDS             = "GDS.";
     var CN_FAN             = "FAN.";
     var CN_PFS             = "PFS.";
     var CN_LDRSC           = "LDRSC.";
@@ -432,6 +433,16 @@ function ::dcCreate()
             isKnownControl = true;
             sLastControlName = CN_JPWINDOW;
             Call("/esp/controls/jpwindow.fn::CreateJPWindowControls()");
+          }
+          
+          !# GDS
+          bIsControl = ( sControlName.Find(CN_GDS) > -1 );
+          if( bIsControl && (sLastControlName!=CN_GDS) )
+          {
+            WriteLine( "<script>conInfo('Control CN_GDS found.');</script>" );
+            isKnownControl = true;
+            sLastControlName = CN_GDS;
+            Call("/esp/controls/gds.fn::CreateGDSSensor()");
           }
           
           !# AIRFLAP

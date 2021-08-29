@@ -1,0 +1,78 @@
+function ::CreateGDSSensor() {
+  object objTemperature = cObj.DPByControl("GDS.TEMPERATURE");
+  object objHumidity = cObj.DPByControl("GDS.HUMIDITY");
+  
+  if (objTemperature && objHumidity) {
+    string sValueUnitT = objTemperature.ValueUnit();
+    string sValueUnitH = objHumidity.ValueUnit();
+    string sValueT = objTemperature.Value().ToString(1);
+    string sValueH = objHumidity.Value().ToString(0);
+    WriteLine( "<td>" );
+      WriteLine( "<div class='ControlBtnInfo CLASS02532'>" );
+         WriteLine( "<span class='CLASS02535B'>${stringTableWeatherTemperature} / ${stringTableWeatherHumidity}</span>" );
+         WriteLine( "<span class='CLASS02535B'>"#sValueT#" "#sValueUnitT#" / "#sValueH#" "#sValueUnitH#"</span>" );
+       WriteLine( "</div>" );
+    WriteLine( "</td>" );
+  }
+
+  object objState = cObj.DPByControl("GDS.STATE");
+
+ if (objState) {
+   WriteLine("<td class='hidden' id='"#chnId#"OpenH-td' >");
+     WriteLine("<table align='center' class='ControlBtnOff CLASS02514' id='"#chnId#"OpenH' >");
+     WriteLine("<tr>");
+       WriteLine("<td class='CLASS02513'>");
+         WriteLine("<div align='center'>");
+           WriteLine("<img src='/ise/img/garage/fts_garage_door_10.png' width='120' height='120' />");
+         WriteLine("</div>");
+       WriteLine("</td>");
+     WriteLine("</tr>");
+     WriteLine("<tr><td>${lblPosOpen}</td></tr>");
+     WriteLine("</table>");
+   WriteLine("</td>");
+   WriteLine("<td class='hidden' id='"#chnId#"OpenV-td' >");
+     WriteLine("<table align='center' class='ControlBtnOff CLASS02514' id='"#chnId#"OpenV' >");
+     WriteLine("<tr>");
+       WriteLine("<td class='CLASS02513'>");
+         WriteLine("<div align='center'>");
+           WriteLine("<img src='/ise/img/garage/fts_garage_door_50.png' width='120' height='120' />");
+         WriteLine("</div>");
+       WriteLine("</td>");
+     WriteLine("</tr>");
+     WriteLine("<tr><td>${lblPosVentilation}</td></tr>");
+     WriteLine("</table>");
+   WriteLine("</td>");
+   WriteLine("<td class='hidden' id='"#chnId#"Closed-td' >");
+     WriteLine("<table align='center' class='ControlBtnOff CLASS02514' id='"#chnId#"Closed' >");
+     WriteLine("<tr>");
+       WriteLine("<td class='CLASS02513'>");
+         WriteLine("<div align='center'>");
+           WriteLine("<img src='/ise/img/garage/fts_garage_door_100.png' width='120' height='120' />");
+         WriteLine("</div>");
+       WriteLine("</td>");
+     WriteLine("</tr>");
+     WriteLine("<tr><td>${lblPosClosed}</td></tr>");
+     WriteLine("</table>");
+   WriteLine("</td>");
+ 
+   WriteLine("<script type='text/javascript'>");
+   WriteLine("ibw"#cObj.ID()#" = new GDSWindow("#chnId#", "#objState.Value()#");");
+   WriteLine("</script>");
+  }
+  
+   WriteLine("<td></td>");
+  
+  object objOpener = cObj.DPByControl("GDS.OPENER");
+  if (objOpener) {
+    object oDev = dom.GetObject(cObj.Device());
+    string devAddr = oDev.Address();
+       WriteLine("<tr>")
+       WriteLine("<table align='center' >")
+        WriteLine("<td class='ControlBtnOff CLASS02514' id='"#chnId#"UseBtn' onclick='setBtnPress(this.id);SendInternalKeyPressNoPopup(\"BidCos-RF\", \""#devAddr#":1\", \""#devAddr#":3\");' >${btnGarageOpen} / ${btnGarageClose}</td>");
+       WriteLine("</table>")
+       WriteLine("</tr>")
+  }
+
+  
+  return;
+}

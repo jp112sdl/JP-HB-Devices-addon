@@ -308,6 +308,7 @@ jQuery.extend(true,langJSON, {
     "stringTableHbActiveHsvColor" : "Beleuchtung Betrieb",
     "stringTableHbTemperatureOffset1" : "Temperatur-Offset Sensor 1",
     "stringTableHbTemperatureOffset2" : "Temperatur-Offset Sensor 2",
+    "stringTableHbHumidityOffset" : "Luftfeuchte-Offset",
     "stringTableHbFlowrate" : "Durchflussrate",
     "stringTableHbFlowrateQFactor" : "Flow-Sensor Q-Faktor",
     "stringTableJPWNDCTRLRunningTimeBottomTop" : "Fahrzeit von vollst%E4ndiger Kippstellung nach geschlossen",

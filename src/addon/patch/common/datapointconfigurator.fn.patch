@@ -1,6 +1,6 @@
 --- ./patchsource/www/rega/esp/datapointconfigurator.fn.orig
 +++ ./patchsource/www/rega/esp/datapointconfigurator.fn
-@@ -148,6 +148,19 @@
+@@ -148,6 +148,20 @@
      var CN_WIN_SC_SENSOR   = "WIN_SC_SENSOR.";
      var CN_WINDOW          = "WINDOW.";
  
@@ -10,6 +10,7 @@
 +    var CN_SERVO           = "SERVO.";
 +    var CN_AIRFLAP         = "AIRFLAP.";
 +    var CN_JPWINDOW        = "JPWND.";
++    var CN_GDS             = "GDS.";
 +    var CN_FAN             = "FAN.";
 +    var CN_PFS             = "PFS.";
 +    var CN_LDRSC           = "LDRSC.";
@@ -20,7 +21,7 @@
      var CN_EVENT_INTERFACE = "EVENT_INTERFACE.";
      var CN_NOT_ACTIVE = "CHANNEL_NOT_ACTIVE";
  
-@@ -369,7 +382,130 @@
+@@ -369,7 +383,140 @@
              sLastControlName = CN_BTN_SHORT_ONLY;
              Call("/esp/controls/button.fn::CreateKeyShortOnly()");
            }
@@ -75,6 +76,16 @@
 +            isKnownControl = true;
 +            sLastControlName = CN_JPWINDOW;
 +            Call("/esp/controls/jpwindow.fn::CreateJPWindowControls()");
++          }
++          
++          !# GDS
++          bIsControl = ( sControlName.Find(CN_GDS) > -1 );
++          if( bIsControl && (sLastControlName!=CN_GDS) )
++          {
++            WriteLine( "<script>conInfo('Control CN_GDS found.');</script>" );
++            isKnownControl = true;
++            sLastControlName = CN_GDS;
++            Call("/esp/controls/gds.fn::CreateGDSSensor()");
 +          }
 +          
 +          !# AIRFLAP

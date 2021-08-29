@@ -1,6 +1,6 @@
 --- ./patchsource/www/config/stringtable_de.txt.orig
 +++ ./patchsource/www/config/stringtable_de.txt
-@@ -275,6 +275,248 @@
+@@ -275,6 +275,249 @@
  CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL	${stringTableCapacitiveFillingSensorTextCalcFillingLevel}
  CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL	${stringTableCapacitiveFillingSensorTextFillingLevel}
  CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL	${stringTableCapacitiveFillingSensorFillingLevel}
@@ -210,6 +210,7 @@
 +TEMPERATURE_OFFSET_1	${stringTableHbTemperatureOffset1}
 +TEMPERATURE_OFFSET_2	${stringTableHbTemperatureOffset2}
 +UNI_PRESSURE	${stringTableUniPressure}
++WEATHER|HUMIDITY_OFFSET	${stringTableHbHumidityOffset}
 +WEATHER|ANEMOMETER_CALIBRATION_FACTOR	${stringTableWeatherAnemometerCalibrationFactor}
 +WEATHER|ANEMOMETER_RADIUS	${stringTableWeatherAnemometerRadius}
 +WEATHER|BATTERY_VOLTAGE	${stringTableWeatherBatteryVoltage}

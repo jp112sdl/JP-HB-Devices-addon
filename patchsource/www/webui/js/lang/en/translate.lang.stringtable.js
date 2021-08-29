@@ -135,6 +135,7 @@ jQuery.extend(true,langJSON, {
     "stringTableWeatherGustSpeed" : "Gust-Speed",
     "stringTableHbWeaTransmitInterval" : "Transmit Interval",
     "stringTableHbWeaAltitude" : "Height Above Sea Level",
+    "stringTableHbHumidityOffset" : "humidity offset",
     "stringTableCharacteristicHalfConstant" : "half/constant power",
     "stringTableCharacteristicLevelLimit" : "Level limitation",
     "stringTableCharacteristicLinSquareType" : "Output characteristic",

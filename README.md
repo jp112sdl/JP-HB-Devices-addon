@@ -115,7 +115,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-lc-sw4-tp_thumb.png" width=25/> | [HB-LC-SwX-TP](https://github.com/jp112sdl/HB-LC-SwX-TP) | 1-/2-/4-fach Aktor mit Zeitprofil| ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-ou-mot-win_thumb.png" width=25/> | HB-OU-MOT-WIN | Fensteröffner | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-gd-sw1-th-ts_thumb.png" width=25/> | [HB-GD-Sw1-TH-TS](https://github.com/jp112sdl/HB-GD-Sw1-TH-TS) | Garagentor-Aktor, Kontaktschnittstelle und Temperatur-/Luftfeuchtemessung | ⚡️ |
-|<img src="src/addon/www/config/img/devices/50/hb-sw1-th-ts_thumb.png" width=25/> | [HB-Sw1-TH-TS](https://github.com/jp112sdl/HB-Sw1-TH-TS) | Schalt-Aktor, Kontaktschnittstelle und Temperatur-/Luftfeuchtemessung | ⚡️ |
+|<img src="src/addon/www/config/img/devices/50/hb-sw1-th-sc_thumb.png" width=25/> | [HB-Sw1-TH-SC](https://github.com/jp112sdl/HB-Sw1-TH-SC) | Schalt-Aktor, Kontaktschnittstelle und Temperatur-/Luftfeuchtemessung | ⚡️ |
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 

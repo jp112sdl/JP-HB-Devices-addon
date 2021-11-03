@@ -17,9 +17,6 @@ while IFS=";" read -r DEVICE IMG; do
         uninstall)
          echo "DEVDB.tcl uninstall "$DEVICE
          sed -i "s/\($DEVDBINSERT\)//g" $DEVDBFILE
-    
-         rm -f /www/config/img/devices/250/$DEVICE_IMG
-         rm -f /www/config/img/devices/50/$DEVICE_THUMB
         ;;
     esac
   fi

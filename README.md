@@ -1,6 +1,6 @@
 # JP-HB-Devices-addon [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) [![Github All Releases](https://img.shields.io/github/downloads/jp112sdl/JP-HB-Devices-addon/total.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/releases) [![GitHub issues](https://img.shields.io/github/issues/jp112sdl/JP-HB-Devices-addon.svg)](https://github.com/jp112sdl/JP-HB-Devices-addon/issues) <a href='https://ko-fi.com/N4N21R89O' target='_blank'><img height='20' style='border:0px;height:20px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
-**✅ lauffähig unter CCU / RaspberryMatic Firmware 3.47.10 - 3.59.6 [inkl. x86]**<br/>
+**✅ lauffähig unter CCU / RaspberryMatic Firmware 3.47.10 - 3.61.5 [inkl. x86]**<br/>
 **❓ CCU2 Firmware 2.53.27 - 2.59.7 nur experimentell unterstützt (nicht real getestet; nur gegen ubi-Image)**<br/>
 Die für o.g. CCU-Firmware-Versionen jeweils aktuellste Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.<br/>
 #### ℹ️ Die künftige Wartung/Anpassung des Addons für das OCCU-Derivat "BusMatic" erfolgt direkt vom "BusMatic"-Maintainer. Downloads sind auch von dort zu beziehen.

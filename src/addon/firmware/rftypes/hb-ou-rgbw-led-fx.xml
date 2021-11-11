@@ -166,6 +166,18 @@
         <logical type="boolean" default="false"/>
         <physical type="boolean" interface="internal" value_id="AES"/>
       </parameter>
+      <parameter id="STATUSINFO_MINDELAY" operations="read,write">
+        <logical type="float" min="0.5" max="15.5" default="2.0" unit="s">
+          <special_value id="NOT_USED" value="0.0" />
+        </logical>
+        <physical type="integer" interface="config" list="1" index="87.0" size="0.5" />
+        <conversion type="float_integer_scale" factor="2" />
+      </parameter>
+      <parameter id="STATUSINFO_RANDOM" operations="read,write">
+        <logical type="float" min="0.0" max="7.0" default="1.0" unit="s" />
+        <physical type="integer" interface="config" list="1" index="87.5" size="0.3" />
+        <conversion type="float_integer_scale" factor="1" />
+      </parameter>
       <parameter id="HB_LED_COUNT">
         <logical type="integer" min="1" max="1024" default="60" unit="" />
         <physical type="integer" interface="config" list="1" index="1" size="2" />

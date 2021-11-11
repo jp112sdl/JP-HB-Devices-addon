@@ -294,8 +294,8 @@ case "$1" in
 
       #delete copied files 
       cd ${ADDON_DIR}/www
-      find . -type f | sed 's/^./\/www/' | xargs rm
-
+      find . -type f | sed 's/^./\/www/' | xargs -I {} sh -c '[[ -f {} ]] && rm {}'
+      
       cd /
 
       rm -f ${WWW_DIR}

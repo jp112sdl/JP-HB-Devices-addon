@@ -4,6 +4,9 @@
     <type name="HB-WDS40-THP-O" id="HB-WDS40-THP-O">
       <parameter index="10.0" size="2.0" const_value="0xF307" />
     </type>
+    <type name="HB-WDS40-THP-I" id="HB-WDS40-THP-I">
+      <parameter index="10.0" size="2.0" const_value="0xF305" />
+    </type>
   </supported_types>
   <paramset type="MASTER" id="ash550_dev_master">
     <parameter id="HBWEA_ALTITUDE">

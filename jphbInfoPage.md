@@ -4,9 +4,9 @@
 Das unter der Quelle https://github.com/jp112sdl/JP-HB-Devices-addon in den Releases bereitgestellte Addon wird in BusMatic nicht unterstützt.
 
 #### ❗ 14.11.2021 Update auf Addon Version 5.8 dringend empfohlen
-Aufgrund 2 schwerwiegender Bugs in früheren Versionen, die nun in der 5.7 / 5.8 behoben sind, empfehle ich, das Update unbedingt zu installieren.
+Aufgrund 2 schwerwiegender Bugs in früheren Versionen, die nun in der 5.7 / 5.8 behoben sind, empfehle ich, das [Update](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) unbedingt zu installieren.
 - behobene Fehler: 
-  - Die Deinstallationsroutine löschte auch Werks-Icons von Geräten
+  - Die Deinstallationsroutine löschte auch Werks-Icons von Geräten _(betroffene Nutzer installieren die aktuelle verwendete RaspberryMatic/CCU Firmware einfach noch mal drüber)_
   - benutzerdefinierte XML Dateien in `customized_firmware` wurden bei einem Addon Update nicht übernommen
 
 #### ❗ Addon Versionen < 5.4 sind aufgrund von Dateikonflikten nicht kompatibel zur CCU Firmware 3.59.x 

@@ -9,7 +9,7 @@ Aufgrund 2 schwerwiegender Bugs in früheren Versionen, die nun in der 5.7 / 5.8
   - Die Deinstallationsroutine löschte auch Werks-Icons von Geräten
   - benutzerdefinierte XML Dateien in `customized_firmware` wurden bei einem Addon Update nicht übernommen
 
-#### ❗ Addon Versionen < 5.4 sind aufgrund von Dateikonflikten nicht kompatibel zur CCU Firmware 3.59.x ❗
+#### ❗ Addon Versionen < 5.4 sind aufgrund von Dateikonflikten nicht kompatibel zur CCU Firmware 3.59.x 
 - **Vor** dem Update der CCU- bzw. RaspberryMatic Version muss Addon Version 5.4 (oder höher) installiert werden
 - erst anschließend ist das Upgrade der CCU Firmware durchzuführen
 

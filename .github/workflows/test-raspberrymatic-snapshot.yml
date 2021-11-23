@@ -1,0 +1,18 @@
+name: Test RaspberryMatic snapshot build
+
+on:
+  schedule:
+    - cron: '0 4 * * *' # run at 4am UTC
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: sudo apt-get install -y dos2unix jq curl wget
+
+      - name: Checkout 🚚
+        uses: actions/checkout@v2
+
+      - name: Run tests 🩺
+        run: ./snapshot-test.sh

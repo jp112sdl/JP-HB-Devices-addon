@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eo pipefail
+set +eo pipefail
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 DIR_PREFIX=${DIR_PREFIX:="${SCRIPT_DIR}/rm-snapshot-test"}

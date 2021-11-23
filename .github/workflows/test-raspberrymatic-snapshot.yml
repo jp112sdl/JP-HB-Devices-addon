@@ -17,3 +17,4 @@ jobs:
 
       - name: Run tests 🩺
         run: ./snapshot-test.sh
+        shell: bash {0}

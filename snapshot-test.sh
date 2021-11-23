@@ -1,5 +1,7 @@
 #!/bin/bash
-set -eo pipefail
+set -e
+set -o pipefail
+
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 DIR_PREFIX=${DIR_PREFIX:="${SCRIPT_DIR}/rm-snapshot-test"}
@@ -26,14 +28,21 @@ check_ccu_fw_version()
  echo "Found firmware version $model.$version.$build - using patch subdirectory version ${PATCHSUBDIR_VERSION}"
 }
 
-convert_lf()
+hasCarriageReturn() {
+  grep -q $'\r' $1
+  return $?
+}
+
+removeCarriageReturn()
 {
   FILE=`sed -n '2p' $1 | sed 's/+++ .\/patchsource//g' | awk {'print $1'}`
-  if ! cat ${DIR_PREFIX}${FILE} | unix2dos -- | cmp -s - ${DIR_PREFIX}${FILE} ; then
-    if ! dos2unix -q < $1 | cmp -s - $1; then
-      echo "dos2unix conversion needed for $1"
-      dos2unix -q $1
-    fi
+  if ! hasCarriageReturn ${DIR_PREFIX}${FILE} && hasCarriageReturn $1; then
+    echo "dos2unix conversion needed for $1"
+    sed -i 's/\r$//' $1
+  fi
+  if hasCarriageReturn ${DIR_PREFIX}${FILE} && ! hasCarriageReturn $1; then
+    echo "unix2dos conversion needed for $1"
+    sed -i 's/\n$/\r\n/' $1
   fi
 }
 
@@ -77,26 +86,28 @@ cd $WWW_DIR
 
 set +e
 
+echo
 echo "######## APPLY COMMON PATCHES ########"
 for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
   echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)"
-  convert_lf $patchfile
+  removeCarriageReturn $patchfile
   patch -p3 -i $patchfile 2>>$ERROR_LOGFILE
-  echo "- done"
+  echo
 done
 
+echo
 echo "######## APPLY VERSION DEPENDEND PATCHES ########"
 for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
   echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)"
-  convert_lf $patchfile
+  removeCarriageReturn $patchfile
   patch -p3 -i $patchfile 2>>$ERROR_LOGFILE
-  echo "- done"
+  echo
 done
 
 set -e
 
 cd ${DIR_PREFIX}
-[[ -d $WWW_DIR ]]  && rm -rf $WWW_DIR
+#[[ -d $WWW_DIR ]]  && rm -rf $WWW_DIR
 
 echo " "
 echo "***********************************************"

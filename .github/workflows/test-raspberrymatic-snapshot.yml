@@ -1,7 +1,8 @@
 name: Test RaspberryMatic snapshot build
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *' # run at 4am UTC
 
 jobs:
   test:

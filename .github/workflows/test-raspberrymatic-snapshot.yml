@@ -3,7 +3,7 @@ name: Test RaspberryMatic snapshot build
 on:
   push:
   schedule:
-    - cron: '0 4 * * *' # run at 4am UTC
+    - cron: '0 7 * * *' # run at 7am UTC
 
 jobs:
   test:

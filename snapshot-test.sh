@@ -1,6 +1,5 @@
 #!/bin/bash
-ulimit -a
-set +eo pipefail
+set -eo pipefail
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 DIR_PREFIX=${DIR_PREFIX:="${SCRIPT_DIR}/rm-snapshot-test"}
@@ -30,7 +29,7 @@ check_ccu_fw_version()
 convert_lf()
 {
   FILE=`sed -n '2p' $1 | sed 's/+++ .\/patchsource//g' | awk {'print $1'}`
-  if ! unix2dos < ${DIR_PREFIX}${FILE} | cmp -s - ${DIR_PREFIX}${FILE} ; then
+  if ! unix2dos < ${DIR_PREFIX}${FILE} | tail -n +1 | cmp -s - ${DIR_PREFIX}${FILE} ; then
     if ! dos2unix -q < $1 | cmp -s - $1; then
       echo "dos2unix conversion needed for $1"
       dos2unix -q $1

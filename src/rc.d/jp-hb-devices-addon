@@ -94,7 +94,7 @@ patcher()
 {
   if [[ "$1" == "APPLY" ]]; then
     PATCH_METHOD_HINT="APPLY"
-    PATCH_METHOD_PARAM="-N"
+    PATCH_METHOD_PARAM=""
   elif [[ "$1" == "REVOKE" ]]; then
     PATCH_METHOD_HINT="REVOKE"
     PATCH_METHOD_PARAM="-R"

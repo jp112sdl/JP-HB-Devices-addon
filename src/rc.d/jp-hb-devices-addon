@@ -84,9 +84,9 @@ cleanup_orig_files()
 
 do_patch()
 {
-    echo "### $3 patch file $1" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+    echo "### $2 patch file $1" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
     convert_lf $1
-    patch $2 -p3 -i $1 >> $TMP_LOGFILE 2>>$TMP_ERRFILE
+    patch $3 -p3 -i $1 >> $TMP_LOGFILE 2>>$TMP_ERRFILE
     echo "- done" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
 }
 
@@ -106,11 +106,11 @@ patcher()
   cd /www
 
   for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
-    do_patch $patchfile $PATCH_METHOD_PARAM $PATCH_METHOD_HINT
+    do_patch $patchfile $PATCH_METHOD_HINT $PATCH_METHOD_PARAM
   done
   
   for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
-    do_patch $patchfile $PATCH_METHOD_PARAM $PATCH_METHOD_HINT
+    do_patch $patchfile $PATCH_METHOD_HINT $PATCH_METHOD_PARAM
   done
   
   cleanup_orig_files

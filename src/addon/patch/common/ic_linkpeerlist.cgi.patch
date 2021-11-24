@@ -1,0 +1,30 @@
+--- ./patchsource/www/config/ic_linkpeerlist.cgi.orig
++++ ./patchsource/www/config/ic_linkpeerlist.cgi
+@@ -319,6 +319,27 @@
+             set hideBtnDelete 1
+           }
+         }
++        catch {
++          set devType $sender_descr(PARENT_TYPE)
++          if { 
++           ([string equal -nocase "HB-LC-Sw1PBU-FM"       $devType] == 1) ||
++           ([string equal -nocase "HB-LC-Sw2PBU-FM"       $devType] == 1) ||
++           ([string equal -nocase "HB-LC-Bl1PBU-FM"       $devType] == 1) ||
++           ([string equal -nocase "HB-LC-Sw2-FM"          $devType] == 1) ||
++           ([string match -nocase "HB-UNI-SenAct-4-4-SC*" $devType] == 1) ||
++           ([string match -nocase "HB-UNI-SenAct-8-8-SC*" $devType] == 1)
++          } {
++            #interne Tasten (InternalKeys) ausblenden, wenn Sender und Empfaenger die selbe Kanalnummer besitzen
++            set sndCh [lindex [split $link(SENDER)   ":"] 1]
++            set rcvCh [lindex [split $link(RECEIVER) ":"] 1]
++            if { ($sndCh == $rcvCh) } {
++              set internalLink  1
++            } else {
++              set internalLink  0
++            }
++            set hideBtnDelete 0
++          }
++        }
+       }
+ 
+       catch {set isHMW [isWired $link(SENDER_DESCRIPTION) $link(RECEIVER_DESCRIPTION)]}

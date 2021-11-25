@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y dos2unix jq curl wget
+        run: sudo apt-get install -y jq curl wget
 
       - name: Checkout 🚚
         uses: actions/checkout@v2

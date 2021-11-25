@@ -107,7 +107,7 @@ echo " "
 echo "***********************************************"
 echo " "
 
-if grep -i -E 'fail|err|fuzz' ${ERROR_LOGFILE}; then
+if grep -q -i -E 'fail|err|fuzz' ${ERROR_LOGFILE}; then
   echo '### LOG:'
   cat $ERROR_LOGFILE
   exit 1

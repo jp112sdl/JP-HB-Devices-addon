@@ -10,8 +10,8 @@ WWW_DIR=${DIR_PREFIX}/www
 RM_NIGHTLY_DIR=${DIR_PREFIX}/rm-snapshot
 RM_NIGHTLY_URL=$(curl -sSL -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/jens-maus/RaspberryMatic/releases/22744592/assets | jq -r '.[] | select(.name | endswith("ccu3.tgz")) | .browser_download_url')
 IMAGEFILENAME=${DIR_PREFIX}/rm-snapshot/rootfs.ext4
-ADDON_DIR=${DIR_PREFIX}/addon
-PATCH_DIR=${DIR_PREFIX}/addon/JP-HB-Devices-addon/src/addon/patch
+#ADDON_DIR=${SCRIPT_DIR}
+PATCH_DIR=${SCRIPT_DIR}/src/addon/patch
 PATCHSUBDIR_VERSION=le_343
 PATCHSUBDIR_COMMON=common
 
@@ -72,10 +72,10 @@ sudo umount ${MOUNT_DIR}
 chmod -R +w $WWW_DIR
 
 #Addon klonen
-[[ -d ${ADDON_DIR} ]] && rm -rf ${ADDON_DIR}
-mkdir -p ${ADDON_DIR}
-cd ${ADDON_DIR}
-git clone https://github.com/jp112sdl/JP-HB-Devices-addon.git
+#[[ -d ${ADDON_DIR} ]] && rm -rf ${ADDON_DIR}
+#mkdir -p ${ADDON_DIR}
+#cd ${ADDON_DIR}
+#git clone https://github.com/jp112sdl/JP-HB-Devices-addon.git
 
 #Patche anwenden
 

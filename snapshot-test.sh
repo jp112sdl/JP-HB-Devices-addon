@@ -91,13 +91,13 @@ cd $WWW_DIR
 set +e
 
 echo
+echo
 echo "######## APPLY COMMON PATCHES ########"
 for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
   echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)"
   applyPatch $patchfile
 done
 
-echo
 echo
 
 echo "######## APPLY VERSION DEPENDEND PATCHES ########"
@@ -107,7 +107,6 @@ for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
 done
 
 set -e
-
 
 echo " "
 echo "***********************************************"

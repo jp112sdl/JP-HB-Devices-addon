@@ -84,8 +84,9 @@ echo "######## APPLY COMMON PATCHES ########"
 for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
   echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)"
   removeCarriageReturn $patchfile
-  patch -p3 -i $patchfile >>$ERROR_LOGFILE 2>>$ERROR_LOGFILE
-  echo $?
+  if ! patch -p3 -i $patchfile >>$ERROR_LOGFILE 2>>$ERROR_LOGFILE; then
+    echo "ERROR!"
+  fi
 done
 
 echo
@@ -93,8 +94,9 @@ echo "######## APPLY VERSION DEPENDEND PATCHES ########"
 for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
   echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)"
   removeCarriageReturn $patchfile
-  patch -p3 -i $patchfile >>$ERROR_LOGFILE 2>>$ERROR_LOGFILE
-  echo
+  if ! patch -p3 -i $patchfile >>$ERROR_LOGFILE 2>>$ERROR_LOGFILE; then
+    echo "ERROR!"
+  fi
 done
 
 set -e
@@ -106,7 +108,7 @@ echo "***********************************************"
 echo " "
 
 if grep -i -E 'fail|err|fuzz' ${ERROR_LOGFILE}; then
-  echo '### ERRORS:'
+  echo '### LOG:'
   cat $ERROR_LOGFILE
   exit 1
 else

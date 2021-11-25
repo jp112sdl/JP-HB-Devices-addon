@@ -1,4 +1,4 @@
-name: Test RaspberryMatic snapshot build
+name: Test Patch-Apply on RaspberryMatic snapshot build
 
 on:
   push:
@@ -17,4 +17,3 @@ jobs:
 
       - name: Run tests 🩺
         run: ./snapshot-test.sh
-        shell: bash {0}

@@ -85,7 +85,7 @@ for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
   echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)"
   removeCarriageReturn $patchfile
   patch -p3 -i $patchfile 2>>$ERROR_LOGFILE
-  echo
+  echo $?
 done
 
 echo

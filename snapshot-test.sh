@@ -50,11 +50,11 @@ removeCarriageReturn()
 [[ -d ${RM_NIGHTLY_DIR} ]] && rm -rf ${RM_NIGHTLY_DIR}
 mkdir -p ${RM_NIGHTLY_DIR}
 cd ${RM_NIGHTLY_DIR}
-echo "Downloading Nightly"
+echo "Downloading Nightly" ${RM_NIGHTLY_URL}
 wget -q -O ./rm-nightly.tgz ${RM_NIGHTLY_URL}
-echo "Untar"
+echo "Unpacking Nightly"
 tar -xf rm-nightly.tgz
-echo "gzip -d"
+echo "Decompress ext4 image"
 gzip -d rootfs.ext4.gz
 
 #Mount

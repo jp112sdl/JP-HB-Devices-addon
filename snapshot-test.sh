@@ -104,7 +104,7 @@ cd ${DIR_PREFIX}
 echo " "
 echo "***********************************************"
 echo " "
-
+cat $ERROR_LOGFILE
 if [ -s "$ERROR_LOGFILE" ]; then
   echo '### ERRORS:'
   cat $ERROR_LOGFILE

@@ -10,7 +10,6 @@ WWW_DIR=${DIR_PREFIX}/www
 RM_NIGHTLY_DIR=${DIR_PREFIX}/rm-snapshot
 RM_NIGHTLY_URL=$(curl -sSL -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/jens-maus/RaspberryMatic/releases/22744592/assets | jq -r '.[] | select(.name | endswith("ccu3.tgz")) | .browser_download_url')
 IMAGEFILENAME=${DIR_PREFIX}/rm-snapshot/rootfs.ext4
-#ADDON_DIR=${SCRIPT_DIR}
 PATCH_DIR=${SCRIPT_DIR}/src/addon/patch
 PATCHSUBDIR_VERSION=le_343
 PATCHSUBDIR_COMMON=common
@@ -52,9 +51,9 @@ mkdir -p ${RM_NIGHTLY_DIR}
 cd ${RM_NIGHTLY_DIR}
 echo "Downloading Nightly" ${RM_NIGHTLY_URL}
 wget -q -O ./rm-nightly.tgz ${RM_NIGHTLY_URL}
-echo "Unpacking Nightly"
+echo "Unpacking .tgz"
 tar -xf rm-nightly.tgz
-echo "Decompress ext4 image"
+echo "Decompressing .ext4 image"
 gzip -d rootfs.ext4.gz
 
 #Mount
@@ -70,12 +69,6 @@ check_ccu_fw_version
 sudo umount ${MOUNT_DIR}
 
 chmod -R +w $WWW_DIR
-
-#Addon klonen
-#[[ -d ${ADDON_DIR} ]] && rm -rf ${ADDON_DIR}
-#mkdir -p ${ADDON_DIR}
-#cd ${ADDON_DIR}
-#git clone https://github.com/jp112sdl/JP-HB-Devices-addon.git
 
 #Patche anwenden
 
@@ -107,7 +100,6 @@ done
 set -e
 
 cd ${DIR_PREFIX}
-#[[ -d $WWW_DIR ]]  && rm -rf $WWW_DIR
 
 echo " "
 echo "***********************************************"

@@ -38,10 +38,9 @@ removeCarriageReturn()
   if ! hasCarriageReturn ${DIR_PREFIX}${FILE} && hasCarriageReturn $1; then
     echo "dos2unix conversion needed for $1"
     sed -i 's/\r$//' $1
-  fi
-  if hasCarriageReturn ${DIR_PREFIX}${FILE} && ! hasCarriageReturn $1; then
+  elif hasCarriageReturn ${DIR_PREFIX}${FILE} && ! hasCarriageReturn $1; then
     echo "unix2dos conversion needed for $1"
-    sed -i 's/\n$/\r\n/' $1
+    sed -i "s/\$/\r/" $1
   fi
 }
 
@@ -72,8 +71,20 @@ chmod -R +w $WWW_DIR
 
 #Patche anwenden
 
-ERROR_LOGFILE=${DIR_PREFIX}/patch-$(basename $IMAGEFILENAME).log
-[[ -f ${ERROR_LOGFILE} ]] && rm ${ERROR_LOGFILE}
+PATCH_ERROR=0
+
+applyPatch() {
+  removeCarriageReturn $1
+  RES="$(patch --binary -p3 -i $1)"
+  e=$?
+  if [ $e -gt 0 ]; then
+    PATCH_ERROR=$e
+    echo -e "\033[31m""${RES}""\e[0m"
+  else
+    echo "$RES"
+  fi
+  echo
+}
 
 cd $WWW_DIR
 
@@ -83,34 +94,28 @@ echo
 echo "######## APPLY COMMON PATCHES ########"
 for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_COMMON}/* ; do
   echo "### Applying ${PATCHSUBDIR_COMMON} patch file $(basename $patchfile)"
-  removeCarriageReturn $patchfile
-  if ! patch -p3 -i $patchfile >>$ERROR_LOGFILE 2>>$ERROR_LOGFILE; then
-    echo "ERROR!"
-  fi
+  applyPatch $patchfile
 done
 
 echo
+echo
+
 echo "######## APPLY VERSION DEPENDEND PATCHES ########"
 for patchfile in ${PATCH_DIR}/${PATCHSUBDIR_VERSION}/* ; do
   echo "Applying ${PATCHSUBDIR_VERSION} patch file $(basename $patchfile)"
-  removeCarriageReturn $patchfile
-  if ! patch -p3 -i $patchfile >>$ERROR_LOGFILE 2>>$ERROR_LOGFILE; then
-    echo "ERROR!"
-  fi
+  applyPatch $patchfile
 done
 
 set -e
 
-cd ${DIR_PREFIX}
 
 echo " "
 echo "***********************************************"
 echo " "
 
-if grep -q -i -E 'fail|err|fuzz' ${ERROR_LOGFILE}; then
-  echo '### LOG:'
-  cat $ERROR_LOGFILE
+if [ $PATCH_ERROR -gt 0 ]; then
+  echo -e "\033[31mERRORS occurred\e[0m"
   exit 1
 else
-  echo 'All tests pass'
+  echo -e "\033[32mAll tests passed\e[0m"
 fi

@@ -1,4 +1,4 @@
-name: PatchApply RaspberryMatic Nightly
+name: Patch-Apply Test on RaspberryMatic Nightly
 
 on:
   push:

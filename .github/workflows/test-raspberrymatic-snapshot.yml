@@ -1,4 +1,4 @@
-name: Test Patch-Apply on RaspberryMatic snapshot build
+name: Patch-Apply RaspberryMatic Snapshot
 
 on:
   push:

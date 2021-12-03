@@ -1,4 +1,4 @@
-name: Patch-Apply RaspberryMatic Snapshot
+name: PatchApply RaspberryMatic Nightly
 
 on:
   push:

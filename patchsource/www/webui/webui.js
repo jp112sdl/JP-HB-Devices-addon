@@ -370,6 +370,12 @@ DEV_DESCRIPTION['HB-LC-Sw4-TP']='radio-controlled switch actuator 4-channel, wit
 DEV_PATHS['HB-LC-Sw4-TP'] = new Object();
 DEV_PATHS['HB-LC-Sw4-TP']['50'] = '/config/img/devices/50/hb-lc-sw4-tp_thumb.png';
 DEV_PATHS['HB-LC-Sw4-TP']['250'] = '/config/img/devices/250/hb-lc-sw4-tp.png';
+DEV_HIGHLIGHT['HB-LC-Sw3-LIDL'] = new Object();
+DEV_LIST.push('HB-LC-Sw3-LIDL');
+DEV_DESCRIPTION['HB-LC-Sw3-LIDL']='radio-controlled switch actuator 3-channel';
+DEV_PATHS['HB-LC-Sw3-LIDL'] = new Object();
+DEV_PATHS['HB-LC-Sw3-LIDL']['50'] = '/config/img/devices/50/hb-lc-sw3-lidl_thumb.png';
+DEV_PATHS['HB-LC-Sw3-LIDL']['250'] = '/config/img/devices/250/hb-lc-sw3-lidl.png';
 DEV_HIGHLIGHT['HB-Sec-RHS-3'] = new Object();
 DEV_LIST.push('HB-Sec-RHS-3');
 DEV_DESCRIPTION['HB-Sec-RHS-3']='HB Rotary Handle Sensor with battery state';

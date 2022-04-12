@@ -71,6 +71,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/PushButton-2ch-wm_thumb.png" width=25/> | [HB-LC-Sw1PBU-FM](https://github.com/jp112sdl/Beispiel_AskSinPP/tree/master/examples/HB-LC-Sw1PBU-FM) | alternative Firmware für den<br/>HM-LC-Sw1PBU-FM (getrennte Taster-/Relais-Kanäle) | ⚡️ | 
 |<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/PushButton-2ch-wm_thumb.png" width=25/> | [HB-LC-Sw2PBU-FM](https://github.com/jp112sdl/Beispiel_AskSinPP/tree/master/examples/HB-LC-Sw2PBU-FM) | alternative Firmware für den<br/>HM-LC-Sw2PBU-FM (getrennte Taster-/Relais-Kanäle) | ⚡️ | 
 |<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/5_hm-lc-sw2-fm_thumb.png" width=25/> | [HB-LC-Sw2-FM](https://github.com/stan23/HB-LC-Sw2-FM) | alternative Firmware für den<br/>HM-LC-Sw2-FM (getrennte Taster-/Relais-Kanäle) special thx to [stan23](https://github.com/stan23)! | ⚡️ | 
+|<img src="src/addon/www/config/img/devices/50/hb-lc-sw3-lidl_thumb.png" width=25/> |  [HB-LC-Sw3-LIDL](https://github.com/jp112sdl/Beispiel_AskSinPP/tree/master/examples/HB-LC-Sw3-LIDL)  | Umbau LIDL 3fach Steckdosenleiste | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-lc-sw4-tp_thumb.png" width=25/> | [HB-LC-SwX-TP](https://github.com/jp112sdl/HB-LC-SwX-TP) | 1-/2-/4-fach Aktor mit Zeitprofil| ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-ou-af-sen-temp_thumb.png" width=25/> | [HB-OU-AF-SEN-TEMP](https://github.com/jp112sdl/HB-OU-AF-SEN-TEMP) | (Kamin) Luftklappensteuerung und Temperatursensor | ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-ou-mot-fan_thumb.png" width=25/> | [HB-OU-MOT-FAN](https://github.com/jp112sdl/HB-OU-MOT-FAN)(-RPM) | PWM Lüftersteuerung (mit optionaler RPM-Überwachung) | ⚡️ | 
@@ -148,6 +149,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 23 | HB-LC-Sw1-TP |
 |F3 24 | HB-LC-Sw2-TP |
 |F3 25 | HB-LC-Sw4-TP |
+|F3 26 | HB-LC-Sw3-LIDL |
 |F3 2B | HB-RC-X-POS |
 |F3 2C | HB-RC-10-POS |
 |F3 2D | HB-RC-4-TOUCH |

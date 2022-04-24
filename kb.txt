@@ -7,6 +7,8 @@ Mit 'patch' veränderte Dateien:
   /www/api/methods.conf
   /www/config/ic_common.tcl
   /www/config/stringtable_de.txt
+  /www/config/easymodes/etc/localization/de/PNAME.txt
+  /www/config/easymodes/etc/localization/en/PNAME.txt
   /www/ise/htm/header.htm
   /www/pda/eq3/controls/rhs.tcl
   /www/rega/esp/channels.fn

@@ -325,6 +325,7 @@ proc put_tablebody {} {
            ([string equal -nocase "HB-LC-Sw1PBU-FM"       $devType] == 1) ||
            ([string equal -nocase "HB-LC-Sw2PBU-FM"       $devType] == 1) ||
            ([string equal -nocase "HB-LC-Bl1PBU-FM"       $devType] == 1) ||
+           ([string equal -nocase "HB-LC-Sw1-FM"          $devType] == 1) ||
            ([string equal -nocase "HB-LC-Sw2-FM"          $devType] == 1) ||
            ([string match -nocase "HB-UNI-SenAct-4-4-SC*" $devType] == 1) ||
            ([string match -nocase "HB-UNI-SenAct-8-8-SC*" $devType] == 1)

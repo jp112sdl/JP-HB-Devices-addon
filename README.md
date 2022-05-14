@@ -70,7 +70,8 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="https://raw.githubusercontent.com/eq-3/occu/master/WebUI/www/config/img/devices/50/114_hm-lc-dim1t-fm-lf_thumb.png" width=25/> | [HB-LC-Dim5PWM-CV](https://github.com/pa-pa/AskSinPP/tree/master/examples/stm32/HB-LC-Dim5PWM-CV) | 5-Kanal PWM Dimmer (STM32) | ⚡️ | 
 |<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/PushButton-2ch-wm_thumb.png" width=25/> | [HB-LC-Sw1PBU-FM](https://github.com/jp112sdl/Beispiel_AskSinPP/tree/master/examples/HB-LC-Sw1PBU-FM) | alternative Firmware für den<br/>HM-LC-Sw1PBU-FM (getrennte Taster-/Relais-Kanäle) | ⚡️ | 
 |<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/PushButton-2ch-wm_thumb.png" width=25/> | [HB-LC-Sw2PBU-FM](https://github.com/jp112sdl/Beispiel_AskSinPP/tree/master/examples/HB-LC-Sw2PBU-FM) | alternative Firmware für den<br/>HM-LC-Sw2PBU-FM (getrennte Taster-/Relais-Kanäle) | ⚡️ | 
-|<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/5_hm-lc-sw2-fm_thumb.png" width=25/> | [HB-LC-Sw2-FM](https://github.com/stan23/HB-LC-Sw2-FM) | alternative Firmware für den<br/>HM-LC-Sw2-FM (getrennte Taster-/Relais-Kanäle) special thx to [stan23](https://github.com/stan23)! | ⚡️ | 
+|<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/4_hm-lc-sw1-fm_thumb.png" width=25/> | [HB-LC-Sw1-FM](https://github.com/stan23/HB-LC-SwX-FM) | alternative Firmware für den<br/>HM-LC-Sw1-FM (getrennter Taster-/Relais-Kanal) special thx to [stan23](https://github.com/stan23)! | ⚡️ | 
+|<img src="https://github.com/eq-3/occu/blob/master/WebUI/www/config/img/devices/50/5_hm-lc-sw2-fm_thumb.png" width=25/> | [HB-LC-Sw2-FM](https://github.com/stan23/HB-LC-SwX-FM) | alternative Firmware für den<br/>HM-LC-Sw2-FM (getrennte Taster-/Relais-Kanäle) special thx to [stan23](https://github.com/stan23)! | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-lc-sw3-lidl_thumb.png" width=25/> |  [HB-LC-Sw3-LIDL](https://github.com/jp112sdl/Beispiel_AskSinPP/tree/master/examples/HB-LC-Sw3-LIDL)  | Umbau LIDL 3fach Steckdosenleiste | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-lc-sw4-tp_thumb.png" width=25/> | [HB-LC-SwX-TP](https://github.com/jp112sdl/HB-LC-SwX-TP) | 1-/2-/4-fach Aktor mit Zeitprofil| ⚡️ |
 |<img src="src/addon/www/config/img/devices/50/hb-ou-af-sen-temp_thumb.png" width=25/> | [HB-OU-AF-SEN-TEMP](https://github.com/jp112sdl/HB-OU-AF-SEN-TEMP) | (Kamin) Luftklappensteuerung und Temperatursensor | ⚡️ |
@@ -198,6 +199,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |F3 FE | HB-UNI-Sen-DUMMY-BEACON-V2 |
 |F3 FF | HB-UNI-Sen-DUMMY-BEACON |
 |_F5 01_ | _HB-LC-Sw2-FM_ |
+|_F5 02_ | _HB-LC-Sw1-FM_ |
 |_F5 11_ | _HB-LC-Dim5PWM-CV_ |
 |F6 A9 | [HB-CDL-6](https://github.com/trilu2000/HB-CDL-6) |
 |F9 D6 | HB-UNI-Sen-DIST-US |

@@ -1,6 +1,6 @@
 --- ./patchsource/www/webui/webui.js.orig
 +++ ./patchsource/www/webui/webui.js
-@@ -88,6 +88,546 @@
+@@ -88,6 +88,552 @@
  DEV_PATHS["HM-RC-4-3"] = new Object();
  DEV_PATHS["HM-RC-4-3"]["50"] = "/config/img/devices/50/84_hm-rc-4-x_thumb.png";
  DEV_PATHS["HM-RC-4-3"]["250"] = "/config/img/devices/250/84_hm-rc-4-3.png";
@@ -448,6 +448,12 @@
 +DEV_PATHS['HB-LC-Sw2PBU-FM'] = new Object();
 +DEV_PATHS['HB-LC-Sw2PBU-FM']['50'] = '/config/img/devices/50/PushButton-2ch-wm_thumb.png';
 +DEV_PATHS['HB-LC-Sw2PBU-FM']['250'] = '/config/img/devices/250/PushButton-2ch-wm.png';
++DEV_HIGHLIGHT['HB-LC-Sw1-FM'] = new Object();
++DEV_LIST.push('HB-LC-Sw1-FM');
++DEV_DESCRIPTION['HB-LC-Sw1-FM']='HM-LC-Sw1-FM mit alternativer FW';
++DEV_PATHS['HB-LC-Sw1-FM'] = new Object();
++DEV_PATHS['HB-LC-Sw1-FM']['50'] = '/config/img/devices/50/4_hm-lc-sw1-fm_thumb.png';
++DEV_PATHS['HB-LC-Sw1-FM']['250'] = '/config/img/devices/250/4_hm-lc-sw1-fm.png';
 +DEV_HIGHLIGHT['HB-LC-Sw2-FM'] = new Object();
 +DEV_LIST.push('HB-LC-Sw2-FM');
 +DEV_DESCRIPTION['HB-LC-Sw2-FM']='HM-LC-Sw2-FM mit alternativer FW';
@@ -547,7 +553,7 @@
  DEV_HIGHLIGHT["HM-RC-4-3"] = new Object();
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part1"] = [6, 0.312, 0.288, 0.416, 0.288, 0.012];
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part2"] = [6, 0.312, 0.288, 0.352, 0.248, 0.012];
-@@ -3843,6 +4383,224 @@
+@@ -3843,6 +4389,224 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_HIGH'] = '${stringTableCapacitiveFillingSensorCaseHeight}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_LENGTH'] = '${stringTableCapacitiveFillingSensorCaseLength}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_WIDTH'] = '${stringTableCapacitiveFillingSensorCaseWidth}';
@@ -772,7 +778,7 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextCalcFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL'] = '${stringTableCapacitiveFillingSensorFillingLevel}';
-@@ -13664,7 +14422,7 @@
+@@ -13664,7 +14428,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
    // and set the variable freeTextActive to true
@@ -781,7 +787,7 @@
      var jLine = jQuery("#textSelect_" + line),
      jCellFreeText = jQuery("#cellFreeText_"+line);
  
-@@ -13680,7 +14438,7 @@
+@@ -13680,7 +14444,7 @@
    // If at least one line has an active free text mode
    // we have to activate the placeholder for the other lines and the header (color and icon are moving up)
    if (freeTextActive) {
@@ -790,7 +796,7 @@
        var jLine = jQuery("#textSelect_" + line),
        jPlaceHolder = jQuery("#placeHolder_"+line);
  
-@@ -13692,7 +14450,7 @@
+@@ -13692,7 +14456,7 @@
      }
    } else {
      jHeadFreeText.hide().css("display", "none");
@@ -799,7 +805,7 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
-@@ -23560,6 +24318,24 @@
+@@ -23560,6 +24324,24 @@
          this.setWidth(400);
          this.setFile( "/pages/msg/setOUCFMMode.htm" );
          break;
@@ -824,7 +830,7 @@
          case ID_SET_STATUS_DISPLAY:
          this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
          this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -24363,6 +25139,9 @@
+@@ -24363,6 +25145,9 @@
  ID_AUTO_LOGIN_CONFIG     = 1018;
  ID_PROGRAM_CHOOSER       = 1019;
  ID_EDIT_SYSVAR           = 1021;
@@ -834,7 +840,7 @@
  ID_CHOOSE_LED            = 1022;
  ID_SET_OUCFM_MODE        = 1023;
  ID_SET_STATUS_DISPLAY    = 1024;
-@@ -36863,7 +37642,15 @@
+@@ -36863,7 +37648,15 @@
        SetParameters ($F('global_iface'), channel_address, 'CHANNEL_'+i);
        actions++;
      }

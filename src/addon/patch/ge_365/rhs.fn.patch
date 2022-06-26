@@ -1,0 +1,40 @@
+--- ./patchsource/www/rega/esp/controls/rhs.fn.orig
++++ ./patchsource/www/rega/esp/controls/rhs.fn
+@@ -1,4 +1,5 @@
+ function ::CreateWndRotSensor() {
++  object objVoltage = cObj.DPByHssDP("OPERATING_VOLTAGE");
+ 
+   object ch = dom.GetObject(chnId);
+ 
+@@ -47,10 +48,28 @@
+     WriteLine("</table>");
+   WriteLine("</td>");
+ 
++  if (objVoltage) {
++    WriteLine("<td>");
++    WriteLine("<table class='ControlBtnOff CLASS02514' id='"#chnId#"Extra' >");
++    WriteLine("<tr>");
++      WriteLine("<td class='CLASS02513'>");
++        WriteLine("<div align='center'>");
++          WriteLine("<img src='/ise/img/window/closed.png' width='80' height='80' />");
++        WriteLine("</div>");
++      WriteLine("</td>");
++    WriteLine("</tr>");
++    WriteLine("<tr><td>Extra-Status</td></tr>");
++    WriteLine("</table>");
++   WriteLine("</td>");
++  
++   WriteLine("<td><div class='ControlBtnInfo CLASS02532'><span class='_CLASS02533'><span class='CLASS02534 j_translate' style='display: inline;'>Betriebsspannung in V:</span><span class='CLASS02535' style='color:white'>"#objVoltage.Value().ToString(1)#"V</span></span></div></td>");
++  } else {
++    WriteLine("<td></td><td></td>");
++  }
++  
+   object objState = cObj.DPByControl("RHS.STATE");
+-  WriteLine("<td></td><td></td>");
+   WriteLine("<script type='text/javascript'>");
+-  WriteLine("ibw"#cObj.ID()#" = new iseButtonsWindow("#chnId#", "#objState.Value()#");");
++  WriteLine("ibw"#cObj.ID()#" = new iseButtonsWindowHB("#chnId#", "#objState.Value()#");");
+   WriteLine("</script>");
+   return;
+ }
+\ No newline at end of file

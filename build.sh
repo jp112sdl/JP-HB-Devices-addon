@@ -4,8 +4,6 @@ ADDON_NAME=jp-hb-devices
 
 file=./patchsource/www/rega/esp/functions.fn
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
-file=./patchsource/www/rega/esp/controls/rhs.fn
-diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 file=./patchsource/www/pda/eq3/controls/rhs.tcl
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 file=./patchsource/www/webui/webui.js
@@ -40,13 +38,14 @@ file=./patchsource/www/webui/js/lang/de/translate.lang.stringtable.js
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch
 file=./patchsource/www/webui/js/lang/en/translate.lang.stringtable.js
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} >> ./src/addon/patch/common/`basename ${file}`.patch
-
 file=./patchsource/www/rega/pages/tabs/admin/views/programs.htm
-diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/le_343/`basename ${file}`.patch 
-diff -u --label=${file}.orig --label=${file} ${file}.orig-3.45 ${file}-3.45 > ./src/addon/patch/ge_345/`basename ${file}`.patch
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch 
 file=./patchsource/www/rega/esp/side.inc
-diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/le_343/`basename ${file}`.patch 
-diff -u --label=${file}.orig --label=${file} ${file}.orig-3.45 ${file}-3.45 > ./src/addon/patch/ge_345/`basename ${file}`.patch
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch 
+
+file=./patchsource/www/rega/esp/controls/rhs.fn
+diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/le_363/`basename ${file}`.patch 
+diff -u --label=${file}.orig --label=${file} ${file}.orig-3.65 ${file}-3.65 > ./src/addon/patch/ge_365/`basename ${file}`.patch
 
 echo "Patch created."
 

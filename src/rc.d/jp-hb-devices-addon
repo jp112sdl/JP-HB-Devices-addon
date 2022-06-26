@@ -21,15 +21,20 @@ RL_FILE=/lib/udev/rules.d/99-hmip-rfusb.rules
 CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 
 PATCHSUBDIR_COMMON=common
-PATCHSUBDIR_VERSION=le_343
+PATCHSUBDIR_VERSION=le_363
 check_ccu_fw_version()
 {
  model=`grep VERSION /boot/VERSION   | awk -F'[=.]' {'print $2'}`
  version=`grep VERSION /boot/VERSION | awk -F'[=.]' {'print $3'}`
  build=`grep VERSION /boot/VERSION   | awk -F'[=.]' {'print $4'}`
 
- if [ $model -ge 2 ] && [ $version -ge 45 ]; then
-  PATCHSUBDIR_VERSION=ge_345
+ if [ $model -ge 2 ] && [ $version -le 43 ]; then
+  echo "Unsupported firmware version $model.$version.$build found. (2.45 / 3.45 or higher needed!)" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+  exit 14
+ fi
+ 
+ if [ $model -ge 2 ] && [ $version -ge 65 ]; then
+  PATCHSUBDIR_VERSION=ge_365
  fi
  
  echo "Found firmware version $model.$version.$build - using patch subdirectory version ${PATCHSUBDIR_VERSION}" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE

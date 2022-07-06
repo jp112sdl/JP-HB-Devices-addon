@@ -148,6 +148,9 @@ function ::dcCreate()
     var CN_WIN_SC_SENSOR   = "WIN_SC_SENSOR.";
     var CN_WINDOW          = "WINDOW.";
 
+    var CN_EVENT_INTERFACE = "EVENT_INTERFACE.";
+    var CN_NOT_ACTIVE = "CHANNEL_NOT_ACTIVE";
+
     var CN_RFID_BUTTON     = "RFIDBTN.";
     var CN_IRRC_BUTTON     = "IRRCBTN.";
     var CN_IBTN_BUTTON     = "IBTN.";
@@ -162,9 +165,6 @@ function ::dcCreate()
     var CN_PWRSC           = "PWRSC.";
     var CN_CONDSC          = "CONDSC.";
     
-    var CN_EVENT_INTERFACE = "EVENT_INTERFACE.";
-    var CN_NOT_ACTIVE = "CHANNEL_NOT_ACTIVE";
-
     var isInvisible = false;
     var isKnownControl = false;
 

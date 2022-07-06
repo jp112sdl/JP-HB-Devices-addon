@@ -11,7 +11,7 @@ RM_NIGHTLY_DIR=${DIR_PREFIX}/rm-snapshot
 RM_NIGHTLY_URL=$(curl -sSL -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/jens-maus/RaspberryMatic/releases/22744592/assets | jq -r '.[] | select(.name | endswith("ccu3.tgz")) | .browser_download_url')
 IMAGEFILENAME=${DIR_PREFIX}/rm-snapshot/rootfs.ext4
 PATCH_DIR=${SCRIPT_DIR}/src/addon/patch
-PATCHSUBDIR_VERSION=le_343
+PATCHSUBDIR_VERSION=le_363
 PATCHSUBDIR_COMMON=common
 
 check_ccu_fw_version()
@@ -20,8 +20,8 @@ check_ccu_fw_version()
  version=`grep VERSION ${MOUNT_DIR}/boot/VERSION | awk -F'[=.]' {'print $3'}`
  build=`grep VERSION ${MOUNT_DIR}/boot/VERSION   | awk -F'[=.]' {'print $4'}`
 
- if [ $model -ge 2 ] && [ $version -ge 45 ]; then
-  PATCHSUBDIR_VERSION=ge_345
+ if [ $model -ge 2 ] && [ $version -ge 65 ]; then
+  PATCHSUBDIR_VERSION=ge_365
  fi
 
  echo "Found firmware version $model.$version.$build - using patch subdirectory version ${PATCHSUBDIR_VERSION}"

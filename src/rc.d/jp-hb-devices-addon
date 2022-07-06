@@ -21,15 +21,22 @@ RL_FILE=/lib/udev/rules.d/99-hmip-rfusb.rules
 CK_FIRMWARE_FILE=${FIRMWARE_DIR}/hb-uni-sen-cap-moist.xml
 
 PATCHSUBDIR_COMMON=common
-PATCHSUBDIR_VERSION=le_343
+
 check_ccu_fw_version()
 {
  model=`grep VERSION /boot/VERSION   | awk -F'[=.]' {'print $2'}`
  version=`grep VERSION /boot/VERSION | awk -F'[=.]' {'print $3'}`
  build=`grep VERSION /boot/VERSION   | awk -F'[=.]' {'print $4'}`
 
- if [ $model -ge 2 ] && [ $version -ge 45 ]; then
-  PATCHSUBDIR_VERSION=ge_345
+ if [ $model -ge 2 ] && [ $version -le 43 ]; then
+  echo "Unsupported firmware version $model.$version.$build found. (2.45 / 3.45 or higher needed!)" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
+  exit 14
+ fi
+ 
+ if [ $model -ge 2 ] && [ $version -ge 65 ]; then
+  PATCHSUBDIR_VERSION=ge_365
+ else
+  PATCHSUBDIR_VERSION=le_363
  fi
  
  echo "Found firmware version $model.$version.$build - using patch subdirectory version ${PATCHSUBDIR_VERSION}" | tee -a $TMP_LOGFILE | tee -a $TMP_ERRFILE
@@ -151,9 +158,16 @@ case "$1" in
         
         ### revoke patches from currently installed addon version
         if [ -f ${CK_FIRMWARE_FILE} ] && [ -d ${PATCH_DIR} ]; then
-            currentversion=`cat ${ADDON_DIR}/VERSION`
-            echo "Revoking current addon V $currentversion patch files." | tee $TMP_LOGFILE | tee $TMP_ERRFILE
+            currentversion_major=`cat /usr/local/addons/jp-hb-devices-addon/VERSION | awk -F'[=.]' {'print $1'}`
+            currentversion_minor=`cat /usr/local/addons/jp-hb-devices-addon/VERSION | awk -F'[=.]' {'print $2'}`
+
+            if [ $currentversion_major -eq 5 ]; then
+              PATCHSUBDIR_VERSION=ge_345
+            fi
+
+            echo "Revoking current addon V $currentversion_major.$currentversion_minor patch files." | tee $TMP_LOGFILE | tee $TMP_ERRFILE
             patcher "REVOKE"
+            check_ccu_fw_version
         fi
         
         ### delete the old (current) addon directory and rename the newly uploaded 

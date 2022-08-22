@@ -4,7 +4,7 @@
 **❓ CCU2 Firmware 2.53.27 - 2.61.7 nur experimentell unterstützt (nicht real getestet; nur gegen ubi-Image)**<br/>
 Die für o.g. CCU-Firmware-Versionen jeweils aktuellste Addon-Version ist bei den [Releases](https://github.com/jp112sdl/JP-HB-Devices-addon/releases/latest) zu finden.
 <br/>
-Bitte bei for einem Update die hinweise auf dieser Seite beachten: [InfoPage](https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage)
+Bitte bei for einem Update die Hinweise auf dieser Seite beachten: [InfoPage](https://jp112sdl.github.io/JP-HB-Devices-addon/jphbInfoPage)
 <br/>
 #### ℹ️ Die künftige Wartung/Anpassung des Addons für das OCCU-Derivat "BusMatic" erfolgt direkt vom "BusMatic"-Maintainer. Downloads sind auch von dort zu beziehen.
 <br/>

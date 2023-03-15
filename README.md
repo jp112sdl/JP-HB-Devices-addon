@@ -219,4 +219,3 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 Die verwendeten Icons sind "free for non-commercial use" von
  - https://www.flaticon.com/authors/popcic from www.flaticon.com 
  - http://icons8.com 
-

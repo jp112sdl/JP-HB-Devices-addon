@@ -178,7 +178,14 @@ proc set_htmlParams {iface address pps pps_descr special_input_id peer_type} {
     append HTML_PARAMS(separate_1) "<td class=\"j_sens_param_$chn stringtable_value\">\${stringTableFdBroadcast}</td>"
     append HTML_PARAMS(separate_1) "<td class=\"j_sens_param_$chn\">[getCheckBox '$param' $ps($param) $chn $paramCount]</td>"
   append HTML_PARAMS(separate_1) "</tr>"
-    
+
+  incr paramCount
+  set param "FD_AUTODISABLE"
+  append HTML_PARAMS(separate_1) "<tr class=\"j_param_$chn\">"
+    append HTML_PARAMS(separate_1) "<td class=\"j_param_$chn stringtable_value\">\${stringTableFdAutoDisable}</td>"
+    append HTML_PARAMS(separate_1) "<td class=\"j_param_$chn\">[getCheckBox '$param' $ps($param) $chn $paramCount]</td>"
+  append HTML_PARAMS(separate_1) "</tr>"
+      
   append HTML_PARAMS(separate_1) "</table>"
   
   puts "<script type=\"text/javascript\">init($chn);</script>"

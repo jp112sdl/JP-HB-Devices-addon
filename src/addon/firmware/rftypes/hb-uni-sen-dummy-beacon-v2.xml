@@ -103,7 +103,11 @@
         <parameter id="FD_STATUS">
            <logical type="integer" min="0" max="255" default="0" unit="" />
            <physical type="integer" interface="config" list="1" index="8.0" size="1" />
-         </parameter> 
+         </parameter>
+        <parameter id="FD_AUTODISABLE">
+          <logical type="boolean" default="true"/>
+          <physical type="integer" interface="config" list="1" index="7.2" size="0.1"/>
+         </parameter>         
       </paramset> 
       <paramset type="VALUES" id="hb_dummydev_values">       
         <parameter id="STATE" operations="read,write,event" control="SWITCH.STATE">

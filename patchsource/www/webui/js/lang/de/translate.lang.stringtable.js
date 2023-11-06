@@ -230,6 +230,7 @@ jQuery.extend(true,langJSON, {
     "stringTableFdSimulateDeviceTypeSensor" : "Sensor",
     "stringTableFdSimulateDeviceTypeActuator" : "Aktor",
     "stringTableFdSimulateDeviceType" : "Ger%e4tetyp",
+    "stringTableFdAutoDisable" : "Auto-Disable",
     "stringTableFdBroadcast" : "Broadcast",
     "stringTableFdSendEvery" : "sende alle",
     "stringTableFdSimulate" : "Simuliere Ger%e4t",

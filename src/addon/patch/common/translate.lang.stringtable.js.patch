@@ -1,6 +1,6 @@
 --- ./patchsource/www/webui/js/lang/de/translate.lang.stringtable.js.orig
 +++ ./patchsource/www/webui/js/lang/de/translate.lang.stringtable.js
-@@ -109,6 +109,210 @@
+@@ -109,6 +109,211 @@
      "stringTableCharacteristicCrossfade" : "Crossfade",
      "stringTableCharacteristicDim2Hot" : "Dim2Hot",
      "stringTableCharacteristicDim2Warm" : "Dim2Warm",
@@ -125,6 +125,7 @@
 +    "stringTableFdSimulateDeviceTypeSensor" : "Sensor",
 +    "stringTableFdSimulateDeviceTypeActuator" : "Aktor",
 +    "stringTableFdSimulateDeviceType" : "Ger%e4tetyp",
++    "stringTableFdAutoDisable" : "Auto-Disable",
 +    "stringTableFdBroadcast" : "Broadcast",
 +    "stringTableFdSendEvery" : "sende alle",
 +    "stringTableFdSimulate" : "Simuliere Ger%e4t",

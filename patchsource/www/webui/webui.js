@@ -4395,6 +4395,7 @@ elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|TOF_DISTANCE_OFFSET'] = '${stringTableCap
 elvST['ERROR=CURRENTSENSOR_FAIL'] = '${stringTableHBCurrentSensorFailure}';
 elvST['ERROR=FAN_RPM_FAIL'] = '${stringTableHBFanRpmFailure}';
 elvST['ERROR=TEMP_SENSOR_FAIL'] = '${stringTableHBTempSensorFailure}';
+elvST['FD_AUTODISABLE'] = '${stringTableFdAutoDisable}';
 elvST['FD_BROADCAST'] = '${stringTableFdBroadcast}';
 elvST['FD_CYCLIC_TIMEOUT'] = '${stringTableFdCyclicTimeout}';
 elvST['FD_DEVICE_ID'] = '${stringTableFdDeviceId}';

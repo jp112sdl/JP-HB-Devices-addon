@@ -288,6 +288,7 @@ FAN|ERROR=FAN_RPM_FAIL	${stringTableHBFanRpmFailure}
 FAN|LEVEL	${stringTableHbFanLevel}
 FAN|OLD_LEVEL	${stringTableHbFanOldLevel}
 FAN|RAMP_TIME	${stringTableHbFanRampTime}
+FD_AUTODISABLE	${stringTableFdAutoDisable}
 FD_BROADCAST	${stringTableFdBroadcast}
 FD_CYCLIC_TIMEOUT	${stringTableFdCyclicTimeout}
 FD_DEVICE_ID	${stringTableFdDeviceId}

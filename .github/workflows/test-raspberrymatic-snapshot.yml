@@ -4,7 +4,7 @@ on:
   push:
   schedule:
     - cron: '0 6 * * *' # run at 7am UTC
-
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest

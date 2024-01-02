@@ -1,6 +1,6 @@
 --- ./patchsource/www/webui/webui.js.orig
 +++ ./patchsource/www/webui/webui.js
-@@ -88,6 +88,552 @@
+@@ -88,6 +88,558 @@
  DEV_PATHS["HM-RC-4-3"] = new Object();
  DEV_PATHS["HM-RC-4-3"]["50"] = "/config/img/devices/50/84_hm-rc-4-x_thumb.png";
  DEV_PATHS["HM-RC-4-3"]["250"] = "/config/img/devices/250/84_hm-rc-4-3.png";
@@ -550,10 +550,16 @@
 +DEV_PATHS['HB-CDL-6'] = new Object();
 +DEV_PATHS['HB-CDL-6']['50'] = '/config/img/devices/50/hb-cdl-6_thumb.png';
 +DEV_PATHS['HB-CDL-6']['250'] = '/config/img/devices/250/hb-cdl-6.png';
++DEV_HIGHLIGHT['HB-EPTR-DPM'] = new Object();
++DEV_LIST.push('HB-EPTR-DPM');
++DEV_DESCRIPTION['HB-EPTR-DPM']='EPEVER Solar Charger and DPM Power Supply';
++DEV_PATHS['HB-EPTR-DPM'] = new Object();
++DEV_PATHS['HB-EPTR-DPM']['50'] = '/config/img/devices/50/hb-eptr-dpm_thumb.png';
++DEV_PATHS['HB-EPTR-DPM']['250'] = '/config/img/devices/250/hb-eptr-dpm.png';
  DEV_HIGHLIGHT["HM-RC-4-3"] = new Object();
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part1"] = [6, 0.312, 0.288, 0.416, 0.288, 0.012];
  DEV_HIGHLIGHT["HM-RC-4-3"]["arrow_part2"] = [6, 0.312, 0.288, 0.352, 0.248, 0.012];
-@@ -3843,6 +4389,225 @@
+@@ -3843,6 +4395,240 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_HIGH'] = '${stringTableCapacitiveFillingSensorCaseHeight}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_LENGTH'] = '${stringTableCapacitiveFillingSensorCaseLength}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CASE_WIDTH'] = '${stringTableCapacitiveFillingSensorCaseWidth}';
@@ -631,6 +637,21 @@
 +elvST['HB_GENERIC|INFO_MSG=HB_CALIBRATION_INVALID'] = '${stringTableHBCalibrationInvalid}';
 +elvST['HB_GENERIC|INFO_MSG=HB_OPERATION_CALIBRATION'] = '${stringTableHBOperationCalibration}';
 +elvST['HB_GENERIC|INFO_MSG=HB_OPERATION_NORMAL'] = '${stringTableHBOperationNormal}';
++elvST['HB_GENERIC|HB_DPM_SET_VOLTAGE'] = '${stringTableHbDpmSetVoltage}';
++elvST['HB_GENERIC|HB_DPM_SET_CURRENT'] = '${stringTableHbDpmSetCurrent}';
++elvST['HB_MODBUS_QUERY_INTERVAL'] = '${stringTableHbModbusQueryInterval}';
++elvST['HB_POWEROFF_LOWBAT_VOLTAGE'] = '${stringTableHbPoweroffLowbatVoltage}';
++elvST['HB_POWEROFF_LOWBAT_PERCENTAGE'] = '${stringTableHbPoweroffLowbatPercentage}';
++elvST['HB_DELAY_BETWEEN_MESSAGES'] = '${stringTableHbDelayBetweenMessages}';
++elvST['HB_GENERIC|FAULT_REPORTING=NO_FAULT'] = '${stringTableClimateControlRTTransceiverNoFault}';
++elvST['HB_GENERIC|FAULT_REPORTING=INVALID_SLAVE_ID'] = '${stringTableHbInvalidSlaveID}';
++elvST['HB_GENERIC|FAULT_REPORTING=INVALID_FUNCTION'] = '${stringTableHbInvalidFunction}';
++elvST['HB_GENERIC|FAULT_REPORTING=RESPONSE_TIMEOUT'] = '${stringTableHbResponseTimeout}';
++elvST['HB_GENERIC|FAULT_REPORTING=INVALID_CRC'] = '${stringTableHbInvalidCRC}';
++elvST['HB_GENERIC|FAULT_REPORTING=MB_ILLEGAL_FUNCTION'] = '${stringTableHbMbIllegalFunction}';
++elvST['HB_GENERIC|FAULT_REPORTING=MB_ILLEGAL_DATA_ADDRESS'] = '${stringTableHbMbIllegalDataAddress}';
++elvST['HB_GENERIC|FAULT_REPORTING=MB_ILLEGAL_DATA_VALUE'] = '${stringTableHbMbIllegalDataValue}';
++elvST['HB_GENERIC|FAULT_REPORTING=MB_SLAVE_DEVICE_FAILURE'] = '${stringTableHbMbSlaveDeviceFailure}';
 +elvST['HB_HEADERLINE'] = '${stringTableHbHeaderLine}';
 +elvST['HB_HUMIDITY_OFFSET'] = '${stringTableHbHumidityOffset}';
 +elvST['HB_ICON_NUM'] = '${lblIcon}';
@@ -779,7 +800,7 @@
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_CALC_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextCalcFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|CONTROLTEXT_FILLINGLEVEL'] = '${stringTableCapacitiveFillingSensorTextFillingLevel}';
  elvST['CAPACITIVE_FILLING_LEVEL_SENSOR|FILLING_LEVEL'] = '${stringTableCapacitiveFillingSensorFillingLevel}';
-@@ -13664,7 +14429,7 @@
+@@ -13664,7 +14450,7 @@
    // Check each line if the free text mode is active.
    // If yes switch on the appropriate text input field
    // and set the variable freeTextActive to true
@@ -788,7 +809,7 @@
      var jLine = jQuery("#textSelect_" + line),
      jCellFreeText = jQuery("#cellFreeText_"+line);
  
-@@ -13680,7 +14445,7 @@
+@@ -13680,7 +14466,7 @@
    // If at least one line has an active free text mode
    // we have to activate the placeholder for the other lines and the header (color and icon are moving up)
    if (freeTextActive) {
@@ -797,7 +818,7 @@
        var jLine = jQuery("#textSelect_" + line),
        jPlaceHolder = jQuery("#placeHolder_"+line);
  
-@@ -13692,7 +14457,7 @@
+@@ -13692,7 +14478,7 @@
      }
    } else {
      jHeadFreeText.hide().css("display", "none");
@@ -806,7 +827,7 @@
        jQuery("#placeHolder_"+line).hide().css("display", "none");
      }
    }
-@@ -23560,6 +24325,24 @@
+@@ -23560,6 +24346,24 @@
          this.setWidth(400);
          this.setFile( "/pages/msg/setOUCFMMode.htm" );
          break;
@@ -831,7 +852,7 @@
          case ID_SET_STATUS_DISPLAY:
          this.setTitle( translateKey("dialogEnterValue") /*"Wert eingeben" */);
          this.addToPostBody( 'string type = "'+this.type+'";' );
-@@ -24363,6 +25146,9 @@
+@@ -24363,6 +25167,9 @@
  ID_AUTO_LOGIN_CONFIG     = 1018;
  ID_PROGRAM_CHOOSER       = 1019;
  ID_EDIT_SYSVAR           = 1021;
@@ -841,7 +862,7 @@
  ID_CHOOSE_LED            = 1022;
  ID_SET_OUCFM_MODE        = 1023;
  ID_SET_STATUS_DISPLAY    = 1024;
-@@ -36863,7 +37649,15 @@
+@@ -36863,7 +37670,15 @@
        SetParameters ($F('global_iface'), channel_address, 'CHANNEL_'+i);
        actions++;
      }

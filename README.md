@@ -122,7 +122,7 @@ _Bitte etwas Geduld haben - je nach Geschwindigkeit der SD Karte kann die Instal
 |<img src="src/addon/www/config/img/devices/50/hb-uni-sen-weight-sc_thumb.png" width=25/> | [HB-UNI-Sen-WEIGHT-SC](https://github.com/jp112sdl/HB-UNI-Sen-WEIGHT-SC) | universeller Wägesensor mit Schließerkontakt | ⚡️ | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-senact-4-4_thumb.png" width=25/> | [HB-UNI-SenAct-4-4](https://github.com/jp112sdl/HB-UNI-SenAct-4-4) | 4fach - Sender & - Aktor | ⚡️ / 🔋 | 
 |<img src="src/addon/www/config/img/devices/50/hb-uni-senact-8-8_thumb.png" width=25/> |  [HB-UNI-SenAct-8-8](https://github.com/jp112sdl/HB-UNI-SenAct-8-8)  | 8fach - Sender & - Aktor | ⚡️ / 🔋 | 
-|<img src="src/addon/www/config/img/devices/50/hb-eptr-dpm_thumb.png" width=25/> |  [HB-EPTR-DPM]  | RS485 Modbus Steuerung f. EPEVER Tracer und Juntek DPM DCDC-Wandler | ⚡️ | 
+|<img src="src/addon/www/config/img/devices/50/hb-eptr-dpm_thumb.png" width=25/> |  [HB-EPTR-DPM](https://github.com/jp112sdl/HB-EPTR-DPM)  | RS485 Modbus Steuerung f. EPEVER Tracer und Juntek DPM DCDC-Wandler | ⚡️ | 
 
 **Hinweis für Entwickler** _(verwendete Device Model meiner bzw. fremd-eingebundener HB-Geräte)_ **:**
 

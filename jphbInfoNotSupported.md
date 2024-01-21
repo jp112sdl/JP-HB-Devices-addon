@@ -1,1 +1,1 @@
-# Firmware not supported.
+# Firmware not supported!

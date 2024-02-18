@@ -94,6 +94,22 @@ jQuery.extend(true,langJSON, {
         "<td>0x9c</td>"+
         "<td>0x9d</td>"+
       "</tr>"+
+      "<tr>"+
+        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/measure_battery_0.png></td>"+
+        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/measure_battery_25.png></td>"+
+        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/measure_battery_50.png></td>"+
+        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/measure_battery_75.png></td>"+
+        "<td><img src=/ise/img/icons_hb_dis_ep_75bw/measure_battery_100.png></td>"+
+        "<td></td>"+
+      "</tr>"+
+      "<tr>"+
+        "<td>0x9e</td>"+
+        "<td>0x9f</td>"+
+        "<td>0xa0</td>"+
+        "<td>0xa1</td>"+
+        "<td>0xa2</td>"+
+        "<td></td>"+
+      "</tr>"+
       "</table><br/>Icons from <a target='_blank' href=\"https://github.com/OpenAutomationProject/knx-uf-iconset\">OpenAutomationProject</a>"
   },
   "en" :{

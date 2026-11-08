@@ -41,7 +41,9 @@ diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} >> ./src/addon
 file=./patchsource/www/rega/pages/tabs/admin/views/programs.htm
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch 
 file=./patchsource/www/rega/esp/side.inc
-diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch 
+# only two lines of context: the lines before the inserted blocks were
+# changed by OpenCCU (escaped values), see OpenCCU/OpenCCU#4679
+diff -U2 --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/common/`basename ${file}`.patch 
 
 file=./patchsource/www/rega/esp/controls/rhs.fn
 diff -u --label=${file}.orig --label=${file} ${file}.orig ${file} > ./src/addon/patch/le_363/`basename ${file}`.patch 

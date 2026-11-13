@@ -1,11 +1,6 @@
 #!/bin/sh
 # WebUI icon used from http://icons8.com 
 
-RL_FILE=/lib/udev/rules.d/99-hmip-rfusb.rules
-CK_FILE=/www/api/methods/ccu/downloadFirmware.tcl
-if [ -e "$CK_FILE" ] && grep -iq 'to\|bu' "$CK_FILE" ; then exit 13; fi
-if [ -e "$RL_FILE" ] && grep -iq 'hmul'   "$RL_FILE" ; then exit 13; fi
-
 target="UNDEFINED"
 if [ "$1" != "" ]; then
   target=$1
